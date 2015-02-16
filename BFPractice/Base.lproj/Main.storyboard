@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BFPractice" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ld6-5e-W5S">
+                                <rect key="frame" x="16" y="20" width="81" height="29"/>
+                                <segments>
+                                    <segment title="Play"/>
+                                    <segment title="Edit"/>
+                                </segments>
+                                <connections>
+                                    <action selector="editPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="Gjp-5Q-IKL"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Si-9i-d5o">
+                                <rect key="frame" x="285" y="339" width="127" height="90"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <state key="normal" title="B">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="playedNote:" destination="BYZ-38-t0r" eventType="touchDown" id="3SB-j0-fNW"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ich-59-Vez"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchDragExit" id="kSg-xU-p0k"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgi-XA-KAb">
+                                <rect key="frame" x="449" y="339" width="127" height="90"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <state key="normal" title="C">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="playedNote:" destination="BYZ-38-t0r" eventType="touchDown" id="Vtk-4D-vst"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HEc-Sf-jgn"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchDragExit" id="cOT-vt-oZe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPI-AV-gZy">
+                                <rect key="frame" x="614" y="339" width="127" height="90"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <state key="normal" title="D">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="playedNote:" destination="BYZ-38-t0r" eventType="touchDown" id="TFh-Vf-55r"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchDragExit" id="w3j-Ct-kLS"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xHB-Lb-rxw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSH-Wb-UAD">
+                                <rect key="frame" x="780" y="339" width="127" height="90"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <state key="normal" title="E">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="playedNote:" destination="BYZ-38-t0r" eventType="touchDown" id="AbZ-iI-DTj"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dM8-0K-fFv"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchDragExit" id="kfV-lx-1d6"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nothing has happened yet..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPv-Ng-tQ6">
+                                <rect key="frame" x="16" y="727" width="217" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjo-zQ-lrg">
+                                <rect key="frame" x="127" y="339" width="127" height="90"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <state key="normal" title="A">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="playedNote:" destination="BYZ-38-t0r" eventType="touchDown" id="QV3-7D-Si0"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2BZ-u1-5PJ"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchDragExit" id="5Ua-gb-mIW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="W4q-pm-LV2" appends="YES" id="EJ1-El-9Ng"/>
+                        </connections>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="myCaption" destination="vPv-Ng-tQ6" id="Rd4-IX-bcc"/>
+                        <outlet property="panHandler" destination="W4q-pm-LV2" id="ZlY-hG-zbd"/>
+                        <outletCollection property="collectionOfButtons" destination="6Si-9i-d5o" collectionClass="NSMutableArray" id="tcq-YS-ggF"/>
+                        <outletCollection property="collectionOfButtons" destination="rgi-XA-KAb" collectionClass="NSMutableArray" id="Ax5-dL-iOh"/>
+                        <outletCollection property="collectionOfButtons" destination="wPI-AV-gZy" collectionClass="NSMutableArray" id="ShP-8K-WSi"/>
+                        <outletCollection property="collectionOfButtons" destination="RSH-Wb-UAD" collectionClass="NSMutableArray" id="6QB-Ze-XiE"/>
+                        <outletCollection property="collectionOfButtons" destination="bjo-zQ-lrg" collectionClass="NSMutableArray" id="RIA-Zr-HOy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="W4q-pm-LV2">
+                    <connections>
+                        <action selector="handlePan:" destination="BYZ-38-t0r" id="zS9-8b-nJx"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="563" y="713"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>
