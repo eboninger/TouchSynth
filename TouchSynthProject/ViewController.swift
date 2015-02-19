@@ -27,6 +27,7 @@ class ViewController: UIViewController {
             let aSelector : Selector = "handlePan:"
             let panHandler = UIPanGestureRecognizer(target: self, action: aSelector)
             button.addGestureRecognizer(panHandler)
+            
         }
         
         
