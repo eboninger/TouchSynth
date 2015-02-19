@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TouchSynthProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NlX-mc-Hwt">
+                                <rect key="frame" x="16" y="28" width="81" height="29"/>
+                                <segments>
+                                    <segment title="Play"/>
+                                    <segment title="Edit"/>
+                                </segments>
+                                <connections>
+                                    <action selector="editPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="d62-8H-Tpt"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nothing has happened yet..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qt-0O-qUI">
+                                <rect key="frame" x="62" y="530" width="217" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WPd-r4-iYd">
+                                <rect key="frame" x="397" y="359" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="B">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playedNote:" destination="BYZ-38-t0r" eventType="touchDragEnter" id="F0a-CG-sPy"/>
+                                    <action selector="playedNote:" destination="BYZ-38-t0r" eventType="touchDown" id="QxE-bd-BX2"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JNM-q0-9Y2"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchDragExit" id="RcG-Gt-VhJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Caj-72-8pu">
+                                <rect key="frame" x="491" y="359" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="C">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playedNote:" destination="BYZ-38-t0r" eventType="touchDown" id="1u1-MK-BIQ"/>
+                                    <action selector="playedNote:" destination="BYZ-38-t0r" eventType="touchDragEnter" id="75s-Q3-l2m"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Ah-O9-ucX"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchDragExit" id="bZW-MH-OHh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bur-jR-Pcy">
+                                <rect key="frame" x="577" y="359" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="D">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playedNote:" destination="BYZ-38-t0r" eventType="touchDown" id="0Dh-LM-vPl"/>
+                                    <action selector="playedNote:" destination="BYZ-38-t0r" eventType="touchDragEnter" id="6jJ-TG-pM4"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aEp-6i-P8S"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchDragExit" id="dQ0-Xx-XEt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYT-L8-WU5">
+                                <rect key="frame" x="665" y="359" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="E">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playedNote:" destination="BYZ-38-t0r" eventType="touchDown" id="KT0-Lo-1db"/>
+                                    <action selector="playedNote:" destination="BYZ-38-t0r" eventType="touchDragEnter" id="sNM-Tr-O2C"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchDragExit" id="DtM-eN-FT0"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tti-M0-6Q9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTC-9V-WVR">
+                                <rect key="frame" x="310" y="359" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="A">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playedNote:" destination="BYZ-38-t0r" eventType="touchDragEnter" id="83H-Lw-pIT"/>
+                                    <action selector="playedNote:" destination="BYZ-38-t0r" eventType="touchDown" id="vIE-Ke-VZZ"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4fP-mH-WVf"/>
+                                    <action selector="stoppedNote:" destination="BYZ-38-t0r" eventType="touchDragExit" id="ZjK-nF-d8z"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="myCaption" destination="7qt-0O-qUI" id="k9I-Y1-dRw"/>
+                        <outletCollection property="collectionOfButtons" destination="ZTC-9V-WVR" collectionClass="NSMutableArray" id="gtX-H1-Twa"/>
+                        <outletCollection property="collectionOfButtons" destination="WPd-r4-iYd" collectionClass="NSMutableArray" id="9mU-C5-jo9"/>
+                        <outletCollection property="collectionOfButtons" destination="Caj-72-8pu" collectionClass="NSMutableArray" id="X4t-LF-lc3"/>
+                        <outletCollection property="collectionOfButtons" destination="Bur-jR-Pcy" collectionClass="NSMutableArray" id="UNF-8V-VoD"/>
+                        <outletCollection property="collectionOfButtons" destination="YYT-L8-WU5" collectionClass="NSMutableArray" id="G9Q-gZ-ckI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="755.20000000000005" y="588.80000000000007"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>
