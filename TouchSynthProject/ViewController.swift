@@ -13,7 +13,8 @@ import UIKit
 class ViewController: UIViewController {
     
     var playmode = true;
-    
+    var patchID : Int32 = 0
+    var patch = PdBase.openFile("proj1.pd", path: NSBundle.mainBundle().resourcePath)
     
     @IBOutlet var collectionOfButtons: Array<UIButton>!
     @IBOutlet var myCaption: UILabel!
@@ -31,6 +32,9 @@ class ViewController: UIViewController {
             
         }
         
+        patchID = PdBase.dollarZeroForFile(patch)
+        
+
         
     }
     
@@ -58,6 +62,13 @@ class ViewController: UIViewController {
     @IBAction func playedNote(sender: UIButton) {
         if (playmode) {
             myCaption.text = "Playing "  + sender.titleLabel!.text!
+            var value : Float = 0
+            if (sender.titleLabel!.text! == "A") {
+                value = 440
+            } else {
+                value = 550
+            }
+            PdBase.sendFloat(value, toReceiver: "mynote")
         }
     }
     

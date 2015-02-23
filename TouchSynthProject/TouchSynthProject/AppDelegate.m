@@ -25,7 +25,7 @@
         NSLog(@"failed to initialize audio controller");
     }
     
-    // Configure the dispatcher to listen for messages from Pure Data. PdBase is initialized by libpd
+    /*// Configure the dispatcher to listen for messages from Pure Data. PdBase is initialized by libpd
     PdDispatcher *dispatcher = [PdDispatcher new];
     [PdBase setDelegate:dispatcher];
     
@@ -38,7 +38,7 @@
     
     if (!_patch){
         NSLog(@"Couldn't open the patch");
-    }
+    }*/
     
     return YES;
 }
