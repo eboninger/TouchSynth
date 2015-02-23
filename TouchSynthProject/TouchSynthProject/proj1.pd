@@ -1,4 +1,4 @@
-#N canvas 735 50 690 432 10;
+#N canvas 484 154 690 432 10;
 #X obj 164 393 dac~;
 #X obj 199 221 adsr_obj;
 #X obj 167 279 filter;
@@ -27,10 +27,7 @@
 #X obj 292 401 s note;
 #X obj 308 291 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 539 130 osc~ 440;
-#X obj 571 196 dac~;
-#X obj 526 88 r mynote;
-#X msg 621 80 0;
+#X msg 124 51 60 127;
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
 #X connect 2 0 0 1;
@@ -65,6 +62,4 @@
 #X connect 24 0 20 0;
 #X connect 24 0 21 0;
 #X connect 24 0 22 0;
-#X connect 25 0 26 0;
-#X connect 27 0 25 0;
-#X connect 28 0 25 0;
+#X connect 25 0 6 0;
