@@ -16,7 +16,30 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    // Initialize the audio controller that handles Core Audio integration
+    _audioController = [PdAudioController new];
+    if ([_audioController configureAmbientWithSampleRate:44100
+                                          numberChannels:2
+                                           mixingEnabled:YES] != PdAudioOK){
+        NSLog(@"failed to initialize audio controller");
+    }
+    
+    // Configure the dispatcher to listen for messages from Pure Data. PdBase is initialized by libpd
+    PdDispatcher *dispatcher = [PdDispatcher new];
+    [PdBase setDelegate:dispatcher];
+    
+    // Open a patch called demo.pd
+    _patch = [PdBase openFile:@"proj1.pd"
+                         path:[[NSBundle mainBundle] resourcePath]];
+    
+    // Get the unique $0 for a patch that you open
+    //int dollarZero = [PdBase dollarZeroForFile:_patch];
+    
+    if (!_patch){
+        NSLog(@"Couldn't open the patch");
+    }
+    
     return YES;
 }
 
@@ -28,6 +51,8 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    _audioController.active = NO;
+    [PdBase closeFile:_patch];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -36,6 +61,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    _audioController.active = YES;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

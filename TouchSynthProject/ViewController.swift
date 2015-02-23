@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     var playmode = true;
     
+    
     @IBOutlet var collectionOfButtons: Array<UIButton>!
     @IBOutlet var myCaption: UILabel!
     @IBOutlet var panHandler: UIGestureRecognizer!
