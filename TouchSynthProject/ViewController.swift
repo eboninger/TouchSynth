@@ -14,28 +14,50 @@ class ViewController: UIViewController {
     
     var playmode = true;
     var patchID : Int32 = 0
-    var patch = PdBase.openFile("proj1.pd", path: NSBundle.mainBundle().resourcePath)
+    var patch = PdBase.openFile("demo.pd", path: NSBundle.mainBundle().resourcePath)
     
-    @IBOutlet var collectionOfButtons: Array<UIButton>!
+    @IBOutlet var collectionOfNotes: Array<Note>!
     @IBOutlet var myCaption: UILabel!
     @IBOutlet var panHandler: UIGestureRecognizer!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionOfNotes = Array<Note>()
         // Do any additional setup after loading the view, typically from a nib.
-        var i = 0
-        for button in collectionOfButtons {
-            let aSelector : Selector = "handlePan:"
-            let panHandler = UIPanGestureRecognizer(target: self, action: aSelector)
-            button.addGestureRecognizer(panHandler)
-            
-        }
-        
+        createNote("A3", value: 57, x_loc: 100, y_loc: 200, bcolor : UIColor.blueColor())
+        createNote("C4", value: 60, x_loc: 170, y_loc: 200, bcolor : UIColor.blueColor())
+        createNote("D4", value: 62, x_loc: 240, y_loc: 200, bcolor : UIColor.blueColor())
+        createNote("E4", value: 64, x_loc: 310, y_loc: 200, bcolor : UIColor.blueColor())
+        createNote("G4", value: 67, x_loc: 345, y_loc: 300, bcolor : UIColor.blueColor())
+        createNote("A4", value: 69, x_loc: 465, y_loc: 300, bcolor : UIColor.blueColor())
+        createNote("C5", value: 72, x_loc: 500, y_loc: 200, bcolor : UIColor.blueColor())
+        createNote("D5", value: 74, x_loc: 570, y_loc: 200, bcolor : UIColor.blueColor())
+        createNote("E5", value: 76, x_loc: 640, y_loc: 200, bcolor : UIColor.blueColor())
+        createNote("G5", value: 79, x_loc: 710, y_loc: 200, bcolor : UIColor.blueColor())
         patchID = PdBase.dollarZeroForFile(patch)
-        
-
-        
+    }
+    
+    func createNote(title: NSString, value: Float, x_loc: CGFloat, y_loc: CGFloat, bcolor : UIColor)
+    {
+        let myNote = Note(frame: CGRectMake(x_loc + 80, y_loc + 130, 50, 70))
+        myNote.initialize(title, value: value, bColor: bcolor)
+        myNote.addTarget(self, action: "playedNote:", forControlEvents: .TouchDown)
+        myNote.addTarget(self, action: "stoppedNote:", forControlEvents: .TouchUpInside)
+        myNote.addTarget(self, action: "stoppedNote:", forControlEvents: .TouchDragExit)
+        let aSelector : Selector = "handlePan:"
+        let panHandler = UIPanGestureRecognizer(target: self, action: aSelector)
+        myNote.addGestureRecognizer(panHandler)
+        self.view.addSubview(myNote)
+        collectionOfNotes.append(myNote)
+    }
+    
+    func pressed(sender: UIButton!) {
+        var alertView = UIAlertView();
+        alertView.addButtonWithTitle("Ok");
+        alertView.title = "title";
+        alertView.message = "message";
+        alertView.show();
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,22 +81,17 @@ class ViewController: UIViewController {
         playmode = !playmode;
     }
     
-    @IBAction func playedNote(sender: UIButton) {
+    @IBAction func playedNote(sender: Note) {
         if (playmode) {
             myCaption.text = "Playing "  + sender.titleLabel!.text!
-            var value : Float = 0
-            if (sender.titleLabel!.text! == "A") {
-                value = 440
-            } else {
-                value = 550
-            }
-            PdBase.sendFloat(value, toReceiver: "mynote")
+            PdBase.sendFloat(sender.value, toReceiver: "note")
         }
     }
     
-    @IBAction func stoppedNote(sender: UIButton) {
+    @IBAction func stoppedNote(sender: Note) {
         if (playmode) {
             myCaption.text = "Stopped playing \(sender.titleLabel!.text!)"
+            PdBase.sendFloat(0, toReceiver: "note")
         }
     }
 }
