@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     var patch = PdBase.openFile("demo.pd", path: NSBundle.mainBundle().resourcePath)
     
     @IBOutlet var collectionOfNotes: Array<Note>!
+    @IBOutlet var buttonPreviews: Array<UIButton>!
+    @IBOutlet var colorPalette: Array<UIButton>!
     @IBOutlet var myCaption: UILabel!
     @IBOutlet var panHandler: UIGestureRecognizer!
     @IBOutlet var menu: MenuBar!
@@ -33,7 +35,7 @@ class ViewController: UIViewController {
     
     func initializeMenu()
     {
-        menu.initialize(typePicker)
+        menu.initialize(typePicker, buttonPreviews: buttonPreviews, colorPalette: colorPalette)
         menu.layer.cornerRadius = 0.02 * menu.bounds.size.width
         menu.hidden = true
     }
