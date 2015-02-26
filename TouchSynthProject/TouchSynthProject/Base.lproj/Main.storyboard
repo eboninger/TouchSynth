@@ -32,17 +32,29 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZlE-cc-aV7" customClass="MenuBar" customModule="TouchSynthProject" customModuleProvider="target">
+                                <rect key="frame" x="16" y="629" width="992" height="180"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qrt-LA-sB3">
+                                        <rect key="frame" x="8" y="-8" width="728" height="162"/>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.095485342942271609" green="0.16912053492140158" blue="0.34390782828282829" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="0.99475083424129263" blue="0.98166939129242092" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="menu" destination="ZlE-cc-aV7" id="lhy-sD-Z8w"/>
                         <outlet property="myCaption" destination="7qt-0O-qUI" id="k9I-Y1-dRw"/>
+                        <outlet property="typePicker" destination="Qrt-LA-sB3" id="YzB-c8-PoY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="755.20000000000005" y="588.80000000000007"/>
+            <point key="canvasLocation" x="798" y="591"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

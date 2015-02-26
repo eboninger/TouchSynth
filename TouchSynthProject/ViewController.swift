@@ -19,12 +19,28 @@ class ViewController: UIViewController {
     @IBOutlet var collectionOfNotes: Array<Note>!
     @IBOutlet var myCaption: UILabel!
     @IBOutlet var panHandler: UIGestureRecognizer!
+    @IBOutlet var menu: MenuBar!
+    @IBOutlet var typePicker: UIPickerView!
+    @IBOutlet var specsPicker: UIPickerView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        patchID = PdBase.dollarZeroForFile(patch)
+        initializeNotes()
+        initializeMenu()
+    }
+    
+    func initializeMenu()
+    {
+        menu.initialize(typePicker)
+        menu.layer.cornerRadius = 0.02 * menu.bounds.size.width
+        menu.hidden = true
+    }
+    
+    func initializeNotes()
+    {
         collectionOfNotes = Array<Note>()
-        // Do any additional setup after loading the view, typically from a nib.
         createNote("A3", value: 57, x_loc: 100, y_loc: 200, bcolor : UIColor.blueColor())
         createNote("C4", value: 60, x_loc: 170, y_loc: 200, bcolor : UIColor.blueColor())
         createNote("D4", value: 62, x_loc: 240, y_loc: 200, bcolor : UIColor.blueColor())
@@ -35,7 +51,6 @@ class ViewController: UIViewController {
         createNote("D5", value: 74, x_loc: 570, y_loc: 200, bcolor : UIColor.blueColor())
         createNote("E5", value: 76, x_loc: 640, y_loc: 200, bcolor : UIColor.blueColor())
         createNote("G5", value: 79, x_loc: 710, y_loc: 200, bcolor : UIColor.blueColor())
-        patchID = PdBase.dollarZeroForFile(patch)
     }
     
     func createNote(title: NSString, value: Float, x_loc: CGFloat, y_loc: CGFloat, bcolor : UIColor)
@@ -64,6 +79,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
     @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
         recognizer.cancelsTouchesInView = false
@@ -79,6 +95,7 @@ class ViewController: UIViewController {
     
     @IBAction func editPressed(sender: AnyObject) {
         playmode = !playmode;
+        menu.toggle()
     }
     
     @IBAction func playedNote(sender: Note) {

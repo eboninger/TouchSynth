@@ -33,5 +33,7 @@ class Note: UIButton {
         self.layer.cornerRadius = 0.5 * self.bounds.size.width
 
     }
+    
+    
 
 }

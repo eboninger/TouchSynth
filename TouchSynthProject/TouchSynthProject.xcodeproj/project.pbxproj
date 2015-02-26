@@ -17,6 +17,7 @@
 		7729D1D81A965DE400AE22E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1D71A965DE400AE22E4 /* ViewController.swift */; };
 		775CB1991A9D6CC5001A9051 /* demo.pd in Resources */ = {isa = PBXBuildFile; fileRef = 775CB1981A9D6CC5001A9051 /* demo.pd */; };
 		775CB19B1A9D6D93001A9051 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775CB19A1A9D6D93001A9051 /* Note.swift */; };
+		776D8AB21A9EAFC8001F6500 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776D8AB11A9EAFC8001F6500 /* MenuBar.swift */; };
 		779216381A9AB5D00056465C /* libPods-TouchSynthProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 779216371A9AB5D00056465C /* libPods-TouchSynthProject.a */; };
 		7792163C1A9ABFDA0056465C /* adsr_obj.pd in Resources */ = {isa = PBXBuildFile; fileRef = 779216391A9ABFDA0056465C /* adsr_obj.pd */; };
 		7792163D1A9ABFDA0056465C /* filter.pd in Resources */ = {isa = PBXBuildFile; fileRef = 7792163A1A9ABFDA0056465C /* filter.pd */; };
@@ -51,6 +52,7 @@
 		7729D1D71A965DE400AE22E4 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
 		775CB1981A9D6CC5001A9051 /* demo.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = demo.pd; path = TouchSynthProject/demo.pd; sourceTree = "<group>"; };
 		775CB19A1A9D6D93001A9051 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = SOURCE_ROOT; };
+		776D8AB11A9EAFC8001F6500 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = SOURCE_ROOT; };
 		779216331A9AB58D0056465C /* libPods-TouchSynthProject-libpd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-TouchSynthProject-libpd.a"; path = "Pods/build/Debug-iphoneos/libPods-TouchSynthProject-libpd.a"; sourceTree = "<group>"; };
 		779216351A9AB5960056465C /* libPods-TouchSynthProject.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-TouchSynthProject.a"; path = "Pods/build/Debug-iphoneos/libPods-TouchSynthProject.a"; sourceTree = "<group>"; };
 		779216371A9AB5D00056465C /* libPods-TouchSynthProject.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-TouchSynthProject.a"; path = "Pods/build/Debug-iphoneos/libPods-TouchSynthProject.a"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				7729D1B41A965D6000AE22E4 /* TouchSynthProject.xcdatamodeld */,
 				7729D1AD1A965D6000AE22E4 /* Supporting Files */,
 				775CB19A1A9D6D93001A9051 /* Note.swift */,
+				776D8AB11A9EAFC8001F6500 /* MenuBar.swift */,
 			);
 			path = TouchSynthProject;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			files = (
 				775CB19B1A9D6D93001A9051 /* Note.swift in Sources */,
 				7729D1B31A965D6000AE22E4 /* AppDelegate.m in Sources */,
+				776D8AB21A9EAFC8001F6500 /* MenuBar.swift in Sources */,
 				7729D1B01A965D6000AE22E4 /* main.m in Sources */,
 				7729D1D81A965DE400AE22E4 /* ViewController.swift in Sources */,
 				7729D1B61A965D6000AE22E4 /* TouchSynthProject.xcdatamodeld in Sources */,
