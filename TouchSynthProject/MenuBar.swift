@@ -14,6 +14,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     var buttonPreviews: Array<UIButton>?
     var colorPalette: Array<UIButton>?
+    var musicController: MusicController?
     
     var typePicker: UIPickerView?
     //var specsPicker: UIPickerView?
@@ -21,6 +22,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         ["Note", "Scale", "Chord"],
         ["A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"],
         ["1", "2", "3", "4", "5", "6", "7"],
+        ["Sharps", "Flats"],
         ["Blues", "Pentatonic", "Major"]
     ]
 
@@ -39,6 +41,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         for button in self.buttonPreviews! {
             button.layer.cornerRadius = 0.5 * button.bounds.size.width
         }
+        self.musicController = MusicController()
         self.colorPalette = colorPalette
         for color in self.colorPalette! {
             color.layer.cornerRadius = 0.5 * color.bounds.size.width
@@ -93,21 +96,28 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     func updatePreview()
     {
+        var midiNote: Int = musicController!.noteToMidi(self.typePicker!.selectedRowInComponent(1), octave: self.typePicker!.selectedRowInComponent(2) + 1)
+        var showsharps = true
+        if (self.typePicker!.selectedRowInComponent(3) == 1) {
+            showsharps = false
+        }
         if (self.typePicker!.selectedRowInComponent(0) == 0) {
             buttonPreviews![0].hidden = true
             buttonPreviews![1].hidden = true
             buttonPreviews![3].hidden = true
             buttonPreviews![4].hidden = true
-            var notename = self.pickerData[1][self.typePicker!.selectedRowInComponent(1)] + self.pickerData[2][self.typePicker!.selectedRowInComponent(2)]
-            var button: UIButton!
-            button = buttonPreviews![2]
-            button.setTitle(NSString(UTF8String: notename), forState: UIControlState.Normal)
-            buttonPreviews![2].setTitle(notename, forState: UIControlState.Normal)
+            buttonPreviews![2].setTitle(musicController!.midiToNote(midiNote, sharp: showsharps), forState: UIControlState.Normal)
         } else {
             buttonPreviews![0].hidden = false
             buttonPreviews![1].hidden = false
             buttonPreviews![3].hidden = false
             buttonPreviews![4].hidden = false
+            var scalename: String = self.pickerData[4][self.typePicker!.selectedRowInComponent(4)]
+            var noteadditions: Array<Int> = musicController!.scale_dictionary[scalename]!
+            for (i, button) in enumerate(buttonPreviews!) {
+                var addition = noteadditions[i]
+                button.setTitle(musicController!.midiToNote(midiNote + addition, sharp: showsharps), forState: UIControlState.Normal)
+            }
         }
     }
     
@@ -117,6 +127,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
                 ["Note", "Scale", "Chord"],
                 ["A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"],
                 ["1", "2", "3", "4", "5", "6", "7"],
+                ["Sharps", "Flats"],
                 []
             ]
         } else if (self.typePicker!.selectedRowInComponent(0) > 0) {
@@ -124,12 +135,13 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
                 ["Note", "Scale", "Chord"],
                 ["A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"],
                 ["1", "2", "3", "4", "5", "6", "7"],
+                ["Sharps", "Flats"],
                 ["Blues", "Pentatonic", "Major"]
             ]
         }
 
         self.typePicker!.reloadAllComponents()
-        self.typePicker!.selectRow(1, inComponent: 3, animated: true)
+        self.typePicker!.selectRow(1, inComponent: 4, animated: true)
 
     }
     

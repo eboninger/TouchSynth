@@ -19,7 +19,6 @@ class ViewController: UIViewController {
     @IBOutlet var collectionOfNotes: Array<Note>!
     @IBOutlet var buttonPreviews: Array<UIButton>!
     @IBOutlet var colorPalette: Array<UIButton>!
-    @IBOutlet var myCaption: UILabel!
     @IBOutlet var panHandler: UIGestureRecognizer!
     @IBOutlet var menu: MenuBar!
     @IBOutlet var typePicker: UIPickerView!
@@ -102,14 +101,12 @@ class ViewController: UIViewController {
     
     @IBAction func playedNote(sender: Note) {
         if (playmode) {
-            myCaption.text = "Playing "  + sender.titleLabel!.text!
             PdBase.sendFloat(sender.value, toReceiver: "note")
         }
     }
     
     @IBAction func stoppedNote(sender: Note) {
         if (playmode) {
-            myCaption.text = "Stopped playing \(sender.titleLabel!.text!)"
             PdBase.sendFloat(0, toReceiver: "note")
         }
     }

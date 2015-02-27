@@ -15,6 +15,7 @@
 		7729D1C11A965D6000AE22E4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7729D1BF1A965D6000AE22E4 /* LaunchScreen.xib */; };
 		7729D1CD1A965D6000AE22E4 /* TouchSynthProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1CC1A965D6000AE22E4 /* TouchSynthProjectTests.m */; };
 		7729D1D81A965DE400AE22E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1D71A965DE400AE22E4 /* ViewController.swift */; };
+		7756FC401AA0C054005A863A /* MusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7756FC3F1AA0C054005A863A /* MusicController.swift */; };
 		775CB1991A9D6CC5001A9051 /* demo.pd in Resources */ = {isa = PBXBuildFile; fileRef = 775CB1981A9D6CC5001A9051 /* demo.pd */; };
 		775CB19B1A9D6D93001A9051 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775CB19A1A9D6D93001A9051 /* Note.swift */; };
 		776D8AB21A9EAFC8001F6500 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776D8AB11A9EAFC8001F6500 /* MenuBar.swift */; };
@@ -50,6 +51,7 @@
 		7729D1CC1A965D6000AE22E4 /* TouchSynthProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchSynthProjectTests.m; sourceTree = "<group>"; };
 		7729D1D61A965DE400AE22E4 /* TouchSynthProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TouchSynthProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		7729D1D71A965DE400AE22E4 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
+		7756FC3F1AA0C054005A863A /* MusicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicController.swift; sourceTree = "<group>"; };
 		775CB1981A9D6CC5001A9051 /* demo.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = demo.pd; path = TouchSynthProject/demo.pd; sourceTree = "<group>"; };
 		775CB19A1A9D6D93001A9051 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = SOURCE_ROOT; };
 		776D8AB11A9EAFC8001F6500 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = SOURCE_ROOT; };
@@ -121,6 +123,7 @@
 				7729D1AD1A965D6000AE22E4 /* Supporting Files */,
 				775CB19A1A9D6D93001A9051 /* Note.swift */,
 				776D8AB11A9EAFC8001F6500 /* MenuBar.swift */,
+				7756FC3F1AA0C054005A863A /* MusicController.swift */,
 			);
 			path = TouchSynthProject;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				7729D1B31A965D6000AE22E4 /* AppDelegate.m in Sources */,
 				776D8AB21A9EAFC8001F6500 /* MenuBar.swift in Sources */,
 				7729D1B01A965D6000AE22E4 /* main.m in Sources */,
+				7756FC401AA0C054005A863A /* MusicController.swift in Sources */,
 				7729D1D81A965DE400AE22E4 /* ViewController.swift in Sources */,
 				7729D1B61A965D6000AE22E4 /* TouchSynthProject.xcdatamodeld in Sources */,
 			);
