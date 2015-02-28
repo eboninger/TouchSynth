@@ -16,6 +16,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     var colorPalette: Array<UIButton>?
     var musicController: MusicController?
     
+    
     var typePicker: UIPickerView?
     //var specsPicker: UIPickerView?
     var pickerData = [
@@ -40,6 +41,8 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         self.buttonPreviews = buttonPreviews
         for button in self.buttonPreviews! {
             button.layer.cornerRadius = 0.5 * button.bounds.size.width
+            button.titleLabel!.font =  UIFont(name: "Helvetica-BoldOblique", size: 12)
+
         }
         self.musicController = MusicController()
         self.colorPalette = colorPalette
@@ -77,6 +80,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return pickerData.count
     }
+
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData[component].count
@@ -84,7 +88,17 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let attributedString = NSAttributedString(string: pickerData[component][row], attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+
         return attributedString
+    }
+
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
+        let pickerLabel = UILabel()
+        let titleData = pickerData[component][row]
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Helvetica-BoldOblique", size: 22.0)!,NSForegroundColorAttributeName:UIColor.whiteColor()])
+        pickerLabel.attributedText = myTitle
+        pickerLabel.textAlignment = .Center
+        return pickerLabel
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

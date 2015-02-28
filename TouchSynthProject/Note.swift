@@ -31,6 +31,15 @@ class Note: UIButton {
         self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         self.backgroundColor = bColor
         self.layer.cornerRadius = 0.5 * self.bounds.size.width
+        self.layer.shadowColor = UIColor.darkGrayColor().CGColor
+        self.layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 0.5 * self.bounds.size.width).CGPath
+        self.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowRadius = 2
+        self.layer.borderWidth = 2
+        self.layer.borderColor = (UIColor.darkGrayColor()).CGColor
+        self.titleLabel!.font =  UIFont(name: "Helvetica-BoldOblique", size: 20)
+
 
     }
     
