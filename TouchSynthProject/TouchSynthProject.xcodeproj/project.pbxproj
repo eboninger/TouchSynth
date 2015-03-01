@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15DC2F321AA3879900E1C26D /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 15DC2F311AA3879900E1C26D /* background.png */; };
 		7729D1B01A965D6000AE22E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1AF1A965D6000AE22E4 /* main.m */; };
 		7729D1B31A965D6000AE22E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1B21A965D6000AE22E4 /* AppDelegate.m */; };
 		7729D1B61A965D6000AE22E4 /* TouchSynthProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1B41A965D6000AE22E4 /* TouchSynthProject.xcdatamodeld */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15DC2F311AA3879900E1C26D /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = ../background.png; sourceTree = "<group>"; };
 		51F3DA2DF8C70DEA1E5557FA /* Pods-TouchSynthProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchSynthProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-TouchSynthProject/Pods-TouchSynthProject.release.xcconfig"; sourceTree = "<group>"; };
 		7729D1AA1A965D6000AE22E4 /* TouchSynthProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchSynthProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7729D1AE1A965D6000AE22E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		7729D1A11A965D6000AE22E4 = {
 			isa = PBXGroup;
 			children = (
+				15DC2F311AA3879900E1C26D /* background.png */,
 				775CB1981A9D6CC5001A9051 /* demo.pd */,
 				779216391A9ABFDA0056465C /* adsr_obj.pd */,
 				7792163A1A9ABFDA0056465C /* filter.pd */,
@@ -244,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				775CB1991A9D6CC5001A9051 /* demo.pd in Resources */,
+				15DC2F321AA3879900E1C26D /* background.png in Resources */,
 				7792163C1A9ABFDA0056465C /* adsr_obj.pd in Resources */,
 				7792163D1A9ABFDA0056465C /* filter.pd in Resources */,
 				7792163E1A9ABFDA0056465C /* proj1.pd in Resources */,

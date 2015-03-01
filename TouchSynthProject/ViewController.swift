@@ -35,8 +35,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // why isn't this working?
-        //view.backgroundColor = UIColor(patternImage: UIImage(named:"background.jpg")!)
- 
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"background.png")!)
+        
         patchID = PdBase.dollarZeroForFile(patch)
         Logo.font = UIFont(name: "Helvetica-BoldOblique", size: 28)
         Logo.textColor = UIColor.darkGrayColor()
