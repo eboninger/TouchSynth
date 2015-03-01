@@ -21,6 +21,7 @@
 		775CB19B1A9D6D93001A9051 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775CB19A1A9D6D93001A9051 /* Note.swift */; };
 		775FE01D1AA3C9BA0099A316 /* trash-closed.png in Resources */ = {isa = PBXBuildFile; fileRef = 775FE01B1AA3C9BA0099A316 /* trash-closed.png */; };
 		775FE01E1AA3C9BA0099A316 /* trash-open.png in Resources */ = {isa = PBXBuildFile; fileRef = 775FE01C1AA3C9BA0099A316 /* trash-open.png */; };
+		775FE0281AA3D3A30099A316 /* final_patch.pd in Resources */ = {isa = PBXBuildFile; fileRef = 775FE0271AA3D3A30099A316 /* final_patch.pd */; };
 		776D8AB21A9EAFC8001F6500 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776D8AB11A9EAFC8001F6500 /* MenuBar.swift */; };
 		779216381A9AB5D00056465C /* libPods-TouchSynthProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 779216371A9AB5D00056465C /* libPods-TouchSynthProject.a */; };
 		7792163C1A9ABFDA0056465C /* adsr_obj.pd in Resources */ = {isa = PBXBuildFile; fileRef = 779216391A9ABFDA0056465C /* adsr_obj.pd */; };
@@ -60,6 +61,7 @@
 		775CB19A1A9D6D93001A9051 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = SOURCE_ROOT; };
 		775FE01B1AA3C9BA0099A316 /* trash-closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trash-closed.png"; path = "../../../../Desktop/trash-closed.png"; sourceTree = "<group>"; };
 		775FE01C1AA3C9BA0099A316 /* trash-open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trash-open.png"; path = "../../../../Desktop/trash-open.png"; sourceTree = "<group>"; };
+		775FE0271AA3D3A30099A316 /* final_patch.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = final_patch.pd; path = TouchSynthProject/final_patch.pd; sourceTree = "<group>"; };
 		776D8AB11A9EAFC8001F6500 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = SOURCE_ROOT; };
 		779216331A9AB58D0056465C /* libPods-TouchSynthProject-libpd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-TouchSynthProject-libpd.a"; path = "Pods/build/Debug-iphoneos/libPods-TouchSynthProject-libpd.a"; sourceTree = "<group>"; };
 		779216351A9AB5960056465C /* libPods-TouchSynthProject.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-TouchSynthProject.a"; path = "Pods/build/Debug-iphoneos/libPods-TouchSynthProject.a"; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				15DC2F311AA3879900E1C26D /* background.png */,
 				775CB1981A9D6CC5001A9051 /* demo.pd */,
 				779216391A9ABFDA0056465C /* adsr_obj.pd */,
+				775FE0271AA3D3A30099A316 /* final_patch.pd */,
 				775FE01B1AA3C9BA0099A316 /* trash-closed.png */,
 				775FE01C1AA3C9BA0099A316 /* trash-open.png */,
 				7792163A1A9ABFDA0056465C /* filter.pd */,
@@ -259,6 +262,7 @@
 				7792163D1A9ABFDA0056465C /* filter.pd in Resources */,
 				7792163E1A9ABFDA0056465C /* proj1.pd in Resources */,
 				7729D1BC1A965D6000AE22E4 /* Main.storyboard in Resources */,
+				775FE0281AA3D3A30099A316 /* final_patch.pd in Resources */,
 				7729D1C11A965D6000AE22E4 /* LaunchScreen.xib in Resources */,
 				775FE01D1AA3C9BA0099A316 /* trash-closed.png in Resources */,
 				7729D1BE1A965D6000AE22E4 /* Images.xcassets in Resources */,
