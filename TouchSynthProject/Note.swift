@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 class Note: UIButton {
-    var value : Float!
+    var value : Int!
     var note_name : NSString?
     
     override init(frame f: CGRect) {
@@ -19,16 +19,16 @@ class Note: UIButton {
         super.init(frame: f)
     }
     
-    // This should not be used
     required init(coder aDecoder: NSCoder) {
         self.value = 0
         super.init(coder: aDecoder)
+        initialize("", value: 10, tColor: UIColor.whiteColor(), bColor: UIColor.purpleColor())
     }
     
-    func initialize(title: NSString, value : Float, bColor : UIColor) {
+    func initialize(title: NSString, value : Int, tColor: UIColor, bColor : UIColor) {
         self.setTitle(title, forState: .Normal)
         self.value = value
-        self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.setTitleColor(tColor, forState: .Normal)
         self.backgroundColor = bColor
         self.layer.cornerRadius = 0.5 * self.bounds.size.width
         self.layer.shadowColor = UIColor.darkGrayColor().CGColor
@@ -39,8 +39,11 @@ class Note: UIButton {
         self.layer.borderWidth = 2
         self.layer.borderColor = (UIColor.darkGrayColor()).CGColor
         self.titleLabel!.font =  UIFont(name: "Helvetica-BoldOblique", size: 20)
-
-
+    }
+    
+    func setValue(value: Int, showsharps: Bool) {
+        self.value = value
+        self.setTitle(MusicController.midiToNote(value, sharp: showsharps), forState: UIControlState.Normal)
     }
     
     

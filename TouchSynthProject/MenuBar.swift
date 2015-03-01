@@ -11,10 +11,11 @@ import Foundation
 import UIKit
 
 class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
-    
-    var buttonPreviews: Array<UIButton>?
+    var viewController: ViewController?
+    var buttonPreviews: Array<Note>?
+    var addButton: UIButton?
     var colorPalette: Array<UIButton>?
-    var musicController: MusicController?
+    var noteCount: Int!
     
     
     var typePicker: UIPickerView?
@@ -28,23 +29,31 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     ]
 
     override init(frame f: CGRect) {
+        noteCount = 0
         super.init(frame: f)
     }
     
     // This should not be used
     required init(coder aDecoder: NSCoder) {
+        noteCount = 0
         super.init(coder: aDecoder)
     }
     
-    func initialize(typePicker: UIPickerView, buttonPreviews: Array<UIButton>, colorPalette: Array<UIButton>)
+    func initialize(viewController: ViewController, typePicker: UIPickerView, buttonPreviews: Array<Note>, colorPalette: Array<UIButton>, addButton: UIButton)
     {
+        self.viewController = viewController
         self.buttonPreviews = buttonPreviews
+        for button in self.buttonPreviews! {
+            button.layer.borderWidth = 0
+            button.enabled = false
+        }
+        self.addButton = addButton
+        self.addButton!.addTarget(self, action: "addNotes:", forControlEvents: .TouchUpInside)
         for button in self.buttonPreviews! {
             button.layer.cornerRadius = 0.5 * button.bounds.size.width
             button.titleLabel!.font =  UIFont(name: "Helvetica-BoldOblique", size: 12)
 
         }
-        self.musicController = MusicController()
         self.colorPalette = colorPalette
         for color in self.colorPalette! {
             color.layer.cornerRadius = 0.5 * color.bounds.size.width
@@ -54,9 +63,11 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         self.typePicker!.delegate = self
         self.typePicker!.dataSource = self
         self.typePicker!.selectRow(1, inComponent: 0, animated: true)
-        self.typePicker!.selectRow(2, inComponent: 1, animated: true)
+        self.typePicker!.selectRow(3, inComponent: 1, animated: true)
         self.typePicker!.selectRow(3, inComponent: 2, animated: true)
-        self.typePicker!.selectRow(1, inComponent: 3, animated: true)
+        self.typePicker!.selectRow(0, inComponent: 3, animated: true)
+        self.typePicker!.selectRow(1, inComponent: 4, animated: true)
+        updatePreview()
 
     }
     
@@ -72,9 +83,15 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         }
     }
     
-    func toggle()
-    {
-        self.hidden = !self.hidden
+    @IBAction func addNotes(sender: UIButton) {
+        var x: CGFloat = 10
+        var y: CGFloat = 10
+        for i in 0...noteCount - 1 {
+            var note = self.buttonPreviews![i]
+            self.viewController!.createNote(note.titleForState(.Normal)!, value: note.value, x_loc: x, y_loc: 10,
+                tcolor: note.titleColorForState(.Normal)!, bcolor: note.backgroundColor!)
+            x += 70
+        }
     }
 
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -110,27 +127,41 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     func updatePreview()
     {
-        var midiNote: Int = musicController!.noteToMidi(self.typePicker!.selectedRowInComponent(1), octave: self.typePicker!.selectedRowInComponent(2) + 1)
+        var midiNote: Int = MusicController.noteToMidi(self.typePicker!.selectedRowInComponent(1), octave: self.typePicker!.selectedRowInComponent(2) + 1)
         var showsharps = true
         if (self.typePicker!.selectedRowInComponent(3) == 1) {
             showsharps = false
         }
+        
+        // If Note is selected
         if (self.typePicker!.selectedRowInComponent(0) == 0) {
-            buttonPreviews![0].hidden = true
-            buttonPreviews![1].hidden = true
-            buttonPreviews![3].hidden = true
-            buttonPreviews![4].hidden = true
-            buttonPreviews![2].setTitle(musicController!.midiToNote(midiNote, sharp: showsharps), forState: UIControlState.Normal)
-        } else {
-            buttonPreviews![0].hidden = false
-            buttonPreviews![1].hidden = false
-            buttonPreviews![3].hidden = false
-            buttonPreviews![4].hidden = false
+            noteCount = 1
+            showNotes()
+            buttonPreviews![0].setValue(midiNote, showsharps: showsharps)
+        }
+        
+        // If Scale is selected
+        else if (self.typePicker!.selectedRowInComponent(0) == 1) {
             var scalename: String = self.pickerData[4][self.typePicker!.selectedRowInComponent(4)]
-            var noteadditions: Array<Int> = musicController!.scale_dictionary[scalename]!
-            for (i, button) in enumerate(buttonPreviews!) {
+            var noteadditions: Array<Int> = MusicController.scale_dictionary[scalename]!
+            noteCount = noteadditions.count
+            showNotes()
+            for i in 0...noteCount - 1 {
                 var addition = noteadditions[i]
-                button.setTitle(musicController!.midiToNote(midiNote + addition, sharp: showsharps), forState: UIControlState.Normal)
+                buttonPreviews![i].setValue(midiNote + addition, showsharps: showsharps)
+            }
+        }
+    }
+    
+    func showNotes()
+    {
+        for i in 0...noteCount - 1 {
+            buttonPreviews![i].hidden = false
+        }
+        
+        if (noteCount != 8) {
+            for i in noteCount...buttonPreviews!.count - 1 {
+                buttonPreviews![i].hidden = true
             }
         }
     }
