@@ -22,7 +22,7 @@
 		<key>BE18ADC9D46A932725BA4CBB621FA68E9521A505</key>
 		<string>../..</string>
 		<key>C99A26E4EBC8665905113A782DBCD6A7276F69EB</key>
-		<string>../../TouchSynthProject/TouchSynthProject/Pd-for-LibPd/</string>
+		<string>../../TouchSynthProject/TouchSynthProject/Pd-for-LibPd</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:tuftsdev/comp150isw-spring2015-team7.git</string>

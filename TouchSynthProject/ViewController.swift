@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     var playmode = true;
     var patchID : Int32 = 0
-    var patch = PdBase.openFile("demo.pd", path: NSBundle.mainBundle().resourcePath)
+    var patch = PdBase.openFile("final_patch.pd", path: NSBundle.mainBundle().resourcePath)
     
     @IBOutlet weak var playEdit: UISegmentedControl!
     @IBOutlet weak var Logo: UILabel!
@@ -127,8 +127,8 @@ class ViewController: UIViewController {
     
     @IBAction func playedNote(sender: Note) {
         if (playmode) {
-            //PdBase.sendList([sender.value, 127], toReceiver: "note")
-            PdBase.sendFloat(Float(sender.value), toReceiver: "note")
+            PdBase.sendList([sender.value, 127], toReceiver: "note")
+            //PdBase.sendFloat(Float(sender.value), toReceiver: "note")
             println("Sent note")
         } else {
             trash_open.hidden = false
@@ -138,8 +138,8 @@ class ViewController: UIViewController {
     
     @IBAction func stoppedNote(sender: Note) {
         if (playmode) {
-            PdBase.sendFloat(0, toReceiver: "note")
-            //PdBase.sendList([sender.value, 0], toReceiver: "test")
+            //PdBase.sendFloat(0, toReceiver: "note")
+            PdBase.sendList([sender.value, 0], toReceiver: "note")
         } else {
             if (inTrash(sender.frame)) {
                 sender.removeFromSuperview()
