@@ -127,7 +127,9 @@ class ViewController: UIViewController {
     
     @IBAction func playedNote(sender: Note) {
         if (playmode) {
+            //PdBase.sendList([sender.value, 127], toReceiver: "note")
             PdBase.sendFloat(Float(sender.value), toReceiver: "note")
+            println("Sent note")
         } else {
             trash_open.hidden = false
             trash_closed.hidden = true
@@ -137,6 +139,7 @@ class ViewController: UIViewController {
     @IBAction func stoppedNote(sender: Note) {
         if (playmode) {
             PdBase.sendFloat(0, toReceiver: "note")
+            //PdBase.sendList([sender.value, 0], toReceiver: "test")
         } else {
             if (inTrash(sender.frame)) {
                 sender.removeFromSuperview()

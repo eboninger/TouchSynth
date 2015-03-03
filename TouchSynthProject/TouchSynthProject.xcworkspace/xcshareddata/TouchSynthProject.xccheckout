@@ -12,6 +12,8 @@
 	<dict>
 		<key>BE18ADC9D46A932725BA4CBB621FA68E9521A505</key>
 		<string>github.com:tuftsdev/comp150isw-spring2015-team7.git</string>
+		<key>C99A26E4EBC8665905113A782DBCD6A7276F69EB</key>
+		<string>https://github.com/cpenny42/Pd-for-LibPd.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>TouchSynthProject/TouchSynthProject.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>BE18ADC9D46A932725BA4CBB621FA68E9521A505</key>
 		<string>../..</string>
+		<key>C99A26E4EBC8665905113A782DBCD6A7276F69EB</key>
+		<string>../../TouchSynthProject/TouchSynthProject/Pd-for-LibPd/</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:tuftsdev/comp150isw-spring2015-team7.git</string>
@@ -35,6 +39,14 @@
 			<string>BE18ADC9D46A932725BA4CBB621FA68E9521A505</string>
 			<key>IDESourceControlWCCName</key>
 			<string>comp150isw-spring2015-team7</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C99A26E4EBC8665905113A782DBCD6A7276F69EB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Pd-for-LibPd</string>
 		</dict>
 	</array>
 </dict>
