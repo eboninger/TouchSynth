@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     var playmode = true;
     var patchID : Int32 = 0
-    var patch = PdBase.openFile("final_patch.pd", path: NSBundle.mainBundle().resourcePath)
+    var patch: UnsafeMutablePointer<Void>
     
     @IBOutlet weak var playEdit: UISegmentedControl!
     @IBOutlet weak var Logo: UILabel!
@@ -31,7 +31,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var trash_closed: UIImageView!
     
     
+    required init(coder aDecoder: NSCoder) {
+        patch = PdBase.openFile("final_patch.pd", path: NSBundle.mainBundle().resourcePath)
+    
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named:"background.png")!)
         
@@ -127,7 +134,10 @@ class ViewController: UIViewController {
     
     @IBAction func playedNote(sender: Note) {
         if (playmode) {
-            PdBase.sendList([sender.value, 127], toReceiver: "note")
+            PdBase.sendFloat(127, toReceiver: "velocity")
+            PdBase.sendFloat(300, toReceiver: "note2")
+            //PdBase.sendFloat(Float(sender.value), toReceiver: "note2")
+            //PdBase.sendList([sender.value, 127] as NSArray, toReceiver: "note")
             //PdBase.sendFloat(Float(sender.value), toReceiver: "note")
             println("Sent note")
         } else {
@@ -138,8 +148,10 @@ class ViewController: UIViewController {
     
     @IBAction func stoppedNote(sender: Note) {
         if (playmode) {
-            //PdBase.sendFloat(0, toReceiver: "note")
-            PdBase.sendList([sender.value, 0], toReceiver: "note")
+            PdBase.sendFloat(0, toReceiver: "velocity")
+            PdBase.sendFloat(60, toReceiver: "note2")
+            
+            //PdBase.sendList([sender.value, 0], toReceiver: "note")
         } else {
             if (inTrash(sender.frame)) {
                 sender.removeFromSuperview()
