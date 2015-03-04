@@ -310,6 +310,7 @@
                         <outlet property="addButton" destination="XdT-Cd-qPZ" id="Cu3-gE-Zos"/>
                         <outlet property="leftButton" destination="VkO-7x-mge" id="lqy-4A-cNk"/>
                         <outlet property="menu" destination="ZlE-cc-aV7" id="lhy-sD-Z8w"/>
+                        <outlet property="pickerView" destination="Flk-R4-1nU" id="b8r-vN-nWG"/>
                         <outlet property="playEdit" destination="NlX-mc-Hwt" id="b9J-zV-cXb"/>
                         <outlet property="playView" destination="rdN-aS-FWX" id="4FI-jn-456"/>
                         <outlet property="previewView" destination="j99-BH-TWB" id="NH1-7a-aF4"/>

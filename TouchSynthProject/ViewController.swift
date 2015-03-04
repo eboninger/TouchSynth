@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     @IBOutlet var previewView2: UIView!
     @IBOutlet var playView: UIView!
     @IBOutlet var leftButton: Note!
+    @IBOutlet var pickerView: UIView!
     
     // need to make this work for trashing notes... currently is touch drag enter button
     @IBOutlet weak var trash_open: UIImageView!
@@ -63,8 +64,8 @@ class ViewController: UIViewController {
         initializeMenu()
         origX = previewView.frame.minX
         origY = previewView.frame.minY
-        self.view.bringSubviewToFront(previewView2)
         previewView2.bringSubviewToFront(previewView)
+
     }
     
     func initializePreviewView()
@@ -134,48 +135,55 @@ class ViewController: UIViewController {
     @IBAction func handlePreviewViewPan(recognizer:UIPanGestureRecognizer) {
         recognizer.cancelsTouchesInView = false
         switch(recognizer.state) {
-        case .Began:
-            println("Just began moving!")
-
+            
         case .Changed:
             let translation = recognizer.translationInView(self.view)
             recognizer.view!.center = CGPoint(x:recognizer.view!.center.x + translation.x,
                 y:recognizer.view!.center.y + translation.y)
             recognizer.setTranslation(CGPointZero, inView: self.view)
-            println(recognizer.view!.center.y)
+            println(previewView.frame.maxY)
             
         case .Ended:
             var offset: CGFloat = 0
             var point = previewView.convertPoint(CGPoint(x: previewView.frame.minX, y: previewView.frame.minY), toView: playView)
             var curX = previewView.frame.minX + 680
             var curY = previewView.frame.minY + 540
-            if (curX >= playView.frame.minX && curX <= playView.frame.maxX && curY >= playView.frame.minY && curY <= playView.frame.maxY) {
-                
-                var numNotes: Int = 0
-                for note in buttonPreviews2 {
-                    if (!note.hidden) {
-                        numNotes += 1
-                    } else {
-                        break
-                    }
+            
+            var numNotes: Int = 0
+            for note in buttonPreviews2 {
+                if (!note.hidden) {
+                    numNotes += 1
+                } else {
+                    break
                 }
-                
-                var space_needed: Int = numNotes * 70 + (numNotes - 1) * 25
-                var space_left: Int = Int(playView.frame.maxX) - Int(curX)
-                if (space_left < space_needed) {
-                    offset -= CGFloat(space_needed - space_left)
-                }
-                
-                for note in buttonPreviews {
-                    if (!note.hidden) {
-                        createNote(note.titleForState(.Normal)!, value: note.value, x_loc: previewView.frame.minX + 600 + offset, y_loc: previewView.frame.minY + 480,
-                            tcolor: note.titleColorForState(.Normal)!, bcolor: note.backgroundColor!)
-                        offset += 90
-                    }
-                }
-            } else {
-                println("Could not create!")
             }
+            
+            var space_needed: Int = numNotes * 70 + (numNotes - 1) * 25
+            var space_left: Int = Int(playView.frame.maxX) - Int(curX)
+            if (space_left < space_needed) {
+                offset -= CGFloat(space_needed - space_left)
+            }
+            
+            curX = previewView.frame.minX
+            curY = previewView.frame.minY
+            if (curX < -655) {
+                curX = -655
+            }
+            if (curY > -97) {
+                curY = -97
+            } else if (curY < -525) {
+                curY = -525
+            }
+            
+            println(curY)
+            for note in buttonPreviews {
+                if (!note.hidden) {
+                    createNote(note.titleForState(.Normal)!, value: note.value, x_loc: curX + 600 + offset, y_loc: curY + 480,
+                        tcolor: note.titleColorForState(.Normal)!, bcolor: note.backgroundColor!)
+                    offset += 90
+                }
+            }
+
             
             previewView.frame.offset(dx: origX! - previewView.frame.minX, dy: origY! - previewView.frame.minY)
             
