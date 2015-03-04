@@ -13,6 +13,7 @@ import UIKit
 class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     var viewController: ViewController?
     var buttonPreviews: Array<Note>?
+    var buttonPreviews2: Array<Note>?
     var addButton: UIButton?
     var colorPalette: Array<UIButton>?
     var noteCount: Int!
@@ -39,11 +40,17 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         super.init(coder: aDecoder)
     }
     
-    func initialize(viewController: ViewController, typePicker: UIPickerView, buttonPreviews: Array<Note>, colorPalette: Array<UIButton>, addButton: UIButton)
+    func initialize(viewController: ViewController, typePicker: UIPickerView, buttonPreviews: Array<Note>,
+        buttonPreviews2: Array<Note>, colorPalette: Array<UIButton>, addButton: UIButton)
     {
         self.viewController = viewController
         self.buttonPreviews = buttonPreviews
         for button in self.buttonPreviews! {
+            button.layer.borderWidth = 0
+            button.enabled = false
+        }
+        self.buttonPreviews2 = buttonPreviews2
+        for button in self.buttonPreviews2! {
             button.layer.borderWidth = 0
             button.enabled = false
         }
@@ -52,7 +59,10 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         for button in self.buttonPreviews! {
             button.layer.cornerRadius = 0.5 * button.bounds.size.width
             button.titleLabel!.font =  UIFont(name: "Helvetica-BoldOblique", size: 12)
-
+        }
+        for button in self.buttonPreviews2! {
+            button.layer.cornerRadius = 0.5 * button.bounds.size.width
+            button.titleLabel!.font =  UIFont(name: "Helvetica-BoldOblique", size: 12)
         }
         self.colorPalette = colorPalette
         for color in self.colorPalette! {
@@ -77,6 +87,15 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
             if (sender.backgroundColor == UIColor.cyanColor() || sender.backgroundColor == UIColor.greenColor()
                                                               || sender.backgroundColor == UIColor.yellowColor()) {
                 button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+            } else {
+                button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            }
+        }
+        for button in buttonPreviews2! {
+            button.backgroundColor = sender.backgroundColor
+            if (sender.backgroundColor == UIColor.cyanColor() || sender.backgroundColor == UIColor.greenColor()
+                || sender.backgroundColor == UIColor.yellowColor()) {
+                    button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
             } else {
                 button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             }
@@ -138,6 +157,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
             noteCount = 1
             showNotes()
             buttonPreviews![0].setValue(midiNote, showsharps: showsharps)
+            buttonPreviews2![0].setValue(midiNote, showsharps: showsharps)
         }
         
         // If Scale is selected
@@ -149,6 +169,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
             for i in 0...noteCount - 1 {
                 var addition = noteadditions[i]
                 buttonPreviews![i].setValue(midiNote + addition, showsharps: showsharps)
+                buttonPreviews2![i].setValue(midiNote + addition, showsharps: showsharps)
             }
         }
     }
@@ -157,11 +178,13 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     {
         for i in 0...noteCount - 1 {
             buttonPreviews![i].hidden = false
+            buttonPreviews2![i].hidden = false
         }
         
         if (noteCount != 8) {
             for i in noteCount...buttonPreviews!.count - 1 {
                 buttonPreviews![i].hidden = true
+                buttonPreviews2![i].hidden = true
             }
         }
     }

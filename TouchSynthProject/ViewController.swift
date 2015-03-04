@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     var patchID : Int32 = 0
     var patch: UnsafeMutablePointer<Void>
     
+    var origX: CGFloat?
+    var origY: CGFloat?
+    
     @IBOutlet weak var playEdit: UISegmentedControl!
     @IBOutlet weak var Logo: UILabel!
     @IBOutlet var collectionOfNotes: Array<Note>!
@@ -25,6 +28,11 @@ class ViewController: UIViewController {
     @IBOutlet var menu: MenuBar!
     @IBOutlet var typePicker: UIPickerView!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet var previewView: UIView!
+    @IBOutlet var buttonPreviews2: Array<Note>!
+    @IBOutlet var previewView2: UIView!
+    @IBOutlet var playView: UIView!
+    @IBOutlet var leftButton: Note!
     
     // need to make this work for trashing notes... currently is touch drag enter button
     @IBOutlet weak var trash_open: UIImageView!
@@ -50,13 +58,26 @@ class ViewController: UIViewController {
         playEdit.setTitleTextAttributes(attr, forState: .Normal)
         trash_open.hidden = true
         trash_closed.hidden = true
+        initializePreviewView()
         initializeNotes()
         initializeMenu()
+        origX = previewView.frame.minX
+        origY = previewView.frame.minY
+        self.view.bringSubviewToFront(previewView2)
+        previewView2.bringSubviewToFront(previewView)
+    }
+    
+    func initializePreviewView()
+    {
+        let aSelector : Selector = "handlePreviewViewPan:"
+        let panHandler = UIPanGestureRecognizer(target: self, action: aSelector)
+        previewView.addGestureRecognizer(panHandler)
     }
     
     func initializeMenu()
     {
-        menu.initialize(self, typePicker: typePicker, buttonPreviews: buttonPreviews, colorPalette: colorPalette, addButton: addButton)
+        menu.initialize(self, typePicker: typePicker, buttonPreviews: buttonPreviews,
+            buttonPreviews2: buttonPreviews2, colorPalette: colorPalette, addButton: addButton)
         menu.layer.cornerRadius = 0.02 * menu.bounds.size.width
         menu.hidden = true
         menu.layer.shadowColor = UIColor.blackColor().CGColor
@@ -82,7 +103,7 @@ class ViewController: UIViewController {
     
     func createNote(title: NSString, value: Int, x_loc: CGFloat, y_loc: CGFloat, tcolor: UIColor, bcolor : UIColor)
     {
-        let myNote = Note(frame: CGRectMake(x_loc + 80, y_loc + 130, 50, 70))
+        let myNote = Note(frame: CGRectMake(x_loc + 80, y_loc + 130, 75, 105))
         myNote.initialize(title, value: value, tColor: tcolor, bColor: bcolor)
         myNote.addTarget(self, action: "playedNote:", forControlEvents: .TouchDown)
         myNote.addTarget(self, action: "stoppedNote:", forControlEvents: .TouchUpInside)
@@ -105,6 +126,58 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func handlePreviewViewPan(recognizer:UIPanGestureRecognizer) {
+        recognizer.cancelsTouchesInView = false
+        switch(recognizer.state) {
+        case .Began:
+            println("Just began moving!")
+
+        case .Changed:
+            let translation = recognizer.translationInView(self.view)
+            recognizer.view!.center = CGPoint(x:recognizer.view!.center.x + translation.x,
+                y:recognizer.view!.center.y + translation.y)
+            recognizer.setTranslation(CGPointZero, inView: self.view)
+            println(recognizer.view!.center.y)
+            
+        case .Ended:
+            var offset: CGFloat = 0
+            var point = previewView.convertPoint(CGPoint(x: previewView.frame.minX, y: previewView.frame.minY), toView: playView)
+            var curX = previewView.frame.minX + 690
+            var curY = previewView.frame.minY + 550
+            if (curX >= playView.frame.minX && curX <= playView.frame.maxX && curY >= playView.frame.minY && curY <= playView.frame.maxY) {
+                
+                var numNotes: Int = 0
+                for note in buttonPreviews2 {
+                    if (!note.hidden) {
+                        numNotes += 1
+                    } else {
+                        break
+                    }
+                }
+                
+                var space_needed: Int = numNotes * 70
+                //if (playView.frame.maxX - curX) {}
+                
+                for note in buttonPreviews {
+                    if (!note.hidden) {
+                        createNote(note.titleForState(.Normal)!, value: note.value, x_loc: previewView.frame.minX + 600 + offset, y_loc: previewView.frame.minY + 480,
+                            tcolor: note.titleColorForState(.Normal)!, bcolor: note.backgroundColor!)
+                        offset += 70
+                    }
+                }
+            } else {
+                println("Could not create!")
+            }
+            
+            previewView.frame.offset(dx: origX! - previewView.frame.minX, dy: origY! - previewView.frame.minY)
+            
+        default:
+            break
+            
+        }
+        
     }
 
     
