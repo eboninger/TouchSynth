@@ -19,8 +19,11 @@ class ViewController: UIViewController {
     var origX: CGFloat?
     var origY: CGFloat?
     
+    @IBOutlet weak var TremoloLabel: UILabel!
+    @IBOutlet weak var VolumeLabel: UILabel!
     @IBOutlet weak var playEdit: UISegmentedControl!
     @IBOutlet weak var Logo: UILabel!
+    @IBOutlet weak var Logo2: UILabel!
     @IBOutlet var collectionOfNotes: Array<Note>!
     @IBOutlet var buttonPreviews: Array<Note>!
     @IBOutlet var colorPalette: Array<UIButton>!
@@ -58,8 +61,14 @@ class ViewController: UIViewController {
        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"app_background.jpg")!)
         
         patchID = PdBase.dollarZeroForFile(patch)
-        Logo.font = UIFont(name: "Helvetica-BoldOblique", size: 28)
-        Logo.textColor = UIColor.darkGrayColor()
+        Logo.font = UIFont(name: "Helvetica-BoldOblique", size: 32)
+        Logo.textColor = UIColor.lightGrayColor()
+        Logo2.font = UIFont(name: "Helvetica-BoldOblique", size: 32)
+        Logo2.textColor = UIColor.darkGrayColor()
+        VolumeLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
+        VolumeLabel.textColor = UIColor.darkGrayColor()
+        TremoloLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
+        TremoloLabel.textColor = UIColor.darkGrayColor()
         addButton.titleLabel!.font =  UIFont(name: "Helvetica-BoldOblique", size: 12)
         var attr = NSDictionary(object: UIFont(name: "Helvetica-BoldOblique", size: 16.0)!, forKey: NSFontAttributeName)
         playEdit.setTitleTextAttributes(attr, forState: .Normal)

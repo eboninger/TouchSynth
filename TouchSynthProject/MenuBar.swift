@@ -26,7 +26,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         ["A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"],
         ["1", "2", "3", "4", "5", "6", "7"],
         ["Sharps", "Flats"],
-        ["Blues", "Min. Pentatonic", "Maj. Pentatonic", "Major", "Nat. Minor", "Mel. Minor", "Har. Minor", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Locrian"]
+        ["Blues", "Min. Pentatonic", "Maj. Pentatonic", "Major", "Natural Minor", "Melodic Minor", "Harmonic Minor", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Locrian"]
     ]
 
     override init(frame f: CGRect) {
@@ -127,6 +127,13 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
 
         return attributedString
     }
+    
+    func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        if (component == 4) {
+            return 250;
+        }
+        return 95;
+    }
 
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
         let pickerLabel = UILabel()
@@ -204,7 +211,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
                 ["A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"],
                 ["1", "2", "3", "4", "5", "6", "7"],
                 ["Sharps", "Flats"],
-                ["Blues", "Min. Pentatonic", "Maj. Pentatonic", "Major", "Nat. Minor", "Mel. Minor", "Har. Minor", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Locrian"]
+                ["Blues", "Min. Pentatonic", "Maj. Pentatonic", "Major", "Natural Minor", "Melodic Minor", "Harmonic Minor", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Locrian"]
             ]
         }
 
