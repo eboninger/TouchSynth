@@ -89,16 +89,19 @@ class ViewController: UIViewController {
     func initializeNotes()
     {
         collectionOfNotes = Array<Note>()
-        createNote("A3", value: 57, x_loc: 100, y_loc: 200, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("C4", value: 60, x_loc: 170, y_loc: 200, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("D4", value: 62, x_loc: 240, y_loc: 200, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("E4", value: 64, x_loc: 310, y_loc: 200, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("G4", value: 67, x_loc: 345, y_loc: 300, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("A4", value: 69, x_loc: 465, y_loc: 300, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("C5", value: 72, x_loc: 500, y_loc: 200, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("D5", value: 74, x_loc: 570, y_loc: 200, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("E5", value: 76, x_loc: 640, y_loc: 200, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("G5", value: 79, x_loc: 710, y_loc: 200, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        var x_start: CGFloat = 10
+        var x_offset: CGFloat = 90
+        
+        createNote("A3", value: 57, x_loc: x_start, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("C4", value: 60, x_loc: x_start + 1 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("D4", value: 62, x_loc: x_start + 2 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("E4", value: 64, x_loc: x_start + 3 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("G4", value: 67, x_loc: x_start + 3.5 * x_offset, y_loc: 300, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("A4", value: 69, x_loc: x_start + 5 * x_offset, y_loc: 300, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("C5", value: 72, x_loc: x_start + 5.5 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("D5", value: 74, x_loc: x_start + 6.5 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("E5", value: 76, x_loc: x_start + 7.5 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("G5", value: 79, x_loc: x_start + 8.5 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
     }
     
     func createNote(title: NSString, value: Int, x_loc: CGFloat, y_loc: CGFloat, tcolor: UIColor, bcolor : UIColor)
@@ -144,8 +147,8 @@ class ViewController: UIViewController {
         case .Ended:
             var offset: CGFloat = 0
             var point = previewView.convertPoint(CGPoint(x: previewView.frame.minX, y: previewView.frame.minY), toView: playView)
-            var curX = previewView.frame.minX + 690
-            var curY = previewView.frame.minY + 550
+            var curX = previewView.frame.minX + 680
+            var curY = previewView.frame.minY + 540
             if (curX >= playView.frame.minX && curX <= playView.frame.maxX && curY >= playView.frame.minY && curY <= playView.frame.maxY) {
                 
                 var numNotes: Int = 0
@@ -157,14 +160,17 @@ class ViewController: UIViewController {
                     }
                 }
                 
-                var space_needed: Int = numNotes * 70
-                //if (playView.frame.maxX - curX) {}
+                var space_needed: Int = numNotes * 70 + (numNotes - 1) * 25
+                var space_left: Int = Int(playView.frame.maxX) - Int(curX)
+                if (space_left < space_needed) {
+                    offset -= CGFloat(space_needed - space_left)
+                }
                 
                 for note in buttonPreviews {
                     if (!note.hidden) {
                         createNote(note.titleForState(.Normal)!, value: note.value, x_loc: previewView.frame.minX + 600 + offset, y_loc: previewView.frame.minY + 480,
                             tcolor: note.titleColorForState(.Normal)!, bcolor: note.backgroundColor!)
-                        offset += 70
+                        offset += 90
                     }
                 }
             } else {
