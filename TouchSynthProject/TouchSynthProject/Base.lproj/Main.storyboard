@@ -252,10 +252,7 @@
                                 <color key="tintColor" red="1" green="0.99475083424129263" blue="0.98166939129242092" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trash-closed copy.png" translatesAutoresizingMaskIntoConstraints="NO" id="OcW-fy-UTo">
-                                <rect key="frame" x="16" y="571" width="50" height="50"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trash-open copy.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uox-eB-wbf">
-                                <rect key="frame" x="16" y="567" width="50" height="55"/>
+                                <rect key="frame" x="16" y="564" width="57" height="57"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rdN-aS-FWX">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="622"/>
@@ -288,7 +285,7 @@
                                         <rect key="frame" x="781" y="145" width="223" height="31"/>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="touchSYNTH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ym-HF-up3">
-                                        <rect key="frame" x="783" y="24" width="219" height="55"/>
+                                        <rect key="frame" x="808" y="24" width="219" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -301,6 +298,9 @@
                                     </label>
                                 </subviews>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trash-open copy.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uox-eB-wbf">
+                                <rect key="frame" x="16" y="560" width="57" height="62"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
