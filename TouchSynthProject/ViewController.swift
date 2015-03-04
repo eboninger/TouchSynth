@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     
     
     required init(coder aDecoder: NSCoder) {
-        patch = PdBase.openFile("final_patch.pd", path: NSBundle.mainBundle().resourcePath)
+        patch = PdBase.openFile("demo.pd", path: NSBundle.mainBundle().resourcePath)
     
         super.init(coder: aDecoder)
     }
@@ -134,11 +134,11 @@ class ViewController: UIViewController {
     
     @IBAction func playedNote(sender: Note) {
         if (playmode) {
-            PdBase.sendFloat(127, toReceiver: "velocity")
-            PdBase.sendFloat(300, toReceiver: "note2")
+            //PdBase.sendFloat(127, toReceiver: "velocity")
+            //PdBase.sendFloat(300, toReceiver: "note2")
             //PdBase.sendFloat(Float(sender.value), toReceiver: "note2")
             //PdBase.sendList([sender.value, 127] as NSArray, toReceiver: "note")
-            //PdBase.sendFloat(Float(sender.value), toReceiver: "note")
+            PdBase.sendFloat(Float(sender.value), toReceiver: "note")
             println("Sent note")
         } else {
             trash_open.hidden = false
@@ -148,10 +148,10 @@ class ViewController: UIViewController {
     
     @IBAction func stoppedNote(sender: Note) {
         if (playmode) {
-            PdBase.sendFloat(0, toReceiver: "velocity")
-            PdBase.sendFloat(60, toReceiver: "note2")
+            //PdBase.sendFloat(0, toReceiver: "velocity")
+            //PdBase.sendFloat(60, toReceiver: "note2")
             
-            //PdBase.sendList([sender.value, 0], toReceiver: "note")
+            PdBase.sendFloat(Float(0), toReceiver: "note")
         } else {
             if (inTrash(sender.frame)) {
                 sender.removeFromSuperview()
