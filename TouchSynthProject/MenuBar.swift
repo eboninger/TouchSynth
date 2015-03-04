@@ -26,7 +26,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         ["A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"],
         ["1", "2", "3", "4", "5", "6", "7"],
         ["Sharps", "Flats"],
-        ["Blues", "Pentatonic", "Major"]
+        ["Blues", "Min. Pentatonic", "Maj. Pentatonic", "Major", "Nat. Minor", "Mel. Minor", "Har. Minor", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Locrian"]
     ]
 
     override init(frame f: CGRect) {
@@ -204,7 +204,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
                 ["A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"],
                 ["1", "2", "3", "4", "5", "6", "7"],
                 ["Sharps", "Flats"],
-                ["Blues", "Pentatonic", "Major"]
+                ["Blues", "Min. Pentatonic", "Maj. Pentatonic", "Major", "Nat. Minor", "Mel. Minor", "Har. Minor", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Locrian"]
             ]
         }
 
