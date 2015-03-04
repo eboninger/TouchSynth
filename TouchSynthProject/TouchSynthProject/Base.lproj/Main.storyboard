@@ -153,7 +153,7 @@
                                                 </subviews>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdT-Cd-qPZ">
-                                                <rect key="frame" x="210" y="41" width="91" height="30"/>
+                                                <rect key="frame" x="214" y="45" width="91" height="30"/>
                                                 <state key="normal" title="drag to place">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -274,6 +274,9 @@
                                     </segmentedControl>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nv4-MV-FV1">
                                         <rect key="frame" x="781" y="76" width="223" height="31"/>
+                                        <connections>
+                                            <action selector="volumeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="lMz-Qg-z4q"/>
+                                        </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3h-tP-Ldk">
                                         <rect key="frame" x="945" y="97" width="57" height="21"/>
@@ -283,6 +286,9 @@
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fUf-oC-ad9">
                                         <rect key="frame" x="781" y="145" width="223" height="31"/>
+                                        <connections>
+                                            <action selector="tremoloChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="xc9-Xy-aPV"/>
+                                        </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="touchSYNTH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ym-HF-up3">
                                         <rect key="frame" x="808" y="24" width="219" height="55"/>
@@ -317,7 +323,9 @@
                         <outlet property="previewView2" destination="i6u-Ws-9uo" id="KxK-4Y-Zjw"/>
                         <outlet property="trash_closed" destination="OcW-fy-UTo" id="Dur-Fk-Nqq"/>
                         <outlet property="trash_open" destination="Uox-eB-wbf" id="B0e-Ao-Qmh"/>
+                        <outlet property="tremoloController" destination="fUf-oC-ad9" id="nOW-EA-qSk"/>
                         <outlet property="typePicker" destination="Qrt-LA-sB3" id="YzB-c8-PoY"/>
+                        <outlet property="volumeController" destination="nv4-MV-FV1" id="ZOa-nl-oAg"/>
                         <outletCollection property="colorPalette" destination="siB-X8-sjE" collectionClass="NSMutableArray" id="L22-wV-G7X"/>
                         <outletCollection property="colorPalette" destination="XEf-vV-Vgh" collectionClass="NSMutableArray" id="bsC-bZ-BdN"/>
                         <outletCollection property="colorPalette" destination="hX3-LY-b0F" collectionClass="NSMutableArray" id="2TR-Kk-38D"/>

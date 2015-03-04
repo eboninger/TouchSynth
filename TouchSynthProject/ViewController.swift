@@ -34,6 +34,8 @@ class ViewController: UIViewController {
     @IBOutlet var playView: UIView!
     @IBOutlet var leftButton: Note!
     @IBOutlet var pickerView: UIView!
+    @IBOutlet var volumeController: UISlider!
+    @IBOutlet var tremoloController: UISlider!
     
     // need to make this work for trashing notes... currently is touch drag enter button
     @IBOutlet weak var trash_open: UIImageView!
@@ -65,6 +67,10 @@ class ViewController: UIViewController {
         origX = previewView.frame.minX
         origY = previewView.frame.minY
         previewView2.bringSubviewToFront(previewView)
+        volumeController.minimumValue = 0
+        volumeController.maximumValue = 40
+        tremoloController.minimumValue = 0
+        tremoloController.maximumValue = 10
 
     }
     
@@ -175,7 +181,6 @@ class ViewController: UIViewController {
                 curY = -525
             }
             
-            println(curY)
             for note in buttonPreviews {
                 if (!note.hidden) {
                     createNote(note.titleForState(.Normal)!, value: note.value, x_loc: curX + 600 + offset, y_loc: curY + 480,
@@ -225,7 +230,8 @@ class ViewController: UIViewController {
             //PdBase.sendFloat(300, toReceiver: "note2")
             //PdBase.sendFloat(Float(sender.value), toReceiver: "note2")
             //PdBase.sendList([sender.value, 127] as NSArray, toReceiver: "note")
-            PdBase.sendFloat(Float(sender.value), toReceiver: "note")
+            //PdBase.sendFloat(Float(sender.value), toReceiver: "note")
+            PdBase.sendList([Float(sender.value), 127], toReceiver: "note")
             println("Sent note")
         } else {
             trash_open.hidden = false
@@ -238,7 +244,8 @@ class ViewController: UIViewController {
             //PdBase.sendFloat(0, toReceiver: "velocity")
             //PdBase.sendFloat(60, toReceiver: "note2")
             
-            PdBase.sendFloat(Float(0), toReceiver: "note")
+            //PdBase.sendFloat(Float(0), toReceiver: "note")
+            PdBase.sendList([Float(sender.value), 0], toReceiver: "note")
         } else {
             if (inTrash(sender.frame)) {
                 sender.removeFromSuperview()
@@ -247,6 +254,15 @@ class ViewController: UIViewController {
             trash_closed.hidden = false
         }
     }
+    
+    @IBAction func volumeChanged(sender: UISlider) {
+        PdBase.sendFloat(sender.value, toReceiver: "volumeLevel")
+    }
+    
+    @IBAction func tremoloChanged(sender: UISlider) {
+        PdBase.sendFloat(sender.value, toReceiver: "tremoloLevel")
+    }
+    
     
     func inTrash(bFrame: CGRect) -> Bool {
         var x = (bFrame.minX + bFrame.maxX) / 2
