@@ -95,8 +95,66 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
             endingLineNumber = "38"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "5">
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TouchSynthProject.ViewController.trash_open.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIImageView&gt;"
+                  moduleName = "TouchSynthProject"
+                  urlString = "file:///Users/stephaniecleland/Documents/Tufts%20Y3%20S2/COMP150/comp150isw-spring2015-team7/TouchSynthProject/ViewController.swift"
+                  timestampString = "447136514.957216"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TouchSynthProject.ViewController.trash_open.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIImageView&gt;"
+                  moduleName = "TouchSynthProject"
+                  urlString = "file:///Users/stephaniecleland/Documents/Tufts%20Y3%20S2/COMP150/comp150isw-spring2015-team7/TouchSynthProject/ViewController.swift"
+                  timestampString = "447136514.960052"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TouchSynthProject.ViewController.init (TouchSynthProject.ViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; TouchSynthProject.ViewController"
+                  moduleName = "TouchSynthProject"
+                  urlString = "file:///Users/stephaniecleland/Documents/Tufts%20Y3%20S2/COMP150/comp150isw-spring2015-team7/TouchSynthProject/ViewController.swift"
+                  timestampString = "447136514.960689"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "1144">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TouchSynthProject.ViewController.trash_open.materializeForSet : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIImageView&gt;"
+                  moduleName = "TouchSynthProject"
+                  urlString = "file:///Users/stephaniecleland/Documents/Tufts%20Y3%20S2/COMP150/comp150isw-spring2015-team7/TouchSynthProject/ViewController.swift"
+                  timestampString = "447136514.960922"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

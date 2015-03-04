@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"background.png")!)
+       self.view.backgroundColor = UIColor(patternImage: UIImage(named:"app_background.jpg")!)
         
         patchID = PdBase.dollarZeroForFile(patch)
         Logo.font = UIFont(name: "Helvetica-BoldOblique", size: 28)
