@@ -48,6 +48,10 @@ class ViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -68,7 +72,7 @@ class ViewController: UIViewController {
         origY = previewView.frame.minY
         previewView2.bringSubviewToFront(previewView)
         volumeController.minimumValue = 0
-        volumeController.maximumValue = 40
+        volumeController.maximumValue = 127
         tremoloController.minimumValue = 0
         tremoloController.maximumValue = 10
 

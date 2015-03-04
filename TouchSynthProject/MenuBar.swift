@@ -22,7 +22,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     var typePicker: UIPickerView?
     //var specsPicker: UIPickerView?
     var pickerData = [
-        ["Note", "Scale", "Chord"],
+        ["Note", "Scale"],
         ["A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"],
         ["1", "2", "3", "4", "5", "6", "7"],
         ["Sharps", "Flats"],
@@ -192,7 +192,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     func updateLabel(){
         if (self.typePicker!.selectedRowInComponent(0) == 0) {
             pickerData = [
-                ["Note", "Scale", "Chord"],
+                ["Note", "Scale"],
                 ["A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"],
                 ["1", "2", "3", "4", "5", "6", "7"],
                 ["Sharps", "Flats"],
@@ -200,7 +200,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
             ]
         } else if (self.typePicker!.selectedRowInComponent(0) > 0) {
             pickerData = [
-                ["Note", "Scale", "Chord"],
+                ["Note", "Scale"],
                 ["A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"],
                 ["1", "2", "3", "4", "5", "6", "7"],
                 ["Sharps", "Flats"],
