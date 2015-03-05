@@ -20,7 +20,6 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     
     var typePicker: UIPickerView?
-    //var specsPicker: UIPickerView?
     var pickerData = [
         ["Note", "Scale"],
         ["A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"],
@@ -76,7 +75,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         self.typePicker!.selectRow(3, inComponent: 1, animated: true)
         self.typePicker!.selectRow(3, inComponent: 2, animated: true)
         self.typePicker!.selectRow(0, inComponent: 3, animated: true)
-        self.typePicker!.selectRow(1, inComponent: 4, animated: true)
+        self.typePicker!.selectRow(3, inComponent: 4, animated: true)
         updatePreview()
 
     }
@@ -130,9 +129,10 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         if (component == 4) {
-            return 250;
+            return 200
+            
         }
-        return 95;
+        return 95
     }
 
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
@@ -216,7 +216,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         }
 
         self.typePicker!.reloadAllComponents()
-        self.typePicker!.selectRow(1, inComponent: 4, animated: true)
+        self.typePicker!.selectRow(3, inComponent: 4, animated: true)
 
     }
     

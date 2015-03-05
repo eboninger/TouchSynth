@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     var origX: CGFloat?
     var origY: CGFloat?
     
+    var first_time = true
+    
     @IBOutlet weak var TremoloLabel: UILabel!
     @IBOutlet weak var VolumeLabel: UILabel!
     @IBOutlet weak var playEdit: UISegmentedControl!
@@ -41,7 +43,6 @@ class ViewController: UIViewController {
     @IBOutlet var tremoloController: UISlider!
     @IBOutlet var deleteAllButton: UIButton!
     
-    // need to make this work for trashing notes... currently is touch drag enter button
     @IBOutlet weak var trash_open: UIImageView!
     @IBOutlet weak var trash_closed: UIImageView!
     
@@ -59,7 +60,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-       self.view.backgroundColor = UIColor(patternImage: UIImage(named:"app_background.jpg")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"app_background.jpg")!)
         
         patchID = PdBase.dollarZeroForFile(patch)
         Logo.font = UIFont(name: "Helvetica-BoldOblique", size: 32)
@@ -113,11 +114,12 @@ class ViewController: UIViewController {
         menu.initialize(self, typePicker: typePicker, buttonPreviews: buttonPreviews,
             buttonPreviews2: buttonPreviews2, colorPalette: colorPalette, addButton: addButton)
         menu.layer.cornerRadius = 0.02 * menu.bounds.size.width
-        menu.hidden = true
+
         menu.layer.shadowColor = UIColor.blackColor().CGColor
         menu.layer.shadowOffset = CGSize(width: 1, height: 10)
         menu.layer.shadowOpacity = 0.4
         menu.layer.shadowRadius = 7
+        menu.hidden = true
     }
     
     func initializeNotes()
@@ -126,16 +128,16 @@ class ViewController: UIViewController {
         var x_start: CGFloat = 10
         var x_offset: CGFloat = 90
         
-        createNote("A3", value: 57, x_loc: x_start, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("A3", value: 57, x_loc: x_start, y_loc: 190, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
         createNote("C4", value: 60, x_loc: x_start + 1 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
         createNote("D4", value: 62, x_loc: x_start + 2 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("E4", value: 64, x_loc: x_start + 3 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("E4", value: 64, x_loc: x_start + 3 * x_offset, y_loc: 175, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
         createNote("G4", value: 67, x_loc: x_start + 3.5 * x_offset, y_loc: 300, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
         createNote("A4", value: 69, x_loc: x_start + 5 * x_offset, y_loc: 300, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("C5", value: 72, x_loc: x_start + 5.5 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("C5", value: 72, x_loc: x_start + 5.5 * x_offset, y_loc: 175, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
         createNote("D5", value: 74, x_loc: x_start + 6.5 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
         createNote("E5", value: 76, x_loc: x_start + 7.5 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("G5", value: 79, x_loc: x_start + 8.5 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("G5", value: 79, x_loc: x_start + 8.5 * x_offset, y_loc: 190, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
     }
     
     func createNote(title: NSString, value: Int, x_loc: CGFloat, y_loc: CGFloat, tcolor: UIColor, bcolor : UIColor)
@@ -254,23 +256,34 @@ class ViewController: UIViewController {
             trash_closed.hidden = true
             trash_open.hidden = true
             deleteAllButton.hidden = true
-            menu.hidden = true
+            UIView.animateWithDuration(0.7, animations: {
+                self.menu.hidden = false
+                self.menu.frame.offset(dx: 0, dy: 150)
+            })
         } else {
-            menu.hidden = false
-            trash_closed.hidden = false
-            deleteAllButton.hidden = false
+            if (first_time) {
+                self.menu.frame.offset(dx: 0, dy: 150)
+                first_time = false
+            }
+            
+            NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: Selector("showTrash"), userInfo: self, repeats: false)
+            UIView.animateWithDuration(0.7, animations: {
+                self.menu.hidden = false
+                self.menu.frame.offset(dx: 0, dy: -150)
+            })
+
         }
+    }
+    
+    func showTrash() {
+        trash_closed.hidden = false
+        deleteAllButton.hidden = false
     }
     
     @IBAction func playedNote(sender: Note) {
         if (playmode) {
-            //PdBase.sendFloat(127, toReceiver: "velocity")
-            //PdBase.sendFloat(300, toReceiver: "note2")
-            //PdBase.sendFloat(Float(sender.value), toReceiver: "note2")
-            //PdBase.sendList([sender.value, 127] as NSArray, toReceiver: "note")
-            //PdBase.sendFloat(Float(sender.value), toReceiver: "note")
+
             PdBase.sendList([Float(sender.value), 127], toReceiver: "note")
-            println("Sent note")
         } else {
             trash_open.hidden = false
             trash_closed.hidden = true
@@ -279,10 +292,7 @@ class ViewController: UIViewController {
     
     @IBAction func stoppedNote(sender: Note) {
         if (playmode) {
-            //PdBase.sendFloat(0, toReceiver: "velocity")
-            //PdBase.sendFloat(60, toReceiver: "note2")
-            
-            //PdBase.sendFloat(Float(0), toReceiver: "note")
+
             PdBase.sendList([Float(sender.value), 0], toReceiver: "note")
         } else {
             if (inTrash(sender.frame)) {
