@@ -87,7 +87,7 @@ class ViewController: UIViewController {
         volumeController.minimumValue = 0
         volumeController.maximumValue = 1
         tremoloController.minimumValue = 0
-        tremoloController.maximumValue = 10
+        tremoloController.maximumValue = 20
         initializePd()
 
     }
