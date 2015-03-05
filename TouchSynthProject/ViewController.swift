@@ -32,10 +32,10 @@ class ViewController: UIViewController {
     @IBOutlet var panHandler: UIGestureRecognizer!
     @IBOutlet var menu: MenuBar!
     @IBOutlet var typePicker: UIPickerView!
-    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var dragLabel: UIButton!
     @IBOutlet var previewView: UIView!
     @IBOutlet var buttonPreviews2: Array<Note>!
-    @IBOutlet var previewView2: UIView!
+    @IBOutlet var stationaryPreviewView: UIView!
     @IBOutlet var playView: UIView!
     @IBOutlet var leftButton: Note!
     @IBOutlet var pickerView: UIView!
@@ -73,7 +73,10 @@ class ViewController: UIViewController {
         TremoloLabel.textColor = UIColor.darkGrayColor()
         deleteAllButton.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
         deleteAllButton.titleLabel!.textColor = UIColor.darkGrayColor()
-        addButton.titleLabel!.font =  UIFont(name: "Helvetica-BoldOblique", size: 12)
+        dragLabel.enabled = false
+        dragLabel.titleLabel!.font =  UIFont(name: "Helvetica-BoldOblique", size: 12)
+        dragLabel.titleLabel!.textColor = UIColor.whiteColor()
+        stationaryPreviewView.sendSubviewToBack(dragLabel)
         var attr = NSDictionary(object: UIFont(name: "Helvetica-BoldOblique", size: 16.0)!, forKey: NSFontAttributeName)
         playEdit.setTitleTextAttributes(attr, forState: .Normal)
         trash_open.hidden = true
@@ -84,7 +87,7 @@ class ViewController: UIViewController {
         initializeMenu()
         origX = previewView.frame.minX
         origY = previewView.frame.minY
-        previewView2.bringSubviewToFront(previewView)
+        stationaryPreviewView.bringSubviewToFront(previewView)
         volumeController.minimumValue = 0
         volumeController.maximumValue = 1
         tremoloController.minimumValue = 0
@@ -112,7 +115,7 @@ class ViewController: UIViewController {
     func initializeMenu()
     {
         menu.initialize(self, typePicker: typePicker, buttonPreviews: buttonPreviews,
-            buttonPreviews2: buttonPreviews2, colorPalette: colorPalette, addButton: addButton)
+            buttonPreviews2: buttonPreviews2, colorPalette: colorPalette, addButton: dragLabel)
         menu.layer.cornerRadius = 0.02 * menu.bounds.size.width
 
         menu.layer.shadowColor = UIColor.blackColor().CGColor
@@ -120,6 +123,9 @@ class ViewController: UIViewController {
         menu.layer.shadowOpacity = 0.4
         menu.layer.shadowRadius = 7
         menu.hidden = true
+        //previewView.layer.zPosition = 1000
+        menu.bringSubviewToFront(stationaryPreviewView)
+        stationaryPreviewView.bringSubviewToFront(previewView)
     }
     
     func initializeNotes()
@@ -150,7 +156,7 @@ class ViewController: UIViewController {
         let aSelector : Selector = "handlePan:"
         let panHandler = UIPanGestureRecognizer(target: self, action: aSelector)
         myNote.addGestureRecognizer(panHandler)
-        self.view.addSubview(myNote)
+        playView.addSubview(myNote)
         collectionOfNotes.append(myNote)
     }
     
@@ -226,6 +232,8 @@ class ViewController: UIViewController {
                     offset += 90
                 }
             }
+            
+            bringControlsToFront()
 
             previewView.frame.offset(dx: origX! - previewView.frame.minX, dy: origY! - previewView.frame.minY)
             
@@ -256,7 +264,7 @@ class ViewController: UIViewController {
             trash_closed.hidden = true
             trash_open.hidden = true
             deleteAllButton.hidden = true
-            UIView.animateWithDuration(0.7, animations: {
+            UIView.animateWithDuration(0.5, animations: {
                 self.menu.hidden = false
                 self.menu.frame.offset(dx: 0, dy: 150)
             })
@@ -266,8 +274,8 @@ class ViewController: UIViewController {
                 first_time = false
             }
             
-            NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: Selector("showTrash"), userInfo: self, repeats: false)
-            UIView.animateWithDuration(0.7, animations: {
+            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("showTrash"), userInfo: self, repeats: false)
+            UIView.animateWithDuration(0.5, animations: {
                 self.menu.hidden = false
                 self.menu.frame.offset(dx: 0, dy: -150)
             })
@@ -282,17 +290,26 @@ class ViewController: UIViewController {
     
     @IBAction func playedNote(sender: Note) {
         if (playmode) {
-
             PdBase.sendList([Float(sender.value), 127], toReceiver: "note")
+            
         } else {
+            playView.bringSubviewToFront(sender)
+            bringControlsToFront()
             trash_open.hidden = false
             trash_closed.hidden = true
         }
     }
     
+    func bringControlsToFront()
+    {
+        playView.bringSubviewToFront(volumeController)
+        playView.bringSubviewToFront(VolumeLabel)
+        playView.bringSubviewToFront(tremoloController)
+        playView.bringSubviewToFront(TremoloLabel)
+    }
+    
     @IBAction func stoppedNote(sender: Note) {
         if (playmode) {
-
             PdBase.sendList([Float(sender.value), 0], toReceiver: "note")
         } else {
             if (inTrash(sender.frame)) {

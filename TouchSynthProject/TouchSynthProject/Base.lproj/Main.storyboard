@@ -226,6 +226,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdT-Cd-qPZ">
                                                 <rect key="frame" x="214" y="45" width="91" height="30"/>
                                                 <state key="normal" title="drag to place">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
@@ -331,15 +332,15 @@
                         <outlet property="Logo2" destination="oGw-XR-bW4" id="tFM-vw-FRq"/>
                         <outlet property="TremoloLabel" destination="s5w-UF-8rN" id="iLQ-IR-DhF"/>
                         <outlet property="VolumeLabel" destination="X3h-tP-Ldk" id="5ko-Sq-YRF"/>
-                        <outlet property="addButton" destination="XdT-Cd-qPZ" id="Cu3-gE-Zos"/>
                         <outlet property="deleteAllButton" destination="RZZ-ot-eiD" id="s91-xw-43u"/>
+                        <outlet property="dragLabel" destination="XdT-Cd-qPZ" id="QCQ-0Z-vZ9"/>
                         <outlet property="leftButton" destination="VkO-7x-mge" id="lqy-4A-cNk"/>
                         <outlet property="menu" destination="ZlE-cc-aV7" id="lhy-sD-Z8w"/>
                         <outlet property="pickerView" destination="Flk-R4-1nU" id="b8r-vN-nWG"/>
                         <outlet property="playEdit" destination="NlX-mc-Hwt" id="b9J-zV-cXb"/>
                         <outlet property="playView" destination="rdN-aS-FWX" id="4FI-jn-456"/>
                         <outlet property="previewView" destination="j99-BH-TWB" id="NH1-7a-aF4"/>
-                        <outlet property="previewView2" destination="i6u-Ws-9uo" id="KxK-4Y-Zjw"/>
+                        <outlet property="stationaryPreviewView" destination="i6u-Ws-9uo" id="rDI-N0-BZ1"/>
                         <outlet property="trash_closed" destination="OcW-fy-UTo" id="Dur-Fk-Nqq"/>
                         <outlet property="trash_open" destination="Uox-eB-wbf" id="B0e-Ao-Qmh"/>
                         <outlet property="tremoloController" destination="fUf-oC-ad9" id="nOW-EA-qSk"/>
