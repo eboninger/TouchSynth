@@ -39,6 +39,7 @@ class ViewController: UIViewController {
     @IBOutlet var pickerView: UIView!
     @IBOutlet var volumeController: UISlider!
     @IBOutlet var tremoloController: UISlider!
+    @IBOutlet var deleteAllButton: UIButton!
     
     // need to make this work for trashing notes... currently is touch drag enter button
     @IBOutlet weak var trash_open: UIImageView!
@@ -46,7 +47,7 @@ class ViewController: UIViewController {
     
     
     required init(coder aDecoder: NSCoder) {
-        patch = PdBase.openFile("demo.pd", path: NSBundle.mainBundle().resourcePath)
+        patch = PdBase.openFile("final_patch.pd", path: NSBundle.mainBundle().resourcePath)
     
         super.init(coder: aDecoder)
     }
@@ -69,11 +70,14 @@ class ViewController: UIViewController {
         VolumeLabel.textColor = UIColor.darkGrayColor()
         TremoloLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
         TremoloLabel.textColor = UIColor.darkGrayColor()
+        deleteAllButton.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
+        deleteAllButton.titleLabel!.textColor = UIColor.darkGrayColor()
         addButton.titleLabel!.font =  UIFont(name: "Helvetica-BoldOblique", size: 12)
         var attr = NSDictionary(object: UIFont(name: "Helvetica-BoldOblique", size: 16.0)!, forKey: NSFontAttributeName)
         playEdit.setTitleTextAttributes(attr, forState: .Normal)
         trash_open.hidden = true
         trash_closed.hidden = true
+        deleteAllButton.hidden = true
         initializePreviewView()
         initializeNotes()
         initializeMenu()
@@ -81,10 +85,20 @@ class ViewController: UIViewController {
         origY = previewView.frame.minY
         previewView2.bringSubviewToFront(previewView)
         volumeController.minimumValue = 0
-        volumeController.maximumValue = 127
+        volumeController.maximumValue = 1
         tremoloController.minimumValue = 0
         tremoloController.maximumValue = 10
+        initializePd()
 
+    }
+    
+    func initializePd()
+    {
+        PdBase.sendFloat(0.5, toReceiver: "volumeLevel")
+        volumeController.value = 0.5
+        PdBase.sendFloat(0, toReceiver: "tremoloLevel")
+        tremoloController.value = 0
+        //PdBase.sendFloat
     }
     
     func initializePreviewView()
@@ -138,6 +152,13 @@ class ViewController: UIViewController {
         collectionOfNotes.append(myNote)
     }
     
+    @IBAction func deleteAllNotes(sender: UIButton) {
+        while (collectionOfNotes.count > 0) {
+            collectionOfNotes[0].removeFromSuperview()
+            collectionOfNotes.removeAtIndex(0)
+        }
+    }
+    
     func pressed(sender: UIButton!) {
         var alertView = UIAlertView();
         alertView.addButtonWithTitle("Ok");
@@ -160,9 +181,11 @@ class ViewController: UIViewController {
             recognizer.view!.center = CGPoint(x:recognizer.view!.center.x + translation.x,
                 y:recognizer.view!.center.y + translation.y)
             recognizer.setTranslation(CGPointZero, inView: self.view)
-            println(previewView.frame.maxY)
             
         case .Ended:
+            
+            
+            
             var offset: CGFloat = 0
             var point = previewView.convertPoint(CGPoint(x: previewView.frame.minX, y: previewView.frame.minY), toView: playView)
             var curX = previewView.frame.minX + 680
@@ -188,22 +211,22 @@ class ViewController: UIViewController {
             if (curX < -655) {
                 curX = -655
             }
-            if (curY > -97) {
-                curY = -97
-            } else if (curY < -525) {
+
+        
+            if (curY < -525) {
                 curY = -525
             }
             
             for note in buttonPreviews {
-                if (!note.hidden) {
+                if (!note.hidden && curY < -75) {
                     createNote(note.titleForState(.Normal)!, value: note.value, x_loc: curX + 600 + offset, y_loc: curY + 480,
                         tcolor: note.titleColorForState(.Normal)!, bcolor: note.backgroundColor!)
                     offset += 90
                 }
             }
 
-            
             previewView.frame.offset(dx: origX! - previewView.frame.minX, dy: origY! - previewView.frame.minY)
+            
             
         default:
             break
@@ -230,10 +253,12 @@ class ViewController: UIViewController {
         if (playmode) {
             trash_closed.hidden = true
             trash_open.hidden = true
+            deleteAllButton.hidden = true
             menu.hidden = true
         } else {
             menu.hidden = false
             trash_closed.hidden = false
+            deleteAllButton.hidden = false
         }
     }
     
