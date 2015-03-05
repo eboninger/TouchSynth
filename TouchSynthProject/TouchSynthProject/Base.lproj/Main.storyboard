@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -16,86 +16,217 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NlX-mc-Hwt">
-                                <rect key="frame" x="16" y="42" width="181" height="29"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <segments>
-                                    <segment title="Play"/>
-                                    <segment title="Edit"/>
-                                </segments>
-                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.fontName" value="Helvetica-BoldOblique"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="editPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="d62-8H-Tpt"/>
-                                </connections>
-                            </segmentedControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trash-closed copy.png" translatesAutoresizingMaskIntoConstraints="NO" id="OcW-fy-UTo">
+                                <rect key="frame" x="10" y="563" width="57" height="57"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trash-open copy.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uox-eB-wbf">
+                                <rect key="frame" x="10" y="559" width="57" height="62"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rdN-aS-FWX">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="627"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NlX-mc-Hwt">
+                                        <rect key="frame" x="24" y="38" width="235" height="29"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <segments>
+                                            <segment title="Play "/>
+                                            <segment title="Edit "/>
+                                        </segments>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.fontName" value="Helvetica-BoldOblique"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="editPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="d62-8H-Tpt"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nv4-MV-FV1">
+                                        <rect key="frame" x="781" y="86" width="223" height="31"/>
+                                        <connections>
+                                            <action selector="volumeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="lMz-Qg-z4q"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3h-tP-Ldk">
+                                        <rect key="frame" x="945" y="114" width="57" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fUf-oC-ad9">
+                                        <rect key="frame" x="781" y="155" width="223" height="31"/>
+                                        <connections>
+                                            <action selector="tremoloChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="xc9-Xy-aPV"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tremolo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5w-UF-8rN">
+                                        <rect key="frame" x="943" y="187" width="61" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SYNTH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGw-XR-bW4">
+                                        <rect key="frame" x="871" y="24" width="219" height="55"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="touch" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ym-HF-up3">
+                                        <rect key="frame" x="783" y="24" width="123" height="55"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZZ-ot-eiD">
+                                        <rect key="frame" x="75" y="597" width="65" height="30"/>
+                                        <state key="normal" title="Delete All">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteAllNotes:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WAq-z6-0Q6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZlE-cc-aV7" customClass="MenuBar" customModule="TouchSynthProject" customModuleProvider="target">
-                                <rect key="frame" x="16" y="629" width="992" height="180"/>
+                                <rect key="frame" x="16" y="630" width="992" height="180"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i6u-Ws-9uo">
                                         <rect key="frame" x="675" y="9" width="309" height="70"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TqV-Dj-Z3X" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
-                                                <rect key="frame" x="84" y="7" width="30" height="40"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="E3">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JlI-r4-mww" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="7" width="30" height="40"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="C3">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4v-Lz-JKj" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
-                                                <rect key="frame" x="46" y="7" width="30" height="40"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="D3">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Gd-x1-Q2z" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
-                                                <rect key="frame" x="122" y="7" width="30" height="40"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="G3">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygv-tA-fiw" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
-                                                <rect key="frame" x="160" y="7" width="30" height="40"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="A3">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2T-Cm-ILR" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
-                                                <rect key="frame" x="198" y="7" width="30" height="40"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="A3">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKF-RL-hbX" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
-                                                <rect key="frame" x="236" y="7" width="30" height="40"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="A3">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zce-HX-5XQ" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
-                                                <rect key="frame" x="271" y="7" width="30" height="40"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="A3">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bxU-NF-Dsv">
+                                                <rect key="frame" x="0.0" y="0.0" width="309" height="57"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TqV-Dj-Z3X" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
+                                                        <rect key="frame" x="82" y="8" width="30" height="40"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="E3">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JlI-r4-mww" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
+                                                        <rect key="frame" x="8" y="8" width="30" height="40"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="C3">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4v-Lz-JKj" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
+                                                        <rect key="frame" x="44" y="8" width="30" height="40"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="D3">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Gd-x1-Q2z" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
+                                                        <rect key="frame" x="120" y="8" width="30" height="40"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="G3">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygv-tA-fiw" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
+                                                        <rect key="frame" x="158" y="8" width="30" height="40"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="A3">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2T-Cm-ILR" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
+                                                        <rect key="frame" x="196" y="8" width="30" height="40"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="A3">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKF-RL-hbX" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
+                                                        <rect key="frame" x="234" y="8" width="30" height="40"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="A3">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zce-HX-5XQ" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
+                                                        <rect key="frame" x="269" y="8" width="30" height="40"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="A3">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j99-BH-TWB">
+                                                        <rect key="frame" x="-1" y="-6" width="309" height="68"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58F-8t-WVn" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
+                                                                <rect key="frame" x="83" y="14" width="30" height="40"/>
+                                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" title="E3">
+                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkO-7x-mge" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
+                                                                <rect key="frame" x="9" y="14" width="30" height="40"/>
+                                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" title="C3">
+                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLE-aF-nYL" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
+                                                                <rect key="frame" x="121" y="14" width="30" height="40"/>
+                                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" title="G3">
+                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAH-gr-heI" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
+                                                                <rect key="frame" x="159" y="14" width="30" height="40"/>
+                                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" title="A3">
+                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsF-0C-iYS" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
+                                                                <rect key="frame" x="197" y="14" width="30" height="40"/>
+                                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" title="A3">
+                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e35-cE-KF0" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
+                                                                <rect key="frame" x="235" y="14" width="30" height="40"/>
+                                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" title="A3">
+                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0N-oR-lyk" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
+                                                                <rect key="frame" x="270" y="14" width="30" height="40"/>
+                                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" title="A3">
+                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFN-tg-YRC" customClass="Note" customModule="TouchSynthProject" customModuleProvider="target">
+                                                                <rect key="frame" x="45" y="14" width="30" height="40"/>
+                                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" title="D3">
+                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                    </view>
+                                                </subviews>
+                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdT-Cd-qPZ">
-                                                <rect key="frame" x="230" y="50" width="71" height="18"/>
-                                                <state key="normal" title="tap to add">
+                                                <rect key="frame" x="214" y="45" width="91" height="30"/>
+                                                <state key="normal" title="drag to place">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
@@ -192,53 +323,29 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="1" green="0.99475083424129263" blue="0.98166939129242092" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="touchSYNTH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ym-HF-up3">
-                                <rect key="frame" x="778" y="42" width="219" height="55"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fUf-oC-ad9">
-                                <rect key="frame" x="776" y="185" width="223" height="31"/>
-                            </slider>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trash-closed copy.png" translatesAutoresizingMaskIntoConstraints="NO" id="OcW-fy-UTo">
-                                <rect key="frame" x="16" y="571" width="50" height="50"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trash-open copy.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uox-eB-wbf">
-                                <rect key="frame" x="16" y="567" width="50" height="55"/>
-                            </imageView>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nv4-MV-FV1">
-                                <rect key="frame" x="776" y="105" width="223" height="31"/>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3h-tP-Ldk">
-                                <rect key="frame" x="932" y="130" width="57" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tremolo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5w-UF-8rN">
-                                <rect key="frame" x="932" y="212" width="61" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="Logo" destination="1Ym-HF-up3" id="Jvi-lf-XzC"/>
-                        <outlet property="addButton" destination="XdT-Cd-qPZ" id="Cu3-gE-Zos"/>
+                        <outlet property="Logo2" destination="oGw-XR-bW4" id="tFM-vw-FRq"/>
+                        <outlet property="TremoloLabel" destination="s5w-UF-8rN" id="iLQ-IR-DhF"/>
+                        <outlet property="VolumeLabel" destination="X3h-tP-Ldk" id="5ko-Sq-YRF"/>
+                        <outlet property="deleteAllButton" destination="RZZ-ot-eiD" id="s91-xw-43u"/>
+                        <outlet property="dragLabel" destination="XdT-Cd-qPZ" id="QCQ-0Z-vZ9"/>
+                        <outlet property="leftButton" destination="VkO-7x-mge" id="lqy-4A-cNk"/>
                         <outlet property="menu" destination="ZlE-cc-aV7" id="lhy-sD-Z8w"/>
+                        <outlet property="pickerView" destination="Flk-R4-1nU" id="b8r-vN-nWG"/>
                         <outlet property="playEdit" destination="NlX-mc-Hwt" id="b9J-zV-cXb"/>
+                        <outlet property="playView" destination="rdN-aS-FWX" id="4FI-jn-456"/>
+                        <outlet property="previewView" destination="j99-BH-TWB" id="NH1-7a-aF4"/>
+                        <outlet property="stationaryPreviewView" destination="i6u-Ws-9uo" id="rDI-N0-BZ1"/>
                         <outlet property="trash_closed" destination="OcW-fy-UTo" id="Dur-Fk-Nqq"/>
                         <outlet property="trash_open" destination="Uox-eB-wbf" id="B0e-Ao-Qmh"/>
+                        <outlet property="tremoloController" destination="fUf-oC-ad9" id="nOW-EA-qSk"/>
                         <outlet property="typePicker" destination="Qrt-LA-sB3" id="YzB-c8-PoY"/>
-                        <outletCollection property="buttonPreviews" destination="JlI-r4-mww" collectionClass="NSMutableArray" id="Wkh-Ad-ayx"/>
-                        <outletCollection property="buttonPreviews" destination="T4v-Lz-JKj" collectionClass="NSMutableArray" id="CyO-BQ-3gu"/>
-                        <outletCollection property="buttonPreviews" destination="TqV-Dj-Z3X" collectionClass="NSMutableArray" id="bRt-iF-Rj6"/>
-                        <outletCollection property="buttonPreviews" destination="0Gd-x1-Q2z" collectionClass="NSMutableArray" id="ALF-fj-Weu"/>
-                        <outletCollection property="buttonPreviews" destination="ygv-tA-fiw" collectionClass="NSMutableArray" id="Yq2-nu-zRr"/>
+                        <outlet property="volumeController" destination="nv4-MV-FV1" id="ZOa-nl-oAg"/>
                         <outletCollection property="colorPalette" destination="siB-X8-sjE" collectionClass="NSMutableArray" id="L22-wV-G7X"/>
                         <outletCollection property="colorPalette" destination="XEf-vV-Vgh" collectionClass="NSMutableArray" id="bsC-bZ-BdN"/>
                         <outletCollection property="colorPalette" destination="hX3-LY-b0F" collectionClass="NSMutableArray" id="2TR-Kk-38D"/>
@@ -247,9 +354,22 @@
                         <outletCollection property="colorPalette" destination="bXq-KN-6t9" collectionClass="NSMutableArray" id="z4w-Fp-qAE"/>
                         <outletCollection property="colorPalette" destination="xRt-cd-1kf" collectionClass="NSMutableArray" id="aHs-t8-KoF"/>
                         <outletCollection property="colorPalette" destination="eTb-tp-I1w" collectionClass="NSMutableArray" id="6fg-W5-787"/>
-                        <outletCollection property="buttonPreviews" destination="p2T-Cm-ILR" collectionClass="NSMutableArray" id="eb9-GQ-fh7"/>
-                        <outletCollection property="buttonPreviews" destination="rKF-RL-hbX" collectionClass="NSMutableArray" id="hXL-rS-dPn"/>
-                        <outletCollection property="buttonPreviews" destination="zce-HX-5XQ" collectionClass="NSMutableArray" id="kL2-nw-CaA"/>
+                        <outletCollection property="buttonPreviews" destination="JlI-r4-mww" collectionClass="NSMutableArray" id="eJR-0X-xE4"/>
+                        <outletCollection property="buttonPreviews" destination="T4v-Lz-JKj" collectionClass="NSMutableArray" id="Itx-GX-vFT"/>
+                        <outletCollection property="buttonPreviews" destination="TqV-Dj-Z3X" collectionClass="NSMutableArray" id="q8O-8u-6O8"/>
+                        <outletCollection property="buttonPreviews" destination="0Gd-x1-Q2z" collectionClass="NSMutableArray" id="6Rp-aY-Ahb"/>
+                        <outletCollection property="buttonPreviews" destination="ygv-tA-fiw" collectionClass="NSMutableArray" id="Xdw-g9-KfH"/>
+                        <outletCollection property="buttonPreviews" destination="p2T-Cm-ILR" collectionClass="NSMutableArray" id="AYJ-0M-2hY"/>
+                        <outletCollection property="buttonPreviews" destination="rKF-RL-hbX" collectionClass="NSMutableArray" id="7bn-e5-4Nm"/>
+                        <outletCollection property="buttonPreviews" destination="zce-HX-5XQ" collectionClass="NSMutableArray" id="Exd-4w-uRD"/>
+                        <outletCollection property="buttonPreviews2" destination="VkO-7x-mge" collectionClass="NSMutableArray" id="JP4-sp-YT2"/>
+                        <outletCollection property="buttonPreviews2" destination="gFN-tg-YRC" collectionClass="NSMutableArray" id="ZPC-eW-9ud"/>
+                        <outletCollection property="buttonPreviews2" destination="58F-8t-WVn" collectionClass="NSMutableArray" id="Co5-Ad-tsf"/>
+                        <outletCollection property="buttonPreviews2" destination="iLE-aF-nYL" collectionClass="NSMutableArray" id="ROr-L9-BFT"/>
+                        <outletCollection property="buttonPreviews2" destination="AAH-gr-heI" collectionClass="NSMutableArray" id="LH2-Ak-ntr"/>
+                        <outletCollection property="buttonPreviews2" destination="UsF-0C-iYS" collectionClass="NSMutableArray" id="r9F-xS-3EJ"/>
+                        <outletCollection property="buttonPreviews2" destination="e35-cE-KF0" collectionClass="NSMutableArray" id="fO4-Z3-2iG"/>
+                        <outletCollection property="buttonPreviews2" destination="C0N-oR-lyk" collectionClass="NSMutableArray" id="GTR-sD-Ua2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

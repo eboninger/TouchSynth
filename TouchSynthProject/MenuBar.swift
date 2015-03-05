@@ -13,19 +13,19 @@ import UIKit
 class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     var viewController: ViewController?
     var buttonPreviews: Array<Note>?
+    var buttonPreviews2: Array<Note>?
     var addButton: UIButton?
     var colorPalette: Array<UIButton>?
     var noteCount: Int!
     
     
     var typePicker: UIPickerView?
-    //var specsPicker: UIPickerView?
     var pickerData = [
-        ["Note", "Scale", "Chord"],
+        ["Note", "Scale"],
         ["A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"],
         ["1", "2", "3", "4", "5", "6", "7"],
         ["Sharps", "Flats"],
-        ["Blues", "Pentatonic", "Major"]
+        ["Blues", "Min. Pentatonic", "Maj. Pentatonic", "Major", "Natural Minor", "Melodic Minor", "Harmonic Minor", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Locrian"]
     ]
 
     override init(frame f: CGRect) {
@@ -39,11 +39,17 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         super.init(coder: aDecoder)
     }
     
-    func initialize(viewController: ViewController, typePicker: UIPickerView, buttonPreviews: Array<Note>, colorPalette: Array<UIButton>, addButton: UIButton)
+    func initialize(viewController: ViewController, typePicker: UIPickerView, buttonPreviews: Array<Note>,
+        buttonPreviews2: Array<Note>, colorPalette: Array<UIButton>, addButton: UIButton)
     {
         self.viewController = viewController
         self.buttonPreviews = buttonPreviews
         for button in self.buttonPreviews! {
+            button.layer.borderWidth = 0
+            button.enabled = false
+        }
+        self.buttonPreviews2 = buttonPreviews2
+        for button in self.buttonPreviews2! {
             button.layer.borderWidth = 0
             button.enabled = false
         }
@@ -52,7 +58,10 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         for button in self.buttonPreviews! {
             button.layer.cornerRadius = 0.5 * button.bounds.size.width
             button.titleLabel!.font =  UIFont(name: "Helvetica-BoldOblique", size: 12)
-
+        }
+        for button in self.buttonPreviews2! {
+            button.layer.cornerRadius = 0.5 * button.bounds.size.width
+            button.titleLabel!.font =  UIFont(name: "Helvetica-BoldOblique", size: 12)
         }
         self.colorPalette = colorPalette
         for color in self.colorPalette! {
@@ -66,7 +75,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         self.typePicker!.selectRow(3, inComponent: 1, animated: true)
         self.typePicker!.selectRow(3, inComponent: 2, animated: true)
         self.typePicker!.selectRow(0, inComponent: 3, animated: true)
-        self.typePicker!.selectRow(1, inComponent: 4, animated: true)
+        self.typePicker!.selectRow(3, inComponent: 4, animated: true)
         updatePreview()
 
     }
@@ -77,6 +86,15 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
             if (sender.backgroundColor == UIColor.cyanColor() || sender.backgroundColor == UIColor.greenColor()
                                                               || sender.backgroundColor == UIColor.yellowColor()) {
                 button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+            } else {
+                button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            }
+        }
+        for button in buttonPreviews2! {
+            button.backgroundColor = sender.backgroundColor
+            if (sender.backgroundColor == UIColor.cyanColor() || sender.backgroundColor == UIColor.greenColor()
+                || sender.backgroundColor == UIColor.yellowColor()) {
+                    button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
             } else {
                 button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             }
@@ -108,6 +126,14 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
 
         return attributedString
     }
+    
+    func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        if (component == 4) {
+            return 200
+            
+        }
+        return 95
+    }
 
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
         let pickerLabel = UILabel()
@@ -138,6 +164,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
             noteCount = 1
             showNotes()
             buttonPreviews![0].setValue(midiNote, showsharps: showsharps)
+            buttonPreviews2![0].setValue(midiNote, showsharps: showsharps)
         }
         
         // If Scale is selected
@@ -149,6 +176,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
             for i in 0...noteCount - 1 {
                 var addition = noteadditions[i]
                 buttonPreviews![i].setValue(midiNote + addition, showsharps: showsharps)
+                buttonPreviews2![i].setValue(midiNote + addition, showsharps: showsharps)
             }
         }
     }
@@ -157,11 +185,13 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     {
         for i in 0...noteCount - 1 {
             buttonPreviews![i].hidden = false
+            buttonPreviews2![i].hidden = false
         }
         
         if (noteCount != 8) {
             for i in noteCount...buttonPreviews!.count - 1 {
                 buttonPreviews![i].hidden = true
+                buttonPreviews2![i].hidden = true
             }
         }
     }
@@ -169,7 +199,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     func updateLabel(){
         if (self.typePicker!.selectedRowInComponent(0) == 0) {
             pickerData = [
-                ["Note", "Scale", "Chord"],
+                ["Note", "Scale"],
                 ["A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"],
                 ["1", "2", "3", "4", "5", "6", "7"],
                 ["Sharps", "Flats"],
@@ -177,16 +207,16 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
             ]
         } else if (self.typePicker!.selectedRowInComponent(0) > 0) {
             pickerData = [
-                ["Note", "Scale", "Chord"],
+                ["Note", "Scale"],
                 ["A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"],
                 ["1", "2", "3", "4", "5", "6", "7"],
                 ["Sharps", "Flats"],
-                ["Blues", "Pentatonic", "Major"]
+                ["Blues", "Min. Pentatonic", "Maj. Pentatonic", "Major", "Natural Minor", "Melodic Minor", "Harmonic Minor", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Locrian"]
             ]
         }
 
         self.typePicker!.reloadAllComponents()
-        self.typePicker!.selectRow(1, inComponent: 4, animated: true)
+        self.typePicker!.selectRow(3, inComponent: 4, animated: true)
 
     }
     
