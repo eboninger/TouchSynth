@@ -33,7 +33,6 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         super.init(frame: f)
     }
     
-    // This should not be used
     required init(coder aDecoder: NSCoder) {
         noteCount = 0
         super.init(coder: aDecoder)

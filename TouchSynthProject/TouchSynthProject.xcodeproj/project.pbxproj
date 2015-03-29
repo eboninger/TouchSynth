@@ -28,6 +28,7 @@
 		7792163D1A9ABFDA0056465C /* filter.pd in Resources */ = {isa = PBXBuildFile; fileRef = 7792163A1A9ABFDA0056465C /* filter.pd */; };
 		7792163E1A9ABFDA0056465C /* proj1.pd in Resources */ = {isa = PBXBuildFile; fileRef = 7792163B1A9ABFDA0056465C /* proj1.pd */; };
 		77B83E821AA8083400E9502C /* final_patch.pd in Resources */ = {isa = PBXBuildFile; fileRef = 77B83E811AA8083400E9502C /* final_patch.pd */; };
+		77D406891AC8983A005A3049 /* Sequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D406881AC8983A005A3049 /* Sequencer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		7792163A1A9ABFDA0056465C /* filter.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = filter.pd; path = TouchSynthProject/filter.pd; sourceTree = "<group>"; };
 		7792163B1A9ABFDA0056465C /* proj1.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = proj1.pd; path = TouchSynthProject/proj1.pd; sourceTree = "<group>"; };
 		77B83E811AA8083400E9502C /* final_patch.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = final_patch.pd; path = TouchSynthProject/final_patch.pd; sourceTree = "<group>"; };
+		77D406881AC8983A005A3049 /* Sequencer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequencer.swift; sourceTree = SOURCE_ROOT; };
 		EF2C7B711CDE64CA1AA5CF74 /* Pods-TouchSynthProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchSynthProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TouchSynthProject/Pods-TouchSynthProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +137,7 @@
 				775CB19A1A9D6D93001A9051 /* Note.swift */,
 				776D8AB11A9EAFC8001F6500 /* MenuBar.swift */,
 				7756FC3F1AA0C054005A863A /* MusicController.swift */,
+				77D406881AC8983A005A3049 /* Sequencer.swift */,
 			);
 			path = TouchSynthProject;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				776D8AB21A9EAFC8001F6500 /* MenuBar.swift in Sources */,
 				7729D1B01A965D6000AE22E4 /* main.m in Sources */,
 				7756FC401AA0C054005A863A /* MusicController.swift in Sources */,
+				77D406891AC8983A005A3049 /* Sequencer.swift in Sources */,
 				7729D1D81A965DE400AE22E4 /* ViewController.swift in Sources */,
 				7729D1B61A965D6000AE22E4 /* TouchSynthProject.xcdatamodeld in Sources */,
 			);

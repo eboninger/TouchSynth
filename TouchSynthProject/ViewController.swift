@@ -26,12 +26,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var playEdit: UISegmentedControl!
     @IBOutlet weak var Logo: UILabel!
     @IBOutlet weak var Logo2: UILabel!
+    @IBOutlet weak var bpm: UILabel!
     @IBOutlet var collectionOfNotes: Array<Note>!
     @IBOutlet var buttonPreviews: Array<Note>!
     @IBOutlet var colorPalette: Array<UIButton>!
     @IBOutlet var panHandler: UIGestureRecognizer!
     @IBOutlet var menu: MenuBar!
+    @IBOutlet var sequencer: Sequencer!
     @IBOutlet var typePicker: UIPickerView!
+    @IBOutlet var seqPicker: UIPickerView!
     @IBOutlet weak var dragLabel: UIButton!
     @IBOutlet var previewView: UIView!
     @IBOutlet var buttonPreviews2: Array<Note>!
@@ -63,6 +66,8 @@ class ViewController: UIViewController {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named:"app_background.jpg")!)
         
         patchID = PdBase.dollarZeroForFile(patch)
+        bpm.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
+        //bpm.textColor = UIColor.whiteColor()
         Logo.font = UIFont(name: "Helvetica-BoldOblique", size: 32)
         Logo.textColor = UIColor.lightGrayColor()
         Logo2.font = UIFont(name: "Helvetica-BoldOblique", size: 32)
@@ -85,6 +90,7 @@ class ViewController: UIViewController {
         initializePreviewView()
         initializeNotes()
         initializeMenu()
+        initializeSequencer()
         origX = previewView.frame.minX
         origY = previewView.frame.minY
         stationaryPreviewView.bringSubviewToFront(previewView)
@@ -126,6 +132,19 @@ class ViewController: UIViewController {
         //previewView.layer.zPosition = 1000
         menu.bringSubviewToFront(stationaryPreviewView)
         stationaryPreviewView.bringSubviewToFront(previewView)
+    }
+    
+    func initializeSequencer()
+    {
+        sequencer.initialize(seqPicker)
+        sequencer.layer.cornerRadius = 0.02 * menu.bounds.size.width
+        
+        sequencer.layer.shadowColor = UIColor.blackColor().CGColor
+        sequencer.layer.shadowOffset = CGSize(width: 1, height: 10)
+        sequencer.layer.shadowOpacity = 0.4
+        sequencer.layer.shadowRadius = 7
+        sequencer.hidden = false
+        //previewView.layer.zPosition = 1000
     }
     
     func initializeNotes()
@@ -267,17 +286,18 @@ class ViewController: UIViewController {
             UIView.animateWithDuration(0.5, animations: {
                 self.menu.hidden = false
                 self.menu.frame.offset(dx: 0, dy: 150)
+                self.sequencer.frame.offset(dx: 0, dy: -150)
             })
         } else {
             if (first_time) {
                 self.menu.frame.offset(dx: 0, dy: 150)
                 first_time = false
             }
-            
             NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("showTrash"), userInfo: self, repeats: false)
             UIView.animateWithDuration(0.5, animations: {
                 self.menu.hidden = false
                 self.menu.frame.offset(dx: 0, dy: -150)
+                self.sequencer.frame.offset(dx: 0, dy: 150)
             })
 
         }

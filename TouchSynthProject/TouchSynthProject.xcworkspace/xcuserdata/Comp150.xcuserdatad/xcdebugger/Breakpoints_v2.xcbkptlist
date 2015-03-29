@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MenuBar.swift"
-            timestampString = "447221239.889889"
+            timestampString = "449355114.396729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "addNotes(_:)"
             landmarkType = "5">
          </BreakpointContent>
