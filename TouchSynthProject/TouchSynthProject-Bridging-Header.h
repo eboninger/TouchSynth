@@ -4,3 +4,5 @@
 
 #import "PdBase.h"
 #import "PdFile.h"
+#import "MIKMIDI.h"
+#import "MIKMIDISequencer.h"

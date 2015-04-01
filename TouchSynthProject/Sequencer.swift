@@ -8,10 +8,16 @@
 
 import Foundation
 
+import CoreBluetooth
+import CoreAudio
+//import "CoreAudioKit/CABTMIDILocalPeripheralViewController.h"
+
 import UIKit
 
 class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
-
+    var deviceManager: MIKMIDIDeviceManager?
+    var sequencer: MIKMIDISequencer?
+    var sequence: MIKMIDISequence?
     var seqPicker: UIPickerView?
     var pickerData = [
         ["5/4", "4/4", "3/4"]
@@ -19,6 +25,19 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.deviceManager = MIKMIDIDeviceManager.sharedDeviceManager()
+        for device in self.deviceManager!.virtualSources {
+            NSLog(device.model)
+        }
+        self.sequence = MIKMIDISequence()
+        self.sequencer = MIKMIDISequencer(sequence: self.sequence!)
+
+        self.sequencer!.startPlayback()
+        if (self.sequencer!.sequence == nil) {
+            NSLog("Null")
+        } else {
+            NSLog(String(Int(self.sequencer!.preRoll)))
+        }
         initializePickerData()
     }
     
@@ -32,7 +51,6 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         //self.seqPicker!.selectRow(3, inComponent: 2, animated: true)
         //self.seqPicker!.selectRow(0, inComponent: 3, animated: true)
         //self.seqPicker!.selectRow(3, inComponent: 4, animated: true)
-        
     }
     
     func initializePickerData() {

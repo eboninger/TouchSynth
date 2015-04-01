@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-TouchSynthProject-MIKMIDI.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TouchSynthProject-libpd.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>8838C7745500C760ECB8E252</key>
+		<key>BD4A8ED20B7BBEB13F2F8A69</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B2DD24F059BA7D1CCE0FEC2E</key>
+		<key>BFEC967319807B0916E30B47</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ED9785FE281093FAA1FB9D42</key>
 		<dict>
 			<key>primary</key>
 			<true/>
