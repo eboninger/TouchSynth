@@ -383,6 +383,18 @@
                                             <segue destination="4Pk-Kk-5Ua" kind="modal" modalTransitionStyle="flipHorizontal" id="Lm6-lf-Uyr"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gct-up-ZB9">
+                                        <rect key="frame" x="363" y="183" width="55" height="30"/>
+                                        <state key="normal" title="Button1">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYl-IX-aaI">
+                                        <rect key="frame" x="536" y="183" width="55" height="30"/>
+                                        <state key="normal" title="Button2">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                             </view>
                         </subviews>
@@ -395,6 +407,8 @@
                         <outlet property="TremoloLabel" destination="s5w-UF-8rN" id="iLQ-IR-DhF"/>
                         <outlet property="VolumeLabel" destination="X3h-tP-Ldk" id="5ko-Sq-YRF"/>
                         <outlet property="bpm" destination="Ohu-NC-Gfm" id="mDw-rp-UlK"/>
+                        <outlet property="button1" destination="Gct-up-ZB9" id="JtH-1w-DkO"/>
+                        <outlet property="button2" destination="RYl-IX-aaI" id="AZX-jT-nzs"/>
                         <outlet property="deleteAllButton" destination="RZZ-ot-eiD" id="s91-xw-43u"/>
                         <outlet property="dragLabel" destination="XdT-Cd-qPZ" id="QCQ-0Z-vZ9"/>
                         <outlet property="leftButton" destination="VkO-7x-mge" id="lqy-4A-cNk"/>

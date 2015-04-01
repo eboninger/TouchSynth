@@ -49,6 +49,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var trash_open: UIImageView!
     @IBOutlet weak var trash_closed: UIImageView!
     
+    @IBOutlet var button1: UIButton!
+    @IBOutlet var button2: UIButton!
+    
     
     required init(coder aDecoder: NSCoder) {
         patch = PdBase.openFile("final_patch.pd", path: NSBundle.mainBundle().resourcePath)
