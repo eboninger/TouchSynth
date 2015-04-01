@@ -33,6 +33,9 @@
 		775CB1991A9D6CC5001A9051 /* demo.pd in Resources */ = {isa = PBXBuildFile; fileRef = 775CB1981A9D6CC5001A9051 /* demo.pd */; };
 		775CB19B1A9D6D93001A9051 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775CB19A1A9D6D93001A9051 /* Note.swift */; };
 		775FEF771ACB81680004FC0A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775FEF761ACB81680004FC0A /* SettingsViewController.swift */; };
+		775FEF7E1ACB9A560004FC0A /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775FEF7A1ACB9A560004FC0A /* CoreBluetooth.framework */; };
+		775FEF811ACB9D6C0004FC0A /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775FEF801ACB9D6C0004FC0A /* CoreAudio.framework */; };
+		775FEF881ACB9DCD0004FC0A /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775FEF871ACB9DCD0004FC0A /* CoreMIDI.framework */; };
 		776D8AB21A9EAFC8001F6500 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776D8AB11A9EAFC8001F6500 /* MenuBar.swift */; };
 		7792163C1A9ABFDA0056465C /* adsr_obj.pd in Resources */ = {isa = PBXBuildFile; fileRef = 779216391A9ABFDA0056465C /* adsr_obj.pd */; };
 		7792163D1A9ABFDA0056465C /* filter.pd in Resources */ = {isa = PBXBuildFile; fileRef = 7792163A1A9ABFDA0056465C /* filter.pd */; };
@@ -85,6 +88,13 @@
 		775CB1981A9D6CC5001A9051 /* demo.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = demo.pd; path = TouchSynthProject/demo.pd; sourceTree = "<group>"; };
 		775CB19A1A9D6D93001A9051 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = SOURCE_ROOT; };
 		775FEF761ACB81680004FC0A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = SOURCE_ROOT; };
+		775FEF781ACB9A560004FC0A /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		775FEF791ACB9A560004FC0A /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
+		775FEF7A1ACB9A560004FC0A /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		775FEF7B1ACB9A560004FC0A /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		775FEF801ACB9D6C0004FC0A /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		775FEF821ACB9DA90004FC0A /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		775FEF871ACB9DCD0004FC0A /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		776D8AB11A9EAFC8001F6500 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = SOURCE_ROOT; };
 		779216391A9ABFDA0056465C /* adsr_obj.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = adsr_obj.pd; path = TouchSynthProject/adsr_obj.pd; sourceTree = "<group>"; };
 		7792163A1A9ABFDA0056465C /* filter.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = filter.pd; path = TouchSynthProject/filter.pd; sourceTree = "<group>"; };
@@ -99,6 +109,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				775FEF7E1ACB9A560004FC0A /* CoreBluetooth.framework in Frameworks */,
+				775FEF811ACB9D6C0004FC0A /* CoreAudio.framework in Frameworks */,
+				775FEF881ACB9DCD0004FC0A /* CoreMIDI.framework in Frameworks */,
 				3DE3E2179973EF6157B2DDF9 /* libPods-TouchSynthProject.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +129,7 @@
 		7729D1A11A965D6000AE22E4 = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				158402271ACB92870017D24B /* info.png */,
 				158402281ACB92870017D24B /* settings.png */,
 				158402251ACB8FAF0017D24B /* metronome_on.png */,
@@ -124,6 +138,11 @@
 				1584021A1ACB8A400017D24B /* play.png */,
 				1584021B1ACB8A400017D24B /* record.png */,
 				1584021C1ACB8A400017D24B /* stop.png */,
+=======
+				775FEF801ACB9D6C0004FC0A /* CoreAudio.framework */,
+				775FEF821ACB9DA90004FC0A /* CoreBluetooth.framework */,
+				775FEF871ACB9DCD0004FC0A /* CoreMIDI.framework */,
+>>>>>>> 11b8efca45a572a43f32f95d2f9d720369a9bed1
 				15CEFE6B1AA8FDF5009D78E3 /* Default.png */,
 				155504351AA6C6AA006A32AE /* app_background.jpg */,
 				775CB1981A9D6CC5001A9051 /* demo.pd */,
@@ -162,8 +181,8 @@
 				7729D1BD1A965D6000AE22E4 /* Images.xcassets */,
 				7729D1BF1A965D6000AE22E4 /* LaunchScreen.xib */,
 				7729D1B41A965D6000AE22E4 /* TouchSynthProject.xcdatamodeld */,
-				7729D1AD1A965D6000AE22E4 /* Supporting Files */,
 				775CB19A1A9D6D93001A9051 /* Note.swift */,
+				7729D1AD1A965D6000AE22E4 /* Supporting Files */,
 				776D8AB11A9EAFC8001F6500 /* MenuBar.swift */,
 				7756FC3F1AA0C054005A863A /* MusicController.swift */,
 				77D406881AC8983A005A3049 /* Sequencer.swift */,
@@ -201,6 +220,10 @@
 		A84F988914AF0FD238126DB8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				775FEF781ACB9A560004FC0A /* CoreAudio.framework */,
+				775FEF791ACB9A560004FC0A /* CoreAudioKit.framework */,
+				775FEF7A1ACB9A560004FC0A /* CoreBluetooth.framework */,
+				775FEF7B1ACB9A560004FC0A /* CoreMIDI.framework */,
 				2DE1871AA484548455F91E61 /* libPods-TouchSynthProject.a */,
 			);
 			name = Frameworks;
@@ -266,7 +289,7 @@
 				TargetAttributes = {
 					7729D1A91A965D6000AE22E4 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = WC8GK6LE4R;
+						DevelopmentTeam = G2PA4P23Z9;
 					};
 					7729D1C51A965D6000AE22E4 = {
 						CreatedOnToolsVersion = 6.1.1;

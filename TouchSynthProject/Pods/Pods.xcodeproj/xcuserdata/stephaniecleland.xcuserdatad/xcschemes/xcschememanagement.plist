@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-TouchSynthProject-MIKMIDI.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>Pods-TouchSynthProject-libpd.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -43,6 +48,21 @@
 			<true/>
 		</dict>
 		<key>B2DD24F059BA7D1CCE0FEC2E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BD4A8ED20B7BBEB13F2F8A69</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFEC967319807B0916E30B47</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ED9785FE281093FAA1FB9D42</key>
 		<dict>
 			<key>primary</key>
 			<true/>
