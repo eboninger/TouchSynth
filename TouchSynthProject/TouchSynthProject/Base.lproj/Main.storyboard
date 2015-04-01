@@ -375,10 +375,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHp-PK-fgc">
-                                        <rect key="frame" x="490" y="36" width="57" height="30"/>
+                                        <rect key="frame" x="496" y="37" width="57" height="30"/>
                                         <state key="normal" title="Settings">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="4Pk-Kk-5Ua" kind="modal" modalTransitionStyle="flipHorizontal" id="Lm6-lf-Uyr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </view>
@@ -438,10 +441,10 @@
             </objects>
             <point key="canvasLocation" x="798" y="680"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="84d-GP-NSd">
             <objects>
-                <viewController id="4Pk-Kk-5Ua" sceneMemberID="viewController">
+                <viewController id="4Pk-Kk-5Ua" customClass="SettingsViewController" customModule="TouchSynthProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jeM-HW-8CG"/>
                         <viewControllerLayoutGuide type="bottom" id="7Uc-22-cPA"/>
@@ -451,12 +454,63 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VBR-k0-fJN">
-                                <rect key="frame" x="16" y="20" width="335" height="258"/>
+                                <rect key="frame" x="33" y="66" width="507" height="433"/>
                                 <color key="backgroundColor" red="0.29285037878787878" green="0.29285037878787878" blue="0.29285037878787878" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcS-5U-EXG">
+                                <rect key="frame" x="684" y="66" width="172" height="30"/>
+                                <state key="normal" title="&lt;-- Back to touchSYNTH">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="modal" modalTransitionStyle="crossDissolve" id="rWF-vT-QnA"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NJF-KM-DxA">
+                                <rect key="frame" x="33" y="526" width="507" height="211"/>
+                                <color key="backgroundColor" red="0.29285037879999998" green="0.29285037879999998" blue="0.29285037879999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hn5-iH-MBF">
+                                <rect key="frame" x="564" y="104" width="412" height="77"/>
+                                <color key="backgroundColor" red="0.29285037879999998" green="0.29285037879999998" blue="0.29285037879999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ge6-ID-aEe">
+                                <rect key="frame" x="564" y="503" width="412" height="234"/>
+                                <color key="backgroundColor" red="0.29285037879999998" green="0.29285037879999998" blue="0.29285037879999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qj2-T4-7cb">
+                                <rect key="frame" x="564" y="210" width="412" height="265"/>
+                                <color key="backgroundColor" red="0.29285037879999998" green="0.29285037879999998" blue="0.29285037879999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="DA9-pF-13f"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhN-KV-3ky" userLabel="First Responder" sceneMemberID="firstResponder"/>
