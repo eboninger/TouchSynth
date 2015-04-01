@@ -129,7 +129,6 @@
 		7729D1A11A965D6000AE22E4 = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				158402271ACB92870017D24B /* info.png */,
 				158402281ACB92870017D24B /* settings.png */,
 				158402251ACB8FAF0017D24B /* metronome_on.png */,
@@ -138,11 +137,9 @@
 				1584021A1ACB8A400017D24B /* play.png */,
 				1584021B1ACB8A400017D24B /* record.png */,
 				1584021C1ACB8A400017D24B /* stop.png */,
-=======
 				775FEF801ACB9D6C0004FC0A /* CoreAudio.framework */,
 				775FEF821ACB9DA90004FC0A /* CoreBluetooth.framework */,
 				775FEF871ACB9DCD0004FC0A /* CoreMIDI.framework */,
->>>>>>> 11b8efca45a572a43f32f95d2f9d720369a9bed1
 				15CEFE6B1AA8FDF5009D78E3 /* Default.png */,
 				155504351AA6C6AA006A32AE /* app_background.jpg */,
 				775CB1981A9D6CC5001A9051 /* demo.pd */,
