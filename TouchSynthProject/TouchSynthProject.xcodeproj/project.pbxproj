@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		155504361AA6C6AA006A32AE /* app_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 155504351AA6C6AA006A32AE /* app_background.jpg */; };
+		1584021D1ACB8A400017D24B /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 158402191ACB8A3F0017D24B /* back.png */; };
+		1584021E1ACB8A400017D24B /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 1584021A1ACB8A400017D24B /* play.png */; };
+		1584021F1ACB8A400017D24B /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 1584021B1ACB8A400017D24B /* record.png */; };
+		158402201ACB8A400017D24B /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 1584021C1ACB8A400017D24B /* stop.png */; };
+		158402241ACB8F2E0017D24B /* metronome.png in Resources */ = {isa = PBXBuildFile; fileRef = 158402231ACB8F2E0017D24B /* metronome.png */; };
+		158402261ACB8FAF0017D24B /* metronome_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 158402251ACB8FAF0017D24B /* metronome_on.png */; };
+		158402291ACB92870017D24B /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 158402271ACB92870017D24B /* info.png */; };
+		1584022A1ACB92870017D24B /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 158402281ACB92870017D24B /* settings.png */; };
 		15CEFE6C1AA8FDF5009D78E3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 15CEFE6B1AA8FDF5009D78E3 /* Default.png */; };
 		15FCE6D51AA3DC50009F504B /* trash-closed copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 15FCE6D31AA3DC50009F504B /* trash-closed copy.png */; };
 		15FCE6D61AA3DC50009F504B /* trash-open copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 15FCE6D41AA3DC50009F504B /* trash-open copy.png */; };
@@ -45,6 +53,14 @@
 
 /* Begin PBXFileReference section */
 		155504351AA6C6AA006A32AE /* app_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = app_background.jpg; path = ../app_background.jpg; sourceTree = "<group>"; };
+		158402191ACB8A3F0017D24B /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/back.png"; sourceTree = "<group>"; };
+		1584021A1ACB8A400017D24B /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/play.png"; sourceTree = "<group>"; };
+		1584021B1ACB8A400017D24B /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/record.png"; sourceTree = "<group>"; };
+		1584021C1ACB8A400017D24B /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/stop.png"; sourceTree = "<group>"; };
+		158402231ACB8F2E0017D24B /* metronome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = metronome.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/metronome.png"; sourceTree = "<group>"; };
+		158402251ACB8FAF0017D24B /* metronome_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = metronome_on.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/metronome_on.png"; sourceTree = "<group>"; };
+		158402271ACB92870017D24B /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/info.png"; sourceTree = "<group>"; };
+		158402281ACB92870017D24B /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/settings.png"; sourceTree = "<group>"; };
 		15CEFE6B1AA8FDF5009D78E3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		15FCE6D31AA3DC50009F504B /* trash-closed copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trash-closed copy.png"; path = "../trash-closed copy.png"; sourceTree = "<group>"; };
 		15FCE6D41AA3DC50009F504B /* trash-open copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trash-open copy.png"; path = "../trash-open copy.png"; sourceTree = "<group>"; };
@@ -100,6 +116,14 @@
 		7729D1A11A965D6000AE22E4 = {
 			isa = PBXGroup;
 			children = (
+				158402271ACB92870017D24B /* info.png */,
+				158402281ACB92870017D24B /* settings.png */,
+				158402251ACB8FAF0017D24B /* metronome_on.png */,
+				158402231ACB8F2E0017D24B /* metronome.png */,
+				158402191ACB8A3F0017D24B /* back.png */,
+				1584021A1ACB8A400017D24B /* play.png */,
+				1584021B1ACB8A400017D24B /* record.png */,
+				1584021C1ACB8A400017D24B /* stop.png */,
 				15CEFE6B1AA8FDF5009D78E3 /* Default.png */,
 				155504351AA6C6AA006A32AE /* app_background.jpg */,
 				775CB1981A9D6CC5001A9051 /* demo.pd */,
@@ -278,12 +302,20 @@
 				77B83E821AA8083400E9502C /* final_patch.pd in Resources */,
 				15FCE6D51AA3DC50009F504B /* trash-closed copy.png in Resources */,
 				7792163C1A9ABFDA0056465C /* adsr_obj.pd in Resources */,
+				158402241ACB8F2E0017D24B /* metronome.png in Resources */,
+				1584021D1ACB8A400017D24B /* back.png in Resources */,
 				7792163D1A9ABFDA0056465C /* filter.pd in Resources */,
 				773634CB1AA7F88500D6D627 /* our_adsr.pd in Resources */,
+				158402261ACB8FAF0017D24B /* metronome_on.png in Resources */,
+				158402201ACB8A400017D24B /* stop.png in Resources */,
 				7792163E1A9ABFDA0056465C /* proj1.pd in Resources */,
+				158402291ACB92870017D24B /* info.png in Resources */,
 				15CEFE6C1AA8FDF5009D78E3 /* Default.png in Resources */,
 				7729D1BC1A965D6000AE22E4 /* Main.storyboard in Resources */,
 				15FCE6D61AA3DC50009F504B /* trash-open copy.png in Resources */,
+				1584022A1ACB92870017D24B /* settings.png in Resources */,
+				1584021E1ACB8A400017D24B /* play.png in Resources */,
+				1584021F1ACB8A400017D24B /* record.png in Resources */,
 				155504361AA6C6AA006A32AE /* app_background.jpg in Resources */,
 				7729D1C11A965D6000AE22E4 /* LaunchScreen.xib in Resources */,
 				7729D1BE1A965D6000AE22E4 /* Images.xcassets in Resources */,

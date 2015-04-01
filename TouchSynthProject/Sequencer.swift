@@ -61,7 +61,6 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         if (component == 4) {
             return 200
-            
         }
         return 95
     }

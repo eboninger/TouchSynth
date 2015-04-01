@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -265,7 +265,7 @@
                                         <rect key="frame" x="8" y="8" width="330" height="93"/>
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YpM-IA-tj6">
-                                                <rect key="frame" x="0.0" y="-34" width="330" height="162"/>
+                                                <rect key="frame" x="0.0" y="-34" width="297" height="162"/>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bpm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohu-NC-Gfm">
                                                 <rect key="frame" x="251" y="36" width="71" height="21"/>
@@ -282,7 +282,33 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BsR-re-P4a">
-                                        <rect key="frame" x="677" y="8" width="210" height="93"/>
+                                        <rect key="frame" x="643" y="8" width="244" height="93"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0000." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ld2-YO-a8D">
+                                                <rect key="frame" x="17" y="22" width="93" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BAR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYK-78-JqR">
+                                                <rect key="frame" x="17" y="64" width="73" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BEAT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIM-uG-NlV">
+                                                <rect key="frame" x="126" y="63" width="92" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgZ-kN-u97">
+                                                <rect key="frame" x="126" y="22" width="87" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -292,6 +318,18 @@
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="crQ-EE-wYN">
                                         <rect key="frame" x="895" y="8" width="89" height="93"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEg-5j-5ix">
+                                                <rect key="frame" x="6" y="12" width="76" height="76"/>
+                                                <state key="normal" title="M">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pressedMetronome:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yc9-Hm-lne"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -300,7 +338,33 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lt5-IQ-jeT">
-                                        <rect key="frame" x="346" y="8" width="323" height="93"/>
+                                        <rect key="frame" x="346" y="8" width="289" height="93"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htY-xE-tNG">
+                                                <rect key="frame" x="116" y="18" width="57" height="57"/>
+                                                <state key="normal" title="P">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7m-zV-gFF">
+                                                <rect key="frame" x="28" y="18" width="57" height="57"/>
+                                                <state key="normal" title="B">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xs-ed-CM1">
+                                                <rect key="frame" x="199" y="18" width="57" height="57"/>
+                                                <state key="normal" title="R">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pressedRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FNc-aJ-baH"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -330,37 +394,13 @@
                                         </connections>
                                     </segmentedControl>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nv4-MV-FV1">
-                                        <rect key="frame" x="781" y="86" width="223" height="31"/>
+                                        <rect key="frame" x="671" y="86" width="333" height="31"/>
                                         <connections>
                                             <action selector="volumeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="lMz-Qg-z4q"/>
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3h-tP-Ldk">
                                         <rect key="frame" x="945" y="114" width="57" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fUf-oC-ad9">
-                                        <rect key="frame" x="781" y="155" width="223" height="31"/>
-                                        <connections>
-                                            <action selector="tremoloChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="xc9-Xy-aPV"/>
-                                        </connections>
-                                    </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tremolo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5w-UF-8rN">
-                                        <rect key="frame" x="943" y="187" width="61" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SYNTH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGw-XR-bW4">
-                                        <rect key="frame" x="871" y="24" width="219" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="touch" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ym-HF-up3">
-                                        <rect key="frame" x="783" y="24" width="123" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -375,13 +415,19 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHp-PK-fgc">
-                                        <rect key="frame" x="496" y="37" width="57" height="30"/>
-                                        <state key="normal" title="Settings">
+                                        <rect key="frame" x="902" y="31" width="42" height="42"/>
+                                        <state key="normal" title="S">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <segue destination="4Pk-Kk-5Ua" kind="modal" modalTransitionStyle="flipHorizontal" id="Lm6-lf-Uyr"/>
                                         </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5he-FR-7E1">
+                                        <rect key="frame" x="964" y="31" width="42" height="42"/>
+                                        <state key="normal" title="I">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gct-up-ZB9">
                                         <rect key="frame" x="363" y="183" width="55" height="30"/>
@@ -395,6 +441,18 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SYNTH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGw-XR-bW4">
+                                        <rect key="frame" x="761" y="24" width="219" height="55"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="touch" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ym-HF-up3">
+                                        <rect key="frame" x="673" y="24" width="123" height="55"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </view>
                         </subviews>
@@ -402,27 +460,35 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="Bar" destination="ld2-YO-a8D" id="KT2-Mr-elJ"/>
+                        <outlet property="BarLabel" destination="mYK-78-JqR" id="0wO-Nu-jDV"/>
+                        <outlet property="Beat" destination="UgZ-kN-u97" id="H6T-Cp-6ir"/>
+                        <outlet property="BeatLabel" destination="bIM-uG-NlV" id="XC8-KF-Vsl"/>
                         <outlet property="Logo" destination="1Ym-HF-up3" id="Jvi-lf-XzC"/>
                         <outlet property="Logo2" destination="oGw-XR-bW4" id="tFM-vw-FRq"/>
-                        <outlet property="TremoloLabel" destination="s5w-UF-8rN" id="iLQ-IR-DhF"/>
                         <outlet property="VolumeLabel" destination="X3h-tP-Ldk" id="5ko-Sq-YRF"/>
+                        <outlet property="backButton" destination="w7m-zV-gFF" id="sY6-UA-Z0m"/>
                         <outlet property="bpm" destination="Ohu-NC-Gfm" id="mDw-rp-UlK"/>
                         <outlet property="button1" destination="Gct-up-ZB9" id="JtH-1w-DkO"/>
                         <outlet property="button2" destination="RYl-IX-aaI" id="AZX-jT-nzs"/>
                         <outlet property="deleteAllButton" destination="RZZ-ot-eiD" id="s91-xw-43u"/>
                         <outlet property="dragLabel" destination="XdT-Cd-qPZ" id="QCQ-0Z-vZ9"/>
+                        <outlet property="infoButton" destination="5he-FR-7E1" id="2oY-nw-WU0"/>
                         <outlet property="leftButton" destination="VkO-7x-mge" id="lqy-4A-cNk"/>
                         <outlet property="menu" destination="ZlE-cc-aV7" id="lhy-sD-Z8w"/>
+                        <outlet property="metronomeButton" destination="bEg-5j-5ix" id="6K7-4H-P3e"/>
                         <outlet property="pickerView" destination="Flk-R4-1nU" id="b8r-vN-nWG"/>
+                        <outlet property="playButton" destination="htY-xE-tNG" id="iAC-O1-CgO"/>
                         <outlet property="playEdit" destination="NlX-mc-Hwt" id="b9J-zV-cXb"/>
                         <outlet property="playView" destination="rdN-aS-FWX" id="4FI-jn-456"/>
                         <outlet property="previewView" destination="j99-BH-TWB" id="NH1-7a-aF4"/>
+                        <outlet property="recordButton" destination="3Xs-ed-CM1" id="C2V-pf-2E3"/>
                         <outlet property="seqPicker" destination="YpM-IA-tj6" id="fdp-RT-IBW"/>
                         <outlet property="sequencer" destination="gY7-2l-td6" id="OGt-ed-fVP"/>
+                        <outlet property="settingsButton" destination="oHp-PK-fgc" id="B0B-mX-f2D"/>
                         <outlet property="stationaryPreviewView" destination="i6u-Ws-9uo" id="rDI-N0-BZ1"/>
                         <outlet property="trash_closed" destination="OcW-fy-UTo" id="Dur-Fk-Nqq"/>
                         <outlet property="trash_open" destination="Uox-eB-wbf" id="B0e-Ao-Qmh"/>
-                        <outlet property="tremoloController" destination="fUf-oC-ad9" id="nOW-EA-qSk"/>
                         <outlet property="typePicker" destination="Qrt-LA-sB3" id="YzB-c8-PoY"/>
                         <outlet property="volumeController" destination="nv4-MV-FV1" id="ZOa-nl-oAg"/>
                         <outletCollection property="colorPalette" destination="siB-X8-sjE" collectionClass="NSMutableArray" id="L22-wV-G7X"/>
@@ -469,7 +535,15 @@
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VBR-k0-fJN">
                                 <rect key="frame" x="33" y="66" width="507" height="433"/>
-                                <color key="backgroundColor" red="0.29285037878787878" green="0.29285037878787878" blue="0.29285037878787878" alpha="1" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ADSR ENVELOPE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSC-w5-5n7">
+                                        <rect key="frame" x="31" y="27" width="302" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -477,7 +551,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcS-5U-EXG">
-                                <rect key="frame" x="684" y="66" width="172" height="30"/>
+                                <rect key="frame" x="494" y="66" width="452" height="30"/>
                                 <state key="normal" title="&lt;-- Back to touchSYNTH">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -487,16 +561,43 @@
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NJF-KM-DxA">
                                 <rect key="frame" x="33" y="526" width="507" height="211"/>
-                                <color key="backgroundColor" red="0.29285037879999998" green="0.29285037879999998" blue="0.29285037879999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FILTER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4G-Px-PMZ">
+                                        <rect key="frame" x="28" y="16" width="152" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fdk-ea-H8J">
+                                        <rect key="frame" x="39" y="69" width="51" height="31"/>
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HIGH PASS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpE-ev-wuP">
+                                        <rect key="frame" x="106" y="69" width="121" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LO PASS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmW-6Y-F7U">
+                                        <rect key="frame" x="106" y="132" width="121" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-q8-YCX">
+                                        <rect key="frame" x="39" y="132" width="51" height="31"/>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hn5-iH-MBF">
-                                <rect key="frame" x="564" y="104" width="412" height="77"/>
-                                <color key="backgroundColor" red="0.29285037879999998" green="0.29285037879999998" blue="0.29285037879999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ATg-jv-8It">
+                                <rect key="frame" x="33" y="526" width="507" height="211"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -505,7 +606,65 @@
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ge6-ID-aEe">
                                 <rect key="frame" x="564" y="503" width="412" height="234"/>
-                                <color key="backgroundColor" red="0.29285037879999998" green="0.29285037879999998" blue="0.29285037879999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FX" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwM-Dk-p63">
+                                        <rect key="frame" x="18" y="19" width="121" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="REVERB" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lpg-3z-fnV">
+                                        <rect key="frame" x="18" y="132" width="121" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ECHO" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gc-sm-O30">
+                                        <rect key="frame" x="18" y="193" width="121" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="HhA-5g-DHJ">
+                                        <rect key="frame" x="16" y="117" width="377" height="31"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="tremoloChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ErE-7q-a79"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="kPW-4w-OhR">
+                                        <rect key="frame" x="16" y="60" width="377" height="31"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="tremoloChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="bl3-uf-8Sb"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8PQ-SF-aXc">
+                                        <rect key="frame" x="16" y="173" width="377" height="31"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="tremoloChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="I2U-WN-ZXA"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TREMOLO" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uI-ZN-pzh">
+                                        <rect key="frame" x="18" y="79" width="121" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hwq-2C-hu8">
+                                <rect key="frame" x="564" y="504" width="412" height="234"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -514,7 +673,61 @@
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qj2-T4-7cb">
                                 <rect key="frame" x="564" y="210" width="412" height="265"/>
-                                <color key="backgroundColor" red="0.29285037879999998" green="0.29285037879999998" blue="0.29285037879999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fa8-iT-X82">
+                                        <rect key="frame" x="-8" y="18" width="412" height="216"/>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4T6-5u-8dK">
+                                <rect key="frame" x="564" y="211" width="412" height="265"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hn5-iH-MBF">
+                                <rect key="frame" x="564" y="104" width="412" height="84"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="USE EXTERNAL SYNTH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0l-CZ-34T">
+                                        <rect key="frame" x="13" y="10" width="351" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Gwm-75-8o6">
+                                        <rect key="frame" x="84" y="41" width="287" height="29"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <segments>
+                                            <segment title="ON"/>
+                                            <segment title="OFF"/>
+                                        </segments>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="onPressed:" destination="4Pk-Kk-5Ua" eventType="valueChanged" id="qT4-U4-L38"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KOQ-OZ-hNM">
+                                <rect key="frame" x="33" y="68" width="507" height="433"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -526,6 +739,29 @@
                     </view>
                     <navigationItem key="navigationItem" id="DA9-pF-13f"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="adsrLabel" destination="hSC-w5-5n7" id="vkl-7n-ixT"/>
+                        <outlet property="adsrOverlay" destination="KOQ-OZ-hNM" id="FmA-xD-IEF"/>
+                        <outlet property="echoLabel" destination="0gc-sm-O30" id="Hzq-ra-6Bf"/>
+                        <outlet property="echoSlider" destination="8PQ-SF-aXc" id="Ipx-eT-dsW"/>
+                        <outlet property="externalLabel" destination="D0l-CZ-34T" id="HZ6-Or-KAb"/>
+                        <outlet property="externalSwitch" destination="Gwm-75-8o6" id="YdC-XG-Ket"/>
+                        <outlet property="filterLabel" destination="p4G-Px-PMZ" id="G6a-YE-pfF"/>
+                        <outlet property="filterOverlay" destination="ATg-jv-8It" id="aDJ-E1-C4k"/>
+                        <outlet property="fxLabel" destination="SwM-Dk-p63" id="hlv-7x-frM"/>
+                        <outlet property="fxOverlay" destination="Hwq-2C-hu8" id="99c-fB-oXY"/>
+                        <outlet property="goBackButton" destination="UcS-5U-EXG" id="JV8-Fm-P5L"/>
+                        <outlet property="hpLabel" destination="dpE-ev-wuP" id="4R2-lg-Hds"/>
+                        <outlet property="hpSwitch" destination="Fdk-ea-H8J" id="kx2-Be-wsA"/>
+                        <outlet property="lpLabel" destination="gmW-6Y-F7U" id="sfe-d5-pHx"/>
+                        <outlet property="lpSwitch" destination="tbE-q8-YCX" id="ktX-O2-hRK"/>
+                        <outlet property="reverbLabel" destination="Lpg-3z-fnV" id="b4r-Zo-vHq"/>
+                        <outlet property="reverbSlider" destination="HhA-5g-DHJ" id="HNX-1Y-Sfd"/>
+                        <outlet property="tremoloLabel" destination="4uI-ZN-pzh" id="bdl-hY-aZx"/>
+                        <outlet property="tremoloSlider" destination="kPW-4w-OhR" id="tdM-pb-vzC"/>
+                        <outlet property="voiceOverlay" destination="4T6-5u-8dK" id="hdk-5q-OLy"/>
+                        <outlet property="voicePicker" destination="fa8-iT-X82" id="roI-QX-4bl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhN-KV-3ky" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -20,8 +20,11 @@ class ViewController: UIViewController {
     var origY: CGFloat?
     
     var first_time = true
+    var recording = false
+    var metronome = false
+
     
-    @IBOutlet weak var TremoloLabel: UILabel!
+    //@IBOutlet weak var TremoloLabel: UILabel!
     @IBOutlet weak var VolumeLabel: UILabel!
     @IBOutlet weak var playEdit: UISegmentedControl!
     @IBOutlet weak var Logo: UILabel!
@@ -43,8 +46,22 @@ class ViewController: UIViewController {
     @IBOutlet var leftButton: Note!
     @IBOutlet var pickerView: UIView!
     @IBOutlet var volumeController: UISlider!
-    @IBOutlet var tremoloController: UISlider!
+   // @IBOutlet var tremoloController: UISlider!
     @IBOutlet var deleteAllButton: UIButton!
+    
+    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var infoButton: UIButton!
+    
+    //sequencer bar
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var metronomeButton: UIButton!
+    @IBOutlet weak var Bar: UILabel!
+    @IBOutlet weak var BarLabel: UILabel!
+    @IBOutlet weak var Beat: UILabel!
+    @IBOutlet weak var BeatLabel: UILabel!
+    
     
     @IBOutlet weak var trash_open: UIImageView!
     @IBOutlet weak var trash_closed: UIImageView!
@@ -77,8 +94,8 @@ class ViewController: UIViewController {
         Logo2.textColor = UIColor.darkGrayColor()
         VolumeLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
         VolumeLabel.textColor = UIColor.darkGrayColor()
-        TremoloLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
-        TremoloLabel.textColor = UIColor.darkGrayColor()
+        //TremoloLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
+        //TremoloLabel.textColor = UIColor.darkGrayColor()
         deleteAllButton.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
         deleteAllButton.titleLabel!.textColor = UIColor.darkGrayColor()
         dragLabel.enabled = false
@@ -99,8 +116,32 @@ class ViewController: UIViewController {
         stationaryPreviewView.bringSubviewToFront(previewView)
         volumeController.minimumValue = 0
         volumeController.maximumValue = 1
-        tremoloController.minimumValue = 0
-        tremoloController.maximumValue = 20
+      //  tremoloController.minimumValue = 0
+      //  tremoloController.maximumValue = 20
+        
+        settingsButton.setBackgroundImage(UIImage(named:"settings.png")!, forState: .Normal)
+        settingsButton.setTitle("", forState: .Normal)
+        infoButton.setBackgroundImage(UIImage(named:"info.png")!, forState: .Normal)
+        infoButton.setTitle("", forState: .Normal)
+
+        
+        // sequencer bar setup
+        playButton.setBackgroundImage(UIImage(named:"play.png")!, forState: .Normal)
+        backButton.setBackgroundImage(UIImage(named:"back.png")!, forState: .Normal)
+        recordButton.setBackgroundImage(UIImage(named:"record.png")!, forState: .Normal)
+        metronomeButton.setBackgroundImage(UIImage(named:"metronome.png")!, forState: .Normal)
+        playButton.setTitle("", forState: .Normal)
+        backButton.setTitle("", forState: .Normal)
+        recordButton.setTitle("", forState: .Normal)
+        metronomeButton.setTitle("", forState: .Normal)
+        Bar.font = UIFont(name: "Helvetica-BoldOblique", size: 28)
+        BarLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
+        Beat.font = UIFont(name: "Helvetica-BoldOblique", size: 28)
+        BeatLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
+
+
+
+        
         initializePd()
 
     }
@@ -109,8 +150,8 @@ class ViewController: UIViewController {
     {
         PdBase.sendFloat(0.5, toReceiver: "volumeLevel")
         volumeController.value = 0.5
-        PdBase.sendFloat(0, toReceiver: "tremoloLevel")
-        tremoloController.value = 0
+      //  PdBase.sendFloat(0, toReceiver: "tremoloLevel")
+    //    tremoloController.value = 0
         //PdBase.sendFloat
     }
     
@@ -327,8 +368,8 @@ class ViewController: UIViewController {
     {
         playView.bringSubviewToFront(volumeController)
         playView.bringSubviewToFront(VolumeLabel)
-        playView.bringSubviewToFront(tremoloController)
-        playView.bringSubviewToFront(TremoloLabel)
+      //  playView.bringSubviewToFront(tremoloController)
+       // playView.bringSubviewToFront(TremoloLabel)
     }
     
     @IBAction func stoppedNote(sender: Note) {
@@ -347,9 +388,9 @@ class ViewController: UIViewController {
         PdBase.sendFloat(sender.value, toReceiver: "volumeLevel")
     }
     
-    @IBAction func tremoloChanged(sender: UISlider) {
-        PdBase.sendFloat(sender.value, toReceiver: "tremoloLevel")
-    }
+    //@IBAction func tremoloChanged(sender: UISlider) {
+     //   PdBase.sendFloat(sender.value, toReceiver: "tremoloLevel")
+   // }
     
     
     func inTrash(bFrame: CGRect) -> Bool {
@@ -360,5 +401,25 @@ class ViewController: UIViewController {
         } else {
             return false
         }
+    }
+    
+    @IBAction func pressedRecord(sender: UIButton) {
+        recording = !recording
+        if (recording) {
+            sender.setBackgroundImage(UIImage(named:"stop.png")!, forState: .Normal)
+        } else {
+            sender.setBackgroundImage(UIImage(named:"record.png")!, forState: .Normal)
+        }
+
+    }
+    
+    @IBAction func pressedMetronome(sender: UIButton) {
+        metronome = !metronome
+        if (metronome) {
+            sender.setBackgroundImage(UIImage(named:"metronome_on.png")!, forState: .Normal)
+        } else {
+            sender.setBackgroundImage(UIImage(named:"metronome.png")!, forState: .Normal)
+        }
+        
     }
 }
