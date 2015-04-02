@@ -17,6 +17,8 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     var addButton: UIButton?
     var colorPalette: Array<UIButton>?
     var noteCount: Int!
+    var sequencer: UIView!
+
     
     
     var typePicker: UIPickerView?
@@ -39,8 +41,10 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     }
     
     func initialize(viewController: ViewController, typePicker: UIPickerView, buttonPreviews: Array<Note>,
-        buttonPreviews2: Array<Note>, colorPalette: Array<UIButton>, addButton: UIButton)
+        buttonPreviews2: Array<Note>, colorPalette: Array<UIButton>, addButton: UIButton)//, sequencer: UIView)
     {
+        //self.sequencer = sequencer
+        //self.sequencer.hidden = true
         self.viewController = viewController
         self.buttonPreviews = buttonPreviews
         for button in self.buttonPreviews! {
@@ -98,6 +102,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
                 button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             }
         }
+
     }
     
     @IBAction func addNotes(sender: UIButton) {
@@ -109,6 +114,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
                 tcolor: note.titleColorForState(.Normal)!, bcolor: note.backgroundColor!)
             x += 70
         }
+
     }
 
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -152,12 +158,12 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     func updatePreview()
     {
+        NSLog("Called updatePreview")
         var midiNote: Int = MusicController.noteToMidi(self.typePicker!.selectedRowInComponent(1), octave: self.typePicker!.selectedRowInComponent(2) + 1)
         var showsharps = true
         if (self.typePicker!.selectedRowInComponent(3) == 1) {
             showsharps = false
         }
-        
         // If Note is selected
         if (self.typePicker!.selectedRowInComponent(0) == 0) {
             noteCount = 1
@@ -165,7 +171,6 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
             buttonPreviews![0].setValue(midiNote, showsharps: showsharps)
             buttonPreviews2![0].setValue(midiNote, showsharps: showsharps)
         }
-        
         // If Scale is selected
         else if (self.typePicker!.selectedRowInComponent(0) == 1) {
             var scalename: String = self.pickerData[4][self.typePicker!.selectedRowInComponent(4)]
@@ -178,6 +183,10 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
                 buttonPreviews2![i].setValue(midiNote + addition, showsharps: showsharps)
             }
         }
+        //self.sequencer.hidden = true
+        //self.sequencer.frame.offset(dx: 0, dy: 150)
+
+
     }
     
     func showNotes()
@@ -193,6 +202,7 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
                 buttonPreviews2![i].hidden = true
             }
         }
+
     }
     
     func updateLabel(){
@@ -216,7 +226,12 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
 
         self.typePicker!.reloadAllComponents()
         self.typePicker!.selectRow(3, inComponent: 4, animated: true)
+        //self.sequencer.hidden = true
+        //self.sequencer.frame.offset(dx: 0, dy: 150)
+
+
 
     }
+    
     
 }

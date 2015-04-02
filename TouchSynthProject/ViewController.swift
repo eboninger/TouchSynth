@@ -66,10 +66,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var trash_open: UIImageView!
     @IBOutlet weak var trash_closed: UIImageView!
     
-    @IBOutlet var button1: UIButton!
-    @IBOutlet var button2: UIButton!
-    
-    
+
     required init(coder aDecoder: NSCoder) {
         patch = PdBase.openFile("final_patch.pd", path: NSBundle.mainBundle().resourcePath)
     
@@ -165,14 +162,15 @@ class ViewController: UIViewController {
     func initializeMenu()
     {
         menu.initialize(self, typePicker: typePicker, buttonPreviews: buttonPreviews,
-            buttonPreviews2: buttonPreviews2, colorPalette: colorPalette, addButton: dragLabel)
+            buttonPreviews2: buttonPreviews2, colorPalette: colorPalette, addButton: dragLabel)//, sequencer: sequencer)
         menu.layer.cornerRadius = 0.02 * menu.bounds.size.width
 
         menu.layer.shadowColor = UIColor.blackColor().CGColor
         menu.layer.shadowOffset = CGSize(width: 1, height: 10)
         menu.layer.shadowOpacity = 0.4
         menu.layer.shadowRadius = 7
-        menu.hidden = true
+        //menu.hidden = true
+        menu.alpha = 0
         //previewView.layer.zPosition = 1000
         menu.bringSubviewToFront(stationaryPreviewView)
         stationaryPreviewView.bringSubviewToFront(previewView)
@@ -181,7 +179,7 @@ class ViewController: UIViewController {
     func initializeSequencer()
     {
         sequencer.initialize(seqPicker)
-        sequencer.layer.cornerRadius = 0.02 * menu.bounds.size.width
+        sequencer.layer.cornerRadius = 0.02 * sequencer.bounds.size.width
         
         sequencer.layer.shadowColor = UIColor.blackColor().CGColor
         sequencer.layer.shadowOffset = CGSize(width: 1, height: 10)
@@ -323,26 +321,46 @@ class ViewController: UIViewController {
     
     @IBAction func editPressed(sender: AnyObject) {
         playmode = !playmode;
+
         if (playmode) {
             trash_closed.hidden = true
             trash_open.hidden = true
             deleteAllButton.hidden = true
+            
             UIView.animateWithDuration(0.5, animations: {
+                self.menu.alpha = 0
+                self.sequencer.alpha = 1
+            })
+            //self.menu.hidden = true
+            //self.sequencer.hidden = false
+            /*
+            UIView.animateWithDuration(0.5, animations: {
+                self.menu.frame.offset(dx: 0, dy: 150)
+                self.sequencer.hidden = false
+                self.sequencer.frame.offset(dx: 0, dy: -150)
+            }) */
+        } else {
+            //self.menu.hidden = false
+            //self.sequencer.hidden = true
+            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("showTrash"), userInfo: self, repeats: false)
+            UIView.animateWithDuration(0.5, animations: {
+                self.menu.alpha = 1
+                self.sequencer.alpha = 0
+            })
+            
+            /* Stuff for animated transitions
+            if (first_time) {
                 self.menu.hidden = false
                 self.menu.frame.offset(dx: 0, dy: 150)
-                self.sequencer.frame.offset(dx: 0, dy: -150)
-            })
-        } else {
-            if (first_time) {
-                self.menu.frame.offset(dx: 0, dy: 150)
+                //self.sequencer.frame.offset(dx: 0, dy: 300)
                 first_time = false
             }
             NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("showTrash"), userInfo: self, repeats: false)
             UIView.animateWithDuration(0.5, animations: {
-                self.menu.hidden = false
                 self.menu.frame.offset(dx: 0, dy: -150)
                 self.sequencer.frame.offset(dx: 0, dy: 150)
             })
+            End stuff */
 
         }
     }
@@ -350,6 +368,7 @@ class ViewController: UIViewController {
     func showTrash() {
         trash_closed.hidden = false
         deleteAllButton.hidden = false
+        //self.sequencer.hidden = true
     }
     
     @IBAction func playedNote(sender: Note) {
