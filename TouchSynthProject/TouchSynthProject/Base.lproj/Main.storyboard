@@ -542,7 +542,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="modal" modalTransitionStyle="crossDissolve" id="rWF-vT-QnA"/>
+                                    <segue destination="8y2-wr-Ees" kind="unwind" unwindAction="unwindToMainMenu:" id="T2J-Kv-gn1"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NJF-KM-DxA">
@@ -557,6 +557,9 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fdk-ea-H8J">
                                         <rect key="frame" x="39" y="69" width="51" height="31"/>
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="filterSwitchActivated:" destination="4Pk-Kk-5Ua" eventType="valueChanged" id="Z2r-Kp-7ZQ"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HIGH PASS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpE-ev-wuP">
                                         <rect key="frame" x="106" y="69" width="121" height="33"/>
@@ -572,6 +575,9 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-q8-YCX">
                                         <rect key="frame" x="39" y="132" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="filterSwitchActivated:" destination="4Pk-Kk-5Ua" eventType="valueChanged" id="4DV-dG-nY1"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -750,6 +756,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhN-KV-3ky" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="8y2-wr-Ees" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1895" y="680"/>
         </scene>

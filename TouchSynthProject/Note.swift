@@ -10,7 +10,7 @@ import Foundation
 
 import UIKit
 
-class Note: UIButton {
+class Note: ZFRippleButton {
     var value : Int!
     var note_name : NSString?
     

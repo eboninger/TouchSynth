@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		155504361AA6C6AA006A32AE /* app_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 155504351AA6C6AA006A32AE /* app_background.jpg */; };
+		157499D71ACDD6B900FD808D /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157499D61ACDD6B900FD808D /* ZFRippleButton.swift */; };
 		1584021D1ACB8A400017D24B /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 158402191ACB8A3F0017D24B /* back.png */; };
 		1584021E1ACB8A400017D24B /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 1584021A1ACB8A400017D24B /* play.png */; };
 		1584021F1ACB8A400017D24B /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 1584021B1ACB8A400017D24B /* record.png */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		155504351AA6C6AA006A32AE /* app_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = app_background.jpg; path = ../app_background.jpg; sourceTree = "<group>"; };
+		157499D61ACDD6B900FD808D /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
 		158402191ACB8A3F0017D24B /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/back.png"; sourceTree = "<group>"; };
 		1584021A1ACB8A400017D24B /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/play.png"; sourceTree = "<group>"; };
 		1584021B1ACB8A400017D24B /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/record.png"; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				7756FC3F1AA0C054005A863A /* MusicController.swift */,
 				77D406881AC8983A005A3049 /* Sequencer.swift */,
 				775FEF761ACB81680004FC0A /* SettingsViewController.swift */,
+				157499D61ACDD6B900FD808D /* ZFRippleButton.swift */,
 			);
 			path = TouchSynthProject;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				775CB19B1A9D6D93001A9051 /* Note.swift in Sources */,
 				7729D1B31A965D6000AE22E4 /* AppDelegate.m in Sources */,
 				776D8AB21A9EAFC8001F6500 /* MenuBar.swift in Sources */,
+				157499D71ACDD6B900FD808D /* ZFRippleButton.swift in Sources */,
 				7729D1B01A965D6000AE22E4 /* main.m in Sources */,
 				7756FC401AA0C054005A863A /* MusicController.swift in Sources */,
 				77D406891AC8983A005A3049 /* Sequencer.swift in Sources */,

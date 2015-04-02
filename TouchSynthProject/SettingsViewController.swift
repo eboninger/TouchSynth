@@ -67,6 +67,8 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         
         hpLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         lpLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
+        lpSwitch.setOn(false, animated: false)
+        hpSwitch.setOn(false, animated: false)
         echoLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         reverbLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         tremoloLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
@@ -135,6 +137,14 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    }
+    
+    @IBAction func filterSwitchActivated(sender: UISwitch) {
+        if (sender == lpSwitch && lpSwitch.on) {
+            hpSwitch.setOn(false, animated: true)
+        } else if (sender == hpSwitch && hpSwitch.on) {
+            lpSwitch.setOn(false, animated: true)
+        }
     }
 
 
