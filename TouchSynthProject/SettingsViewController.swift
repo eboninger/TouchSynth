@@ -78,7 +78,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         voiceOverlay.alpha = 0.5
         fxOverlay.alpha = 0.5
 
-        
+        echoSlider.thumbTintColor = UIColor.purpleColor()
         initialize(voicePicker)
 
 
