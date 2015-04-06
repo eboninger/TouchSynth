@@ -158,7 +158,6 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     func updatePreview()
     {
-        NSLog("Called updatePreview")
         var midiNote: Int = MusicController.noteToMidi(self.typePicker!.selectedRowInComponent(1), octave: self.typePicker!.selectedRowInComponent(2) + 1)
         var showsharps = true
         if (self.typePicker!.selectedRowInComponent(3) == 1) {

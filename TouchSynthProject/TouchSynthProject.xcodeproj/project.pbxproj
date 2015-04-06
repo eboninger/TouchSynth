@@ -9,14 +9,6 @@
 /* Begin PBXBuildFile section */
 		155504361AA6C6AA006A32AE /* app_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 155504351AA6C6AA006A32AE /* app_background.jpg */; };
 		157499D71ACDD6B900FD808D /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157499D61ACDD6B900FD808D /* ZFRippleButton.swift */; };
-		1584021D1ACB8A400017D24B /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 158402191ACB8A3F0017D24B /* back.png */; };
-		1584021E1ACB8A400017D24B /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 1584021A1ACB8A400017D24B /* play.png */; };
-		1584021F1ACB8A400017D24B /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 1584021B1ACB8A400017D24B /* record.png */; };
-		158402201ACB8A400017D24B /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 1584021C1ACB8A400017D24B /* stop.png */; };
-		158402241ACB8F2E0017D24B /* metronome.png in Resources */ = {isa = PBXBuildFile; fileRef = 158402231ACB8F2E0017D24B /* metronome.png */; };
-		158402261ACB8FAF0017D24B /* metronome_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 158402251ACB8FAF0017D24B /* metronome_on.png */; };
-		158402291ACB92870017D24B /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 158402271ACB92870017D24B /* info.png */; };
-		1584022A1ACB92870017D24B /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 158402281ACB92870017D24B /* settings.png */; };
 		15CEFE6C1AA8FDF5009D78E3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 15CEFE6B1AA8FDF5009D78E3 /* Default.png */; };
 		15FCE6D51AA3DC50009F504B /* trash-closed copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 15FCE6D31AA3DC50009F504B /* trash-closed copy.png */; };
 		15FCE6D61AA3DC50009F504B /* trash-open copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 15FCE6D41AA3DC50009F504B /* trash-open copy.png */; };
@@ -30,6 +22,14 @@
 		7729D1CD1A965D6000AE22E4 /* TouchSynthProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1CC1A965D6000AE22E4 /* TouchSynthProjectTests.m */; };
 		7729D1D81A965DE400AE22E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1D71A965DE400AE22E4 /* ViewController.swift */; };
 		773634CB1AA7F88500D6D627 /* our_adsr.pd in Resources */ = {isa = PBXBuildFile; fileRef = 773634C91AA7F88500D6D627 /* our_adsr.pd */; };
+		773F23301AD206730037E01D /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F23281AD206730037E01D /* back.png */; };
+		773F23311AD206730037E01D /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F23291AD206730037E01D /* info.png */; };
+		773F23321AD206730037E01D /* metronome_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232A1AD206730037E01D /* metronome_on.png */; };
+		773F23331AD206730037E01D /* metronome.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232B1AD206730037E01D /* metronome.png */; };
+		773F23341AD206730037E01D /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232C1AD206730037E01D /* play.png */; };
+		773F23351AD206730037E01D /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232D1AD206730037E01D /* record.png */; };
+		773F23361AD206730037E01D /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232E1AD206730037E01D /* settings.png */; };
+		773F23371AD206730037E01D /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232F1AD206730037E01D /* stop.png */; };
 		7756FC401AA0C054005A863A /* MusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7756FC3F1AA0C054005A863A /* MusicController.swift */; };
 		775CB1991A9D6CC5001A9051 /* demo.pd in Resources */ = {isa = PBXBuildFile; fileRef = 775CB1981A9D6CC5001A9051 /* demo.pd */; };
 		775CB19B1A9D6D93001A9051 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775CB19A1A9D6D93001A9051 /* Note.swift */; };
@@ -58,14 +58,6 @@
 /* Begin PBXFileReference section */
 		155504351AA6C6AA006A32AE /* app_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = app_background.jpg; path = ../app_background.jpg; sourceTree = "<group>"; };
 		157499D61ACDD6B900FD808D /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
-		158402191ACB8A3F0017D24B /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/back.png"; sourceTree = "<group>"; };
-		1584021A1ACB8A400017D24B /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/play.png"; sourceTree = "<group>"; };
-		1584021B1ACB8A400017D24B /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/record.png"; sourceTree = "<group>"; };
-		1584021C1ACB8A400017D24B /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/stop.png"; sourceTree = "<group>"; };
-		158402231ACB8F2E0017D24B /* metronome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = metronome.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/metronome.png"; sourceTree = "<group>"; };
-		158402251ACB8FAF0017D24B /* metronome_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = metronome_on.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/metronome_on.png"; sourceTree = "<group>"; };
-		158402271ACB92870017D24B /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/info.png"; sourceTree = "<group>"; };
-		158402281ACB92870017D24B /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = "../../../../../Desktop/Design 2015/touchSYNTH/settings.png"; sourceTree = "<group>"; };
 		15CEFE6B1AA8FDF5009D78E3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		15FCE6D31AA3DC50009F504B /* trash-closed copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trash-closed copy.png"; path = "../trash-closed copy.png"; sourceTree = "<group>"; };
 		15FCE6D41AA3DC50009F504B /* trash-open copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trash-open copy.png"; path = "../trash-open copy.png"; sourceTree = "<group>"; };
@@ -86,6 +78,14 @@
 		7729D1D61A965DE400AE22E4 /* TouchSynthProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TouchSynthProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		7729D1D71A965DE400AE22E4 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
 		773634C91AA7F88500D6D627 /* our_adsr.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = our_adsr.pd; path = TouchSynthProject/our_adsr.pd; sourceTree = "<group>"; };
+		773F23281AD206730037E01D /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = ../back.png; sourceTree = "<group>"; };
+		773F23291AD206730037E01D /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = ../info.png; sourceTree = "<group>"; };
+		773F232A1AD206730037E01D /* metronome_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = metronome_on.png; path = ../metronome_on.png; sourceTree = "<group>"; };
+		773F232B1AD206730037E01D /* metronome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = metronome.png; path = ../metronome.png; sourceTree = "<group>"; };
+		773F232C1AD206730037E01D /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = ../play.png; sourceTree = "<group>"; };
+		773F232D1AD206730037E01D /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = ../record.png; sourceTree = "<group>"; };
+		773F232E1AD206730037E01D /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = ../settings.png; sourceTree = "<group>"; };
+		773F232F1AD206730037E01D /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop.png; path = ../stop.png; sourceTree = "<group>"; };
 		7756FC3F1AA0C054005A863A /* MusicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicController.swift; sourceTree = "<group>"; };
 		775CB1981A9D6CC5001A9051 /* demo.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = demo.pd; path = TouchSynthProject/demo.pd; sourceTree = "<group>"; };
 		775CB19A1A9D6D93001A9051 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = SOURCE_ROOT; };
@@ -131,14 +131,14 @@
 		7729D1A11A965D6000AE22E4 = {
 			isa = PBXGroup;
 			children = (
-				158402271ACB92870017D24B /* info.png */,
-				158402281ACB92870017D24B /* settings.png */,
-				158402251ACB8FAF0017D24B /* metronome_on.png */,
-				158402231ACB8F2E0017D24B /* metronome.png */,
-				158402191ACB8A3F0017D24B /* back.png */,
-				1584021A1ACB8A400017D24B /* play.png */,
-				1584021B1ACB8A400017D24B /* record.png */,
-				1584021C1ACB8A400017D24B /* stop.png */,
+				773F23281AD206730037E01D /* back.png */,
+				773F23291AD206730037E01D /* info.png */,
+				773F232A1AD206730037E01D /* metronome_on.png */,
+				773F232B1AD206730037E01D /* metronome.png */,
+				773F232C1AD206730037E01D /* play.png */,
+				773F232D1AD206730037E01D /* record.png */,
+				773F232E1AD206730037E01D /* settings.png */,
+				773F232F1AD206730037E01D /* stop.png */,
 				775FEF801ACB9D6C0004FC0A /* CoreAudio.framework */,
 				775FEF821ACB9DA90004FC0A /* CoreBluetooth.framework */,
 				775FEF871ACB9DCD0004FC0A /* CoreMIDI.framework */,
@@ -323,23 +323,23 @@
 			files = (
 				775CB1991A9D6CC5001A9051 /* demo.pd in Resources */,
 				77B83E821AA8083400E9502C /* final_patch.pd in Resources */,
+				773F23331AD206730037E01D /* metronome.png in Resources */,
 				15FCE6D51AA3DC50009F504B /* trash-closed copy.png in Resources */,
 				7792163C1A9ABFDA0056465C /* adsr_obj.pd in Resources */,
-				158402241ACB8F2E0017D24B /* metronome.png in Resources */,
-				1584021D1ACB8A400017D24B /* back.png in Resources */,
+				773F23321AD206730037E01D /* metronome_on.png in Resources */,
+				773F23361AD206730037E01D /* settings.png in Resources */,
 				7792163D1A9ABFDA0056465C /* filter.pd in Resources */,
 				773634CB1AA7F88500D6D627 /* our_adsr.pd in Resources */,
-				158402261ACB8FAF0017D24B /* metronome_on.png in Resources */,
-				158402201ACB8A400017D24B /* stop.png in Resources */,
+				773F23341AD206730037E01D /* play.png in Resources */,
 				7792163E1A9ABFDA0056465C /* proj1.pd in Resources */,
-				158402291ACB92870017D24B /* info.png in Resources */,
 				15CEFE6C1AA8FDF5009D78E3 /* Default.png in Resources */,
 				7729D1BC1A965D6000AE22E4 /* Main.storyboard in Resources */,
 				15FCE6D61AA3DC50009F504B /* trash-open copy.png in Resources */,
-				1584022A1ACB92870017D24B /* settings.png in Resources */,
-				1584021E1ACB8A400017D24B /* play.png in Resources */,
-				1584021F1ACB8A400017D24B /* record.png in Resources */,
+				773F23351AD206730037E01D /* record.png in Resources */,
+				773F23301AD206730037E01D /* back.png in Resources */,
+				773F23371AD206730037E01D /* stop.png in Resources */,
 				155504361AA6C6AA006A32AE /* app_background.jpg in Resources */,
+				773F23311AD206730037E01D /* info.png in Resources */,
 				7729D1C11A965D6000AE22E4 /* LaunchScreen.xib in Resources */,
 				7729D1BE1A965D6000AE22E4 /* Images.xcassets in Resources */,
 			);

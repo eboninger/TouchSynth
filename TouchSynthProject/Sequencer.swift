@@ -26,18 +26,18 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.deviceManager = MIKMIDIDeviceManager.sharedDeviceManager()
+        NSLog("About to print virtual resources:")
         for device in self.deviceManager!.virtualSources {
             NSLog(device.model)
         }
+        NSLog("Done printing virtual resources")
+        NSLog("About to print available devices:")
+        for device in self.deviceManager!.availableDevices {
+            NSLog(device.model)
+        }
+        NSLog("Done printing available devices")
         self.sequence = MIKMIDISequence()
         self.sequencer = MIKMIDISequencer(sequence: self.sequence!)
-
-        self.sequencer!.startPlayback()
-        if (self.sequencer!.sequence == nil) {
-            NSLog("Null")
-        } else {
-            NSLog(String(Int(self.sequencer!.preRoll)))
-        }
         initializePickerData()
     }
     
