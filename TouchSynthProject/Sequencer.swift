@@ -10,7 +10,7 @@ import Foundation
 
 import CoreBluetooth
 import CoreAudio
-//import "CoreAudioKit/CABTMIDILocalPeripheralViewController.h"
+
 
 import UIKit
 
@@ -23,8 +23,12 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         ["5/4", "4/4", "3/4"]
     ]
     
+    var recording: Bool
+    
     required init(coder aDecoder: NSCoder) {
+        self.recording = false
         super.init(coder: aDecoder)
+                
         self.deviceManager = MIKMIDIDeviceManager.sharedDeviceManager()
         NSLog("About to print virtual resources:")
         for device in self.deviceManager!.virtualSources {
@@ -38,6 +42,10 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         NSLog("Done printing available devices")
         self.sequence = MIKMIDISequence()
         self.sequencer = MIKMIDISequencer(sequence: self.sequence!)
+        self.sequencer!.recordEnabledTracks = NSSet(object:sequence!.addTrack())
+        NSLog("COUNT: " + String(self.sequencer!.recordEnabledTracks.count))
+        //self.sequencer!.metronome.setupMetronome()
+        //self.sequencer!.startRecording()
         initializePickerData()
     }
     
@@ -94,5 +102,10 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     }
+    
+    func isRecording() -> Bool {
+        return recording
+    }
+
     
 }

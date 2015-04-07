@@ -126,12 +126,6 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         return pickerData[component].count
     }
     
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let attributedString = NSAttributedString(string: pickerData[component][row], attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
-
-        return attributedString
-    }
-    
     func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         if (component == 4) {
             return 200
