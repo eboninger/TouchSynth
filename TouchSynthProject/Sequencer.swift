@@ -45,7 +45,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         self.sequencer!.recordEnabledTracks = NSSet(object:sequence!.addTrack())
         NSLog("COUNT: " + String(self.sequencer!.recordEnabledTracks.count))
         //self.sequencer!.metronome.setupMetronome()
-        //self.sequencer!.startRecording()
+        self.sequencer!.startRecording()
         initializePickerData()
     }
     

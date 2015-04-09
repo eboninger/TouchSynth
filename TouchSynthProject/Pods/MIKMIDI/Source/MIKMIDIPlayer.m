@@ -8,10 +8,15 @@
 
 #import "MIKMIDIPlayer.h"
 #import "MIKMIDITrack.h"
+#import "MIKMIDITrack_Protected.h"
 #import "MIKMIDISequence.h"
 #import "MIKMIDIMetronome.h"
 #import "MIKMIDINoteEvent.h"
 #import "MIKMIDIClientDestinationEndpoint.h"
+
+#if !__has_feature(objc_arc)
+#error MIKMIDIPlayer.m must be compiled with ARC. Either turn on ARC for the project or set the -fobjc-arc flag for MIKMIDIMappingManager.m in the Build Phases for this target
+#endif
 
 @interface MIKMIDIPlayer ()
 
@@ -180,12 +185,16 @@
 	self.clickPlayer = [[MIKMIDIPlayer alloc] init];
 	self.clickPlayer->_isClickPlayer = YES;
 	MIKMIDISequence *clickSequence = [MIKMIDISequence sequence];
-	[clickSequence.tempoTrack insertMIDIEvents:[NSSet setWithArray:self.sequence.tempoEvents]];
-	[clickSequence.tempoTrack insertMIDIEvents:[NSSet setWithArray:self.sequence.timeSignatureEvents]];
+	[clickSequence.tempoTrack addEvents:self.sequence.tempoEvents];
+	[clickSequence.tempoTrack addEvents:self.sequence.timeSignatureEvents];
 	self.clickPlayer.sequence = clickSequence;
 	MIKMIDITrack *clickTrack = [clickSequence addTrack];
 
-	[clickTrack setDestinationEndpoint:self.metronomeEndpoint];
+	OSStatus err = MusicTrackSetDestMIDIEndpoint(clickTrack.musicTrack, (MIDIEndpointRef)self.metronomeEndpoint.objectRef);
+	if (err) {
+		NSLog(@"MusicTrackGetProperty() failed with error %d in %s.", err, __PRETTY_FUNCTION__);
+		return;
+	}
 	MusicTimeStamp toTimeStamp = self.stopPlaybackAtEndOfSequence ? self.sequence.length : self.maxClickTrackTimeStamp;
 
 	NSMutableSet *clickEvents = [NSMutableSet set];
@@ -193,8 +202,7 @@
 	MIDINoteMessage tockMessage = self.metronome.tockMessage;
 	MusicTimeStamp increment = 1;
 	for (MusicTimeStamp clickTimeStamp = floor(fromTimeStamp); clickTimeStamp <= toTimeStamp; clickTimeStamp += increment) {
-		MIKMIDITimeSignature timeSignature;
-		if (![clickSequence getTimeSignature:&timeSignature atTimeStamp:clickTimeStamp]) continue;
+		MIKMIDITimeSignature timeSignature = [clickSequence timeSignatureAtTimeStamp:clickTimeStamp];
 		if (!timeSignature.numerator || !timeSignature.denominator) continue;
 
 		NSInteger adjustedTimeStamp = clickTimeStamp * timeSignature.denominator / 4.0;
@@ -205,7 +213,7 @@
 		[clickEvents addObject:[MIKMIDINoteEvent noteEventWithTimeStamp:clickTimeStamp message:clickMessage]];
 	}
 
-	[clickTrack insertMIDIEvents:clickEvents];
+	[clickTrack addEvents:[clickEvents allObjects]];
 }
 
 #pragma mark - Properties

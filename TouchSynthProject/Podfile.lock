@@ -1,13 +1,23 @@
 PODS:
   - libpd (0.7.0)
-  - MIKMIDI (1.0.0)
+  - MIKMIDI (1.1.0)
 
 DEPENDENCIES:
   - libpd (~> 0.7)
-  - MIKMIDI (~> 1.0)
+  - MIKMIDI (from `https://github.com/mixedinkey-opensource/MIKMIDI.git`, branch `1.1`)
+
+EXTERNAL SOURCES:
+  MIKMIDI:
+    :branch: 1.1
+    :git: https://github.com/mixedinkey-opensource/MIKMIDI.git
+
+CHECKOUT OPTIONS:
+  MIKMIDI:
+    :commit: 2e122f50e98e0e05bb4ecae7a7098345300c9aea
+    :git: https://github.com/mixedinkey-opensource/MIKMIDI.git
 
 SPEC CHECKSUMS:
   libpd: f9e63d090e284438826f9b2fdc0810dbb9889e6f
-  MIKMIDI: 1faafdd05bbcf70971e06b3bf89a89201ac2ebcf
+  MIKMIDI: 0a689f16efcbca46709113319e97b0068ee79930
 
 COCOAPODS: 0.35.0
