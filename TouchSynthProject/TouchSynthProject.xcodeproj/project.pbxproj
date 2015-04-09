@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		155504361AA6C6AA006A32AE /* app_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 155504351AA6C6AA006A32AE /* app_background.jpg */; };
 		157499D71ACDD6B900FD808D /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157499D61ACDD6B900FD808D /* ZFRippleButton.swift */; };
+		15B315871AD70D3C00D5754A /* BWCircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B315851AD70D3C00D5754A /* BWCircularSlider.swift */; };
 		15CEFE6C1AA8FDF5009D78E3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 15CEFE6B1AA8FDF5009D78E3 /* Default.png */; };
 		15FCE6D51AA3DC50009F504B /* trash-closed copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 15FCE6D31AA3DC50009F504B /* trash-closed copy.png */; };
 		15FCE6D61AA3DC50009F504B /* trash-open copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 15FCE6D41AA3DC50009F504B /* trash-open copy.png */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		155504351AA6C6AA006A32AE /* app_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = app_background.jpg; path = ../app_background.jpg; sourceTree = "<group>"; };
 		157499D61ACDD6B900FD808D /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
+		15B315851AD70D3C00D5754A /* BWCircularSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BWCircularSlider.swift; path = ../BWCircularSlider.swift; sourceTree = "<group>"; };
 		15CEFE6B1AA8FDF5009D78E3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		15FCE6D31AA3DC50009F504B /* trash-closed copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trash-closed copy.png"; path = "../trash-closed copy.png"; sourceTree = "<group>"; };
 		15FCE6D41AA3DC50009F504B /* trash-open copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trash-open copy.png"; path = "../trash-open copy.png"; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				77D406881AC8983A005A3049 /* Sequencer.swift */,
 				775FEF761ACB81680004FC0A /* SettingsViewController.swift */,
 				157499D61ACDD6B900FD808D /* ZFRippleButton.swift */,
+				15B315851AD70D3C00D5754A /* BWCircularSlider.swift */,
 			);
 			path = TouchSynthProject;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				775CB19B1A9D6D93001A9051 /* Note.swift in Sources */,
+				15B315871AD70D3C00D5754A /* BWCircularSlider.swift in Sources */,
 				7729D1B31A965D6000AE22E4 /* AppDelegate.m in Sources */,
 				776D8AB21A9EAFC8001F6500 /* MenuBar.swift in Sources */,
 				157499D71ACDD6B900FD808D /* ZFRippleButton.swift in Sources */,

@@ -72,6 +72,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         echoLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         reverbLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         tremoloLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
+    
         
         adsrOverlay.alpha = 0.5
         filterOverlay.alpha = 0.5
@@ -146,6 +147,48 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
             lpSwitch.setOn(false, animated: true)
         }
     }
+    
+    
+    // START: Circular Slider Stuff //
+    
+    #if TARGET_INTERFACE_BUILDER
+    override func willMoveToSuperview(newSuperview: UIView?) {
+    
+    let slider:BWCircularSlider = BWCircularSlider(startColor:UIColor.magentaColor(), endColor:self.endColor, frame: self.bounds)
+    self.addSubview(slider)
+    
+    }
+    
+    #else
+    override func awakeFromNib() {
+        
+        super.awakeFromNib()
+        
+        // Build the sliders
+        let slider1:BWCircularSlider = BWCircularSlider(startColor:UIColor.magentaColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 70.0, y: 370.0, width: 100.0, height: 100.0))
+        let slider2:BWCircularSlider = BWCircularSlider(startColor:UIColor.cyanColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 185.0, y: 370.0, width: 100.0, height: 100.0))
+        let slider3:BWCircularSlider = BWCircularSlider(startColor:UIColor.redColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 300.0, y: 370.0, width: 100.0, height: 100.0))
+        let slider4:BWCircularSlider = BWCircularSlider(startColor:UIColor.purpleColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 415.0, y: 370.0, width: 100.0, height: 100.0))
 
+        // Attach an Action and a Target to the slider
+        slider1.addTarget(self, action: "valueChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        // Add the slider as subview of this view
+        self.view.addSubview(slider1)
+        self.view.addSubview(slider2)
+        self.view.addSubview(slider3)
+        self.view.addSubview(slider4)
+       // self.view.bringSubviewToFront(slider1)
+        self.view.bringSubviewToFront(adsrOverlay)
+        
+    }
+    #endif
+    
+    func valueChanged(slider:BWCircularSlider){
+        // Do something with the value...
+        println("Value changed to \(slider.angle)")
+    }
+
+    // END: Circluar Slider //
 
 }
