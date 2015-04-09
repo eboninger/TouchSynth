@@ -23,13 +23,17 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         ["5/4", "4/4", "3/4"]
     ]
     
-    var recording: Bool
+    var timer = NSTimer()
+    var startTime = NSTimeInterval()
     
     required init(coder aDecoder: NSCoder) {
-        self.recording = false
         super.init(coder: aDecoder)
-                
-        self.deviceManager = MIKMIDIDeviceManager.sharedDeviceManager()
+        self.sequence = MIKMIDISequence()
+        self.sequencer = MIKMIDISequencer(sequence: self.sequence!)
+        self.sequencer!.recordEnabledTracks = NSSet(object: sequence!.addTrack())
+        self.sequencer!.clickTrackStatus = MIKMIDISequencerClickTrackStatus.AlwaysEnabled
+        initializePickerData()
+        /*self.deviceManager = MIKMIDIDeviceManager.sharedDeviceManager()
         NSLog("About to print virtual resources:")
         for device in self.deviceManager!.virtualSources {
             NSLog(device.model)
@@ -39,14 +43,8 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         for device in self.deviceManager!.availableDevices {
             NSLog(device.model)
         }
-        NSLog("Done printing available devices")
-        self.sequence = MIKMIDISequence()
-        self.sequencer = MIKMIDISequencer(sequence: self.sequence!)
-        self.sequencer!.recordEnabledTracks = NSSet(object:sequence!.addTrack())
-        NSLog("COUNT: " + String(self.sequencer!.recordEnabledTracks.count))
-        //self.sequencer!.metronome.setupMetronome()
-        self.sequencer!.startRecording()
-        initializePickerData()
+        NSLog("Done printing available devices")*/
+
     }
     
     func initialize(seqPicker: UIPickerView)
@@ -104,8 +102,87 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     }
     
     func isRecording() -> Bool {
-        return recording
+        return sequencer!.recording
     }
-
+    
+    func startRecording()
+    {
+        self.sequencer!.preRoll = 0
+        //self.sequencer!.recordEnabledTracks = NSSet(object: sequence!.addTrack())
+        sequencer!.startRecording()
+        startTimer()
+    }
+    
+    func stop()
+    {
+        NSLog("About to stop")
+        sequencer!.stop()
+        NSLog("Stopped")
+    }
+    
+    func startPlayback()
+    {
+        sequencer!.startPlayback()
+    }
+    
+    func recordNoteOn(note: Note) {
+        let noteOn = MIKMutableMIDINoteOnCommand()
+        noteOn.timestamp = NSDate()
+        noteOn.channel = 1
+        noteOn.note = UInt(note.value)
+        noteOn.velocity = 127
+        self.sequencer!.recordMIDICommand(noteOn)
+        
+        //let noteOff = MIKMutableMIDINoteOffCommand()
+        //noteOff.timestamp = NSDate(timeInterval: 1, sinceDate: noteOn.timestamp)
+        //noteOff.channel = noteOn.channel
+        //noteOff.note = noteOn.note
+        
+        self.sequencer!.recordMIDICommand(noteOn)
+        NSLog("Added note on")
+    }
+    
+    func recordNoteOff(note: Note) {
+        let noteOff = MIKMutableMIDINoteOffCommand()
+        noteOff.timestamp = NSDate()
+        noteOff.channel = 1
+        noteOff.note = UInt(note.value)
+        self.sequencer!.recordMIDICommand(noteOff)
+        NSLog("Added note off")
+    }
+    
+    func startTimer()
+    {
+        
+    }
+    
+    func updateTime()
+    {
+        var currentTime = NSDate.timeIntervalSinceReferenceDate()
+        
+        //Find the difference between current time and start time.
+        var elapsedTime: NSTimeInterval = currentTime - self.startTime
+        
+        
+        
+        //calculate the minutes in elapsed time.
+        let minutes = UInt8(elapsedTime / 60.0)
+        elapsedTime -= (NSTimeInterval(minutes) * 60)
+        
+        //calculate the seconds in elapsed time.
+        let seconds = UInt8(elapsedTime)
+        elapsedTime -= NSTimeInterval(seconds)
+        
+        //find out the fraction of milliseconds to be displayed.
+        let fraction = UInt8(elapsedTime * 100)
+        
+        //add the leading zero for minutes, seconds and millseconds and store them as string constants
+        let strMinutes = minutes > 9 ? String(minutes):"0" + String(minutes)
+        let strSeconds = seconds > 9 ? String(seconds):"0" + String(seconds)
+        let strFraction = fraction > 9 ? String(fraction):"0" + String(fraction)
+        
+        //concatenate minuets, seconds and milliseconds as assign it to the UILabel
+        NSLog("TIME: \(strMinutes):\(strSeconds):\(strFraction)")
+    }
     
 }

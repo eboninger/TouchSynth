@@ -374,6 +374,9 @@ class ViewController: UIViewController {
     @IBAction func playedNote(sender: Note) {
         if (playmode) {
             PdBase.sendList([Float(sender.value), 127], toReceiver: "note")
+            if (sequencer!.isRecording()) {
+                sequencer!.recordNoteOn(sender)
+            }
             
         } else {
             playView.bringSubviewToFront(sender)
@@ -394,6 +397,9 @@ class ViewController: UIViewController {
     @IBAction func stoppedNote(sender: Note) {
         if (playmode) {
             PdBase.sendList([Float(sender.value), 0], toReceiver: "note")
+            if (sequencer!.isRecording()) {
+                sequencer!.recordNoteOff(sender)
+            }
         } else {
             if (inTrash(sender.frame)) {
                 sender.removeFromSuperview()
@@ -422,12 +428,21 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func pressedPlay(sender: UIButton) {
+        sequencer!.startPlayback()
+    }
+    
     @IBAction func pressedRecord(sender: UIButton) {
-        recording = !recording
-        if (recording) {
+        if (!sequencer.isRecording()) {
             sender.setBackgroundImage(UIImage(named:"stop.png")!, forState: .Normal)
+            sequencer!.startRecording()
+            playButton.enabled = false
+            backButton.enabled = false
         } else {
             sender.setBackgroundImage(UIImage(named:"record.png")!, forState: .Normal)
+            sequencer!.stop()
+            playButton.enabled = true
+            backButton.enabled = true
         }
 
     }
