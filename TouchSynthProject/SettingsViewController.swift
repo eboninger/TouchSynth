@@ -36,6 +36,15 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     @IBOutlet weak var reverbLabel: UILabel!
     @IBOutlet weak var tremoloLabel: UILabel!
     
+    @IBOutlet weak var cutoffLabel: UILabel!
+    @IBOutlet weak var cutoffLabel2: UILabel!
+    @IBOutlet weak var resonanceLabel: UILabel!
+    
+    @IBOutlet weak var attackLabel: UILabel!
+    @IBOutlet weak var decayLabel: UILabel!
+    @IBOutlet weak var sustainLabel: UILabel!
+    @IBOutlet weak var releaseLabel: UILabel!
+    
     var externalOn = true
 
     var pickerData = [
@@ -72,6 +81,13 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         echoLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         reverbLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         tremoloLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
+        attackLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
+        sustainLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
+        decayLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
+        releaseLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
+        cutoffLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
+        cutoffLabel2.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
+        resonanceLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
     
         
         adsrOverlay.alpha = 0.5
@@ -79,6 +95,11 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         voiceOverlay.alpha = 0.5
         fxOverlay.alpha = 0.5
 
+        adsrOverlay.hidden = true
+        filterOverlay.hidden = true
+        fxOverlay.hidden = true
+        voiceOverlay.hidden = true
+        
         echoSlider.thumbTintColor = UIColor.purpleColor()
         initialize(voicePicker)
 
@@ -99,16 +120,17 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     @IBAction func onPressed(sender: AnyObject) {
         externalOn = !externalOn
         if (externalOn) {
+            adsrOverlay.hidden = true
+            filterOverlay.hidden = true
+            fxOverlay.hidden = true
+            voiceOverlay.hidden = true
+
+        } else {
             adsrOverlay.hidden = false
             filterOverlay.hidden = false
             fxOverlay.hidden = false
             voiceOverlay.hidden = false
 
-        } else {
-            adsrOverlay.hidden = true
-            filterOverlay.hidden = true
-            fxOverlay.hidden = true
-            voiceOverlay.hidden = true
         }
 
     }
@@ -165,28 +187,58 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         super.awakeFromNib()
         
         // Build the sliders
-        let slider1:BWCircularSlider = BWCircularSlider(startColor:UIColor.magentaColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 70.0, y: 370.0, width: 100.0, height: 100.0))
-        let slider2:BWCircularSlider = BWCircularSlider(startColor:UIColor.cyanColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 185.0, y: 370.0, width: 100.0, height: 100.0))
-        let slider3:BWCircularSlider = BWCircularSlider(startColor:UIColor.redColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 300.0, y: 370.0, width: 100.0, height: 100.0))
-        let slider4:BWCircularSlider = BWCircularSlider(startColor:UIColor.purpleColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 415.0, y: 370.0, width: 100.0, height: 100.0))
+        let slider_attack:BWCircularSlider = BWCircularSlider(startColor:UIColor.magentaColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 60.0, y: 370.0, width: 100.0, height: 100.0))
+        let slider_decay:BWCircularSlider = BWCircularSlider(startColor:UIColor.cyanColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 180.0, y: 370.0, width: 100.0, height: 100.0))
+        let slider_sustain:BWCircularSlider = BWCircularSlider(startColor:UIColor.redColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 295.0, y: 370.0, width: 100.0, height: 100.0))
+        let slider_release:BWCircularSlider = BWCircularSlider(startColor:UIColor.purpleColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 415.0, y: 370.0, width: 100.0, height: 100.0))
+        
+        let slider_cutoff:BWCircularSlider = BWCircularSlider(startColor:UIColor.greenColor(), endColor:UIColor.cyanColor(), frame: CGRect(x: 283.0, y: 570.0, width: 100.0, height: 100.0))
+        let slider_resonance:BWCircularSlider = BWCircularSlider(startColor:UIColor.magentaColor(), endColor:UIColor.redColor(), frame: CGRect(x: 415.0, y: 570.0, width: 100.0, height: 100.0))
+
 
         // Attach an Action and a Target to the slider
-        slider1.addTarget(self, action: "valueChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        slider_attack.addTarget(self, action: "attackChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        slider_decay.addTarget(self, action: "decayChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        slider_sustain.addTarget(self, action: "sustainChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        slider_release.addTarget(self, action: "releaseChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        slider_cutoff.addTarget(self, action: "cutoffChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        slider_resonance.addTarget(self, action: "resonanceChanged:", forControlEvents: UIControlEvents.ValueChanged)
+
         
         // Add the slider as subview of this view
-        self.view.addSubview(slider1)
-        self.view.addSubview(slider2)
-        self.view.addSubview(slider3)
-        self.view.addSubview(slider4)
-       // self.view.bringSubviewToFront(slider1)
+        self.view.addSubview(slider_attack)
+        self.view.addSubview(slider_decay)
+        self.view.addSubview(slider_sustain)
+        self.view.addSubview(slider_release)
+        self.view.addSubview(slider_cutoff)
+        self.view.addSubview(slider_resonance)
+        
         self.view.bringSubviewToFront(adsrOverlay)
         
     }
     #endif
     
-    func valueChanged(slider:BWCircularSlider){
+    func attackChanged(slider:BWCircularSlider){
         // Do something with the value...
-        println("Value changed to \(slider.angle)")
+        println("Attack value changed to \(slider.angle)")
+    }
+    func decayChanged(slider:BWCircularSlider){
+        // Do something with the value...
+        println("Decay value changed to \(slider.angle)")
+    }
+    func sustainChanged(slider:BWCircularSlider){
+        // Do something with the value...
+        println("Sustain value changed to \(slider.angle)")
+    }
+    func cutoffChanged(slider:BWCircularSlider){
+        // Do something with the value...
+        println("Cutoff value changed to \(slider.angle)")
+    }
+    
+    func resonanceChanged(slider:BWCircularSlider){
+        // Do something with the value...
+        println("Resonance value changed to \(slider.angle)")
     }
 
     // END: Circluar Slider //

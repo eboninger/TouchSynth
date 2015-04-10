@@ -24,6 +24,8 @@ class ViewController: UIViewController {
     var metronome = false
 
     
+
+    
     //@IBOutlet weak var TremoloLabel: UILabel!
     @IBOutlet weak var VolumeLabel: UILabel!
     @IBOutlet weak var playEdit: UISegmentedControl!
@@ -76,7 +78,8 @@ class ViewController: UIViewController {
     override func supportedInterfaceOrientations() -> Int {
         return Int(UIInterfaceOrientationMask.Landscape.rawValue)
     }
-    
+
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -135,10 +138,8 @@ class ViewController: UIViewController {
         BarLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         Beat.font = UIFont(name: "Helvetica-BoldOblique", size: 28)
         BeatLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
-
-
-
         
+
         initializePd()
 
     }
@@ -462,4 +463,30 @@ class ViewController: UIViewController {
         let sourceViewController = sender.sourceViewController
         // Pull any data from the view controller which initiated the unwind segue.
     }
+
+    @IBAction func showInfoPage(sender: AnyObject) {
+        let alertController: UIAlertController = UIAlertController(title: "About Touch Synth", message: "Created by the one and only Brett Fischler, Eli Boninger, and Steph Cleland abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz", preferredStyle: .Alert)
+        
+        alertController.view.tintColor = UIColor.magentaColor()
+
+          /* alertController.popoverPresentationController?.sourceRect = CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.height)
+        
+        var v : UIViewController = UIViewController(nibName: nil, bundle: nil)
+        //v.preferredContentSize = CGSizeMake(200,200)
+        alertController.setValue(v, forKey: "contentViewController")*/
+ 
+        //Create and add the Cancel action
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Close", style: .Cancel) { action -> Void in
+            //Do some stuff
+        }
+        alertController.addAction(cancelAction)
+
+
+        
+        //Present the AlertController
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
 }
+    
+  
