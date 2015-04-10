@@ -427,6 +427,9 @@
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="pressedBack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Snt-uz-Db3"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xs-ed-CM1">
                                                 <rect key="frame" x="199" y="18" width="57" height="57"/>
@@ -454,14 +457,14 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="Bar" destination="ld2-YO-a8D" id="KT2-Mr-elJ"/>
-                        <outlet property="BarLabel" destination="mYK-78-JqR" id="0wO-Nu-jDV"/>
-                        <outlet property="Beat" destination="UgZ-kN-u97" id="H6T-Cp-6ir"/>
-                        <outlet property="BeatLabel" destination="bIM-uG-NlV" id="XC8-KF-Vsl"/>
                         <outlet property="Logo" destination="1Ym-HF-up3" id="Jvi-lf-XzC"/>
                         <outlet property="Logo2" destination="oGw-XR-bW4" id="tFM-vw-FRq"/>
                         <outlet property="VolumeLabel" destination="X3h-tP-Ldk" id="5ko-Sq-YRF"/>
                         <outlet property="backButton" destination="w7m-zV-gFF" id="sY6-UA-Z0m"/>
+                        <outlet property="bar" destination="ld2-YO-a8D" id="N5r-FL-0cQ"/>
+                        <outlet property="barLabel" destination="mYK-78-JqR" id="9gQ-4M-YtS"/>
+                        <outlet property="beat" destination="UgZ-kN-u97" id="w3N-Bb-EeS"/>
+                        <outlet property="beatLabel" destination="bIM-uG-NlV" id="Ama-eh-pkA"/>
                         <outlet property="bpm" destination="Ohu-NC-Gfm" id="mDw-rp-UlK"/>
                         <outlet property="deleteAllButton" destination="RZZ-ot-eiD" id="s91-xw-43u"/>
                         <outlet property="dragLabel" destination="XdT-Cd-qPZ" id="QCQ-0Z-vZ9"/>

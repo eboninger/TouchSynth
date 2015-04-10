@@ -14,10 +14,14 @@ import CoreAudio
 
 import UIKit
 
+import AVFoundation
+
 class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     var deviceManager: MIKMIDIDeviceManager?
     var sequencer: MIKMIDISequencer?
     var sequence: MIKMIDISequence?
+    var bar: UILabel?
+    var beat: UILabel?
     var seqPicker: UIPickerView?
     var pickerData = [
         ["5/4", "4/4", "3/4"]
@@ -25,14 +29,25 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     var timer = NSTimer()
     var startTime = NSTimeInterval()
+    var metronomeSoundPlayer: AVAudioPlayer!
+    var beatCount = 0
+    var metronome = false
     
     required init(coder aDecoder: NSCoder) {
+        
         super.init(coder: aDecoder)
         self.sequence = MIKMIDISequence()
         self.sequencer = MIKMIDISequencer(sequence: self.sequence!)
+        self.sequencer!.sequence.setTempo(120, atTimeStamp:0)
         self.sequencer!.recordEnabledTracks = NSSet(object: sequence!.addTrack())
-        self.sequencer!.clickTrackStatus = MIKMIDISequencerClickTrackStatus.AlwaysEnabled
+        self.sequencer!.clickTrackStatus = MIKMIDISequencerClickTrackStatus.Disabled
         initializePickerData()
+        
+        
+        // Initialize the sound player
+        let metronomeSoundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("metronomeClick", ofType: "mp3")!)
+        metronomeSoundPlayer = AVAudioPlayer(contentsOfURL: metronomeSoundURL, error: nil)
+        metronomeSoundPlayer.prepareToPlay()
         /*self.deviceManager = MIKMIDIDeviceManager.sharedDeviceManager()
         NSLog("About to print virtual resources:")
         for device in self.deviceManager!.virtualSources {
@@ -47,13 +62,15 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
 
     }
     
-    func initialize(seqPicker: UIPickerView)
+    func initialize(seqPicker: UIPickerView, bar: UILabel, beat: UILabel)
     {
         self.seqPicker = seqPicker
         self.seqPicker!.delegate = self
         self.seqPicker!.dataSource = self
         self.seqPicker!.selectRow(1, inComponent: 0, animated: true)
         self.seqPicker!.selectRow(120, inComponent: 1, animated: true)
+        self.bar = bar
+        self.beat = beat
         //self.seqPicker!.selectRow(3, inComponent: 2, animated: true)
         //self.seqPicker!.selectRow(0, inComponent: 3, animated: true)
         //self.seqPicker!.selectRow(3, inComponent: 4, animated: true)
@@ -99,6 +116,10 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if component == 1 {
+            var bpm = Double(pickerData[component][row].toInt()!)
+            self.sequencer!.sequence.setTempo(bpm, atTimeStamp:0)
+        }
     }
     
     func isRecording() -> Bool {
@@ -107,6 +128,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     func startRecording()
     {
+        self.seqPicker!.userInteractionEnabled = false
         self.sequencer!.preRoll = 0
         //self.sequencer!.recordEnabledTracks = NSSet(object: sequence!.addTrack())
         sequencer!.startRecording()
@@ -115,14 +137,15 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     func stop()
     {
-        NSLog("About to stop")
+        self.seqPicker!.userInteractionEnabled = true
         sequencer!.stop()
-        NSLog("Stopped")
+        stopTimer()
     }
     
     func startPlayback()
     {
         sequencer!.startPlayback()
+        startTimer()
     }
     
     func recordNoteOn(note: Note) {
@@ -153,16 +176,63 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     func startTimer()
     {
+        if timer.valid {
+            return
+        }
+        var bpm: Double = Double(self.pickerData[1][self.seqPicker!.selectedRowInComponent(1)].toInt()!)
+        var frequency: NSTimeInterval = 60 / bpm
+                let aSelector : Selector = "updateTime"
+        if self.metronome {
+            metronomeSoundPlayer.play()
+        }
+        timer = NSTimer.scheduledTimerWithTimeInterval(frequency, target: self, selector: aSelector, userInfo: nil, repeats: true)
+        startTime = NSDate.timeIntervalSinceReferenceDate()
+        self.beatCount = 0
+    }
+    
+    func stopTimer()
+    {
         
+        timer.invalidate()
+        self.bar!.text = "0000."
+        self.beat!.text = "0"
+    }
+    
+    func pressedBack()
+    {
+        sequencer!.stop()
+        stopTimer()
+    }
+    
+    
+    func toggleMetronome() {
+        self.metronome = !self.metronome
     }
     
     func updateTime()
     {
+        if !self.sequencer!.playing {
+            NSLog("Calling stop timer!!!")
+            stopTimer()
+            return
+        }
+        self.beatCount += 1
         var currentTime = NSDate.timeIntervalSinceReferenceDate()
+        var timeSigString = self.pickerData[0][self.seqPicker!.selectedRowInComponent(0)]
+        var fullTimeSig = split(timeSigString) {$0 == "/"}
+        var beatsPerBar = fullTimeSig[0].toInt()
+        var timePerBeat = fullTimeSig.count > 1 ? fullTimeSig[1].toInt() : 0
         
+        self.bar!.text = String(format: "%04d", self.beatCount / beatsPerBar!) + "."
+        self.beat!.text = String(self.beatCount % beatsPerBar!)
+        
+        if self.metronome {
+            NSLog("About to play metronome!")
+            metronomeSoundPlayer.play()
+        }
+
         //Find the difference between current time and start time.
-        var elapsedTime: NSTimeInterval = currentTime - self.startTime
-        
+        /*var elapsedTime: NSTimeInterval = currentTime - self.startTime
         
         
         //calculate the minutes in elapsed time.
@@ -182,7 +252,9 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         let strFraction = fraction > 9 ? String(fraction):"0" + String(fraction)
         
         //concatenate minuets, seconds and milliseconds as assign it to the UILabel
-        NSLog("TIME: \(strMinutes):\(strSeconds):\(strFraction)")
+        NSLog("TIME: \(strMinutes):\(strSeconds):\(strFraction)")*/
+        
+
     }
     
 }

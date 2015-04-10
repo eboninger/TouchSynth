@@ -59,10 +59,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var metronomeButton: UIButton!
-    @IBOutlet weak var Bar: UILabel!
-    @IBOutlet weak var BarLabel: UILabel!
-    @IBOutlet weak var Beat: UILabel!
-    @IBOutlet weak var BeatLabel: UILabel!
+    @IBOutlet weak var bar: UILabel!
+    @IBOutlet weak var barLabel: UILabel!
+    @IBOutlet weak var beat: UILabel!
+    @IBOutlet weak var beatLabel: UILabel!
     
     
     @IBOutlet weak var trash_open: UIImageView!
@@ -134,10 +134,10 @@ class ViewController: UIViewController {
         backButton.setTitle("", forState: .Normal)
         recordButton.setTitle("", forState: .Normal)
         metronomeButton.setTitle("", forState: .Normal)
-        Bar.font = UIFont(name: "Helvetica-BoldOblique", size: 28)
-        BarLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
-        Beat.font = UIFont(name: "Helvetica-BoldOblique", size: 28)
-        BeatLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
+        bar.font = UIFont(name: "Helvetica-BoldOblique", size: 28)
+        barLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
+        beat.font = UIFont(name: "Helvetica-BoldOblique", size: 28)
+        beatLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         
 
         initializePd()
@@ -179,7 +179,7 @@ class ViewController: UIViewController {
     
     func initializeSequencer()
     {
-        sequencer.initialize(seqPicker)
+        sequencer.initialize(seqPicker, bar: bar, beat: beat)
         sequencer.layer.cornerRadius = 0.02 * sequencer.bounds.size.width
         
         sequencer.layer.shadowColor = UIColor.blackColor().CGColor
@@ -448,6 +448,10 @@ class ViewController: UIViewController {
 
     }
     
+    @IBAction func pressedBack(sender: UIButton) {
+        sequencer!.pressedBack()
+    }
+    
     @IBAction func pressedMetronome(sender: UIButton) {
         metronome = !metronome
         if (metronome) {
@@ -455,7 +459,7 @@ class ViewController: UIViewController {
         } else {
             sender.setBackgroundImage(UIImage(named:"metronome.png")!, forState: .Normal)
         }
-        
+        self.sequencer.toggleMetronome()
     }
     
     @IBAction func unwindToMainMenu(sender: UIStoryboardSegue)
