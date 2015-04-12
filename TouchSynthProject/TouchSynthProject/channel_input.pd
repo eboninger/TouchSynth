@@ -1,0 +1,22 @@
+#N canvas 546 112 542 530 10;
+#X obj 208 212 channels~;
+#X msg 146 48 init 0 stereo SFPatch 47 127 banjo_1.sf2 100 0 500 0.5
+0;
+#X msg 51 109 view;
+#X obj 202 265 *~ 0.5;
+#X obj 247 266 *~ 0.5;
+#X obj 192 296 lop~ 300;
+#X obj 252 296 lop~ 300;
+#X obj 209 332 dac~;
+#X msg 181 75 0 47 127 banjo_1.sf2 100 0 500 0.5 0;
+#X msg 206 101 0 60 127 banjo_1.sf2 100 0 500 0.5 0;
+#X connect 0 0 3 0;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 0 0;
+#X connect 3 0 5 0;
+#X connect 4 0 6 0;
+#X connect 5 0 7 0;
+#X connect 6 0 7 1;
+#X connect 8 0 0 0;
+#X connect 9 0 0 0;

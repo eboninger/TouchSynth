@@ -1,0 +1,18 @@
+#N canvas 495 216 450 300 10;
+#X obj 78 48 inlet;
+#X obj 124 48 inlet;
+#X obj 167 48 inlet;
+#X obj 210 48 inlet;
+#X msg 28 113 volume_attack \$1;
+#X msg 92 144 volume_decay \$1;
+#X msg 149 169 volume_sustain \$1;
+#X msg 174 201 volume_release \$1;
+#X obj 18 245 outlet;
+#X connect 0 0 4 0;
+#X connect 1 0 5 0;
+#X connect 2 0 6 0;
+#X connect 3 0 7 0;
+#X connect 4 0 8 0;
+#X connect 5 0 8 0;
+#X connect 6 0 8 0;
+#X connect 7 0 8 0;
