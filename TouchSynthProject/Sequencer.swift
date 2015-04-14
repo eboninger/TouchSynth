@@ -39,15 +39,15 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         self.sequence = MIKMIDISequence()
         self.sequencer = MIKMIDISequencer(sequence: self.sequence!)
         self.sequencer!.sequence.setTempo(120, atTimeStamp:0)
-        self.sequencer!.recordEnabledTracks = NSSet(object: sequence!.addTrack())
+        self.sequencer!.recordEnabledTracks = NSSet(object: sequence!.addTrack()) as Set<NSObject>
         self.sequencer!.clickTrackStatus = MIKMIDISequencerClickTrackStatus.Disabled
         initializePickerData()
         
         
         // Initialize the sound player
-        let metronomeSoundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("metronomeClick", ofType: "mp3")!)
-        metronomeSoundPlayer = AVAudioPlayer(contentsOfURL: metronomeSoundURL, error: nil)
-        metronomeSoundPlayer.prepareToPlay()
+        //let metronomeSoundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("metronomeClick", ofType: "mp3")!)
+        //metronomeSoundPlayer = AVAudioPlayer(contentsOfURL: metronomeSoundURL, error: nil)
+        //metronomeSoundPlayer.prepareToPlay()
         /*self.deviceManager = MIKMIDIDeviceManager.sharedDeviceManager()
         NSLog("About to print virtual resources:")
         for device in self.deviceManager!.virtualSources {

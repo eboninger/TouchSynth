@@ -103,7 +103,7 @@ class ViewController: UIViewController {
         dragLabel.titleLabel!.textColor = UIColor.whiteColor()
         stationaryPreviewView.sendSubviewToBack(dragLabel)
         var attr = NSDictionary(object: UIFont(name: "Helvetica-BoldOblique", size: 16.0)!, forKey: NSFontAttributeName)
-        playEdit.setTitleTextAttributes(attr, forState: .Normal)
+        playEdit.setTitleTextAttributes(attr as [NSObject : AnyObject], forState: .Normal)
         trash_open.hidden = true
         trash_closed.hidden = true
         deleteAllButton.hidden = true

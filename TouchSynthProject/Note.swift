@@ -26,7 +26,7 @@ class Note: ZFRippleButton {
     }
     
     func initialize(title: NSString, value : Int, tColor: UIColor, bColor : UIColor) {
-        self.setTitle(title, forState: .Normal)
+        self.setTitle(title as String, forState: .Normal)
         self.value = value
         self.setTitleColor(tColor, forState: .Normal)
         self.backgroundColor = bColor

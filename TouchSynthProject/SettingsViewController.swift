@@ -72,7 +72,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         externalLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
         fxLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
         var attr = NSDictionary(object: UIFont(name: "Helvetica-BoldOblique", size: 16.0)!, forKey: NSFontAttributeName)
-        externalSwitch.setTitleTextAttributes(attr, forState: .Normal)
+        externalSwitch.setTitleTextAttributes(attr as [NSObject : AnyObject], forState: .Normal)
         
         hpLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         lpLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
