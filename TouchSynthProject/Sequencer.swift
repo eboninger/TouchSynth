@@ -45,9 +45,9 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         
         
         // Initialize the sound player
-        //let metronomeSoundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("metronomeClick", ofType: "mp3")!)
-        //metronomeSoundPlayer = AVAudioPlayer(contentsOfURL: metronomeSoundURL, error: nil)
-        //metronomeSoundPlayer.prepareToPlay()
+        let metronomeSoundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("metronomeClick", ofType: "mp3")!)
+        metronomeSoundPlayer = AVAudioPlayer(contentsOfURL: metronomeSoundURL, error: nil)
+        metronomeSoundPlayer.prepareToPlay()
         /*self.deviceManager = MIKMIDIDeviceManager.sharedDeviceManager()
         NSLog("About to print virtual resources:")
         for device in self.deviceManager!.virtualSources {

@@ -13,14 +13,17 @@ import UIKit
 class Note: ZFRippleButton {
     var value : Int!
     var note_name : NSString?
+    var playing : Bool!
     
     override init(frame f: CGRect) {
         self.value = 0
+        self.playing = false
         super.init(frame: f)
     }
     
     required init(coder aDecoder: NSCoder) {
         self.value = 0
+        self.playing = false
         super.init(coder: aDecoder)
         initialize("", value: 10, tColor: UIColor.whiteColor(), bColor: UIColor.purpleColor())
     }
@@ -46,6 +49,16 @@ class Note: ZFRippleButton {
         self.setTitle(MusicController.midiToNote(value, sharp: showsharps), forState: UIControlState.Normal)
     }
     
+    func isPlaying() -> Bool {
+        return self.playing
+    }
     
+    func startPlaying() {
+        self.playing = true
+    }
+    
+    func stopPlaying() {
+        self.playing = false
+    }
 
 }
