@@ -31,7 +31,6 @@
 		773F23351AD206730037E01D /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232D1AD206730037E01D /* record.png */; };
 		773F23361AD206730037E01D /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232E1AD206730037E01D /* settings.png */; };
 		773F23371AD206730037E01D /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232F1AD206730037E01D /* stop.png */; };
-		77432DD41AD80752008A8B90 /* metronomeClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 77432DD31AD80752008A8B90 /* metronomeClick.mp3 */; };
 		7756FC401AA0C054005A863A /* MusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7756FC3F1AA0C054005A863A /* MusicController.swift */; };
 		775CB1991A9D6CC5001A9051 /* demo.pd in Resources */ = {isa = PBXBuildFile; fileRef = 775CB1981A9D6CC5001A9051 /* demo.pd */; };
 		775CB19B1A9D6D93001A9051 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775CB19A1A9D6D93001A9051 /* Note.swift */; };
@@ -40,6 +39,7 @@
 		775FEF811ACB9D6C0004FC0A /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775FEF801ACB9D6C0004FC0A /* CoreAudio.framework */; };
 		775FEF881ACB9DCD0004FC0A /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775FEF871ACB9DCD0004FC0A /* CoreMIDI.framework */; };
 		776D8AB21A9EAFC8001F6500 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776D8AB11A9EAFC8001F6500 /* MenuBar.swift */; };
+		778290461ADDB6F2006DCF1B /* metronomeClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 778290451ADDB6F2006DCF1B /* metronomeClick.mp3 */; };
 		7792163C1A9ABFDA0056465C /* adsr_obj.pd in Resources */ = {isa = PBXBuildFile; fileRef = 779216391A9ABFDA0056465C /* adsr_obj.pd */; };
 		7792163D1A9ABFDA0056465C /* filter.pd in Resources */ = {isa = PBXBuildFile; fileRef = 7792163A1A9ABFDA0056465C /* filter.pd */; };
 		7792163E1A9ABFDA0056465C /* proj1.pd in Resources */ = {isa = PBXBuildFile; fileRef = 7792163B1A9ABFDA0056465C /* proj1.pd */; };
@@ -89,7 +89,6 @@
 		773F232D1AD206730037E01D /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = ../record.png; sourceTree = "<group>"; };
 		773F232E1AD206730037E01D /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = ../settings.png; sourceTree = "<group>"; };
 		773F232F1AD206730037E01D /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop.png; path = ../stop.png; sourceTree = "<group>"; };
-		77432DD31AD80752008A8B90 /* metronomeClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = metronomeClick.mp3; path = "../../Metronome-Swift/Metronome-Swift/metronomeClick.mp3"; sourceTree = "<group>"; };
 		7756FC3F1AA0C054005A863A /* MusicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicController.swift; sourceTree = "<group>"; };
 		775CB1981A9D6CC5001A9051 /* demo.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = demo.pd; path = TouchSynthProject/demo.pd; sourceTree = "<group>"; };
 		775CB19A1A9D6D93001A9051 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = SOURCE_ROOT; };
@@ -102,6 +101,7 @@
 		775FEF821ACB9DA90004FC0A /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		775FEF871ACB9DCD0004FC0A /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		776D8AB11A9EAFC8001F6500 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = SOURCE_ROOT; };
+		778290451ADDB6F2006DCF1B /* metronomeClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = metronomeClick.mp3; path = ../metronomeClick.mp3; sourceTree = "<group>"; };
 		779216391A9ABFDA0056465C /* adsr_obj.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = adsr_obj.pd; path = TouchSynthProject/adsr_obj.pd; sourceTree = "<group>"; };
 		7792163A1A9ABFDA0056465C /* filter.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = filter.pd; path = TouchSynthProject/filter.pd; sourceTree = "<group>"; };
 		7792163B1A9ABFDA0056465C /* proj1.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = proj1.pd; path = TouchSynthProject/proj1.pd; sourceTree = "<group>"; };
@@ -138,6 +138,7 @@
 				773F23281AD206730037E01D /* back.png */,
 				773F23291AD206730037E01D /* info.png */,
 				773F232A1AD206730037E01D /* metronome_on.png */,
+				778290451ADDB6F2006DCF1B /* metronomeClick.mp3 */,
 				773F232B1AD206730037E01D /* metronome.png */,
 				773F232C1AD206730037E01D /* play.png */,
 				773F232D1AD206730037E01D /* record.png */,
@@ -151,7 +152,6 @@
 				775CB1981A9D6CC5001A9051 /* demo.pd */,
 				779216391A9ABFDA0056465C /* adsr_obj.pd */,
 				15FCE6D31AA3DC50009F504B /* trash-closed copy.png */,
-				77432DD31AD80752008A8B90 /* metronomeClick.mp3 */,
 				15FCE6D41AA3DC50009F504B /* trash-open copy.png */,
 				7792163A1A9ABFDA0056465C /* filter.pd */,
 				77B83E811AA8083400E9502C /* final_patch.pd */,
@@ -329,7 +329,7 @@
 			files = (
 				775CB1991A9D6CC5001A9051 /* demo.pd in Resources */,
 				77B83E821AA8083400E9502C /* final_patch.pd in Resources */,
-				77432DD41AD80752008A8B90 /* metronomeClick.mp3 in Resources */,
+				778290461ADDB6F2006DCF1B /* metronomeClick.mp3 in Resources */,
 				773F23331AD206730037E01D /* metronome.png in Resources */,
 				15FCE6D51AA3DC50009F504B /* trash-closed copy.png in Resources */,
 				7792163C1A9ABFDA0056465C /* adsr_obj.pd in Resources */,
