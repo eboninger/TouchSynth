@@ -9,7 +9,6 @@
 import Foundation
 
 class record: recordingProtocol{
-    /*
     var samples : [recData.sample]
     var timer : NSTimer
     var beginTime : NSDate
@@ -31,6 +30,6 @@ class record: recordingProtocol{
         let new_sample = recData.sample(elapsed_time: -(beginTime.timeIntervalSinceNow) , note_loc: pt, cmd: command, note_index : note_index)
         samples.append(new_sample)
         
-    }*/
+    }
     
 }

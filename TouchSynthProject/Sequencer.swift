@@ -17,8 +17,8 @@ import UIKit
 import AVFoundation
 
 protocol recordingProtocol{
-//    func recordNote(pt: CGPoint, command: recData.command, note_index: Int)
-//    func doneRecording() -> [recData.sample]
+    func recordNote(pt: CGPoint, command: recData.command, note_index: Int)
+    func doneRecording() -> [recData.sample]
 }
 
 class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
@@ -31,6 +31,10 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     var pickerData = [
         ["5/4", "4/4", "3/4"]
     ]
+    
+    var recorder : recordingProtocol?
+    var recording : [recData.sample]?
+    var recordingIndex = 0;
     
     var timer = NSTimer()
     var startTime = NSTimeInterval()
@@ -120,23 +124,40 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     func startRecording()
     {
         self.seqPicker!.userInteractionEnabled = false
-        self.sequencer!.preRoll = 0
-        //self.sequencer!.recordEnabledTracks = NSSet(object: sequence!.addTrack())
-        sequencer!.startRecording()
+        recorder = record()
         startTimer()
+        //self.sequencer!.preRoll = 0
+        //self.sequencer!.recordEnabledTracks = NSSet(object: sequence!.addTrack())
+        //sequencer!.startRecording()
+
     }
     
     func stop()
     {
         self.seqPicker!.userInteractionEnabled = true
-        sequencer!.stop()
+        recording = recorder?.doneRecording()
+        recorder = nil
         stopTimer()
+        //sequencer!.stop()
     }
     
     func startPlayback()
     {
         sequencer!.startPlayback()
         startTimer()
+    }
+    
+    func createNoteWithIndex(timer: NSTimer){
+        var userInfo = timer.userInfo as NSDictionary
+        let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
+        createNote(pt, isPlayback: true)
+        recordingIndex++
+        if(recordingIndex == rec_length){
+            recordingIndex = 0
+            inPlayback = false
+            pause_time = 0
+            (parentViewController as InstrumentViewController).resetPlayButton()
+        }
     }
     
     func recordNoteOn(note: Note) {

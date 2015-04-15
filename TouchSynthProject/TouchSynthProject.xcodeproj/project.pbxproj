@@ -33,6 +33,7 @@
 		773F23371AD206730037E01D /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232F1AD206730037E01D /* stop.png */; };
 		7756FC401AA0C054005A863A /* MusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7756FC3F1AA0C054005A863A /* MusicController.swift */; };
 		775C1AAE1ADE12A7002FFCF2 /* record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C1AAD1ADE12A7002FFCF2 /* record.swift */; };
+		775C1AB41ADE1492002FFCF2 /* recData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C1AB31ADE1492002FFCF2 /* recData.swift */; };
 		775CB1991A9D6CC5001A9051 /* demo.pd in Resources */ = {isa = PBXBuildFile; fileRef = 775CB1981A9D6CC5001A9051 /* demo.pd */; };
 		775CB19B1A9D6D93001A9051 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775CB19A1A9D6D93001A9051 /* Note.swift */; };
 		775FEF771ACB81680004FC0A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775FEF761ACB81680004FC0A /* SettingsViewController.swift */; };
@@ -90,6 +91,7 @@
 		773F232F1AD206730037E01D /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop.png; path = ../stop.png; sourceTree = "<group>"; };
 		7756FC3F1AA0C054005A863A /* MusicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicController.swift; path = TouchSynthProject/MusicController.swift; sourceTree = "<group>"; };
 		775C1AAD1ADE12A7002FFCF2 /* record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = record.swift; sourceTree = "<group>"; };
+		775C1AB31ADE1492002FFCF2 /* recData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = recData.swift; sourceTree = "<group>"; };
 		775CB1981A9D6CC5001A9051 /* demo.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = demo.pd; path = TouchSynthProject/demo.pd; sourceTree = "<group>"; };
 		775CB19A1A9D6D93001A9051 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = SOURCE_ROOT; };
 		775FEF761ACB81680004FC0A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -235,6 +237,7 @@
 				7756FC3F1AA0C054005A863A /* MusicController.swift */,
 				157499D61ACDD6B900FD808D /* ZFRippleButton.swift */,
 				15B315851AD70D3C00D5754A /* BWCircularSlider.swift */,
+				775C1AB31ADE1492002FFCF2 /* recData.swift */,
 			);
 			name = Swift;
 			path = ..;
@@ -432,6 +435,7 @@
 				157499D71ACDD6B900FD808D /* ZFRippleButton.swift in Sources */,
 				7729D1B01A965D6000AE22E4 /* main.m in Sources */,
 				775C1AAE1ADE12A7002FFCF2 /* record.swift in Sources */,
+				775C1AB41ADE1492002FFCF2 /* recData.swift in Sources */,
 				7756FC401AA0C054005A863A /* MusicController.swift in Sources */,
 				77D406891AC8983A005A3049 /* Sequencer.swift in Sources */,
 				7729D1D81A965DE400AE22E4 /* ViewController.swift in Sources */,
