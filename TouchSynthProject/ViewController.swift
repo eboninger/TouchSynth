@@ -502,11 +502,13 @@ class ViewController: UIViewController {
     
     // Creates new note if not touching existing note, otherwise makes that note current
     
+    
+    
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         for note in collectionOfNotes {
             var touched = false
             var cur_touch : UITouch = UITouch()
-            for touch in touches {
+            for touch in event.allTouches()! {
                 let t = touch as! UITouch
                 var locationPoint = t.locationInView(note)
                 if note.containsTouch(locationPoint) {
@@ -520,19 +522,22 @@ class ViewController: UIViewController {
                     note.startPlaying()
             } else if (!touched && note.isPlaying()) {
                     stoppedNote(note)
+                    note.endTrackingWithTouch(cur_touch, withEvent: event)
                     note.stopPlaying()
             }
         }
     }
     
     override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        var count = 0
         for note in collectionOfNotes {
             var touched = false
             var cur_touch : UITouch = UITouch()
-            for touch in touches {
+            for touch in event.allTouches()! {
                 let t = touch as! UITouch
                 var locationPoint = t.locationInView(note)
                 if note.containsTouch(locationPoint) {
+                    count += 1
                     touched = true
                     cur_touch = t
                 }
@@ -554,6 +559,7 @@ class ViewController: UIViewController {
     // Stop playing the note if it wasn't a drag from a sustain
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         for note in collectionOfNotes {
+
             for touch in touches {
                 let t = touch as! UITouch
                 var locationPoint = t.locationInView(note)
@@ -565,28 +571,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    override func touchesCancelled(touches: Set<NSObject>, withEvent: UIEvent) {
-        for note in collectionOfNotes {
-            var touched = false
-            for touch in touches {
-                let t = touch as! UITouch
-                var locationPoint = t.locationInView(note)
-                if note.containsTouch(locationPoint) {
-                    touched = true
-                }
-            }
-            if (touched && note.isPlaying() == false) {
-                playedNote(note)
-                note.startPlaying()
-            } else if (!touched && note.isPlaying()) {
-                stoppedNote(note)
-                note.stopPlaying()
-            }
-        }
-    }
-
-    
 }
     
   

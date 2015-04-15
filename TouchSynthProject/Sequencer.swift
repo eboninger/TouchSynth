@@ -16,6 +16,11 @@ import UIKit
 
 import AVFoundation
 
+protocol recordingProtocol{
+//    func recordNote(pt: CGPoint, command: recData.command, note_index: Int)
+//    func doneRecording() -> [recData.sample]
+}
+
 class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     var deviceManager: MIKMIDIDeviceManager?
     var sequencer: MIKMIDISequencer?
@@ -48,17 +53,6 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         let metronomeSoundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("metronomeClick", ofType: "mp3")!)
         metronomeSoundPlayer = AVAudioPlayer(contentsOfURL: metronomeSoundURL, error: nil)
         metronomeSoundPlayer.prepareToPlay()
-        /*self.deviceManager = MIKMIDIDeviceManager.sharedDeviceManager()
-        NSLog("About to print virtual resources:")
-        for device in self.deviceManager!.virtualSources {
-            NSLog(device.model)
-        }
-        NSLog("Done printing virtual resources")
-        NSLog("About to print available devices:")
-        for device in self.deviceManager!.availableDevices {
-            NSLog(device.model)
-        }
-        NSLog("Done printing available devices")*/
 
     }
     
@@ -71,9 +65,6 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         self.seqPicker!.selectRow(120, inComponent: 1, animated: true)
         self.bar = bar
         self.beat = beat
-        //self.seqPicker!.selectRow(3, inComponent: 2, animated: true)
-        //self.seqPicker!.selectRow(0, inComponent: 3, animated: true)
-        //self.seqPicker!.selectRow(3, inComponent: 4, animated: true)
     }
     
     func initializePickerData() {

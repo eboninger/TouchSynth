@@ -32,12 +32,11 @@
 		773F23361AD206730037E01D /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232E1AD206730037E01D /* settings.png */; };
 		773F23371AD206730037E01D /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232F1AD206730037E01D /* stop.png */; };
 		7756FC401AA0C054005A863A /* MusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7756FC3F1AA0C054005A863A /* MusicController.swift */; };
+		775C1AAE1ADE12A7002FFCF2 /* record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C1AAD1ADE12A7002FFCF2 /* record.swift */; };
 		775CB1991A9D6CC5001A9051 /* demo.pd in Resources */ = {isa = PBXBuildFile; fileRef = 775CB1981A9D6CC5001A9051 /* demo.pd */; };
 		775CB19B1A9D6D93001A9051 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775CB19A1A9D6D93001A9051 /* Note.swift */; };
 		775FEF771ACB81680004FC0A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775FEF761ACB81680004FC0A /* SettingsViewController.swift */; };
 		775FEF7E1ACB9A560004FC0A /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775FEF7A1ACB9A560004FC0A /* CoreBluetooth.framework */; };
-		775FEF811ACB9D6C0004FC0A /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775FEF801ACB9D6C0004FC0A /* CoreAudio.framework */; };
-		775FEF881ACB9DCD0004FC0A /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775FEF871ACB9DCD0004FC0A /* CoreMIDI.framework */; };
 		776D8AB21A9EAFC8001F6500 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776D8AB11A9EAFC8001F6500 /* MenuBar.swift */; };
 		778290461ADDB6F2006DCF1B /* metronomeClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 778290451ADDB6F2006DCF1B /* metronomeClick.mp3 */; };
 		7792163C1A9ABFDA0056465C /* adsr_obj.pd in Resources */ = {isa = PBXBuildFile; fileRef = 779216391A9ABFDA0056465C /* adsr_obj.pd */; };
@@ -59,8 +58,8 @@
 
 /* Begin PBXFileReference section */
 		155504351AA6C6AA006A32AE /* app_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = app_background.jpg; path = ../app_background.jpg; sourceTree = "<group>"; };
-		157499D61ACDD6B900FD808D /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
-		15B315851AD70D3C00D5754A /* BWCircularSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BWCircularSlider.swift; path = ../BWCircularSlider.swift; sourceTree = "<group>"; };
+		157499D61ACDD6B900FD808D /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZFRippleButton.swift; path = TouchSynthProject/ZFRippleButton.swift; sourceTree = "<group>"; };
+		15B315851AD70D3C00D5754A /* BWCircularSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWCircularSlider.swift; sourceTree = "<group>"; };
 		15CEFE6B1AA8FDF5009D78E3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		15FCE6D31AA3DC50009F504B /* trash-closed copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trash-closed copy.png"; path = "../trash-closed copy.png"; sourceTree = "<group>"; };
 		15FCE6D41AA3DC50009F504B /* trash-open copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trash-open copy.png"; path = "../trash-open copy.png"; sourceTree = "<group>"; };
@@ -89,7 +88,8 @@
 		773F232D1AD206730037E01D /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = ../record.png; sourceTree = "<group>"; };
 		773F232E1AD206730037E01D /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = ../settings.png; sourceTree = "<group>"; };
 		773F232F1AD206730037E01D /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop.png; path = ../stop.png; sourceTree = "<group>"; };
-		7756FC3F1AA0C054005A863A /* MusicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicController.swift; sourceTree = "<group>"; };
+		7756FC3F1AA0C054005A863A /* MusicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicController.swift; path = TouchSynthProject/MusicController.swift; sourceTree = "<group>"; };
+		775C1AAD1ADE12A7002FFCF2 /* record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = record.swift; sourceTree = "<group>"; };
 		775CB1981A9D6CC5001A9051 /* demo.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = demo.pd; path = TouchSynthProject/demo.pd; sourceTree = "<group>"; };
 		775CB19A1A9D6D93001A9051 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = SOURCE_ROOT; };
 		775FEF761ACB81680004FC0A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -97,9 +97,6 @@
 		775FEF791ACB9A560004FC0A /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		775FEF7A1ACB9A560004FC0A /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		775FEF7B1ACB9A560004FC0A /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
-		775FEF801ACB9D6C0004FC0A /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-		775FEF821ACB9DA90004FC0A /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		775FEF871ACB9DCD0004FC0A /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		776D8AB11A9EAFC8001F6500 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = SOURCE_ROOT; };
 		778290451ADDB6F2006DCF1B /* metronomeClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = metronomeClick.mp3; path = ../metronomeClick.mp3; sourceTree = "<group>"; };
 		779216391A9ABFDA0056465C /* adsr_obj.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = adsr_obj.pd; path = TouchSynthProject/adsr_obj.pd; sourceTree = "<group>"; };
@@ -116,8 +113,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				775FEF7E1ACB9A560004FC0A /* CoreBluetooth.framework in Frameworks */,
-				775FEF811ACB9D6C0004FC0A /* CoreAudio.framework in Frameworks */,
-				775FEF881ACB9DCD0004FC0A /* CoreMIDI.framework in Frameworks */,
 				3DE3E2179973EF6157B2DDF9 /* libPods-TouchSynthProject.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,28 +130,9 @@
 		7729D1A11A965D6000AE22E4 = {
 			isa = PBXGroup;
 			children = (
-				773F23281AD206730037E01D /* back.png */,
-				773F23291AD206730037E01D /* info.png */,
-				773F232A1AD206730037E01D /* metronome_on.png */,
+				775C1AB01ADE136B002FFCF2 /* Pd */,
+				775C1AAF1ADE1315002FFCF2 /* Pictures */,
 				778290451ADDB6F2006DCF1B /* metronomeClick.mp3 */,
-				773F232B1AD206730037E01D /* metronome.png */,
-				773F232C1AD206730037E01D /* play.png */,
-				773F232D1AD206730037E01D /* record.png */,
-				773F232E1AD206730037E01D /* settings.png */,
-				773F232F1AD206730037E01D /* stop.png */,
-				775FEF801ACB9D6C0004FC0A /* CoreAudio.framework */,
-				775FEF821ACB9DA90004FC0A /* CoreBluetooth.framework */,
-				775FEF871ACB9DCD0004FC0A /* CoreMIDI.framework */,
-				15CEFE6B1AA8FDF5009D78E3 /* Default.png */,
-				155504351AA6C6AA006A32AE /* app_background.jpg */,
-				775CB1981A9D6CC5001A9051 /* demo.pd */,
-				779216391A9ABFDA0056465C /* adsr_obj.pd */,
-				15FCE6D31AA3DC50009F504B /* trash-closed copy.png */,
-				15FCE6D41AA3DC50009F504B /* trash-open copy.png */,
-				7792163A1A9ABFDA0056465C /* filter.pd */,
-				77B83E811AA8083400E9502C /* final_patch.pd */,
-				773634C91AA7F88500D6D627 /* our_adsr.pd */,
-				7792163B1A9ABFDA0056465C /* proj1.pd */,
 				7729D1AC1A965D6000AE22E4 /* TouchSynthProject */,
 				7729D1C91A965D6000AE22E4 /* TouchSynthProjectTests */,
 				7729D1AB1A965D6000AE22E4 /* Products */,
@@ -178,21 +154,15 @@
 		7729D1AC1A965D6000AE22E4 /* TouchSynthProject */ = {
 			isa = PBXGroup;
 			children = (
-				7729D1D71A965DE400AE22E4 /* ViewController.swift */,
+				775C1AB21ADE13EF002FFCF2 /* ViewControllers */,
+				775C1AB11ADE13C4002FFCF2 /* Swift */,
 				7729D1B11A965D6000AE22E4 /* AppDelegate.h */,
 				7729D1B21A965D6000AE22E4 /* AppDelegate.m */,
 				7729D1BA1A965D6000AE22E4 /* Main.storyboard */,
 				7729D1BD1A965D6000AE22E4 /* Images.xcassets */,
 				7729D1BF1A965D6000AE22E4 /* LaunchScreen.xib */,
 				7729D1B41A965D6000AE22E4 /* TouchSynthProject.xcdatamodeld */,
-				775CB19A1A9D6D93001A9051 /* Note.swift */,
 				7729D1AD1A965D6000AE22E4 /* Supporting Files */,
-				776D8AB11A9EAFC8001F6500 /* MenuBar.swift */,
-				7756FC3F1AA0C054005A863A /* MusicController.swift */,
-				77D406881AC8983A005A3049 /* Sequencer.swift */,
-				775FEF761ACB81680004FC0A /* SettingsViewController.swift */,
-				157499D61ACDD6B900FD808D /* ZFRippleButton.swift */,
-				15B315851AD70D3C00D5754A /* BWCircularSlider.swift */,
 			);
 			path = TouchSynthProject;
 			sourceTree = "<group>";
@@ -221,6 +191,62 @@
 				7729D1CB1A965D6000AE22E4 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		775C1AAF1ADE1315002FFCF2 /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				15FCE6D31AA3DC50009F504B /* trash-closed copy.png */,
+				15FCE6D41AA3DC50009F504B /* trash-open copy.png */,
+				15CEFE6B1AA8FDF5009D78E3 /* Default.png */,
+				155504351AA6C6AA006A32AE /* app_background.jpg */,
+				773F232B1AD206730037E01D /* metronome.png */,
+				773F232C1AD206730037E01D /* play.png */,
+				773F232D1AD206730037E01D /* record.png */,
+				773F232E1AD206730037E01D /* settings.png */,
+				773F232F1AD206730037E01D /* stop.png */,
+				773F23281AD206730037E01D /* back.png */,
+				773F23291AD206730037E01D /* info.png */,
+				773F232A1AD206730037E01D /* metronome_on.png */,
+			);
+			name = Pictures;
+			sourceTree = "<group>";
+		};
+		775C1AB01ADE136B002FFCF2 /* Pd */ = {
+			isa = PBXGroup;
+			children = (
+				775CB1981A9D6CC5001A9051 /* demo.pd */,
+				779216391A9ABFDA0056465C /* adsr_obj.pd */,
+				7792163A1A9ABFDA0056465C /* filter.pd */,
+				77B83E811AA8083400E9502C /* final_patch.pd */,
+				773634C91AA7F88500D6D627 /* our_adsr.pd */,
+				7792163B1A9ABFDA0056465C /* proj1.pd */,
+			);
+			name = Pd;
+			sourceTree = "<group>";
+		};
+		775C1AB11ADE13C4002FFCF2 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				775CB19A1A9D6D93001A9051 /* Note.swift */,
+				776D8AB11A9EAFC8001F6500 /* MenuBar.swift */,
+				775C1AAD1ADE12A7002FFCF2 /* record.swift */,
+				77D406881AC8983A005A3049 /* Sequencer.swift */,
+				7756FC3F1AA0C054005A863A /* MusicController.swift */,
+				157499D61ACDD6B900FD808D /* ZFRippleButton.swift */,
+				15B315851AD70D3C00D5754A /* BWCircularSlider.swift */,
+			);
+			name = Swift;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		775C1AB21ADE13EF002FFCF2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				775FEF761ACB81680004FC0A /* SettingsViewController.swift */,
+				7729D1D71A965DE400AE22E4 /* ViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		A84F988914AF0FD238126DB8 /* Frameworks */ = {
@@ -405,6 +431,7 @@
 				776D8AB21A9EAFC8001F6500 /* MenuBar.swift in Sources */,
 				157499D71ACDD6B900FD808D /* ZFRippleButton.swift in Sources */,
 				7729D1B01A965D6000AE22E4 /* main.m in Sources */,
+				775C1AAE1ADE12A7002FFCF2 /* record.swift in Sources */,
 				7756FC401AA0C054005A863A /* MusicController.swift in Sources */,
 				77D406891AC8983A005A3049 /* Sequencer.swift in Sources */,
 				7729D1D81A965DE400AE22E4 /* ViewController.swift in Sources */,
