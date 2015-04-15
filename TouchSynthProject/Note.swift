@@ -19,6 +19,7 @@ class Note: ZFRippleButton {
         self.value = 0
         self.playing = false
         super.init(frame: f)
+        self.enabled = false
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -59,6 +60,13 @@ class Note: ZFRippleButton {
     
     func stopPlaying() {
         self.playing = false
+    }
+    
+    func containsTouch(point: CGPoint) -> Bool {
+        if (point.x > 0 && point.x < self.frame.width && point.y > 0 && point.y < self.frame.height) {
+            return true
+        }
+        return false
     }
 
 }

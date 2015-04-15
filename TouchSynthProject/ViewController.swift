@@ -324,6 +324,9 @@ class ViewController: UIViewController {
         playmode = !playmode;
 
         if (playmode) {
+            for note in collectionOfNotes {
+                note.enabled = false
+            }
             trash_closed.hidden = true
             trash_open.hidden = true
             deleteAllButton.hidden = true
@@ -341,6 +344,9 @@ class ViewController: UIViewController {
                 self.sequencer.frame.offset(dx: 0, dy: -150)
             }) */
         } else {
+            for note in collectionOfNotes {
+                note.enabled = true
+            }
             //self.menu.hidden = false
             //self.sequencer.hidden = true
             NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("showTrash"), userInfo: self, repeats: false)
@@ -497,98 +503,85 @@ class ViewController: UIViewController {
     // Creates new note if not touching existing note, otherwise makes that note current
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        
-        //create notes
-        
         for note in collectionOfNotes {
             var touched = false
-            for touch: UITouch in touches {
-                if touch. {
+            var cur_touch : UITouch = UITouch()
+            for touch in touches {
+                let t = touch as! UITouch
+                var locationPoint = t.locationInView(note)
+                if note.containsTouch(locationPoint) {
+                    touched = true
+                    cur_touch = t
+                }
+            }
+            if (touched && note.isPlaying() == false) {
+                    playedNote(note)
+                    note.beginTrackingWithTouch(cur_touch, withEvent: event)
+                    note.startPlaying()
+            } else if (!touched && note.isPlaying()) {
+                    stoppedNote(note)
+                    note.stopPlaying()
+            }
+        }
+    }
+    
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        for note in collectionOfNotes {
+            var touched = false
+            var cur_touch : UITouch = UITouch()
+            for touch in touches {
+                let t = touch as! UITouch
+                var locationPoint = t.locationInView(note)
+                if note.containsTouch(locationPoint) {
+                    touched = true
+                    cur_touch = t
+                }
+            }
+            if (touched && note.isPlaying() == false) {
+                playedNote(note)
+                note.beginTrackingWithTouch(cur_touch, withEvent: event)
+                note.startPlaying()
+            } else if (!touched && note.isPlaying()) {
+                stoppedNote(note)
+                note.endTrackingWithTouch(cur_touch, withEvent: event)
+                note.stopPlaying()
+            }
+        }
+    }
+    
+
+    
+    // Stop playing the note if it wasn't a drag from a sustain
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        for note in collectionOfNotes {
+            for touch in touches {
+                let t = touch as! UITouch
+                var locationPoint = t.locationInView(note)
+                if note.containsTouch(locationPoint) && note.isPlaying() {
+                    stoppedNote(note)
+                    note.endTrackingWithTouch(t, withEvent: event)
+                    note.stopPlaying()
+                }
+            }
+        }
+    }
+    
+    override func touchesCancelled(touches: Set<NSObject>, withEvent: UIEvent) {
+        for note in collectionOfNotes {
+            var touched = false
+            for touch in touches {
+                let t = touch as! UITouch
+                var locationPoint = t.locationInView(note)
+                if note.containsTouch(locationPoint) {
                     touched = true
                 }
             }
             if (touched && note.isPlaying() == false) {
-                // Start note
-                // note.startPlaying()
+                playedNote(note)
+                note.startPlaying()
             } else if (!touched && note.isPlaying()) {
-                // Stop note
-                // note.stopPlaying()
-            }
-        }
-            
-            var loc: CGPoint
-            var is_sustain: Bool = false
-            //if in a sustain, don't make a new note, instead just update the one we are touching now
-            for c in collectionOfNotes {
-                loc = touch.locationInView(c)
-                if c.pointInside(loc, withEvent: nil) {
-                    note_dict[pointerToString(touch)] = c.index
-                    is_sustain = true
-                    //don't delete circle on touchup if first tap
-                    no_delete_flag[c.index] = true
-                    
-                    break
-                }
-            }
-            if (is_sustain) {
-                continue
-            }
-            //if not in a sustain, then go ahead and create new note
-            loc = touch.locationInView(grid_image)
-            let index = createNote(loc, isPlayback: false)
-            if (index != -1) {
-                note_dict[pointerToString(touch)] = index
-            }
-        }
-    }
-    
-    
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        for touch in touches {
-            let touch_loc = touch.locationInView(grid_image)
-            if let index = note_dict[pointerToString(touch)] {
-                updateNote(index, loc: touch_loc)
-            }
-        }
-    }
-    
-    
-    
-    // Stop playing the note if it wasn't a drag from a sustain
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        for touch in touches {
-            if (touch.tapCount >= 2) {
-                if let index = note_dict[pointerToString(touch)]{
-                    let c = circles[index]
-                    var double_tap_rec = UITapGestureRecognizer(target: circles[c.index], action: "handleDoubleTap:")
-                    double_tap_rec.numberOfTapsRequired = 2
-                    c.addGestureRecognizer(double_tap_rec)
-                    
-                }
-                // The view responds to the tap
-                //don't delete
-            } else {
-                if let index = note_dict[pointerToString(touch)]{
-                    deleteNote(index)
-                }
-            }
-        }
-        //enable scroll again on touch up
-        if (event.allTouches()?.count == touches.count) {
-            (parentViewController as InstrumentViewController).enableScroll()
-        }
-    }
-    
-    override func touchesCancelled(touches: NSSet, withEvent: UIEvent) {
-        // Multitouching gestures got in the way
-        if touches.count == 4 || touches.count == 5 {
-            let alert: UIAlertController = UIAlertController(title: "Oops!", message: "Looks like you have multitasking gestures enabled, and it just interfered with your playing. You can fix this problem by disabling them at Settings > General > Multitasking Gestures", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-        }
-        for touch in touches {
-            if let index = note_dict[pointerToString(touch)] {
-                deleteNote(index)
+                stoppedNote(note)
+                note.stopPlaying()
             }
         }
     }
