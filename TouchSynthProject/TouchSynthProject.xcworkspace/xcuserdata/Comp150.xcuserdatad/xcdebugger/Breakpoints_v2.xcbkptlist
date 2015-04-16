@@ -153,11 +153,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sequencer.swift"
-            timestampString = "450845311.474334"
+            timestampString = "450849275.475846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "Sequencer"
             landmarkType = "3">
          </BreakpointContent>
@@ -169,11 +169,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sequencer.swift"
-            timestampString = "450844670.072357"
+            timestampString = "450849275.475846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "isRecording()"
             landmarkType = "5">
          </BreakpointContent>

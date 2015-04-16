@@ -18,6 +18,7 @@ import AVFoundation
 
 protocol recordingProtocol{
     func recordNote(note: Note, command: recData.command)
+    func recordStop()
     func doneRecording() -> [recData.sample]
 }
 
@@ -42,12 +43,13 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     var rec_length : Int = 0
     var timers : [NSTimer] = []
     var pause_time : NSTimeInterval = 0
+    var recording_speed: Double = 120
     
     var timer = NSTimer()
     var startTime = NSTimeInterval()
     var metronomeSoundPlayer: AVAudioPlayer!
     var beatCount = 0
-    var metronome = false
+    var metronome = true
     
     required init(coder aDecoder: NSCoder) {
         self.is_recording = false
@@ -149,10 +151,12 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     func stop()
     {
         self.seqPicker!.userInteractionEnabled = true
+        recorder?.recordStop()
         recording = recorder?.doneRecording()
         recorder = nil
         stopTimer()
         self.is_recording = false
+        recording_speed = Double(self.pickerData[1][self.seqPicker!.selectedRowInComponent(1)].toInt()!)
         //sequencer!.stop()
     }
     
@@ -167,7 +171,8 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
             
             let params = ["note" : s.note, "value" : s.note_value]
             var timer = NSTimer()
-            var fireAfter = s.elapsed_time - pause_time
+            var timeRatio: Double = recording_speed / Double(self.pickerData[1][self.seqPicker!.selectedRowInComponent(1)].toInt()!)
+            var fireAfter = (s.elapsed_time - pause_time) * timeRatio
             if(s.cmd == recData.command.ON){
                 timer = NSTimer.scheduledTimerWithTimeInterval(fireAfter, target: self, selector : Selector("playNoteInPlayback:"), userInfo: params, repeats: false)
                 timers.append(timer)
@@ -176,10 +181,21 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
                 timer = NSTimer.scheduledTimerWithTimeInterval(fireAfter, target: self, selector : Selector("stopNoteInPlayback:"), userInfo: params, repeats: false)
                 timers.append(timer)
             }
+            
+            else if(s.cmd == recData.command.STOP){
+                timer = NSTimer.scheduledTimerWithTimeInterval(fireAfter, target: self, selector : Selector("endOfPlayback:"), userInfo: params, repeats: false)
+                timers.append(timer)
+            }
+            
             // NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes) // use this so the NSTimer can execute concurrently with UIChanges
             
             
         }
+    }
+    
+    func endOfPlayback(timer: NSTimer) {
+        stopTimer()
+        self.is_playing = false
     }
     
     func playNoteInPlayback(timer: NSTimer){
@@ -212,7 +228,6 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     func recordNoteOn(note: Note) {
         if (isRecording()) {
             recorder?.recordNote(note, command: recData.command.ON)
-            NSLog("Lol we're recording soemthing")
         }
         
         /*
@@ -266,7 +281,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         
         timer.invalidate()
         self.bar!.text = "0000."
-        self.beat!.text = "0"
+        self.beat!.text = "1"
     }
     
     func pressedBack()
@@ -294,7 +309,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         var timePerBeat = fullTimeSig.count > 1 ? fullTimeSig[1].toInt() : 0
         
         self.bar!.text = String(format: "%04d", self.beatCount / beatsPerBar!) + "."
-        self.beat!.text = String(self.beatCount % beatsPerBar!)
+        self.beat!.text = String(self.beatCount % beatsPerBar! + 1)
         
         if self.metronome {
             metronomeSoundPlayer.play()

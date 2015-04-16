@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     
     var first_time = true
     var recording = false
-    var metronome = false
+    var metronome = true
 
     
 
@@ -129,7 +129,7 @@ class ViewController: UIViewController {
         playButton.setBackgroundImage(UIImage(named:"play.png")!, forState: .Normal)
         backButton.setBackgroundImage(UIImage(named:"back.png")!, forState: .Normal)
         recordButton.setBackgroundImage(UIImage(named:"record.png")!, forState: .Normal)
-        metronomeButton.setBackgroundImage(UIImage(named:"metronome.png")!, forState: .Normal)
+        metronomeButton.setBackgroundImage(UIImage(named:"metronome_on.png")!, forState: .Normal)
         playButton.setTitle("", forState: .Normal)
         backButton.setTitle("", forState: .Normal)
         recordButton.setTitle("", forState: .Normal)

@@ -32,4 +32,9 @@ class record: recordingProtocol{
         
     }
     
+    func recordStop() {
+        let new_sample = recData.sample(elapsed_time: -(beginTime.timeIntervalSinceNow) , note_value: 0, note: Note(), cmd: recData.command.STOP)
+        samples.append(new_sample)
+    }
+    
 }

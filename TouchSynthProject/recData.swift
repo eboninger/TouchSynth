@@ -12,8 +12,7 @@ class recData {
     enum command {
         case ON
         case OFF
-        case HOLD //triggered while user is still pressing down
-        case SUS //triggered by double tap sustain
+        case STOP
     }
     
     struct sample{
