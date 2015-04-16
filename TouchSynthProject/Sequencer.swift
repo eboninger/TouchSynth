@@ -31,11 +31,12 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     var beat: UILabel?
     var seqPicker: UIPickerView?
     var pickerData = [
-        ["5/4", "4/4", "3/4"]
+        ["6/8", "5/4", "4/4", "3/4"]
     ]
     
     var recorder : recordingProtocol?
     var recording : [recData.sample]?
+    var contains_recording = false
     var recordingIndex = 0;
     var is_recording: Bool!
     var is_playing: Bool!
@@ -48,6 +49,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     var timer = NSTimer()
     var startTime = NSTimeInterval()
     var metronomeSoundPlayer: AVAudioPlayer!
+    var metronomeSoftSoundPlayer: AVAudioPlayer!
     var beatCount = 0
     var metronome = true
     
@@ -64,7 +66,12 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         
         
         // Initialize the sound player
-        let metronomeSoundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("metronomeClick", ofType: "mp3")!)
+        let metronomeSoftSoundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("metroClickSoft", ofType: "wav")!)
+        metronomeSoftSoundPlayer = AVAudioPlayer(contentsOfURL: metronomeSoftSoundURL, error: nil)
+        metronomeSoftSoundPlayer.prepareToPlay()
+        
+        // Initialize the sound player
+        let metronomeSoundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("metroClick", ofType: "wav")!)
         metronomeSoundPlayer = AVAudioPlayer(contentsOfURL: metronomeSoundURL, error: nil)
         metronomeSoundPlayer.prepareToPlay()
 
@@ -76,7 +83,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         self.seqPicker = seqPicker
         self.seqPicker!.delegate = self
         self.seqPicker!.dataSource = self
-        self.seqPicker!.selectRow(1, inComponent: 0, animated: true)
+        self.seqPicker!.selectRow(2, inComponent: 0, animated: true)
         self.seqPicker!.selectRow(120, inComponent: 1, animated: true)
         self.bar = bar
         self.beat = beat
@@ -140,8 +147,8 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     {
         self.seqPicker!.userInteractionEnabled = false
         recorder = record()
-        startTimer()
         self.is_recording = true
+        startTimer()
         //self.sequencer!.preRoll = 0
         //self.sequencer!.recordEnabledTracks = NSSet(object: sequence!.addTrack())
         //sequencer!.startRecording()
@@ -150,19 +157,29 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     func stop()
     {
+        self.contains_recording = true
         self.seqPicker!.userInteractionEnabled = true
         recorder?.recordStop()
         recording = recorder?.doneRecording()
+        recordingIndex = 0
         recorder = nil
         stopTimer()
         self.is_recording = false
         recording_speed = Double(self.pickerData[1][self.seqPicker!.selectedRowInComponent(1)].toInt()!)
         //sequencer!.stop()
+        self.beatCount = 0
+    }
+    
+    func containsRecording() -> Bool {
+        return contains_recording
     }
     
     func startPlayback()
     {
-        //sequencer!.startPlayback()
+        NSLog("Pause time: " + String(stringInterpolationSegment: pause_time))
+        if (self.recording == nil) {
+            return
+        }
         self.is_playing = true
         startTimer()
         rec_length = recording!.count
@@ -193,9 +210,24 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         }
     }
     
+    func pausePlayback(){
+        for timer in timers {
+            timer.invalidate()
+        }
+        timers = []
+        is_playing = false
+        pause_time = recording![recordingIndex].elapsed_time
+        parentViewController!.playButton.setBackgroundImage(UIImage(named:"play.png")!, forState: .Normal)
+    }
+    
     func endOfPlayback(timer: NSTimer) {
         stopTimer()
         self.is_playing = false
+        pause_time = 0
+        recordingIndex = 0
+        parentViewController!.playButton.setBackgroundImage(UIImage(named:"play.png")!, forState: .Normal)
+        parentViewController!.recordButton.enabled = true
+        self.beatCount = 0
     }
     
     func playNoteInPlayback(timer: NSTimer){
@@ -204,16 +236,8 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         let note_value = userInfo["value"] as! Int
         var touch = UITouch()
         self.parentViewController!.playedNote(note, touch: touch)
-        
-        
-        //createNote(pt, isPlayback: true)
-        //recordingIndex++
-        //if(recordingIndex == rec_length){
-        //    recordingIndex = 0
-        //    inPlayback = false
-        //    pause_time = 0
-        //    (parentViewController as InstrumentViewController).resetPlayButton()
-       // }
+        recordingIndex++
+
     }
     
     func stopNoteInPlayback(timer: NSTimer){
@@ -223,6 +247,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         var touch = UITouch()
         
         self.parentViewController!.stoppedNote(note, touch: touch)
+        recordingIndex++
     }
     
     func recordNoteOn(note: Note) {
@@ -266,22 +291,32 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
             return
         }
         var bpm: Double = Double(self.pickerData[1][self.seqPicker!.selectedRowInComponent(1)].toInt()!)
-        var frequency: NSTimeInterval = 60 / bpm
+        
+        var timeSigString = self.pickerData[0][self.seqPicker!.selectedRowInComponent(0)]
+        var fullTimeSig = split(timeSigString) {$0 == "/"}
+        var beatsPerBar = fullTimeSig[0].toInt()
+        var timePerBeat = fullTimeSig[1].toInt()
+        
+        var frequency: NSTimeInterval = (60 / bpm) / Double(timePerBeat! / 4)
                 let aSelector : Selector = "updateTime"
         if self.metronome {
             metronomeSoundPlayer.play()
         }
         timer = NSTimer.scheduledTimerWithTimeInterval(frequency, target: self, selector: aSelector, userInfo: nil, repeats: true)
         startTime = NSDate.timeIntervalSinceReferenceDate()
-        self.beatCount = 0
     }
     
     func stopTimer()
     {
-        
         timer.invalidate()
-        self.bar!.text = "0000."
+        self.bar!.text = "0001."
         self.beat!.text = "1"
+    }
+    
+    func pauseTimer()
+    {
+        timer.invalidate()
+        self.beatCount++
     }
     
     func pressedBack()
@@ -297,8 +332,13 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     func updateTime()
     {
+        
         if !isRecording() && !isPlaying() {
-            stopTimer()
+            if (recordingIndex > 0) {
+                pauseTimer()
+            } else {
+                stopTimer()
+            }
             return
         }
         self.beatCount += 1
@@ -308,11 +348,15 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         var beatsPerBar = fullTimeSig[0].toInt()
         var timePerBeat = fullTimeSig.count > 1 ? fullTimeSig[1].toInt() : 0
         
-        self.bar!.text = String(format: "%04d", self.beatCount / beatsPerBar!) + "."
+        self.bar!.text = String(format: "%04d", self.beatCount / beatsPerBar! + 1) + "."
         self.beat!.text = String(self.beatCount % beatsPerBar! + 1)
-        
+
         if self.metronome {
-            metronomeSoundPlayer.play()
+            if (self.beatCount % beatsPerBar! == 0) {
+                metronomeSoundPlayer.play()
+            } else {
+                metronomeSoftSoundPlayer.play()
+            }
         }
 
         //Find the difference between current time and start time.

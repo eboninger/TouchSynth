@@ -31,6 +31,9 @@
 		773F23351AD206730037E01D /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232D1AD206730037E01D /* record.png */; };
 		773F23361AD206730037E01D /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232E1AD206730037E01D /* settings.png */; };
 		773F23371AD206730037E01D /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232F1AD206730037E01D /* stop.png */; };
+		775403221ADF6B8B008FF90B /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 775403211ADF6B8B008FF90B /* pause.png */; };
+		775403241ADF6DBC008FF90B /* metroClick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 775403231ADF6DBC008FF90B /* metroClick.wav */; };
+		775403281ADF70D2008FF90B /* metroClickSoft.wav in Resources */ = {isa = PBXBuildFile; fileRef = 775403271ADF70D2008FF90B /* metroClickSoft.wav */; };
 		7756FC401AA0C054005A863A /* MusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7756FC3F1AA0C054005A863A /* MusicController.swift */; };
 		775C1AAE1ADE12A7002FFCF2 /* record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C1AAD1ADE12A7002FFCF2 /* record.swift */; };
 		775C1AB41ADE1492002FFCF2 /* recData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C1AB31ADE1492002FFCF2 /* recData.swift */; };
@@ -39,7 +42,6 @@
 		775FEF771ACB81680004FC0A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775FEF761ACB81680004FC0A /* SettingsViewController.swift */; };
 		775FEF7E1ACB9A560004FC0A /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775FEF7A1ACB9A560004FC0A /* CoreBluetooth.framework */; };
 		776D8AB21A9EAFC8001F6500 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776D8AB11A9EAFC8001F6500 /* MenuBar.swift */; };
-		778290461ADDB6F2006DCF1B /* metronomeClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 778290451ADDB6F2006DCF1B /* metronomeClick.mp3 */; };
 		7792163C1A9ABFDA0056465C /* adsr_obj.pd in Resources */ = {isa = PBXBuildFile; fileRef = 779216391A9ABFDA0056465C /* adsr_obj.pd */; };
 		7792163D1A9ABFDA0056465C /* filter.pd in Resources */ = {isa = PBXBuildFile; fileRef = 7792163A1A9ABFDA0056465C /* filter.pd */; };
 		7792163E1A9ABFDA0056465C /* proj1.pd in Resources */ = {isa = PBXBuildFile; fileRef = 7792163B1A9ABFDA0056465C /* proj1.pd */; };
@@ -89,6 +91,9 @@
 		773F232D1AD206730037E01D /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = ../record.png; sourceTree = "<group>"; };
 		773F232E1AD206730037E01D /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = ../settings.png; sourceTree = "<group>"; };
 		773F232F1AD206730037E01D /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop.png; path = ../stop.png; sourceTree = "<group>"; };
+		775403211ADF6B8B008FF90B /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pause.png; path = ../pause.png; sourceTree = "<group>"; };
+		775403231ADF6DBC008FF90B /* metroClick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = metroClick.wav; path = ../metroClick.wav; sourceTree = "<group>"; };
+		775403271ADF70D2008FF90B /* metroClickSoft.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = metroClickSoft.wav; path = ../metroClickSoft.wav; sourceTree = "<group>"; };
 		7756FC3F1AA0C054005A863A /* MusicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicController.swift; path = TouchSynthProject/MusicController.swift; sourceTree = "<group>"; };
 		775C1AAD1ADE12A7002FFCF2 /* record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = record.swift; sourceTree = "<group>"; };
 		775C1AB31ADE1492002FFCF2 /* recData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = recData.swift; sourceTree = "<group>"; };
@@ -100,7 +105,6 @@
 		775FEF7A1ACB9A560004FC0A /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		775FEF7B1ACB9A560004FC0A /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		776D8AB11A9EAFC8001F6500 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = SOURCE_ROOT; };
-		778290451ADDB6F2006DCF1B /* metronomeClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = metronomeClick.mp3; path = ../metronomeClick.mp3; sourceTree = "<group>"; };
 		779216391A9ABFDA0056465C /* adsr_obj.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = adsr_obj.pd; path = TouchSynthProject/adsr_obj.pd; sourceTree = "<group>"; };
 		7792163A1A9ABFDA0056465C /* filter.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = filter.pd; path = TouchSynthProject/filter.pd; sourceTree = "<group>"; };
 		7792163B1A9ABFDA0056465C /* proj1.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = proj1.pd; path = TouchSynthProject/proj1.pd; sourceTree = "<group>"; };
@@ -134,7 +138,8 @@
 			children = (
 				775C1AB01ADE136B002FFCF2 /* Pd */,
 				775C1AAF1ADE1315002FFCF2 /* Pictures */,
-				778290451ADDB6F2006DCF1B /* metronomeClick.mp3 */,
+				775403231ADF6DBC008FF90B /* metroClick.wav */,
+				775403271ADF70D2008FF90B /* metroClickSoft.wav */,
 				7729D1AC1A965D6000AE22E4 /* TouchSynthProject */,
 				7729D1C91A965D6000AE22E4 /* TouchSynthProjectTests */,
 				7729D1AB1A965D6000AE22E4 /* Products */,
@@ -206,6 +211,7 @@
 				773F232C1AD206730037E01D /* play.png */,
 				773F232D1AD206730037E01D /* record.png */,
 				773F232E1AD206730037E01D /* settings.png */,
+				775403211ADF6B8B008FF90B /* pause.png */,
 				773F232F1AD206730037E01D /* stop.png */,
 				773F23281AD206730037E01D /* back.png */,
 				773F23291AD206730037E01D /* info.png */,
@@ -358,13 +364,15 @@
 			files = (
 				775CB1991A9D6CC5001A9051 /* demo.pd in Resources */,
 				77B83E821AA8083400E9502C /* final_patch.pd in Resources */,
-				778290461ADDB6F2006DCF1B /* metronomeClick.mp3 in Resources */,
 				773F23331AD206730037E01D /* metronome.png in Resources */,
 				15FCE6D51AA3DC50009F504B /* trash-closed copy.png in Resources */,
 				7792163C1A9ABFDA0056465C /* adsr_obj.pd in Resources */,
 				773F23321AD206730037E01D /* metronome_on.png in Resources */,
 				773F23361AD206730037E01D /* settings.png in Resources */,
+				775403281ADF70D2008FF90B /* metroClickSoft.wav in Resources */,
+				775403241ADF6DBC008FF90B /* metroClick.wav in Resources */,
 				7792163D1A9ABFDA0056465C /* filter.pd in Resources */,
+				775403221ADF6B8B008FF90B /* pause.png in Resources */,
 				773634CB1AA7F88500D6D627 /* our_adsr.pd in Resources */,
 				773F23341AD206730037E01D /* play.png in Resources */,
 				7792163E1A9ABFDA0056465C /* proj1.pd in Resources */,

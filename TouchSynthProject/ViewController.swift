@@ -449,7 +449,18 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pressedPlay(sender: UIButton) {
-        sequencer!.startPlayback()
+        if (!sequencer.containsRecording()) {
+            return
+        }
+        if (!sequencer.isPlaying()) {
+            recordButton.enabled = false
+            sender.setBackgroundImage(UIImage(named:"pause.png")!, forState: .Normal)
+            sequencer!.startPlayback()
+        } else {
+            sender.setBackgroundImage(UIImage(named:"play.png")!, forState: .Normal)
+            sequencer!.pausePlayback()
+        }
+        
     }
     
     @IBAction func pressedRecord(sender: UIButton) {
