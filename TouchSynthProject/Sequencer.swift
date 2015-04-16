@@ -17,11 +17,12 @@ import UIKit
 import AVFoundation
 
 protocol recordingProtocol{
-    func recordNote(pt: CGPoint, command: recData.command, note_index: Int)
+    func recordNote(note: Note, command: recData.command)
     func doneRecording() -> [recData.sample]
 }
 
 class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
+    var parentViewController: ViewController?
     var deviceManager: MIKMIDIDeviceManager?
     var sequencer: MIKMIDISequencer?
     var sequence: MIKMIDISequence?
@@ -35,6 +36,12 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     var recorder : recordingProtocol?
     var recording : [recData.sample]?
     var recordingIndex = 0;
+    var is_recording: Bool!
+    var is_playing: Bool!
+    var pause_state : [CGPoint] = []
+    var rec_length : Int = 0
+    var timers : [NSTimer] = []
+    var pause_time : NSTimeInterval = 0
     
     var timer = NSTimer()
     var startTime = NSTimeInterval()
@@ -43,7 +50,8 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     var metronome = false
     
     required init(coder aDecoder: NSCoder) {
-        
+        self.is_recording = false
+        self.is_playing = false
         super.init(coder: aDecoder)
         self.sequence = MIKMIDISequence()
         self.sequencer = MIKMIDISequencer(sequence: self.sequence!)
@@ -60,8 +68,9 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
 
     }
     
-    func initialize(seqPicker: UIPickerView, bar: UILabel, beat: UILabel)
+    func initialize(parentViewController: ViewController, seqPicker: UIPickerView, bar: UILabel, beat: UILabel)
     {
+        self.parentViewController = parentViewController
         self.seqPicker = seqPicker
         self.seqPicker!.delegate = self
         self.seqPicker!.dataSource = self
@@ -118,7 +127,11 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     }
     
     func isRecording() -> Bool {
-        return sequencer!.recording
+        return self.is_recording
+    }
+    
+    func isPlaying() -> Bool {
+        return self.is_playing
     }
     
     func startRecording()
@@ -126,6 +139,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         self.seqPicker!.userInteractionEnabled = false
         recorder = record()
         startTimer()
+        self.is_recording = true
         //self.sequencer!.preRoll = 0
         //self.sequencer!.recordEnabledTracks = NSSet(object: sequence!.addTrack())
         //sequencer!.startRecording()
@@ -138,29 +152,70 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         recording = recorder?.doneRecording()
         recorder = nil
         stopTimer()
+        self.is_recording = false
         //sequencer!.stop()
     }
     
     func startPlayback()
     {
-        sequencer!.startPlayback()
+        //sequencer!.startPlayback()
+        self.is_playing = true
         startTimer()
-    }
-    
-    func createNoteWithIndex(timer: NSTimer){
-        var userInfo = timer.userInfo as NSDictionary
-        let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
-        createNote(pt, isPlayback: true)
-        recordingIndex++
-        if(recordingIndex == rec_length){
-            recordingIndex = 0
-            inPlayback = false
-            pause_time = 0
-            (parentViewController as InstrumentViewController).resetPlayButton()
+        rec_length = recording!.count
+        for var i = recordingIndex; i < rec_length; i++ {
+            var s = recording![i];
+            
+            let params = ["note" : s.note, "value" : s.note_value]
+            var timer = NSTimer()
+            var fireAfter = s.elapsed_time - pause_time
+            if(s.cmd == recData.command.ON){
+                timer = NSTimer.scheduledTimerWithTimeInterval(fireAfter, target: self, selector : Selector("playNoteInPlayback:"), userInfo: params, repeats: false)
+                timers.append(timer)
+            }
+            else if(s.cmd == recData.command.OFF){
+                timer = NSTimer.scheduledTimerWithTimeInterval(fireAfter, target: self, selector : Selector("stopNoteInPlayback:"), userInfo: params, repeats: false)
+                timers.append(timer)
+            }
+            // NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes) // use this so the NSTimer can execute concurrently with UIChanges
+            
+            
         }
     }
     
+    func playNoteInPlayback(timer: NSTimer){
+        var userInfo = timer.userInfo as! NSDictionary
+        let note = userInfo["note"] as! Note
+        let note_value = userInfo["value"] as! Int
+        var touch = UITouch()
+        self.parentViewController!.playedNote(note, touch: touch)
+        
+        
+        //createNote(pt, isPlayback: true)
+        //recordingIndex++
+        //if(recordingIndex == rec_length){
+        //    recordingIndex = 0
+        //    inPlayback = false
+        //    pause_time = 0
+        //    (parentViewController as InstrumentViewController).resetPlayButton()
+       // }
+    }
+    
+    func stopNoteInPlayback(timer: NSTimer){
+        var userInfo = timer.userInfo as! NSDictionary
+        let note = userInfo["note"] as! Note
+        let note_value = userInfo["value"] as! Int
+        var touch = UITouch()
+        
+        self.parentViewController!.stoppedNote(note, touch: touch)
+    }
+    
     func recordNoteOn(note: Note) {
+        if (isRecording()) {
+            recorder?.recordNote(note, command: recData.command.ON)
+            NSLog("Lol we're recording soemthing")
+        }
+        
+        /*
         let noteOn = MIKMutableMIDINoteOnCommand()
         noteOn.timestamp = NSDate()
         noteOn.channel = 1
@@ -174,16 +229,20 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         //noteOff.note = noteOn.note
         
         self.sequencer!.recordMIDICommand(noteOn)
-        NSLog("Added note on")
+        NSLog("Added note on")*/
     }
     
     func recordNoteOff(note: Note) {
+        if (isRecording()) {
+            recorder?.recordNote(note, command: recData.command.OFF)
+        }
+        /*
         let noteOff = MIKMutableMIDINoteOffCommand()
         noteOff.timestamp = NSDate()
         noteOff.channel = 1
         noteOff.note = UInt(note.value)
         self.sequencer!.recordMIDICommand(noteOff)
-        NSLog("Added note off")
+        NSLog("Added note off")*/
     }
     
     func startTimer()
@@ -223,8 +282,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     func updateTime()
     {
-        if !self.sequencer!.playing {
-            NSLog("Calling stop timer!!!")
+        if !isRecording() && !isPlaying() {
             stopTimer()
             return
         }
@@ -239,7 +297,6 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         self.beat!.text = String(self.beatCount % beatsPerBar!)
         
         if self.metronome {
-            NSLog("About to play metronome!")
             metronomeSoundPlayer.play()
         }
 

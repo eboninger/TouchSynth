@@ -18,8 +18,8 @@ class recData {
     
     struct sample{
         var elapsed_time: NSTimeInterval
-        var note_loc: CGPoint
+        var note_value: Int
+        var note: Note
         var cmd: command
-        var note_index: Int
     }
 }

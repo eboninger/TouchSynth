@@ -1,11 +1,11 @@
-#N canvas 362 166 512 473 10;
+#N canvas 453 96 512 473 10;
 #X msg 128 273 set \$1;
-#X obj 128 217 makefilename /Users/comp150/Documents/Eli/Pd-for-LibPd/soundfonts/%s
-;
 #X obj 136 141 symbol;
 #X obj 133 72 inlet;
 #X obj 128 322 outlet;
-#X connect 0 0 4 0;
-#X connect 1 0 0 0;
+#X obj 100 199 makefilename /Users/comp150/Documents/TeamTouchSynth/comp150isw-spring2015-team7/TouchSynthProject/Pd-for-LibPd/soundfonts/%s
+;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
 #X connect 2 0 1 0;
-#X connect 3 0 2 0;
+#X connect 4 0 0 0;

@@ -179,7 +179,7 @@ class ViewController: UIViewController {
     
     func initializeSequencer()
     {
-        sequencer.initialize(seqPicker, bar: bar, beat: beat)
+        sequencer.initialize(self, seqPicker: seqPicker, bar: bar, beat: beat)
         sequencer.layer.cornerRadius = 0.02 * sequencer.bounds.size.width
         
         sequencer.layer.shadowColor = UIColor.blackColor().CGColor
@@ -212,9 +212,6 @@ class ViewController: UIViewController {
     {
         let myNote = Note(frame: CGRectMake(x_loc + 80, y_loc + 130, 75, 105))
         myNote.initialize(title, value: value, tColor: tcolor, bColor: bcolor)
-        myNote.addTarget(self, action: "playedNote:", forControlEvents: .TouchDown)
-        myNote.addTarget(self, action: "stoppedNote:", forControlEvents: .TouchUpInside)
-        myNote.addTarget(self, action: "stoppedNote:", forControlEvents: .TouchDragExit)
         let aSelector : Selector = "handlePan:"
         let panHandler = UIPanGestureRecognizer(target: self, action: aSelector)
         myNote.addGestureRecognizer(panHandler)
@@ -313,10 +310,35 @@ class ViewController: UIViewController {
         if (playmode) {
             return
         }
-        let translation = recognizer.translationInView(self.view)
-        recognizer.view!.center = CGPoint(x:recognizer.view!.center.x + translation.x,
-            y:recognizer.view!.center.y + translation.y)
-        recognizer.setTranslation(CGPointZero, inView: self.view)
+        
+        var note = recognizer.view
+        switch(recognizer.state) {
+        
+        case .Began:
+            playView.bringSubviewToFront(note!)
+            bringControlsToFront()
+            trash_open.hidden = false
+            trash_closed.hidden = true
+            
+        case .Changed:
+            let translation = recognizer.translationInView(self.view)
+            recognizer.view!.center = CGPoint(x:recognizer.view!.center.x + translation.x,
+                y:recognizer.view!.center.y + translation.y)
+            recognizer.setTranslation(CGPointZero, inView: self.view)
+            
+        case .Ended:
+            if (inTrash(note!.frame)) {
+                note!.removeFromSuperview()
+            }
+            trash_open.hidden = true
+            trash_closed.hidden = false
+            
+        default:
+            break
+        }
+        
+        
+        
     }
     
     
@@ -378,18 +400,14 @@ class ViewController: UIViewController {
         //self.sequencer.hidden = true
     }
     
-    @IBAction func playedNote(sender: Note) {
+    @IBAction func playedNote(sender: Note, touch: UITouch) {
         if (playmode) {
             PdBase.sendList([Float(sender.value), 127], toReceiver: "note")
+            sender.beginTrackingWithTouch(touch)
             if (sequencer!.isRecording()) {
                 sequencer!.recordNoteOn(sender)
             }
             
-        } else {
-            playView.bringSubviewToFront(sender)
-            bringControlsToFront()
-            trash_open.hidden = false
-            trash_closed.hidden = true
         }
     }
     
@@ -401,18 +419,13 @@ class ViewController: UIViewController {
        // playView.bringSubviewToFront(TremoloLabel)
     }
     
-    @IBAction func stoppedNote(sender: Note) {
+    @IBAction func stoppedNote(sender: Note, touch: UITouch) {
         if (playmode) {
             PdBase.sendList([Float(sender.value), 0], toReceiver: "note")
+            sender.endTrackingWithTouch(touch)
             if (sequencer!.isRecording()) {
                 sequencer!.recordNoteOff(sender)
             }
-        } else {
-            if (inTrash(sender.frame)) {
-                sender.removeFromSuperview()
-            }
-            trash_open.hidden = true
-            trash_closed.hidden = false
         }
     }
     
@@ -505,6 +518,9 @@ class ViewController: UIViewController {
     
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        if (!playmode) {
+            return
+        }
         for note in collectionOfNotes {
             var touched = false
             var cur_touch : UITouch = UITouch()
@@ -517,18 +533,20 @@ class ViewController: UIViewController {
                 }
             }
             if (touched && note.isPlaying() == false) {
-                    playedNote(note)
-                    note.beginTrackingWithTouch(cur_touch, withEvent: event)
+                    playedNote(note, touch: cur_touch)
+                
                     note.startPlaying()
             } else if (!touched && note.isPlaying()) {
-                    stoppedNote(note)
-                    note.endTrackingWithTouch(cur_touch, withEvent: event)
+                    stoppedNote(note, touch: cur_touch)
                     note.stopPlaying()
             }
         }
     }
     
     override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        if (!playmode) {
+            return
+        }
         var count = 0
         for note in collectionOfNotes {
             var touched = false
@@ -543,12 +561,10 @@ class ViewController: UIViewController {
                 }
             }
             if (touched && note.isPlaying() == false) {
-                playedNote(note)
-                note.beginTrackingWithTouch(cur_touch, withEvent: event)
+                playedNote(note, touch: cur_touch)
                 note.startPlaying()
             } else if (!touched && note.isPlaying()) {
-                stoppedNote(note)
-                note.endTrackingWithTouch(cur_touch, withEvent: event)
+                stoppedNote(note, touch: cur_touch)
                 note.stopPlaying()
             }
         }
@@ -558,14 +574,16 @@ class ViewController: UIViewController {
     
     // Stop playing the note if it wasn't a drag from a sustain
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        if (!playmode) {
+            return
+        }
         for note in collectionOfNotes {
 
             for touch in touches {
                 let t = touch as! UITouch
                 var locationPoint = t.locationInView(note)
                 if note.containsTouch(locationPoint) && note.isPlaying() {
-                    stoppedNote(note)
-                    note.endTrackingWithTouch(t, withEvent: event)
+                    stoppedNote(note, touch: t)
                     note.stopPlaying()
                 }
             }

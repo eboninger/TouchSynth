@@ -26,8 +26,8 @@ class record: recordingProtocol{
         return samples
     }
     
-    func recordNote(pt: CGPoint, command: recData.command, note_index: Int) {
-        let new_sample = recData.sample(elapsed_time: -(beginTime.timeIntervalSinceNow) , note_loc: pt, cmd: command, note_index : note_index)
+    func recordNote(note: Note, command: recData.command) {
+        let new_sample = recData.sample(elapsed_time: -(beginTime.timeIntervalSinceNow) , note_value: note.value, note: note, cmd: command)
         samples.append(new_sample)
         
     }
