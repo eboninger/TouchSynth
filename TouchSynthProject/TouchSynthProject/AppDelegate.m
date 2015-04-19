@@ -26,7 +26,8 @@
     }
     
     [PdBase addToSearchPath:[[NSBundle mainBundle] resourcePath]];
-    
+    PdDispatcher *dispatcher = [PdDispatcher new];
+    [PdBase setDelegate:dispatcher];
     /*// Configure the dispatcher to listen for messages from Pure Data. PdBase is initialized by libpd
     PdDispatcher *dispatcher = [PdDispatcher new];
     [PdBase setDelegate:dispatcher];

@@ -10,11 +10,23 @@ import Foundation
 
 import UIKit
 
+// Data stored for each soundfont
+struct SfData {
+    var name: String
+    var color: UIColor
+    
+    // ... other parameters go here ...
+}
+
 class ViewController: UIViewController {
     
     var playmode = true;
     var patchID : Int32 = 0
     var patch: UnsafeMutablePointer<Void>
+    var path = NSBundle.mainBundle().resourcePath! + "/"
+//    let soundfonts = ["analog_age", "banjo_1", "beautiful_pad", "bolivianflute", "Campbells_strings", "Campbells_Verby_Vocal", "church_organ", "DCs_Mellotron_Flute", "ElPiano1", "enigma_flute", "flugelhorn", "janos_lead", "jonnypad1", "jonnypad3", "jonnypad4", "jonnypad5", "jonnypad6", "jonnypad7", "jonnypad8", "LesPaul", "piano_1", "muted_trombone", "saz", "SC88Drumset", "StomperSet"]
+    
+ //   var soundfontsData: [String: SfData]
     
     var origX: CGFloat?
     var origY: CGFloat?
@@ -70,8 +82,14 @@ class ViewController: UIViewController {
     
 
     required init(coder aDecoder: NSCoder) {
-        patch = PdBase.openFile("final_patch.pd", path: NSBundle.mainBundle().resourcePath)
-    
+        
+        // Add all patches in the main bundle to Pd's search path, set up externals (needed for [soundfonts])
+        PdBase.addToSearchPath(NSBundle.mainBundle().resourcePath)
+        PdExternals.setup()
+        
+      //  patch = PdBase.openFile("final_patch.pd", path: NSBundle.mainBundle().resourcePath)
+        patch = PdBase.openFile("SFPatch.pd", path: NSBundle.mainBundle().resourcePath)
+        
         super.init(coder: aDecoder)
     }
     
@@ -144,12 +162,33 @@ class ViewController: UIViewController {
 
     }
     
+    func sendString(message: String, toReceiver: String) {
+        
+        var finalMessage = [AnyObject]()
+        for item in message.componentsSeparatedByString(" ") {
+            
+            // If the element is a number append it as a Float, otherwise as a String
+            var number = (item as NSString).floatValue
+            if item.toInt() == nil {
+                finalMessage.append(item)
+            } else {
+                finalMessage.append(number)
+            }
+        }
+        
+        PdBase.sendList(finalMessage, toReceiver: "note")
+    }
+    
     func initializePd()
     {
-        PdBase.sendFloat(0.5, toReceiver: "volumeLevel")
+        var patch_name : String?
+        patch_name = "banjo_1"
+        sendString("set \(path + patch_name!).sf2", toReceiver: "note")
+    //    PdBase.sendFloat(0.5, toReceiver: "volumeLevel")
         volumeController.value = 0.5
       //  PdBase.sendFloat(0, toReceiver: "tremoloLevel")
     //    tremoloController.value = 0
+        
         //PdBase.sendFloat
     }
     
@@ -402,6 +441,9 @@ class ViewController: UIViewController {
     
     @IBAction func playedNote(sender: Note, touch: UITouch) {
         if (playmode) {
+            var patch_name : String?
+            patch_name = "banjo_1"
+        //    PdBase.sendList([0, Float(sender.value), 127, "set \(path + patch_name!).sf2", 100, 127, 127, 127, 0], toReceiver: "note")
             PdBase.sendList([Float(sender.value), 127], toReceiver: "note")
             sender.beginTrackingWithTouch(touch)
             if (sequencer!.isRecording()) {
@@ -421,6 +463,9 @@ class ViewController: UIViewController {
     
     @IBAction func stoppedNote(sender: Note, touch: UITouch) {
         if (playmode) {
+            var patch_name : String?
+            patch_name = "banjo_1"
+        //    PdBase.sendList([0, Float(sender.value), 0, "set \(path + patch_name!).sf2", 100, 127, 127, 127, 0], toReceiver: "note")
             PdBase.sendList([Float(sender.value), 0], toReceiver: "note")
             sender.endTrackingWithTouch(touch)
             if (sequencer!.isRecording()) {

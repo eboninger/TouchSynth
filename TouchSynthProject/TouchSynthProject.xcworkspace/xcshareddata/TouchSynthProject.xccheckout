@@ -10,6 +10,8 @@
 	<string>TouchSynthProject</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>4D4707520BA012B77A777E6A5B398CBC2FD94355</key>
+		<string>https://github.com/cpenny42/Soundfonts-Demo.git</string>
 		<key>5C0CF757CB920F47AEB6035D536B7F1E2BB0C345</key>
 		<string>https://github.com/mixedinkey-opensource/MIKMIDI.git</string>
 		<key>A6223BA250918506E91E8E27BE840C689B26696D</key>
@@ -23,6 +25,8 @@
 	<string>TouchSynthProject/TouchSynthProject.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>4D4707520BA012B77A777E6A5B398CBC2FD94355</key>
+		<string>../../../Soundfonts-Demo</string>
 		<key>5C0CF757CB920F47AEB6035D536B7F1E2BB0C345</key>
 		<string>../../../MIKMIDI</string>
 		<key>A6223BA250918506E91E8E27BE840C689B26696D</key>
@@ -71,6 +75,14 @@
 			<string>C99A26E4EBC8665905113A782DBCD6A7276F69EB</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Pd-for-LibPd</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4D4707520BA012B77A777E6A5B398CBC2FD94355</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Soundfonts-Demo</string>
 		</dict>
 	</array>
 </dict>
