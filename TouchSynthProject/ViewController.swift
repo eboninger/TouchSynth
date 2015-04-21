@@ -34,6 +34,8 @@ class ViewController: UIViewController {
     var first_time = true
     var recording = false
     var metronome = true
+    
+    var sound = "piano_1"
 
     
 
@@ -181,15 +183,17 @@ class ViewController: UIViewController {
     
     func initializePd()
     {
-        var patch_name : String?
-        patch_name = "banjo_1"
-        sendString("set \(path + patch_name!).sf2", toReceiver: "note")
-    //    PdBase.sendFloat(0.5, toReceiver: "volumeLevel")
+
+        PdBase.sendList(["set", "\(path + sound).sf2"], toReceiver: "soundfont")
         volumeController.value = 0.5
-      //  PdBase.sendFloat(0, toReceiver: "tremoloLevel")
-    //    tremoloController.value = 0
+        PdBase.sendFloat(0.5, toReceiver: "volume")
         
-        //PdBase.sendFloat
+        
+        
+        //    sendString("set \(path + patch_name!).sf2", toReceiver: "soundfont")
+        //    PdBase.sendFloat(0.5, toReceiver: "volumeLevel")
+        //  PdBase.sendFloat(0, toReceiver: "tremoloLevel")
+        //    tremoloController.value = 0
     }
     
     func initializePreviewView()
@@ -475,7 +479,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func volumeChanged(sender: UISlider) {
-        PdBase.sendFloat(sender.value, toReceiver: "volumeLevel")
+        //PdBase.sendFloat(sender.value, toReceiver: "volumeLevel")
+        PdBase.sendFloat(sender.value, toReceiver: "volume")
+        //PdBase.sendList(["volume", Float(sender.value)], toReceiver: "volume")
     }
     
     //@IBAction func tremoloChanged(sender: UISlider) {

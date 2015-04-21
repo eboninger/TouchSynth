@@ -14,6 +14,7 @@
 		15FCE6D51AA3DC50009F504B /* trash-closed copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 15FCE6D31AA3DC50009F504B /* trash-closed copy.png */; };
 		15FCE6D61AA3DC50009F504B /* trash-open copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 15FCE6D41AA3DC50009F504B /* trash-open copy.png */; };
 		3DE3E2179973EF6157B2DDF9 /* libPods-TouchSynthProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE1871AA484548455F91E61 /* libPods-TouchSynthProject.a */; };
+		7720F34E1AE6CAD10006311F /* SFPatch.pd in Resources */ = {isa = PBXBuildFile; fileRef = 7720F34D1AE6CAD10006311F /* SFPatch.pd */; };
 		7729D1B01A965D6000AE22E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1AF1A965D6000AE22E4 /* main.m */; };
 		7729D1B31A965D6000AE22E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1B21A965D6000AE22E4 /* AppDelegate.m */; };
 		7729D1B61A965D6000AE22E4 /* TouchSynthProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1B41A965D6000AE22E4 /* TouchSynthProject.xcdatamodeld */; };
@@ -934,7 +935,6 @@
 		774C8FCD1AE4466100BBE7F9 /* fragile.c in Sources */ = {isa = PBXBuildFile; fileRef = 774C8FC51AE4466100BBE7F9 /* fragile.c */; };
 		774C8FCE1AE4466100BBE7F9 /* fringe.c in Sources */ = {isa = PBXBuildFile; fileRef = 774C8FC71AE4466100BBE7F9 /* fringe.c */; };
 		774C8FCF1AE4466100BBE7F9 /* loader.c in Sources */ = {isa = PBXBuildFile; fileRef = 774C8FC91AE4466100BBE7F9 /* loader.c */; };
-		774C92C51AE450E900BBE7F9 /* SFPatch.pd in Resources */ = {isa = PBXBuildFile; fileRef = 774C92C41AE450E900BBE7F9 /* SFPatch.pd */; };
 		775403221ADF6B8B008FF90B /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 775403211ADF6B8B008FF90B /* pause.png */; };
 		775403241ADF6DBC008FF90B /* metroClick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 775403231ADF6DBC008FF90B /* metroClick.wav */; };
 		775403281ADF70D2008FF90B /* metroClickSoft.wav in Resources */ = {isa = PBXBuildFile; fileRef = 775403271ADF70D2008FF90B /* metroClickSoft.wav */; };
@@ -972,6 +972,7 @@
 		15FCE6D41AA3DC50009F504B /* trash-open copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trash-open copy.png"; path = "../trash-open copy.png"; sourceTree = "<group>"; };
 		2DE1871AA484548455F91E61 /* libPods-TouchSynthProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TouchSynthProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		51F3DA2DF8C70DEA1E5557FA /* Pods-TouchSynthProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchSynthProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-TouchSynthProject/Pods-TouchSynthProject.release.xcconfig"; sourceTree = "<group>"; };
+		7720F34D1AE6CAD10006311F /* SFPatch.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SFPatch.pd; path = TouchSynthProject/SFPatch.pd; sourceTree = "<group>"; };
 		7729D1AA1A965D6000AE22E4 /* TouchSynthProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchSynthProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7729D1AE1A965D6000AE22E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7729D1AF1A965D6000AE22E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -2059,7 +2060,6 @@
 		774C8FC91AE4466100BBE7F9 /* loader.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = loader.c; path = "../Pd-for-LibPd/source/externals/use/cyclone/shared/unstable/loader.c"; sourceTree = "<group>"; };
 		774C8FCA1AE4466100BBE7F9 /* loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = loader.h; path = "../Pd-for-LibPd/source/externals/use/cyclone/shared/unstable/loader.h"; sourceTree = "<group>"; };
 		774C8FCB1AE4466100BBE7F9 /* pd_imp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pd_imp.h; path = "../Pd-for-LibPd/source/externals/use/cyclone/shared/unstable/pd_imp.h"; sourceTree = "<group>"; };
-		774C92C41AE450E900BBE7F9 /* SFPatch.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SFPatch.pd; path = TouchSynthProject/SFPatch.pd; sourceTree = "<group>"; };
 		775403211ADF6B8B008FF90B /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pause.png; path = ../pause.png; sourceTree = "<group>"; };
 		775403231ADF6DBC008FF90B /* metroClick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = metroClick.wav; path = ../metroClick.wav; sourceTree = "<group>"; };
 		775403271ADF70D2008FF90B /* metroClickSoft.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = metroClickSoft.wav; path = ../metroClickSoft.wav; sourceTree = "<group>"; };
@@ -3477,7 +3477,7 @@
 		775C1AB01ADE136B002FFCF2 /* Pd */ = {
 			isa = PBXGroup;
 			children = (
-				774C92C41AE450E900BBE7F9 /* SFPatch.pd */,
+				7720F34D1AE6CAD10006311F /* SFPatch.pd */,
 				774C87A71AE43D0400BBE7F9 /* channel_input.pd */,
 				774C87A91AE43D0400BBE7F9 /* string_to_patch.pd */,
 				774C87AA1AE43D0400BBE7F9 /* volume_env.pd */,
@@ -3737,7 +3737,7 @@
 				774C89981AE440A000BBE7F9 /* autobiquad2~-help.pd in Resources */,
 				774C89931AE440A000BBE7F9 /* arg2method.pd in Resources */,
 				774C8A211AE440A000BBE7F9 /* gate12.pd in Resources */,
-				774C92C51AE450E900BBE7F9 /* SFPatch.pd in Resources */,
+				7720F34E1AE6CAD10006311F /* SFPatch.pd in Resources */,
 				774C8A681AE440A000BBE7F9 /* ladd3.pd in Resources */,
 				774C8AE31AE440A000BBE7F9 /* switch3-help.pd in Resources */,
 				774C8A241AE440A000BBE7F9 /* gate14-help.pd in Resources */,
