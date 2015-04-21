@@ -45,10 +45,13 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     @IBOutlet weak var sustainLabel: UILabel!
     @IBOutlet weak var releaseLabel: UILabel!
     
+    var info = soundInfo()
+    
+    
     var externalOn = true
 
     var pickerData = [
-        ["Saxophone", "Oboe", "Grand Piano", "Polysynth", "Clarinet"]
+        ["Banjo", "Organ", "Grand Piano", "Electric Piano", "Flute", "Muted Trombone", "Les Paul", "Flugelhorn"]
     ]
     
     required init(coder aDecoder: NSCoder) {
@@ -89,6 +92,9 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         cutoffLabel2.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
         resonanceLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
     
+        info.sound = "piano_1"
+        
+        
         
         adsrOverlay.alpha = 0.5
         filterOverlay.alpha = 0.5
@@ -160,6 +166,22 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch row {
+            case 0 : info.sound = "banjo_1"
+            case 1 : info.sound = "church_organ"
+            case 2 : info.sound = "piano_1"
+            case 3 : info.sound = "ElPiano1"
+            case 4 : info.sound = "enigma_flute"
+            case 5 : info.sound = "muted_trombone"
+            case 6 : info.sound = "LesPaul"
+            case 7 : info.sound = "flugelhorn"
+        default : info.sound = "piano_1"
+        }
+    }
+    
+    func getSoundInfo() -> soundInfo {
+        // post notifications here
+        return info
     }
     
     @IBAction func filterSwitchActivated(sender: UISwitch) {

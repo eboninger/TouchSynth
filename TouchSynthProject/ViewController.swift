@@ -35,9 +35,7 @@ class ViewController: UIViewController {
     var recording = false
     var metronome = true
     
-    var sound = "piano_1"
-
-    
+    var info = soundInfo()
 
     
     //@IBOutlet weak var TremoloLabel: UILabel!
@@ -64,6 +62,8 @@ class ViewController: UIViewController {
     @IBOutlet var volumeController: UISlider!
    // @IBOutlet var tremoloController: UISlider!
     @IBOutlet var deleteAllButton: UIButton!
+    @IBOutlet var settingsPage: SettingsViewController!
+    
     
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var infoButton: UIButton!
@@ -183,8 +183,7 @@ class ViewController: UIViewController {
     
     func initializePd()
     {
-
-        PdBase.sendList(["set", "\(path + sound).sf2"], toReceiver: "soundfont")
+        PdBase.sendList(["set", "\(path + info.sound).sf2"], toReceiver: "soundfont")
         volumeController.value = 0.5
         PdBase.sendFloat(0.5, toReceiver: "volume")
         
@@ -443,10 +442,21 @@ class ViewController: UIViewController {
         //self.sequencer.hidden = true
     }
     
+    func soundfontChanged(soundfont: String) {
+        PdBase.sendList(["set", "\(path + soundfont).sf2"], toReceiver: "soundfont")
+        info.sound = soundfont
+    }
+    
     @IBAction func playedNote(sender: Note, touch: UITouch) {
         if (playmode) {
-            var patch_name : String?
-            patch_name = "banjo_1"
+            // do this w/ NS Notifications instead
+            // add observer (init or viewdidload)
+            // look at class examples (or post on piazza)
+            var settingsInfo : soundInfo! = settingsPage.getSoundInfo()
+            if (info.sound != settingsInfo.sound) {
+                soundfontChanged(settingsInfo.sound)
+            }
+            
         //    PdBase.sendList([0, Float(sender.value), 127, "set \(path + patch_name!).sf2", 100, 127, 127, 127, 0], toReceiver: "note")
             PdBase.sendList([Float(sender.value), 127], toReceiver: "note")
             sender.beginTrackingWithTouch(touch)

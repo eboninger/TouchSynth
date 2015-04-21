@@ -15,6 +15,7 @@
 		15FCE6D61AA3DC50009F504B /* trash-open copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 15FCE6D41AA3DC50009F504B /* trash-open copy.png */; };
 		3DE3E2179973EF6157B2DDF9 /* libPods-TouchSynthProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE1871AA484548455F91E61 /* libPods-TouchSynthProject.a */; };
 		7720F34E1AE6CAD10006311F /* SFPatch.pd in Resources */ = {isa = PBXBuildFile; fileRef = 7720F34D1AE6CAD10006311F /* SFPatch.pd */; };
+		7725285F1AE6F56F00E29ECC /* soundInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725285E1AE6F56F00E29ECC /* soundInfo.swift */; };
 		7729D1B01A965D6000AE22E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1AF1A965D6000AE22E4 /* main.m */; };
 		7729D1B31A965D6000AE22E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1B21A965D6000AE22E4 /* AppDelegate.m */; };
 		7729D1B61A965D6000AE22E4 /* TouchSynthProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1B41A965D6000AE22E4 /* TouchSynthProject.xcdatamodeld */; };
@@ -973,6 +974,7 @@
 		2DE1871AA484548455F91E61 /* libPods-TouchSynthProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TouchSynthProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		51F3DA2DF8C70DEA1E5557FA /* Pods-TouchSynthProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchSynthProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-TouchSynthProject/Pods-TouchSynthProject.release.xcconfig"; sourceTree = "<group>"; };
 		7720F34D1AE6CAD10006311F /* SFPatch.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SFPatch.pd; path = TouchSynthProject/SFPatch.pd; sourceTree = "<group>"; };
+		7725285E1AE6F56F00E29ECC /* soundInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = soundInfo.swift; sourceTree = "<group>"; };
 		7729D1AA1A965D6000AE22E4 /* TouchSynthProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchSynthProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7729D1AE1A965D6000AE22E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7729D1AF1A965D6000AE22E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -3495,6 +3497,7 @@
 			isa = PBXGroup;
 			children = (
 				775CB19A1A9D6D93001A9051 /* Note.swift */,
+				7725285E1AE6F56F00E29ECC /* soundInfo.swift */,
 				776D8AB11A9EAFC8001F6500 /* MenuBar.swift */,
 				775C1AAD1ADE12A7002FFCF2 /* record.swift */,
 				77D406881AC8983A005A3049 /* Sequencer.swift */,
@@ -4467,6 +4470,7 @@
 				774C8C1C1AE4449B00BBE7F9 /* gasyncqueue.c in Sources */,
 				774C8F4D1AE445D900BBE7F9 /* kink.c in Sources */,
 				774C8CC61AE444F800BBE7F9 /* fluid_rvoice_event.c in Sources */,
+				7725285F1AE6F56F00E29ECC /* soundInfo.swift in Sources */,
 				774C8D641AE4456700BBE7F9 /* hammer.c in Sources */,
 				774C8C2F1AE4449B00BBE7F9 /* gmem.c in Sources */,
 				774C8F2F1AE445D900BBE7F9 /* atan.c in Sources */,
