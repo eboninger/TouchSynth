@@ -23,6 +23,8 @@
 #X obj 175 513 *~ 0.1;
 #X obj 116 197 r reverb;
 #X obj 60 197 r chorus;
+#X obj 89 158 r filter_freq;
+#X obj 186 158 r filter_q;
 #X connect 4 0 3 0;
 #X connect 10 0 2 0;
 #X connect 10 0 20 0;
@@ -37,3 +39,5 @@
 #X connect 20 0 14 1;
 #X connect 21 0 10 0;
 #X connect 22 0 10 0;
+#X connect 23 0 10 0;
+#X connect 24 0 10 0;

@@ -297,7 +297,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="4Pk-Kk-5Ua" kind="modal" modalTransitionStyle="flipHorizontal" id="Lm6-lf-Uyr"/>
+                                            <action selector="settingsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qJs-oS-9vH"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5he-FR-7E1">
@@ -309,12 +309,6 @@
                                             <action selector="showInfoPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IEc-3N-xuj"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SYNTH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGw-XR-bW4">
-                                        <rect key="frame" x="761" y="24" width="219" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="touch" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ym-HF-up3">
                                         <rect key="frame" x="673" y="24" width="123" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -327,6 +321,12 @@
                                             <action selector="volumeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="lMz-Qg-z4q"/>
                                         </connections>
                                     </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SYNTH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGw-XR-bW4">
+                                        <rect key="frame" x="763" y="24" width="219" height="55"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gY7-2l-td6" customClass="Sequencer" customModule="TouchSynthProject" customModuleProvider="target">
@@ -519,7 +519,7 @@
         <!--Settings View Controller-->
         <scene sceneID="84d-GP-NSd">
             <objects>
-                <viewController id="4Pk-Kk-5Ua" customClass="SettingsViewController" customModule="TouchSynthProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsPage" id="4Pk-Kk-5Ua" customClass="SettingsViewController" customModule="TouchSynthProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jeM-HW-8CG"/>
                         <viewControllerLayoutGuide type="bottom" id="7Uc-22-cPA"/>
@@ -575,6 +575,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="sendSoundInfo:" destination="4Pk-Kk-5Ua" eventType="touchUpInside" id="wrc-VD-EkT"/>
                                     <segue destination="8y2-wr-Ees" kind="unwind" unwindAction="unwindToMainMenu:" id="T2J-Kv-gn1"/>
                                 </connections>
                             </button>
@@ -672,13 +673,14 @@
                                         <rect key="frame" x="16" y="117" width="377" height="31"/>
                                         <color key="tintColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
+                                            <action selector="reverbChanged:" destination="4Pk-Kk-5Ua" eventType="valueChanged" id="YXO-G4-EFH"/>
                                             <action selector="tremoloChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ErE-7q-a79"/>
                                         </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="kPW-4w-OhR">
                                         <rect key="frame" x="16" y="60" width="377" height="31"/>
                                         <color key="tintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="thumbTintColor" red="0.43380301615367767" green="0.37582731993228147" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="thumbTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="tremoloChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="bl3-uf-8Sb"/>
                                         </connections>
@@ -697,16 +699,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hwq-2C-hu8">
-                                <rect key="frame" x="564" y="503" width="412" height="234"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -772,6 +764,16 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KOQ-OZ-hNM">
                                 <rect key="frame" x="33" y="66" width="507" height="433"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hwq-2C-hu8">
+                                <rect key="frame" x="564" y="503" width="412" height="234"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>

@@ -47,6 +47,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     
     var info = soundInfo()
     
+    let soundKey = "soundInfo"
     
     var externalOn = true
 
@@ -95,6 +96,8 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         info.sound = "piano_1"
         
         
+        reverbSlider.minimumValue = 0
+        reverbSlider.maximumValue = 127
         
         adsrOverlay.alpha = 0.5
         filterOverlay.alpha = 0.5
@@ -177,11 +180,17 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
             case 7 : info.sound = "flugelhorn"
         default : info.sound = "piano_1"
         }
+        //sendSoundInfo()
     }
     
-    func getSoundInfo() -> soundInfo {
-        // post notifications here
-        return info
+    @IBAction func sendSoundInfo(sender:AnyObject)  {
+        NSNotificationCenter.defaultCenter().postNotificationName(soundKey, object: nil, userInfo: ["sound":info.sound, "trem":info.tremolo, "reverb":info.reverb, "chorus":info.chorus, "filterFreq": info.filterFreq, "filterQ": info.filterQ])
+        /*
+        tremolo = 0
+        reverb = 0
+        chorus = 0
+        filterFreq:
+        filterQ : Int! */
     }
     
     @IBAction func filterSwitchActivated(sender: UISwitch) {
@@ -255,14 +264,24 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     }
     func cutoffChanged(slider:BWCircularSlider){
         // Do something with the value...
-        println("Cutoff value changed to \(slider.angle)")
+        info.filterFreq = scaleSlider(slider.angle)
+        //sendSoundInfo()
     }
     
     func resonanceChanged(slider:BWCircularSlider){
-        // Do something with the value...
-        println("Resonance value changed to \(slider.angle)")
+        info.filterQ = scaleSlider(slider.angle)
+        //sendSoundInfo()
+    }
+    
+    func scaleSlider (value : Int!) -> Int!  {
+        return ((value*127)/360)
     }
 
     // END: Circluar Slider //
+    
+    
+    @IBAction func reverbChanged(sender: UISlider) {
+        info.reverb = sender.value
+    }
 
 }

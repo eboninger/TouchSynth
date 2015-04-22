@@ -62,7 +62,7 @@ class ViewController: UIViewController {
     @IBOutlet var volumeController: UISlider!
    // @IBOutlet var tremoloController: UISlider!
     @IBOutlet var deleteAllButton: UIButton!
-    @IBOutlet var settingsPage: SettingsViewController!
+    var settingsPage: SettingsViewController!
     
     
     @IBOutlet weak var settingsButton: UIButton!
@@ -82,6 +82,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var trash_open: UIImageView!
     @IBOutlet weak var trash_closed: UIImageView!
     
+    var notificationKey = "soundInfo"
+    let nc = NSNotificationCenter.defaultCenter()
+    
 
     required init(coder aDecoder: NSCoder) {
         
@@ -93,6 +96,13 @@ class ViewController: UIViewController {
         patch = PdBase.openFile("SFPatch.pd", path: NSBundle.mainBundle().resourcePath)
         
         super.init(coder: aDecoder)
+        
+        nc.addObserver(self, selector: "updateSoundInfo:", name: notificationKey, object: nil)
+        
+        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        settingsPage = storyboard.instantiateViewControllerWithIdentifier("SettingsPage") as! SettingsViewController
+
+
     }
     
     override func supportedInterfaceOrientations() -> Int {
@@ -266,6 +276,11 @@ class ViewController: UIViewController {
             collectionOfNotes[0].removeFromSuperview()
             collectionOfNotes.removeAtIndex(0)
         }
+    }
+    
+    @IBAction func settingsButtonPressed(sender: UIButton) {
+                self.presentViewController(settingsPage, animated: true, completion: nil)
+        
     }
     
     func pressed(sender: UIButton!) {
@@ -447,15 +462,28 @@ class ViewController: UIViewController {
         info.sound = soundfont
     }
     
+    func updateSoundInfo (notification:NSNotification) {
+        let userInfo:Dictionary<String, AnyObject> = notification.userInfo as! Dictionary<String, AnyObject>
+        let soundFont  = userInfo["sound"] as! String!
+        PdBase.sendList(["set", "\(path + soundFont).sf2"], toReceiver: "soundfont")
+        let filterFreq  = userInfo["filterFreq"] as! Int!
+        PdBase.sendList(["filter_frequency", filterFreq], toReceiver: "filter_freq")
+        let filterQ  = userInfo["filterQ"] as! Int!
+        PdBase.sendList(["filter_q", filterQ], toReceiver: "filter_q")
+        let reverb  = userInfo["reverb"] as! Float!
+        PdBase.sendList(["reverb_level", reverb], toReceiver: "reverb")
+        
+    }
+    
     @IBAction func playedNote(sender: Note, touch: UITouch) {
         if (playmode) {
             // do this w/ NS Notifications instead
             // add observer (init or viewdidload)
             // look at class examples (or post on piazza)
-            var settingsInfo : soundInfo! = settingsPage.getSoundInfo()
-            if (info.sound != settingsInfo.sound) {
-                soundfontChanged(settingsInfo.sound)
-            }
+            //var settingsInfo : soundInfo! = settingsPage.getSoundInfo()
+            //if (info.sound != settingsInfo.sound) {
+            //    soundfontChanged(settingsInfo.sound)
+            //}
             
         //    PdBase.sendList([0, Float(sender.value), 127, "set \(path + patch_name!).sf2", 100, 127, 127, 127, 0], toReceiver: "note")
             PdBase.sendList([Float(sender.value), 127], toReceiver: "note")
