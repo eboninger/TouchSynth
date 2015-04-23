@@ -251,6 +251,9 @@ class ViewController: UIViewController {
         createNote("D5", value: 74, x_loc: x_start + 6.5 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
         createNote("E5", value: 76, x_loc: x_start + 7.5 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
         createNote("G5", value: 79, x_loc: x_start + 8.5 * x_offset, y_loc: 190, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        for note in collectionOfNotes {
+            note.enabled = false
+        }
     }
     
     func createNote(title: NSString, value: Int, x_loc: CGFloat, y_loc: CGFloat, tcolor: UIColor, bcolor : UIColor)
@@ -303,9 +306,6 @@ class ViewController: UIViewController {
             recognizer.setTranslation(CGPointZero, inView: self.view)
             
         case .Ended:
-            
-            
-            
             var offset: CGFloat = 0
             var point = previewView.convertPoint(CGPoint(x: previewView.frame.minX, y: previewView.frame.minY), toView: playView)
             var curX = previewView.frame.minX + 680

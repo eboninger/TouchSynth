@@ -19,7 +19,7 @@ class Note: ZFRippleButton {
         self.value = 0
         self.playing = false
         super.init(frame: f)
-        self.enabled = false
+        self.enabled = true
     }
     
     required init(coder aDecoder: NSCoder) {
