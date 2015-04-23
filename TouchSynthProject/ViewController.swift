@@ -19,8 +19,8 @@ struct SfData {
 }
 
 class ViewController: UIViewController {
-    
-    var playmode = true;
+    var settingsmode = false
+    var playmode = true
     var patchID : Int32 = 0
     var patch: UnsafeMutablePointer<Void>
     var path = NSBundle.mainBundle().resourcePath! + "/"
@@ -275,10 +275,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func settingsButtonPressed(sender: UIButton) {
-        for note in collectionOfNotes {
-            note.hidden = true
-        }
-                self.presentViewController(settingsPage, animated: true, completion: nil)
+        settingsmode = true
+        self.presentViewController(settingsPage, animated: true, completion: nil)
         
     }
     
@@ -474,7 +472,7 @@ class ViewController: UIViewController {
         let filterQ  = userInfo["filterQ"] as! Int!
         PdBase.sendList(["filter_q", filterQ], toReceiver: "filter_q")
         let reverb  = userInfo["reverb"] as! Float!
-        PdBase.sendList(["reverb_level", reverb], toReceiver: "reverb")
+        PdBase.sendList(["reverb_amount", reverb], toReceiver: "reverb")
         
     }
     
@@ -599,9 +597,7 @@ class ViewController: UIViewController {
     
     @IBAction func unwindToMainMenu(sender: UIStoryboardSegue)
     {
-        for note in collectionOfNotes {
-            note.hidden = false
-        }
+        settingsmode = false
         let sourceViewController = sender.sourceViewController
         // Pull any data from the view controller which initiated the unwind segue.
     }
@@ -631,7 +627,7 @@ class ViewController: UIViewController {
     
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        if (!playmode) {
+        if (!playmode || settingsmode) {
             return
         }
         for note in collectionOfNotes {
@@ -657,7 +653,7 @@ class ViewController: UIViewController {
     }
     
     override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
-        if (!playmode) {
+        if (!playmode || settingsmode) {
             return
         }
         var count = 0
@@ -687,7 +683,7 @@ class ViewController: UIViewController {
     
     // Stop playing the note if it wasn't a drag from a sustain
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
-        if (!playmode) {
+        if (!playmode || settingsmode) {
             return
         }
         for note in collectionOfNotes {
