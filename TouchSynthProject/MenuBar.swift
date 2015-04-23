@@ -43,8 +43,6 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     func initialize(viewController: ViewController, typePicker: UIPickerView, buttonPreviews: Array<Note>,
         buttonPreviews2: Array<Note>, colorPalette: Array<UIButton>, addButton: UIButton)//, sequencer: UIView)
     {
-        //self.sequencer = sequencer
-        //self.sequencer.hidden = true
         self.viewController = viewController
         self.buttonPreviews = buttonPreviews
         for button in self.buttonPreviews! {
@@ -176,9 +174,6 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
                 buttonPreviews2![i].setValue(midiNote + addition, showsharps: showsharps)
             }
         }
-        //self.sequencer.hidden = true
-        //self.sequencer.frame.offset(dx: 0, dy: 150)
-
 
     }
     
@@ -219,10 +214,6 @@ class MenuBar: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
 
         self.typePicker!.reloadAllComponents()
         self.typePicker!.selectRow(3, inComponent: 4, animated: true)
-        //self.sequencer.hidden = true
-        //self.sequencer.frame.offset(dx: 0, dy: 150)
-
-
 
     }
     

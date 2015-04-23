@@ -9,8 +9,8 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TouchSynthProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="yqS-9J-N2e"/>
+                        <viewControllerLayoutGuide type="bottom" id="IKm-nP-LNg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
@@ -259,7 +259,7 @@
                                 <color key="tintColor" red="1" green="0.99475083424129263" blue="0.98166939129242092" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rdN-aS-FWX">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="627"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NlX-mc-Hwt">
                                         <rect key="frame" x="24" y="38" width="235" height="29"/>
@@ -276,12 +276,6 @@
                                             <action selector="editPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="d62-8H-Tpt"/>
                                         </connections>
                                     </segmentedControl>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3h-tP-Ldk">
-                                        <rect key="frame" x="945" y="114" width="57" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZZ-ot-eiD">
                                         <rect key="frame" x="75" y="597" width="65" height="30"/>
                                         <state key="normal" title="Delete All">
@@ -327,6 +321,21 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3h-tP-Ldk">
+                                        <rect key="frame" x="945" y="114" width="57" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcA-It-Tuh">
+                                        <rect key="frame" x="893" y="602" width="131" height="33"/>
+                                        <state key="normal" title="Hide">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="hideMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nob-l8-AsB"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gY7-2l-td6" customClass="Sequencer" customModule="TouchSynthProject" customModuleProvider="target">
@@ -452,6 +461,33 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ka-XL-mzm">
+                                <rect key="frame" x="897" y="635" width="131" height="33"/>
+                                <state key="normal" title="Hide">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hideSequencer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7W6-Ko-FhS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LB8-Wf-hwo">
+                                <rect key="frame" x="902" y="740" width="116" height="28"/>
+                                <state key="normal" title="Show">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hideSequencer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NpE-og-4QA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGf-Jl-I6l">
+                                <rect key="frame" x="904" y="746" width="116" height="28"/>
+                                <state key="normal" title="Show">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hideMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MSR-wW-IAG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -468,6 +504,8 @@
                         <outlet property="bpm" destination="Ohu-NC-Gfm" id="mDw-rp-UlK"/>
                         <outlet property="deleteAllButton" destination="RZZ-ot-eiD" id="s91-xw-43u"/>
                         <outlet property="dragLabel" destination="XdT-Cd-qPZ" id="QCQ-0Z-vZ9"/>
+                        <outlet property="hide_menu" destination="qcA-It-Tuh" id="BE4-df-fdw"/>
+                        <outlet property="hide_seq" destination="7ka-XL-mzm" id="WEv-eq-GJk"/>
                         <outlet property="infoButton" destination="5he-FR-7E1" id="2oY-nw-WU0"/>
                         <outlet property="leftButton" destination="VkO-7x-mge" id="lqy-4A-cNk"/>
                         <outlet property="menu" destination="ZlE-cc-aV7" id="lhy-sD-Z8w"/>
@@ -481,6 +519,8 @@
                         <outlet property="seqPicker" destination="YpM-IA-tj6" id="fdp-RT-IBW"/>
                         <outlet property="sequencer" destination="gY7-2l-td6" id="OGt-ed-fVP"/>
                         <outlet property="settingsButton" destination="oHp-PK-fgc" id="B0B-mX-f2D"/>
+                        <outlet property="show_menu" destination="QGf-Jl-I6l" id="XFf-qU-7mM"/>
+                        <outlet property="show_seq" destination="LB8-Wf-hwo" id="8VU-ze-kIg"/>
                         <outlet property="stationaryPreviewView" destination="i6u-Ws-9uo" id="rDI-N0-BZ1"/>
                         <outlet property="trash_closed" destination="OcW-fy-UTo" id="Dur-Fk-Nqq"/>
                         <outlet property="trash_open" destination="Uox-eB-wbf" id="B0e-Ao-Qmh"/>
@@ -521,8 +561,8 @@
             <objects>
                 <viewController storyboardIdentifier="SettingsPage" id="4Pk-Kk-5Ua" customClass="SettingsViewController" customModule="TouchSynthProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jeM-HW-8CG"/>
-                        <viewControllerLayoutGuide type="bottom" id="7Uc-22-cPA"/>
+                        <viewControllerLayoutGuide type="top" id="fsD-nL-nMl"/>
+                        <viewControllerLayoutGuide type="bottom" id="3sR-Pf-3IZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xcr-lr-5Sp">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
@@ -658,13 +698,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="REVERB" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lpg-3z-fnV">
-                                        <rect key="frame" x="18" y="132" width="121" height="33"/>
+                                        <rect key="frame" x="283" y="138" width="121" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ECHO" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gc-sm-O30">
-                                        <rect key="frame" x="18" y="193" width="121" height="33"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CHORUS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gc-sm-O30">
+                                        <rect key="frame" x="283" y="193" width="121" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -673,8 +713,7 @@
                                         <rect key="frame" x="16" y="117" width="377" height="31"/>
                                         <color key="tintColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <action selector="reverbChanged:" destination="4Pk-Kk-5Ua" eventType="valueChanged" id="YXO-G4-EFH"/>
-                                            <action selector="tremoloChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ErE-7q-a79"/>
+                                            <action selector="reverbChanged:" destination="4Pk-Kk-5Ua" eventType="valueChanged" id="oyg-R1-lza"/>
                                         </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="kPW-4w-OhR">
@@ -682,18 +721,18 @@
                                         <color key="tintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="thumbTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <action selector="tremoloChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="bl3-uf-8Sb"/>
+                                            <action selector="tremoloChanged:" destination="4Pk-Kk-5Ua" eventType="valueChanged" id="GXH-DX-A16"/>
                                         </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8PQ-SF-aXc">
                                         <rect key="frame" x="16" y="173" width="377" height="31"/>
                                         <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <action selector="tremoloChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="I2U-WN-ZXA"/>
+                                            <action selector="chorusChanged:" destination="4Pk-Kk-5Ua" eventType="valueChanged" id="T5m-LS-G0j"/>
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TREMOLO" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uI-ZN-pzh">
-                                        <rect key="frame" x="18" y="79" width="121" height="33"/>
+                                        <rect key="frame" x="283" y="81" width="121" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>

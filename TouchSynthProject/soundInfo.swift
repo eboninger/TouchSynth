@@ -10,9 +10,9 @@ import Foundation
 
 struct soundInfo {
     var sound: String!
-    var tremolo: Int!
+    var tremolo: Float!
     var reverb: Float!
-    var chorus: Int!
+    var chorus: Float!
     var filterFreq: Int!
     var filterQ : Int!
     

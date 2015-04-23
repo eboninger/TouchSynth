@@ -12,23 +12,28 @@ import Foundation
 class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
     
     @IBOutlet weak var goBackButton: UIButton!
-    @IBOutlet weak var adsrLabel: UILabel!
-    @IBOutlet weak var filterLabel: UILabel!
     @IBOutlet weak var externalLabel: UILabel!
-    @IBOutlet weak var fxLabel: UILabel!
     @IBOutlet weak var voicePicker: UIPickerView!
     @IBOutlet weak var externalSwitch: UISegmentedControl!
     
+    /* overlays for settings page */
     @IBOutlet weak var adsrOverlay: UIView!
     @IBOutlet weak var voiceOverlay: UIView!
     @IBOutlet weak var fxOverlay: UIView!
     @IBOutlet weak var filterOverlay: UIView!
     
+    /* objects in filter overlay */
+    @IBOutlet weak var filterLabel: UILabel!
     @IBOutlet weak var hpLabel: UILabel!
     @IBOutlet weak var lpLabel: UILabel!
     @IBOutlet weak var lpSwitch: UISwitch!
     @IBOutlet weak var hpSwitch: UISwitch!
+    @IBOutlet weak var cutoffLabel: UILabel!
+    @IBOutlet weak var cutoffLabel2: UILabel!
+    @IBOutlet weak var resonanceLabel: UILabel!
     
+    /* objects in fx overlay */
+    @IBOutlet weak var fxLabel: UILabel!
     @IBOutlet weak var echoSlider: UISlider!
     @IBOutlet weak var reverbSlider: UISlider!
     @IBOutlet weak var tremoloSlider: UISlider!
@@ -36,10 +41,8 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     @IBOutlet weak var reverbLabel: UILabel!
     @IBOutlet weak var tremoloLabel: UILabel!
     
-    @IBOutlet weak var cutoffLabel: UILabel!
-    @IBOutlet weak var cutoffLabel2: UILabel!
-    @IBOutlet weak var resonanceLabel: UILabel!
-    
+    /* objects in adsr overlay */
+    @IBOutlet weak var adsrLabel: UILabel!
     @IBOutlet weak var attackLabel: UILabel!
     @IBOutlet weak var decayLabel: UILabel!
     @IBOutlet weak var sustainLabel: UILabel!
@@ -98,6 +101,10 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         
         reverbSlider.minimumValue = 0
         reverbSlider.maximumValue = 127
+        tremoloSlider.minimumValue = 0
+        tremoloSlider.maximumValue = 127
+        echoSlider.minimumValue = 0
+        echoSlider.maximumValue = 127
         
         adsrOverlay.alpha = 0.5
         filterOverlay.alpha = 0.5
@@ -109,7 +116,6 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         fxOverlay.hidden = true
         voiceOverlay.hidden = true
         
-        echoSlider.thumbTintColor = UIColor.purpleColor()
         initialize(voicePicker)
 
 
@@ -122,7 +128,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         self.voicePicker = seqPicker
         self.voicePicker!.delegate = self
         self.voicePicker!.dataSource = self
-        self.voicePicker!.selectRow(1, inComponent: 0, animated: true)
+        self.voicePicker!.selectRow(2, inComponent: 0, animated: true)
         
     }
     
@@ -184,13 +190,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     }
     
     @IBAction func sendSoundInfo(sender:AnyObject)  {
-        NSNotificationCenter.defaultCenter().postNotificationName(soundKey, object: nil, userInfo: ["sound":info.sound, "trem":info.tremolo, "reverb":info.reverb, "chorus":info.chorus, "filterFreq": info.filterFreq, "filterQ": info.filterQ])
-        /*
-        tremolo = 0
-        reverb = 0
-        chorus = 0
-        filterFreq:
-        filterQ : Int! */
+        NSNotificationCenter.defaultCenter().postNotificationName(soundKey, object: nil, userInfo: ["sound":info.sound, "tremolo":info.tremolo, "reverb":info.reverb, "chorus":info.chorus, "filterFreq": info.filterFreq, "filterQ": info.filterQ])
     }
     
     @IBAction func filterSwitchActivated(sender: UISwitch) {
@@ -246,31 +246,30 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         self.view.addSubview(slider_resonance)
         
         self.view.bringSubviewToFront(adsrOverlay)
+        self.view.bringSubviewToFront(filterOverlay)
         
     }
     #endif
     
     func attackChanged(slider:BWCircularSlider){
-        // Do something with the value...
         println("Attack value changed to \(slider.angle)")
     }
     func decayChanged(slider:BWCircularSlider){
-        // Do something with the value...
         println("Decay value changed to \(slider.angle)")
     }
     func sustainChanged(slider:BWCircularSlider){
-        // Do something with the value...
         println("Sustain value changed to \(slider.angle)")
     }
+    func releaseChanged(slider:BWCircularSlider){
+        println("Sustain value changed to \(slider.angle)")
+    }
+
     func cutoffChanged(slider:BWCircularSlider){
-        // Do something with the value...
         info.filterFreq = scaleSlider(slider.angle)
-        //sendSoundInfo()
     }
     
     func resonanceChanged(slider:BWCircularSlider){
         info.filterQ = scaleSlider(slider.angle)
-        //sendSoundInfo()
     }
     
     func scaleSlider (value : Int!) -> Int!  {
@@ -282,6 +281,12 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     
     @IBAction func reverbChanged(sender: UISlider) {
         info.reverb = sender.value
+    }
+    @IBAction func tremoloChanged(sender: UISlider) {
+        info.tremolo = sender.value
+    }
+    @IBAction func chorusChanged(sender: UISlider) {
+        info.chorus = sender.value
     }
 
 }

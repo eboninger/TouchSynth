@@ -26,8 +26,6 @@ class ViewController: UIViewController {
     var path = NSBundle.mainBundle().resourcePath! + "/"
 //    let soundfonts = ["analog_age", "banjo_1", "beautiful_pad", "bolivianflute", "Campbells_strings", "Campbells_Verby_Vocal", "church_organ", "DCs_Mellotron_Flute", "ElPiano1", "enigma_flute", "flugelhorn", "janos_lead", "jonnypad1", "jonnypad3", "jonnypad4", "jonnypad5", "jonnypad6", "jonnypad7", "jonnypad8", "LesPaul", "piano_1", "muted_trombone", "saz", "SC88Drumset", "StomperSet"]
     
- //   var soundfontsData: [String: SfData]
-    
     var origX: CGFloat?
     var origY: CGFloat?
     
@@ -37,8 +35,11 @@ class ViewController: UIViewController {
     
     var info = soundInfo()
 
+    @IBOutlet weak var hide_seq: UIButton!
+    @IBOutlet weak var show_seq: UIButton!
+    @IBOutlet weak var hide_menu: UIButton!
+    @IBOutlet weak var show_menu: UIButton!
     
-    //@IBOutlet weak var TremoloLabel: UILabel!
     @IBOutlet weak var VolumeLabel: UILabel!
     @IBOutlet weak var playEdit: UISegmentedControl!
     @IBOutlet weak var Logo: UILabel!
@@ -60,7 +61,6 @@ class ViewController: UIViewController {
     @IBOutlet var leftButton: Note!
     @IBOutlet var pickerView: UIView!
     @IBOutlet var volumeController: UISlider!
-   // @IBOutlet var tremoloController: UISlider!
     @IBOutlet var deleteAllButton: UIButton!
     var settingsPage: SettingsViewController!
     
@@ -117,15 +117,12 @@ class ViewController: UIViewController {
         
         patchID = PdBase.dollarZeroForFile(patch)
         bpm.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
-        //bpm.textColor = UIColor.whiteColor()
         Logo.font = UIFont(name: "Helvetica-BoldOblique", size: 32)
         Logo.textColor = UIColor.lightGrayColor()
         Logo2.font = UIFont(name: "Helvetica-BoldOblique", size: 32)
         Logo2.textColor = UIColor.darkGrayColor()
         VolumeLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
         VolumeLabel.textColor = UIColor.darkGrayColor()
-        //TremoloLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
-        //TremoloLabel.textColor = UIColor.darkGrayColor()
         deleteAllButton.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
         deleteAllButton.titleLabel!.textColor = UIColor.darkGrayColor()
         dragLabel.enabled = false
@@ -146,8 +143,6 @@ class ViewController: UIViewController {
         stationaryPreviewView.bringSubviewToFront(previewView)
         volumeController.minimumValue = 0
         volumeController.maximumValue = 1
-      //  tremoloController.minimumValue = 0
-      //  tremoloController.maximumValue = 20
         
         settingsButton.setBackgroundImage(UIImage(named:"settings.png")!, forState: .Normal)
         settingsButton.setTitle("", forState: .Normal)
@@ -169,6 +164,13 @@ class ViewController: UIViewController {
         beat.font = UIFont(name: "Helvetica-BoldOblique", size: 28)
         beatLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         
+        show_seq.hidden = true
+        show_menu.hidden = true
+        hide_menu.hidden = true
+        show_seq.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
+        hide_seq.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
+        hide_menu.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
+        show_menu.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
 
         initializePd()
 
@@ -197,12 +199,6 @@ class ViewController: UIViewController {
         volumeController.value = 0.5
         PdBase.sendFloat(0.5, toReceiver: "volume")
         
-        
-        
-        //    sendString("set \(path + patch_name!).sf2", toReceiver: "soundfont")
-        //    PdBase.sendFloat(0.5, toReceiver: "volumeLevel")
-        //  PdBase.sendFloat(0, toReceiver: "tremoloLevel")
-        //    tremoloController.value = 0
     }
     
     func initializePreviewView()
@@ -222,9 +218,7 @@ class ViewController: UIViewController {
         menu.layer.shadowOffset = CGSize(width: 1, height: 10)
         menu.layer.shadowOpacity = 0.4
         menu.layer.shadowRadius = 7
-        //menu.hidden = true
         menu.alpha = 0
-        //previewView.layer.zPosition = 1000
         menu.bringSubviewToFront(stationaryPreviewView)
         stationaryPreviewView.bringSubviewToFront(previewView)
     }
@@ -239,7 +233,6 @@ class ViewController: UIViewController {
         sequencer.layer.shadowOpacity = 0.4
         sequencer.layer.shadowRadius = 7
         sequencer.hidden = false
-        //previewView.layer.zPosition = 1000
     }
     
     func initializeNotes()
@@ -279,6 +272,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func settingsButtonPressed(sender: UIButton) {
+        for note in collectionOfNotes {
+            note.hidden = true
+        }
                 self.presentViewController(settingsPage, animated: true, completion: nil)
         
     }
@@ -409,13 +405,16 @@ class ViewController: UIViewController {
             trash_closed.hidden = true
             trash_open.hidden = true
             deleteAllButton.hidden = true
-            
+            show_seq.hidden = true
+            hide_seq.hidden = false
+            show_menu.hidden = true
+            hide_menu.hidden = true
             UIView.animateWithDuration(0.5, animations: {
                 self.menu.alpha = 0
                 self.sequencer.alpha = 1
             })
             //self.menu.hidden = true
-            //self.sequencer.hidden = false
+            self.sequencer.hidden = false
             /*
             UIView.animateWithDuration(0.5, animations: {
                 self.menu.frame.offset(dx: 0, dy: 150)
@@ -423,16 +422,21 @@ class ViewController: UIViewController {
                 self.sequencer.frame.offset(dx: 0, dy: -150)
             }) */
         } else {
+            show_seq.hidden = true
+            hide_seq.hidden = true
+            show_menu.hidden = true
+            hide_menu.hidden = false
             for note in collectionOfNotes {
                 note.enabled = true
             }
-            //self.menu.hidden = false
+            self.menu.hidden = false
             //self.sequencer.hidden = true
             NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("showTrash"), userInfo: self, repeats: false)
             UIView.animateWithDuration(0.5, animations: {
                 self.menu.alpha = 1
                 self.sequencer.alpha = 0
             })
+            self.view.bringSubviewToFront(menu)
             
             /* Stuff for animated transitions
             if (first_time) {
@@ -454,7 +458,6 @@ class ViewController: UIViewController {
     func showTrash() {
         trash_closed.hidden = false
         deleteAllButton.hidden = false
-        //self.sequencer.hidden = true
     }
     
     func soundfontChanged(soundfont: String) {
@@ -477,15 +480,6 @@ class ViewController: UIViewController {
     
     @IBAction func playedNote(sender: Note, touch: UITouch) {
         if (playmode) {
-            // do this w/ NS Notifications instead
-            // add observer (init or viewdidload)
-            // look at class examples (or post on piazza)
-            //var settingsInfo : soundInfo! = settingsPage.getSoundInfo()
-            //if (info.sound != settingsInfo.sound) {
-            //    soundfontChanged(settingsInfo.sound)
-            //}
-            
-        //    PdBase.sendList([0, Float(sender.value), 127, "set \(path + patch_name!).sf2", 100, 127, 127, 127, 0], toReceiver: "note")
             PdBase.sendList([Float(sender.value), 127], toReceiver: "note")
             sender.beginTrackingWithTouch(touch)
             if (sequencer!.isRecording()) {
@@ -499,15 +493,12 @@ class ViewController: UIViewController {
     {
         playView.bringSubviewToFront(volumeController)
         playView.bringSubviewToFront(VolumeLabel)
-      //  playView.bringSubviewToFront(tremoloController)
-       // playView.bringSubviewToFront(TremoloLabel)
     }
     
     @IBAction func stoppedNote(sender: Note, touch: UITouch) {
         if (playmode) {
             var patch_name : String?
             patch_name = "banjo_1"
-        //    PdBase.sendList([0, Float(sender.value), 0, "set \(path + patch_name!).sf2", 100, 127, 127, 127, 0], toReceiver: "note")
             PdBase.sendList([Float(sender.value), 0], toReceiver: "note")
             sender.endTrackingWithTouch(touch)
             if (sequencer!.isRecording()) {
@@ -517,15 +508,40 @@ class ViewController: UIViewController {
     }
     
     @IBAction func volumeChanged(sender: UISlider) {
-        //PdBase.sendFloat(sender.value, toReceiver: "volumeLevel")
         PdBase.sendFloat(sender.value, toReceiver: "volume")
-        //PdBase.sendList(["volume", Float(sender.value)], toReceiver: "volume")
     }
     
-    //@IBAction func tremoloChanged(sender: UISlider) {
-     //   PdBase.sendFloat(sender.value, toReceiver: "tremoloLevel")
-   // }
+    @IBAction func hideSequencer(sender:UIButton) {
+        if (hide_seq.hidden == true) {
+            self.sequencer.hidden = false
+            hide_seq.hidden = false
+            show_seq.hidden = true
+
+        } else {
+            self.sequencer.hidden = true
+            hide_seq.hidden = true
+            show_seq.hidden = false
+        }
+    }
     
+    @IBAction func hideMenu(sender:UIButton) {
+        if (hide_menu.hidden == true) {
+            self.menu.hidden = false
+            hide_menu.hidden = false
+            show_menu.hidden = true
+            trash_closed.hidden = false
+            trash_open.hidden = false
+            deleteAllButton.hidden = false
+            
+        } else {
+            self.menu.hidden = true
+            hide_menu.hidden = true
+            show_menu.hidden = false
+            trash_closed.hidden = true
+            trash_open.hidden = true
+            deleteAllButton.hidden = true
+        }
+    }
     
     func inTrash(bFrame: CGRect) -> Bool {
         var x = (bFrame.minX + bFrame.maxX) / 2
@@ -583,6 +599,9 @@ class ViewController: UIViewController {
     
     @IBAction func unwindToMainMenu(sender: UIStoryboardSegue)
     {
+        for note in collectionOfNotes {
+            note.hidden = false
+        }
         let sourceViewController = sender.sourceViewController
         // Pull any data from the view controller which initiated the unwind segue.
     }
@@ -592,15 +611,9 @@ class ViewController: UIViewController {
         
         alertController.view.tintColor = UIColor.magentaColor()
 
-          /* alertController.popoverPresentationController?.sourceRect = CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.height)
-        
-        var v : UIViewController = UIViewController(nibName: nil, bundle: nil)
-        //v.preferredContentSize = CGSizeMake(200,200)
-        alertController.setValue(v, forKey: "contentViewController")*/
  
         //Create and add the Cancel action
         let cancelAction: UIAlertAction = UIAlertAction(title: "Close", style: .Cancel) { action -> Void in
-            //Do some stuff
         }
         alertController.addAction(cancelAction)
 
