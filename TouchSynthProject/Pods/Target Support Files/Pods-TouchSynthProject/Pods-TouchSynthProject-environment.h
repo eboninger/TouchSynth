@@ -6,11 +6,11 @@
 // project.
 
 
-// MIKMIDI
-#define COCOAPODS_POD_AVAILABLE_MIKMIDI
-#define COCOAPODS_VERSION_MAJOR_MIKMIDI 1
-#define COCOAPODS_VERSION_MINOR_MIKMIDI 1
-#define COCOAPODS_VERSION_PATCH_MIKMIDI 0
+// ZFDragableModalTransition
+#define COCOAPODS_POD_AVAILABLE_ZFDragableModalTransition
+#define COCOAPODS_VERSION_MAJOR_ZFDragableModalTransition 0
+#define COCOAPODS_VERSION_MINOR_ZFDragableModalTransition 4
+#define COCOAPODS_VERSION_PATCH_ZFDragableModalTransition 0
 
 // libpd
 #define COCOAPODS_POD_AVAILABLE_libpd

@@ -1,23 +1,13 @@
 PODS:
   - libpd (0.7.0)
-  - MIKMIDI (1.1.0)
+  - ZFDragableModalTransition (0.4)
 
 DEPENDENCIES:
   - libpd (~> 0.7)
-  - MIKMIDI (from `https://github.com/mixedinkey-opensource/MIKMIDI.git`, branch `1.1`)
-
-EXTERNAL SOURCES:
-  MIKMIDI:
-    :branch: 1.1
-    :git: https://github.com/mixedinkey-opensource/MIKMIDI.git
-
-CHECKOUT OPTIONS:
-  MIKMIDI:
-    :commit: 2e122f50e98e0e05bb4ecae7a7098345300c9aea
-    :git: https://github.com/mixedinkey-opensource/MIKMIDI.git
+  - ZFDragableModalTransition
 
 SPEC CHECKSUMS:
   libpd: f9e63d090e284438826f9b2fdc0810dbb9889e6f
-  MIKMIDI: 0a689f16efcbca46709113319e97b0068ee79930
+  ZFDragableModalTransition: 7d62a412b7b72ad37b7b04cdfed53b31d684a15b
 
 COCOAPODS: 0.35.0

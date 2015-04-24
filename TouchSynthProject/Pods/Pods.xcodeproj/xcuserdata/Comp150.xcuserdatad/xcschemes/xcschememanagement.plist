@@ -4,41 +4,35 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-TouchSynthProject-MIKMIDI.xcscheme</key>
+		<key>Pods-TouchSynthProject-ZFDragableModalTransition.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-TouchSynthProject-libpd.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-TouchSynthProject.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>367C0DE9629E60F16DA5AD56</key>
+		<key>2CF95B59FC290531F80F64BA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>85114ACD2D794D68854335FA</key>
+		<key>B923085B6D7CC107A5853C0D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F9611A86F7DBBE77F02CDFB0</key>
+		<key>BCAF4B73A89FF567998D2EF9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

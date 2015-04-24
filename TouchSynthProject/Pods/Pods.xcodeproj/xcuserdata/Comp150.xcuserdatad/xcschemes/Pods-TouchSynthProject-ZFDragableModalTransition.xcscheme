@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2CF95B59FC290531F80F64BA"
-               BuildableName = "libPods-TouchSynthProject-libpd.a"
-               BlueprintName = "Pods-TouchSynthProject-libpd"
+               BlueprintIdentifier = "BCAF4B73A89FF567998D2EF9"
+               BuildableName = "libPods-TouchSynthProject-ZFDragableModalTransition.a"
+               BlueprintName = "Pods-TouchSynthProject-ZFDragableModalTransition"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

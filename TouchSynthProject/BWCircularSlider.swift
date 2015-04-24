@@ -219,6 +219,7 @@ class BWCircularSlider: UIControl {
         let centerPoint:CGPoint  = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
         //Calculate the direction from a center point and a arbitrary position.
         let currentAngle:Double = AngleFromNorth(centerPoint, p2: lastPoint, flipped: false);
+
         let angleInt = Int(floor(currentAngle))
 
         //Store the new angle

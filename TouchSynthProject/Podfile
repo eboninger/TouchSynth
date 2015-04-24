@@ -3,9 +3,7 @@
 
 target 'TouchSynthProject' do
 	pod 'libpd', '~> 0.7'
-	#pod 'MIKMIDI', '~> 1.0'
-	pod 'MIKMIDI', :git => 'https://github.com/mixedinkey-opensource/MIKMIDI.git', :branch => '1.1'
-    pod "ZFDragableModalTransition"
+        pod "ZFDragableModalTransition"
 
 end
 

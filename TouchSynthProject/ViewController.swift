@@ -24,7 +24,6 @@ class ViewController: UIViewController {
     var patchID : Int32 = 0
     var patch: UnsafeMutablePointer<Void>
     var path = NSBundle.mainBundle().resourcePath! + "/"
-//    let soundfonts = ["analog_age", "banjo_1", "beautiful_pad", "bolivianflute", "Campbells_strings", "Campbells_Verby_Vocal", "church_organ", "DCs_Mellotron_Flute", "ElPiano1", "enigma_flute", "flugelhorn", "janos_lead", "jonnypad1", "jonnypad3", "jonnypad4", "jonnypad5", "jonnypad6", "jonnypad7", "jonnypad8", "LesPaul", "piano_1", "muted_trombone", "saz", "SC88Drumset", "StomperSet"]
     
     var origX: CGFloat?
     var origY: CGFloat?
@@ -84,6 +83,7 @@ class ViewController: UIViewController {
     
     var notificationKey = "soundInfo"
     let nc = NSNotificationCenter.defaultCenter()
+    
     
 
     required init(coder aDecoder: NSCoder) {
@@ -411,14 +411,7 @@ class ViewController: UIViewController {
                 self.menu.alpha = 0
                 self.sequencer.alpha = 1
             })
-            //self.menu.hidden = true
             self.sequencer.hidden = false
-            /*
-            UIView.animateWithDuration(0.5, animations: {
-                self.menu.frame.offset(dx: 0, dy: 150)
-                self.sequencer.hidden = false
-                self.sequencer.frame.offset(dx: 0, dy: -150)
-            }) */
         } else {
             show_seq.hidden = true
             hide_seq.hidden = true
@@ -428,28 +421,12 @@ class ViewController: UIViewController {
                 note.enabled = true
             }
             self.menu.hidden = false
-            //self.sequencer.hidden = true
             NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("showTrash"), userInfo: self, repeats: false)
             UIView.animateWithDuration(0.5, animations: {
                 self.menu.alpha = 1
                 self.sequencer.alpha = 0
             })
             self.view.bringSubviewToFront(menu)
-            
-            /* Stuff for animated transitions
-            if (first_time) {
-                self.menu.hidden = false
-                self.menu.frame.offset(dx: 0, dy: 150)
-                //self.sequencer.frame.offset(dx: 0, dy: 300)
-                first_time = false
-            }
-            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("showTrash"), userInfo: self, repeats: false)
-            UIView.animateWithDuration(0.5, animations: {
-                self.menu.frame.offset(dx: 0, dy: -150)
-                self.sequencer.frame.offset(dx: 0, dy: 150)
-            })
-            End stuff */
-
         }
     }
     
@@ -623,8 +600,7 @@ class ViewController: UIViewController {
     
     
     // Creates new note if not touching existing note, otherwise makes that note current
-    
-    
+
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         if (!playmode || settingsmode) {
