@@ -34,6 +34,7 @@
 		773F23361AD206730037E01D /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232E1AD206730037E01D /* settings.png */; };
 		773F23371AD206730037E01D /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232F1AD206730037E01D /* stop.png */; };
 		774605AA1AED771C00FAE4B0 /* SavedDataPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774605A91AED771B00FAE4B0 /* SavedDataPicker.swift */; };
+		774605AC1AED888E00FAE4B0 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 774605AB1AED888E00FAE4B0 /* save.png */; };
 		774C87AB1AE43D0400BBE7F9 /* channel_input.pd in Resources */ = {isa = PBXBuildFile; fileRef = 774C87A71AE43D0400BBE7F9 /* channel_input.pd */; };
 		774C87AD1AE43D0400BBE7F9 /* string_to_patch.pd in Resources */ = {isa = PBXBuildFile; fileRef = 774C87A91AE43D0400BBE7F9 /* string_to_patch.pd */; };
 		774C87AE1AE43D0400BBE7F9 /* volume_env.pd in Resources */ = {isa = PBXBuildFile; fileRef = 774C87AA1AE43D0400BBE7F9 /* volume_env.pd */; };
@@ -1000,6 +1001,7 @@
 		773F232E1AD206730037E01D /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = ../settings.png; sourceTree = "<group>"; };
 		773F232F1AD206730037E01D /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop.png; path = ../stop.png; sourceTree = "<group>"; };
 		774605A91AED771B00FAE4B0 /* SavedDataPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedDataPicker.swift; sourceTree = "<group>"; };
+		774605AB1AED888E00FAE4B0 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = save.png; path = ../save.png; sourceTree = "<group>"; };
 		774C87A71AE43D0400BBE7F9 /* channel_input.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = channel_input.pd; path = TouchSynthProject/channel_input.pd; sourceTree = "<group>"; };
 		774C87A91AE43D0400BBE7F9 /* string_to_patch.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = string_to_patch.pd; path = TouchSynthProject/string_to_patch.pd; sourceTree = "<group>"; };
 		774C87AA1AE43D0400BBE7F9 /* volume_env.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = volume_env.pd; path = TouchSynthProject/volume_env.pd; sourceTree = "<group>"; };
@@ -3461,6 +3463,7 @@
 		775C1AAF1ADE1315002FFCF2 /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				774605AB1AED888E00FAE4B0 /* save.png */,
 				15FCE6D31AA3DC50009F504B /* trash-closed copy.png */,
 				15FCE6D41AA3DC50009F504B /* trash-open copy.png */,
 				15CEFE6B1AA8FDF5009D78E3 /* Default.png */,
@@ -3767,6 +3770,7 @@
 				773F23361AD206730037E01D /* settings.png in Resources */,
 				774C8AF11AE440A000BBE7F9 /* switch6~-help.pd in Resources */,
 				774C8A8F1AE440A000BBE7F9 /* lsplit-help.pd in Resources */,
+				774605AC1AED888E00FAE4B0 /* save.png in Resources */,
 				774C8EBB1AE4459300BBE7F9 /* train~-help.pd in Resources */,
 				775403281ADF70D2008FF90B /* metroClickSoft.wav in Resources */,
 				774C89D91AE440A000BBE7F9 /* csch.pd in Resources */,

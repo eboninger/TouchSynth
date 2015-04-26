@@ -51,7 +51,7 @@ class SavedDataPicker: UIView, UITableViewDataSource, UITableViewDelegate {
         //}
         let row = indexPath.row
         cell!.textLabel?.text = data[row]
-        
+        cell!.textLabel?.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         return cell!
     }
     

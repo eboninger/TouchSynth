@@ -76,6 +76,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var infoButton: UIButton!
+    @IBOutlet weak var saveDataButton: UIButton!
+    @IBOutlet weak var saveLayoutButton: UIButton!
+    @IBOutlet weak var closeSaveDataWindow: UIButton!
     
     //sequencer bar
     @IBOutlet weak var playButton: UIButton!
@@ -158,10 +161,17 @@ class ViewController: UIViewController {
         volumeController.minimumValue = 0
         volumeController.maximumValue = 1
         
+        // TOP MENU BAR STUFF
         settingsButton.setBackgroundImage(UIImage(named:"settings.png")!, forState: .Normal)
         settingsButton.setTitle("", forState: .Normal)
         infoButton.setBackgroundImage(UIImage(named:"info.png")!, forState: .Normal)
         infoButton.setTitle("", forState: .Normal)
+        savedDataPicker.hidden = true
+        saveLayoutButton.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 16)
+        closeSaveDataWindow.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 16)
+        saveDataButton.setBackgroundImage(UIImage(named:"save.png")!, forState: .Normal)
+        saveDataButton.setTitle("", forState: .Normal)
+
 
         
         // sequencer bar setup
@@ -185,6 +195,12 @@ class ViewController: UIViewController {
         hide_seq.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         hide_menu.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         show_menu.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
+        self.view.bringSubviewToFront(show_seq)
+        self.view.bringSubviewToFront(show_menu)
+        self.view.bringSubviewToFront(hide_seq)
+        self.view.bringSubviewToFront(hide_menu)
+        
+        self.view.bringSubviewToFront(sequencer)
 
         initializePd()
 
@@ -299,6 +315,23 @@ class ViewController: UIViewController {
         
     }
     
+    /** SAVED DATA MENU STUFF **/
+    @IBAction func saveDataButtonPressed(sender: UIButton) {
+        savedDataPicker.hidden = !savedDataPicker.hidden
+        playView.bringSubviewToFront(savedDataPicker)
+        
+    }
+    
+    @IBAction func closeSaveDataButtonPressed(sender: UIButton) {
+        savedDataPicker.hidden = !savedDataPicker.hidden
+        
+    }
+    
+    @IBAction func saveLayoutButtonPressed(sender: UIButton) {
+        // DO SOMETHING TO SAVE THE CURRENT LAYOUT
+    }
+    /** END SAVED DATA MENU STUFF **/
+    
     func pressed(sender: UIButton!) {
         var alertView = UIAlertView();
         alertView.addButtonWithTitle("Ok");
@@ -363,6 +396,7 @@ class ViewController: UIViewController {
             }
             
             bringControlsToFront()
+            playView.bringSubviewToFront(savedDataPicker) // AHHH
 
             previewView.frame.offset(dx: origX! - previewView.frame.minX, dy: origY! - previewView.frame.minY)
             
@@ -387,6 +421,7 @@ class ViewController: UIViewController {
         case .Began:
             playView.bringSubviewToFront(note!)
             bringControlsToFront()
+            playView.bringSubviewToFront(savedDataPicker) // AHHH
             trash_open.hidden = false
             trash_closed.hidden = true
             

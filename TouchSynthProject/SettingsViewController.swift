@@ -14,13 +14,13 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     @IBOutlet weak var goBackButton: UIButton!
     @IBOutlet weak var externalLabel: UILabel!
     @IBOutlet weak var voicePicker: UIPickerView!
-    @IBOutlet weak var externalSwitch: UISegmentedControl!
+    //@IBOutlet weak var externalSwitch: UISegmentedControl!
     
-    /* overlays for settings page */
+   /* /* overlays for settings page */
     @IBOutlet weak var adsrOverlay: UIView!
     @IBOutlet weak var voiceOverlay: UIView!
     @IBOutlet weak var fxOverlay: UIView!
-    @IBOutlet weak var filterOverlay: UIView!
+    @IBOutlet weak var filterOverlay: UIView! */
     
     /* objects in filter overlay */
     @IBOutlet weak var filterLabel: UILabel!
@@ -79,7 +79,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         externalLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
         fxLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
         var attr = NSDictionary(object: UIFont(name: "Helvetica-BoldOblique", size: 16.0)!, forKey: NSFontAttributeName)
-        externalSwitch.setTitleTextAttributes(attr as [NSObject : AnyObject], forState: .Normal)
+        //externalSwitch.setTitleTextAttributes(attr as [NSObject : AnyObject], forState: .Normal)
         
         hpLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         lpLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
@@ -106,6 +106,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         echoSlider.minimumValue = 0
         echoSlider.maximumValue = 127
         
+        /*
         adsrOverlay.alpha = 0.5
         filterOverlay.alpha = 0.5
         voiceOverlay.alpha = 0.5
@@ -115,6 +116,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         filterOverlay.hidden = true
         fxOverlay.hidden = true
         voiceOverlay.hidden = true
+        */
         
         initialize(voicePicker)
 
@@ -132,23 +134,27 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         
     }
     
-    @IBAction func onPressed(sender: AnyObject) {
+  /*  @IBAction func onPressed(sender: AnyObject) {
         externalOn = !externalOn
         if (externalOn) {
+            /*
             adsrOverlay.hidden = true
             filterOverlay.hidden = true
             fxOverlay.hidden = true
             voiceOverlay.hidden = true
+*/
 
         } else {
+            /*
             adsrOverlay.hidden = false
             filterOverlay.hidden = false
             fxOverlay.hidden = false
             voiceOverlay.hidden = false
+*/
 
         }
 
-    }
+    }*/
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return pickerData.count
@@ -245,8 +251,8 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         self.view.addSubview(slider_cutoff)
         self.view.addSubview(slider_resonance)
         
-        self.view.bringSubviewToFront(adsrOverlay)
-        self.view.bringSubviewToFront(filterOverlay)
+        //self.view.bringSubviewToFront(adsrOverlay)
+        //self.view.bringSubviewToFront(filterOverlay)
         
     }
     #endif
