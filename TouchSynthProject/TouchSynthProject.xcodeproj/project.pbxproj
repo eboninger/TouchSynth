@@ -33,6 +33,7 @@
 		773F23351AD206730037E01D /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232D1AD206730037E01D /* record.png */; };
 		773F23361AD206730037E01D /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232E1AD206730037E01D /* settings.png */; };
 		773F23371AD206730037E01D /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 773F232F1AD206730037E01D /* stop.png */; };
+		774605AA1AED771C00FAE4B0 /* SavedDataPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774605A91AED771B00FAE4B0 /* SavedDataPicker.swift */; };
 		774C87AB1AE43D0400BBE7F9 /* channel_input.pd in Resources */ = {isa = PBXBuildFile; fileRef = 774C87A71AE43D0400BBE7F9 /* channel_input.pd */; };
 		774C87AD1AE43D0400BBE7F9 /* string_to_patch.pd in Resources */ = {isa = PBXBuildFile; fileRef = 774C87A91AE43D0400BBE7F9 /* string_to_patch.pd */; };
 		774C87AE1AE43D0400BBE7F9 /* volume_env.pd in Resources */ = {isa = PBXBuildFile; fileRef = 774C87AA1AE43D0400BBE7F9 /* volume_env.pd */; };
@@ -998,6 +999,7 @@
 		773F232D1AD206730037E01D /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = record.png; path = ../record.png; sourceTree = "<group>"; };
 		773F232E1AD206730037E01D /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = ../settings.png; sourceTree = "<group>"; };
 		773F232F1AD206730037E01D /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stop.png; path = ../stop.png; sourceTree = "<group>"; };
+		774605A91AED771B00FAE4B0 /* SavedDataPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedDataPicker.swift; sourceTree = "<group>"; };
 		774C87A71AE43D0400BBE7F9 /* channel_input.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = channel_input.pd; path = TouchSynthProject/channel_input.pd; sourceTree = "<group>"; };
 		774C87A91AE43D0400BBE7F9 /* string_to_patch.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = string_to_patch.pd; path = TouchSynthProject/string_to_patch.pd; sourceTree = "<group>"; };
 		774C87AA1AE43D0400BBE7F9 /* volume_env.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = volume_env.pd; path = TouchSynthProject/volume_env.pd; sourceTree = "<group>"; };
@@ -3505,6 +3507,7 @@
 				157499D61ACDD6B900FD808D /* ZFRippleButton.swift */,
 				15B315851AD70D3C00D5754A /* BWCircularSlider.swift */,
 				775C1AB31ADE1492002FFCF2 /* recData.swift */,
+				774605A91AED771B00FAE4B0 /* SavedDataPicker.swift */,
 			);
 			name = Swift;
 			path = ..;
@@ -4493,6 +4496,7 @@
 				774C8F591AE445D900BBE7F9 /* overdrive.c in Sources */,
 				774C8C491AE4449B00BBE7F9 /* gunidecomp.c in Sources */,
 				774C8FA31AE445FF00BBE7F9 /* os.c in Sources */,
+				774605AA1AED771C00FAE4B0 /* SavedDataPicker.swift in Sources */,
 				774C8C2E1AE4449B00BBE7F9 /* gmain.c in Sources */,
 				774C8D821AE4456700BBE7F9 /* sustain.c in Sources */,
 				774C8C2D1AE4449B00BBE7F9 /* glist.c in Sources */,

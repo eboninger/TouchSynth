@@ -8,6 +8,8 @@
 
 import Foundation
 
+import CoreData
+
 import UIKit
 
 // Data stored for each soundfont
@@ -19,6 +21,14 @@ struct SfData {
 }
 
 class ViewController: UIViewController {
+    
+    @IBOutlet var savedDataPicker: SavedDataPicker!
+    @IBOutlet var savedDataTableView: UITableView!
+    
+    var coreNotes = [NSManagedObject]()
+    var coreNoteCollections = [NSManagedObject]()
+    
+    
     var settingsmode = false
     var playmode = true
     var patchID : Int32 = 0
@@ -84,7 +94,6 @@ class ViewController: UIViewController {
     var notificationKey = "soundInfo"
     let nc = NSNotificationCenter.defaultCenter()
     
-    
 
     required init(coder aDecoder: NSCoder) {
         
@@ -109,7 +118,11 @@ class ViewController: UIViewController {
         return Int(UIInterfaceOrientationMask.Landscape.rawValue)
     }
 
-
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -137,6 +150,7 @@ class ViewController: UIViewController {
         initializePreviewView()
         initializeNotes()
         initializeMenu()
+        initializeSavedDataPicker()
         initializeSequencer()
         origX = previewView.frame.minX
         origY = previewView.frame.minY
@@ -223,6 +237,11 @@ class ViewController: UIViewController {
         stationaryPreviewView.bringSubviewToFront(previewView)
     }
     
+    func initializeSavedDataPicker()
+    {
+        savedDataPicker.initialize(savedDataTableView)
+    }
+    
     func initializeSequencer()
     {
         sequencer.initialize(self, seqPicker: seqPicker, bar: bar, beat: beat)
@@ -238,19 +257,19 @@ class ViewController: UIViewController {
     func initializeNotes()
     {
         collectionOfNotes = Array<Note>()
-        var x_start: CGFloat = 10
+        var x_start: CGFloat = 90
         var x_offset: CGFloat = 90
         
-        createNote("A3", value: 57, x_loc: x_start, y_loc: 190, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("C4", value: 60, x_loc: x_start + 1 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("D4", value: 62, x_loc: x_start + 2 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("E4", value: 64, x_loc: x_start + 3 * x_offset, y_loc: 175, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("G4", value: 67, x_loc: x_start + 3.5 * x_offset, y_loc: 300, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("A4", value: 69, x_loc: x_start + 5 * x_offset, y_loc: 300, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("C5", value: 72, x_loc: x_start + 5.5 * x_offset, y_loc: 175, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("D5", value: 74, x_loc: x_start + 6.5 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("E5", value: 76, x_loc: x_start + 7.5 * x_offset, y_loc: 150, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
-        createNote("G5", value: 79, x_loc: x_start + 8.5 * x_offset, y_loc: 190, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("A3", value: 57, x_loc: x_start, y_loc: 320, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("C4", value: 60, x_loc: x_start + 1 * x_offset, y_loc: 280, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("D4", value: 62, x_loc: x_start + 2 * x_offset, y_loc: 280, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("E4", value: 64, x_loc: x_start + 3 * x_offset, y_loc: 305, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("G4", value: 67, x_loc: x_start + 3.5 * x_offset, y_loc: 430, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("A4", value: 69, x_loc: x_start + 5 * x_offset, y_loc: 430, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("C5", value: 72, x_loc: x_start + 5.5 * x_offset, y_loc: 305, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("D5", value: 74, x_loc: x_start + 6.5 * x_offset, y_loc: 280, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("E5", value: 76, x_loc: x_start + 7.5 * x_offset, y_loc: 280, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
+        createNote("G5", value: 79, x_loc: x_start + 8.5 * x_offset, y_loc: 320, tcolor : UIColor.whiteColor(), bcolor : UIColor.purpleColor())
         for note in collectionOfNotes {
             note.enabled = false
         }
@@ -258,7 +277,7 @@ class ViewController: UIViewController {
     
     func createNote(title: NSString, value: Int, x_loc: CGFloat, y_loc: CGFloat, tcolor: UIColor, bcolor : UIColor)
     {
-        let myNote = Note(frame: CGRectMake(x_loc + 80, y_loc + 130, 75, 105))
+        let myNote = Note(frame: CGRectMake(x_loc, y_loc, 75, 105))
         myNote.initialize(title, value: value, tColor: tcolor, bColor: bcolor)
         let aSelector : Selector = "handlePan:"
         let panHandler = UIPanGestureRecognizer(target: self, action: aSelector)
@@ -337,7 +356,7 @@ class ViewController: UIViewController {
             
             for note in buttonPreviews {
                 if (!note.hidden && curY < -75) {
-                    createNote(note.titleForState(.Normal)!, value: note.value, x_loc: curX + 600 + offset, y_loc: curY + 480,
+                    createNote(note.titleForState(.Normal)!, value: note.value, x_loc: curX + 680 + offset, y_loc: curY + 610,
                         tcolor: note.titleColorForState(.Normal)!, bcolor: note.backgroundColor!)
                     offset += 90
                 }
@@ -596,12 +615,10 @@ class ViewController: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    /***************** Touch stuff ******************/
-    
-    
-    // Creates new note if not touching existing note, otherwise makes that note current
+    /***********************/
+    /*** TOUCH FUNCTIONS ***/
+    /***********************/
 
-    
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         if (!playmode || settingsmode) {
             return
@@ -655,9 +672,6 @@ class ViewController: UIViewController {
         }
     }
     
-
-    
-    // Stop playing the note if it wasn't a drag from a sustain
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         if (!playmode || settingsmode) {
             return
@@ -674,6 +688,80 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    /***************************/
+    /*** CORE DATA FUNCTIONS ***/
+    /***************************/
+    
+    @IBAction func savePressed(sender: AnyObject!)
+    {
+        
+    }
+    
+    func displayCoreNotes() {
+        for note in coreNotes {
+            var backgroundColor = NSKeyedUnarchiver.unarchiveObjectWithData(note.valueForKey("bcolor") as! NSData) as! UIColor
+            var textColor = NSKeyedUnarchiver.unarchiveObjectWithData(note.valueForKey("tcolor") as! NSData) as! UIColor
+            createNote(note.valueForKey("title") as! String,
+                value: note.valueForKey("value") as! Int,
+                x_loc: CGFloat(note.valueForKey("x") as! Int),
+                y_loc: CGFloat(note.valueForKey("y") as! Int),
+                tcolor: textColor,
+                bcolor: backgroundColor)
+        }
+    }
+    
+    func deleteCoreNotes() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        for note in coreNotes {
+            managedContext.deleteObject(note)
+            NSLog("Deleted note!")
+        }
+        managedContext.save(nil)
+    }
+    
+    func saveCoreNote(note: Note) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let entity = NSEntityDescription.entityForName("Note", inManagedObjectContext: managedContext)
+        let mynote = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        mynote.setValue(note.value, forKey: "value")
+        mynote.setValue(note.titleLabel!.text, forKey: "title")
+        var backgroundColor = NSKeyedArchiver.archivedDataWithRootObject(note.backgroundColor!)
+        var textColor = NSKeyedArchiver.archivedDataWithRootObject(note.titleLabel!.textColor)
+        mynote.setValue(backgroundColor, forKey: "bcolor")
+        mynote.setValue(textColor, forKey: "tcolor")
+        mynote.setValue(note.frame.minX, forKey: "x")
+        mynote.setValue(note.frame.minY, forKey: "y")
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+        } else {
+            NSLog("Saved note!")
+        }
+    }
+    
+    func loadCoreData() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName:"NoteCollection")
+        var error: NSError?
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+        
+        if let results = fetchedResults {
+            coreNoteCollections = results
+            for collection in coreNoteCollections {
+            }
+        } else {
+            println("Could not fetch \(error), \(error!.userInfo)")
+        }
+    }
+
 }
     
   
