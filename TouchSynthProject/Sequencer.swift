@@ -35,8 +35,10 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     var recorder : recordingProtocol?
     var recording : [recData.sample]?
+    var recordings : [[recData.sample]]?
+    var recordingIndex = -1
     var contains_recording = false
-    var recordingIndex = 0;
+    var recDataIndex = 0;
     var is_recording: Bool!
     var is_playing: Bool!
     var pause_state : [CGPoint] = []
@@ -51,6 +53,9 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     var metronomeSoftSoundPlayer: AVAudioPlayer!
     var beatCount = 0
     var metronome = true
+    
+    var savedRecordingsPicker: SavedRecordingsPicker?
+    var savedRecordingsTableView: UITableView?
     
     required init(coder aDecoder: NSCoder) {
         self.is_recording = false
@@ -71,7 +76,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
 
     }
     
-    func initialize(parentViewController: ViewController, seqPicker: UIPickerView, bar: UILabel, beat: UILabel)
+    func initialize(parentViewController: ViewController, seqPicker: UIPickerView, bar: UILabel, beat: UILabel, savedRecordingsPicker: SavedRecordingsPicker, savedRecordingsTableView: UITableView)
     {
         self.parentViewController = parentViewController
         self.seqPicker = seqPicker
@@ -81,6 +86,11 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         self.seqPicker!.selectRow(120, inComponent: 1, animated: true)
         self.bar = bar
         self.beat = beat
+        self.recordings = []
+        self.savedRecordingsPicker = savedRecordingsPicker
+        self.savedRecordingsTableView = savedRecordingsTableView
+        
+        self.savedRecordingsPicker!.initialize(self, tableView: self.savedRecordingsTableView!, recordings: self.recordings!)
     }
     
     func initializePickerData() {
@@ -105,13 +115,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         
         return attributedString
     }
-    
-    func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        if (component == 4) {
-            return 200
-        }
-        return 95
-    }
+
     
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
         
@@ -127,6 +131,10 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         if component == 1 {
             var bpm = Double(pickerData[component][row].toInt()!)
         }
+    }
+    
+    func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        return 75
     }
     
     func isRecording() -> Bool {
@@ -153,12 +161,15 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         self.seqPicker!.userInteractionEnabled = true
         recorder?.recordStop()
         recording = recorder?.doneRecording()
-        recordingIndex = 0
+        recDataIndex = 0
         recorder = nil
         stopTimer()
         self.is_recording = false
         recording_speed = Double(self.pickerData[1][self.seqPicker!.selectedRowInComponent(1)].toInt()!)
         self.beatCount = 0
+        
+        recordings!.append(recording!)
+        savedRecordingsPicker!.updateData(self.recordings!)
     }
     
     func containsRecording() -> Bool {
@@ -174,7 +185,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         self.is_playing = true
         startTimer()
         rec_length = recording!.count
-        for var i = recordingIndex; i < rec_length; i++ {
+        for var i = recDataIndex; i < rec_length; i++ {
             var s = recording![i];
             
             let params = ["note" : s.note, "value" : s.note_value]
@@ -207,7 +218,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         }
         timers = []
         is_playing = false
-        pause_time = recording![recordingIndex].elapsed_time
+        pause_time = recording![recDataIndex].elapsed_time
         parentViewController!.playButton.setBackgroundImage(UIImage(named:"play.png")!, forState: .Normal)
     }
     
@@ -215,7 +226,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         stopTimer()
         self.is_playing = false
         pause_time = 0
-        recordingIndex = 0
+        recDataIndex = 0
         parentViewController!.playButton.setBackgroundImage(UIImage(named:"play.png")!, forState: .Normal)
         parentViewController!.recordButton.enabled = true
         self.beatCount = 0
@@ -227,7 +238,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         let note_value = userInfo["value"] as! Int
         var touch = UITouch()
         self.parentViewController!.playedNote(note, touch: touch)
-        recordingIndex++
+        recDataIndex++
 
     }
     
@@ -238,7 +249,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         var touch = UITouch()
         
         self.parentViewController!.stoppedNote(note, touch: touch)
-        recordingIndex++
+        recDataIndex++
     }
     
     func recordNoteOn(note: Note) {
@@ -303,7 +314,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     {
         
         if !isRecording() && !isPlaying() {
-            if (recordingIndex > 0) {
+            if (recDataIndex > 0) {
                 pauseTimer()
             } else {
                 stopTimer()

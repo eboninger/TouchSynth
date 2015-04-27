@@ -45,7 +45,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     @IBOutlet weak var echoLabel: UILabel!
     @IBOutlet weak var reverbLabel: UILabel!
     @IBOutlet weak var tremoloLabel: UILabel!
-    @IBOutlet weak var decaySlider: UISlider!
+    @IBOutlet weak var delaySlider: UISlider!
     @IBOutlet weak var delayLabel: UILabel!
     
     /* objects in adsr overlay */
@@ -120,6 +120,8 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         tremoloSlider.maximumValue = 127
         echoSlider.minimumValue = 0
         echoSlider.maximumValue = 127
+        delaySlider.minimumValue = 0
+        delaySlider.maximumValue = 127
         
         /*
         adsrOverlay.alpha = 0.5
@@ -211,11 +213,11 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     }
     
     @IBAction func sendSoundInfo(sender:AnyObject)  {
-        NSNotificationCenter.defaultCenter().postNotificationName(soundKey, object: nil, userInfo: ["sound":info.sound, "tremolo":info.tremolo, "reverb":info.reverb, "chorus":info.chorus, "filterFreq": info.filterFreq, "filterQ": info.filterQ])
+        NSNotificationCenter.defaultCenter().postNotificationName(soundKey, object: nil, userInfo: ["sound":info.sound, "tremolo":info.tremolo, "reverb":info.reverb, "chorus":info.chorus, "delay":info.delay, "filterFreq": info.filterFreq, "filterQ": info.filterQ, "playNote": false, "note": testNote])
     }
     
     @IBAction func playTestNote(sender: Note) {
-        NSNotificationCenter.defaultCenter().postNotificationName(soundKey, object: nil, userInfo: ["sound":info.sound, "tremolo":info.tremolo, "reverb":info.reverb, "chorus":info.chorus, "filterFreq": info.filterFreq, "filterQ": info.filterQ, "playNote": true])
+        NSNotificationCenter.defaultCenter().postNotificationName(soundKey, object: nil, userInfo: ["sound":info.sound, "tremolo":info.tremolo, "reverb":info.reverb, "chorus":info.chorus, "delay":info.delay, "filterFreq": info.filterFreq, "filterQ": info.filterQ, "playNote": true, "note": testNote])
     }
     
     @IBAction func filterSwitchActivated(sender: UISwitch) {

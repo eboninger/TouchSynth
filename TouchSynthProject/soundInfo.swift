@@ -8,13 +8,7 @@
 
 import Foundation
 
-struct soundInfo {
-    
-    enum command {
-        case ON
-        case OFF
-        case IGNORE
-    }
+struct soundInfo { 
     
     var sound: String!
     var tremolo: Float!
@@ -23,7 +17,7 @@ struct soundInfo {
     var filterFreq: Int!
     var filterQ : Int!
     var delay: Float!
-    var noteCommand: command
+    var noteCommand: Bool!
     
     init() {
         sound = "piano_1"
@@ -33,7 +27,7 @@ struct soundInfo {
         filterFreq = 0
         filterQ = 0
         delay = 0
-        noteCommand = command.IGNORE
+        noteCommand = false
     }
     
 }

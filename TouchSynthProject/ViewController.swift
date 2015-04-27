@@ -89,6 +89,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var barLabel: UILabel!
     @IBOutlet weak var beat: UILabel!
     @IBOutlet weak var beatLabel: UILabel!
+    @IBOutlet var savedRecordingsPicker: SavedRecordingsPicker!
+    @IBOutlet var savedRecordingsTableView: UITableView!
     
     
     @IBOutlet weak var trash_open: UIImageView!
@@ -261,7 +263,7 @@ class ViewController: UIViewController {
     
     func initializeSequencer()
     {
-        sequencer.initialize(self, seqPicker: seqPicker, bar: bar, beat: beat)
+        sequencer.initialize(self, seqPicker: seqPicker, bar: bar, beat: beat, savedRecordingsPicker: savedRecordingsPicker, savedRecordingsTableView: savedRecordingsTableView)
         sequencer.layer.cornerRadius = 0.02 * sequencer.bounds.size.width
         
         sequencer.layer.shadowColor = UIColor.blackColor().CGColor
@@ -507,6 +509,22 @@ class ViewController: UIViewController {
         PdBase.sendList(["filter_q", filterQ], toReceiver: "filter_q")
         let reverb  = userInfo["reverb"] as! Float!
         PdBase.sendList([reverb], toReceiver: "reverb_feedback")
+        
+        let delay = userInfo["delay"] as! Float!
+        PdBase.sendList(["time", delay], toReceiver: "delay_time")
+        
+        //let tremolo  = userInfo["tremolo"] as! Float!
+        //PdBase.sendList(["rate", tremolo], toReceiver: "tremolo_rate")
+        //let filtertype = userInfo("filter") as! String!
+        //PdBase.sendList([filtertype], toReceiver: "filter_type"))
+        
+        let note = userInfo["note"] as! Note!
+        let playNote = userInfo["playNote"] as! Bool!
+        if (playNote!) {
+            playedNote(note, touch: UITouch())
+        } else {
+            stoppedNote(note, touch: UITouch())
+        }
         
     }
     
