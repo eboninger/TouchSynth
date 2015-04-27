@@ -255,7 +255,8 @@ class ViewController: UIViewController {
     
     func initializeSavedDataPicker()
     {
-        savedDataPicker.initialize(savedDataTableView)
+        savedDataPicker.initialize(self, tableView: savedDataTableView)
+        loadCoreNoteCollections()
     }
     
     func initializeSequencer()
@@ -311,6 +312,7 @@ class ViewController: UIViewController {
     
     @IBAction func settingsButtonPressed(sender: UIButton) {
         settingsmode = true
+        savedDataPicker.hidden = true
         self.presentViewController(settingsPage, animated: true, completion: nil)
         
     }
@@ -323,12 +325,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func closeSaveDataButtonPressed(sender: UIButton) {
-        savedDataPicker.hidden = !savedDataPicker.hidden
-        
+        savedDataPicker.hidden = true
     }
     
     @IBAction func saveLayoutButtonPressed(sender: UIButton) {
-        // DO SOMETHING TO SAVE THE CURRENT LAYOUT
+        saveCoreNoteCollection()
+        savedDataPicker.hidden = true
     }
     /** END SAVED DATA MENU STUFF **/
     
@@ -449,6 +451,7 @@ class ViewController: UIViewController {
     
     @IBAction func editPressed(sender: AnyObject) {
         playmode = !playmode;
+        savedDataPicker.hidden = true
 
         if (playmode) {
             for note in collectionOfNotes {
@@ -758,7 +761,47 @@ class ViewController: UIViewController {
         managedContext.save(nil)
     }
     
-    func saveCoreNote(note: Note) {
+    func deleteCoreCollectionAtIndex(index: Int) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        managedContext.deleteObject(coreNoteCollections[index])
+        coreNoteCollections.removeAtIndex(index)
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Could not delete \(error), \(error?.userInfo)")
+        }
+    }
+    
+    func saveCoreNoteCollection() {
+        let title = getDate()
+        for note in collectionOfNotes {
+            saveCoreNote(note, collection: title)
+        }
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let entity = NSEntityDescription.entityForName("NoteCollection", inManagedObjectContext: managedContext)
+        let mycollection = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+
+        mycollection.setValue(title, forKey: "title")
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+        } else {
+            loadCoreNoteCollections()
+        }
+    }
+    
+    func getDate() -> String
+    {
+        let date = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = .ShortStyle
+        formatter.dateStyle = .MediumStyle
+        return formatter.stringFromDate(date)
+    }
+    
+    func saveCoreNote(note: Note, collection: String) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         let entity = NSEntityDescription.entityForName("Note", inManagedObjectContext: managedContext)
@@ -771,6 +814,7 @@ class ViewController: UIViewController {
         mynote.setValue(textColor, forKey: "tcolor")
         mynote.setValue(note.frame.minX, forKey: "x")
         mynote.setValue(note.frame.minY, forKey: "y")
+        mynote.setValue(collection, forKey: "collection")
         var error: NSError?
         if !managedContext.save(&error) {
             println("Could not save \(error), \(error?.userInfo)")
@@ -779,7 +823,8 @@ class ViewController: UIViewController {
         }
     }
     
-    func loadCoreData() {
+    func loadCoreNoteCollections() {
+        NSLog("Called load core note collections")
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext!
@@ -790,11 +835,49 @@ class ViewController: UIViewController {
         
         if let results = fetchedResults {
             coreNoteCollections = results
-            for collection in coreNoteCollections {
+            savedDataPicker.updateData(coreNoteCollections)
+        } else {
+            println("Could not fetch \(error), \(error!.userInfo)")
+        }
+    }
+    
+    func loadCollectionWithTitle(title: String) {
+        savedDataPicker.hidden = true
+        while (collectionOfNotes.count > 0) {
+            collectionOfNotes[0].removeFromSuperview()
+            collectionOfNotes.removeAtIndex(0)
+        }
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let fetchRequest = NSFetchRequest(entityName:"Note")
+        var error: NSError?
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+        if let results = fetchedResults {
+            coreNotes = results
+            for note in coreNotes {
+                var mytitle = note.valueForKey("collection") as! String
+                if (note.valueForKey("collection") as! String == title) {
+                    var backgroundColor = NSKeyedUnarchiver.unarchiveObjectWithData(note.valueForKey("bcolor") as! NSData) as! UIColor
+                    var textColor = NSKeyedUnarchiver.unarchiveObjectWithData(note.valueForKey("tcolor") as! NSData) as! UIColor
+                    createNote(note.valueForKey("title") as! String,
+                        value: note.valueForKey("value") as! Int,
+                        x_loc: CGFloat(note.valueForKey("x") as! Int),
+                        y_loc: CGFloat(note.valueForKey("y") as! Int),
+                        tcolor: textColor,
+                        bcolor: backgroundColor)
+                } else {
+                }
+            }
+            if (playmode) {
+                for note in collectionOfNotes {
+                    note.enabled = false
+                }
             }
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
         }
+        
     }
 
 }

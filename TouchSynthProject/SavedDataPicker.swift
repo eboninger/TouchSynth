@@ -12,6 +12,8 @@ import UIKit
 
 class SavedDataPicker: UIView, UITableViewDataSource, UITableViewDelegate {
     
+    var parentViewController: ViewController?
+    
     var tableView: UITableView?
     
     var data = ["Test1", "Test2"]
@@ -26,8 +28,9 @@ class SavedDataPicker: UIView, UITableViewDataSource, UITableViewDelegate {
         super.init(coder: aDecoder)
     }
     
-    func initialize(tableView: UITableView)
+    func initialize(parentViewController: ViewController, tableView: UITableView)
     {
+        self.parentViewController = parentViewController
         self.data = ["Test1", "Test2", "Test3", "Test4"]
         self.tableView = tableView
         self.tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: "TextCell")
@@ -46,9 +49,6 @@ class SavedDataPicker: UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as? UITableViewCell
-        //if (cell == nil) {
-        //    cell = NSBundle.mainBundle().loadNibNamed("Cell", owner: self, options: nil)[0] as? UITableViewCell
-        //}
         let row = indexPath.row
         cell!.textLabel?.text = data[row]
         cell!.textLabel?.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
@@ -58,7 +58,25 @@ class SavedDataPicker: UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let row = indexPath.row
-        NSLog("SELECTED: \(data[row])")
+        parentViewController!.loadCollectionWithTitle(data[row])
+        
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            parentViewController!.deleteCoreCollectionAtIndex(indexPath.row)
+            data.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
+    
+    
+    func updateData(coreNoteCollection: [NSManagedObject]) {
+        self.data = []
+        for collection in coreNoteCollection {
+            self.data.append(collection.valueForKey("title") as! String)
+        }
+        self.tableView!.reloadData()
     }
     
     
