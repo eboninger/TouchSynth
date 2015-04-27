@@ -58,7 +58,7 @@ class SavedRecordingsPicker: UIView, UITableViewDataSource, UITableViewDelegate 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let row = indexPath.row
-        parentViewController!.recordingIndex = row
+        parentViewController!.recording = parentViewController!.recordings![row]
         
     }
     
