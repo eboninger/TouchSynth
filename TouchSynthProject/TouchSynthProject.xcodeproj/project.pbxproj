@@ -19,7 +19,6 @@
 		7729D1B01A965D6000AE22E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1AF1A965D6000AE22E4 /* main.m */; };
 		7729D1B31A965D6000AE22E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1B21A965D6000AE22E4 /* AppDelegate.m */; };
 		7729D1B61A965D6000AE22E4 /* TouchSynthProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1B41A965D6000AE22E4 /* TouchSynthProject.xcdatamodeld */; };
-		7729D1BC1A965D6000AE22E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7729D1BA1A965D6000AE22E4 /* Main.storyboard */; };
 		7729D1BE1A965D6000AE22E4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7729D1BD1A965D6000AE22E4 /* Images.xcassets */; };
 		7729D1C11A965D6000AE22E4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7729D1BF1A965D6000AE22E4 /* LaunchScreen.xib */; };
 		7729D1CD1A965D6000AE22E4 /* TouchSynthProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729D1CC1A965D6000AE22E4 /* TouchSynthProjectTests.m */; };
@@ -950,6 +949,7 @@
 		775FEF7E1ACB9A560004FC0A /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775FEF7A1ACB9A560004FC0A /* CoreBluetooth.framework */; };
 		776D8AB21A9EAFC8001F6500 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776D8AB11A9EAFC8001F6500 /* MenuBar.swift */; };
 		7778B15F1AEDD7FF000D33BA /* SFPatchFX.pd in Resources */ = {isa = PBXBuildFile; fileRef = 7778B15E1AEDD7FF000D33BA /* SFPatchFX.pd */; };
+		7778B1611AEDDD5D000D33BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7778B1601AEDDD5D000D33BA /* Main.storyboard */; };
 		7792163C1A9ABFDA0056465C /* adsr_obj.pd in Resources */ = {isa = PBXBuildFile; fileRef = 779216391A9ABFDA0056465C /* adsr_obj.pd */; };
 		7792163D1A9ABFDA0056465C /* filter.pd in Resources */ = {isa = PBXBuildFile; fileRef = 7792163A1A9ABFDA0056465C /* filter.pd */; };
 		7792163E1A9ABFDA0056465C /* proj1.pd in Resources */ = {isa = PBXBuildFile; fileRef = 7792163B1A9ABFDA0056465C /* proj1.pd */; };
@@ -984,7 +984,6 @@
 		7729D1B11A965D6000AE22E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7729D1B21A965D6000AE22E4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7729D1B51A965D6000AE22E4 /* TouchSynthProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TouchSynthProject.xcdatamodel; sourceTree = "<group>"; };
-		7729D1BB1A965D6000AE22E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7729D1BD1A965D6000AE22E4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7729D1C01A965D6000AE22E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7729D1C61A965D6000AE22E4 /* TouchSynthProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouchSynthProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2082,6 +2081,7 @@
 		775FEF7B1ACB9A560004FC0A /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		776D8AB11A9EAFC8001F6500 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = SOURCE_ROOT; };
 		7778B15E1AEDD7FF000D33BA /* SFPatchFX.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SFPatchFX.pd; path = TouchSynthProject/SFPatchFX.pd; sourceTree = "<group>"; };
+		7778B1601AEDDD5D000D33BA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
 		779216391A9ABFDA0056465C /* adsr_obj.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = adsr_obj.pd; path = TouchSynthProject/adsr_obj.pd; sourceTree = "<group>"; };
 		7792163A1A9ABFDA0056465C /* filter.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = filter.pd; path = TouchSynthProject/filter.pd; sourceTree = "<group>"; };
 		7792163B1A9ABFDA0056465C /* proj1.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = proj1.pd; path = TouchSynthProject/proj1.pd; sourceTree = "<group>"; };
@@ -2145,8 +2145,8 @@
 				775C1AB11ADE13C4002FFCF2 /* Swift */,
 				7729D1B11A965D6000AE22E4 /* AppDelegate.h */,
 				7729D1B21A965D6000AE22E4 /* AppDelegate.m */,
-				7729D1BA1A965D6000AE22E4 /* Main.storyboard */,
 				7729D1BD1A965D6000AE22E4 /* Images.xcassets */,
+				7778B1601AEDDD5D000D33BA /* Main.storyboard */,
 				7729D1BF1A965D6000AE22E4 /* LaunchScreen.xib */,
 				7729D1B41A965D6000AE22E4 /* TouchSynthProject.xcdatamodeld */,
 				7729D1AD1A965D6000AE22E4 /* Supporting Files */,
@@ -3942,7 +3942,6 @@
 				774C8A971AE440A000BBE7F9 /* multidelay~.pd in Resources */,
 				774C89921AE440A000BBE7F9 /* arg2method-help.pd in Resources */,
 				774C8A5F1AE440A000BBE7F9 /* if.pd in Resources */,
-				7729D1BC1A965D6000AE22E4 /* Main.storyboard in Resources */,
 				774C8A601AE440A000BBE7F9 /* iterator-help.pd in Resources */,
 				774C89BE1AE440A000BBE7F9 /* cmag-help.pd in Resources */,
 				774C8EBE1AE4459300BBE7F9 /* Trough-help.pd in Resources */,
@@ -4198,6 +4197,7 @@
 				773F23311AD206730037E01D /* info.png in Resources */,
 				774C8E4E1AE4459300BBE7F9 /* capture~-help.pd in Resources */,
 				774C8A411AE440A000BBE7F9 /* gate28.pd in Resources */,
+				7778B1611AEDDD5D000D33BA /* Main.storyboard in Resources */,
 				774C89BC1AE440A000BBE7F9 /* cleanup~-help.pd in Resources */,
 				774C8AC71AE440A000BBE7F9 /* scales-help.pd in Resources */,
 				774C89D51AE440A000BBE7F9 /* csc-help.pd in Resources */,
@@ -4649,14 +4649,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7729D1BA1A965D6000AE22E4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7729D1BB1A965D6000AE22E4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7729D1BF1A965D6000AE22E4 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

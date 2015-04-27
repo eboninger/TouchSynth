@@ -22,6 +22,9 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     @IBOutlet weak var fxOverlay: UIView!
     @IBOutlet weak var filterOverlay: UIView! */
     
+    /* Test note stuff */
+    @IBOutlet weak var testNote: Note!
+    
     /* objects in filter overlay */
     @IBOutlet weak var filterLabel: UILabel!
     @IBOutlet weak var hpLabel: UILabel!
@@ -31,6 +34,8 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     @IBOutlet weak var cutoffLabel: UILabel!
     @IBOutlet weak var cutoffLabel2: UILabel!
     @IBOutlet weak var resonanceLabel: UILabel!
+    @IBOutlet weak var bpLabel: UILabel!
+    @IBOutlet weak var bpSwitch: UISwitch!
     
     /* objects in fx overlay */
     @IBOutlet weak var fxLabel: UILabel!
@@ -40,6 +45,8 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     @IBOutlet weak var echoLabel: UILabel!
     @IBOutlet weak var reverbLabel: UILabel!
     @IBOutlet weak var tremoloLabel: UILabel!
+    @IBOutlet weak var decaySlider: UISlider!
+    @IBOutlet weak var delayLabel: UILabel!
     
     /* objects in adsr overlay */
     @IBOutlet weak var adsrLabel: UILabel!
@@ -85,8 +92,13 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         lpLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         lpSwitch.setOn(false, animated: false)
         hpSwitch.setOn(false, animated: false)
+        bpLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
+        bpSwitch.setOn(false, animated: false)
+
         echoLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         reverbLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
+        delayLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
+
         tremoloLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         attackLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
         sustainLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
@@ -97,6 +109,9 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         resonanceLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
     
         info.sound = "piano_1"
+        
+        testNote.initialize("C4", value: 72, tColor: UIColor.blackColor(), bColor: UIColor.cyanColor())
+        testNote.layer.borderColor = (UIColor.blackColor()).CGColor
         
         
         reverbSlider.minimumValue = 50
@@ -199,11 +214,20 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         NSNotificationCenter.defaultCenter().postNotificationName(soundKey, object: nil, userInfo: ["sound":info.sound, "tremolo":info.tremolo, "reverb":info.reverb, "chorus":info.chorus, "filterFreq": info.filterFreq, "filterQ": info.filterQ])
     }
     
+    @IBAction func playTestNote(sender: Note) {
+        NSNotificationCenter.defaultCenter().postNotificationName(soundKey, object: nil, userInfo: ["sound":info.sound, "tremolo":info.tremolo, "reverb":info.reverb, "chorus":info.chorus, "filterFreq": info.filterFreq, "filterQ": info.filterQ, "playNote": true])
+    }
+    
     @IBAction func filterSwitchActivated(sender: UISwitch) {
         if (sender == lpSwitch && lpSwitch.on) {
             hpSwitch.setOn(false, animated: true)
+            bpSwitch.setOn(false, animated: true)
         } else if (sender == hpSwitch && hpSwitch.on) {
             lpSwitch.setOn(false, animated: true)
+            bpSwitch.setOn(false, animated: true)
+        } else if (sender == bpSwitch && bpSwitch.on) {
+            lpSwitch.setOn(false, animated: true)
+            hpSwitch.setOn(false, animated: true)
         }
     }
     
@@ -294,5 +318,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     @IBAction func chorusChanged(sender: UISlider) {
         info.chorus = sender.value
     }
-
+    @IBAction func delayChanged(sender: UISlider) {
+        info.delay = sender.value
+    }
 }
