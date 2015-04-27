@@ -219,11 +219,12 @@ class BWCircularSlider: UIControl {
         let centerPoint:CGPoint  = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
         //Calculate the direction from a center point and a arbitrary position.
         let currentAngle:Double = AngleFromNorth(centerPoint, p2: lastPoint, flipped: false);
-
-        let angleInt = Int(floor(currentAngle))
-
-        //Store the new angle
-        angle = Int(360 - angleInt)
+        if (currentAngle.isNaN) {
+            angle = 0
+        } else {
+            let angleInt = Int(floor(currentAngle))
+            angle = Int(360 - angleInt)
+        }
 
         //Update the textfield
         textField!.text = "\(angle)"

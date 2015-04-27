@@ -949,6 +949,7 @@
 		775FEF771ACB81680004FC0A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775FEF761ACB81680004FC0A /* SettingsViewController.swift */; };
 		775FEF7E1ACB9A560004FC0A /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775FEF7A1ACB9A560004FC0A /* CoreBluetooth.framework */; };
 		776D8AB21A9EAFC8001F6500 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776D8AB11A9EAFC8001F6500 /* MenuBar.swift */; };
+		7778B15F1AEDD7FF000D33BA /* SFPatchFX.pd in Resources */ = {isa = PBXBuildFile; fileRef = 7778B15E1AEDD7FF000D33BA /* SFPatchFX.pd */; };
 		7792163C1A9ABFDA0056465C /* adsr_obj.pd in Resources */ = {isa = PBXBuildFile; fileRef = 779216391A9ABFDA0056465C /* adsr_obj.pd */; };
 		7792163D1A9ABFDA0056465C /* filter.pd in Resources */ = {isa = PBXBuildFile; fileRef = 7792163A1A9ABFDA0056465C /* filter.pd */; };
 		7792163E1A9ABFDA0056465C /* proj1.pd in Resources */ = {isa = PBXBuildFile; fileRef = 7792163B1A9ABFDA0056465C /* proj1.pd */; };
@@ -2080,6 +2081,7 @@
 		775FEF7A1ACB9A560004FC0A /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		775FEF7B1ACB9A560004FC0A /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		776D8AB11A9EAFC8001F6500 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = SOURCE_ROOT; };
+		7778B15E1AEDD7FF000D33BA /* SFPatchFX.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SFPatchFX.pd; path = TouchSynthProject/SFPatchFX.pd; sourceTree = "<group>"; };
 		779216391A9ABFDA0056465C /* adsr_obj.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = adsr_obj.pd; path = TouchSynthProject/adsr_obj.pd; sourceTree = "<group>"; };
 		7792163A1A9ABFDA0056465C /* filter.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = filter.pd; path = TouchSynthProject/filter.pd; sourceTree = "<group>"; };
 		7792163B1A9ABFDA0056465C /* proj1.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = proj1.pd; path = TouchSynthProject/proj1.pd; sourceTree = "<group>"; };
@@ -3484,6 +3486,7 @@
 		775C1AB01ADE136B002FFCF2 /* Pd */ = {
 			isa = PBXGroup;
 			children = (
+				7778B15E1AEDD7FF000D33BA /* SFPatchFX.pd */,
 				7720F34D1AE6CAD10006311F /* SFPatch.pd */,
 				774C87A71AE43D0400BBE7F9 /* channel_input.pd */,
 				774C87A91AE43D0400BBE7F9 /* string_to_patch.pd */,
@@ -3822,6 +3825,7 @@
 				774C89C01AE440A000BBE7F9 /* cmag~.pd in Resources */,
 				774C89A31AE440A000BBE7F9 /* cadd-help.pd in Resources */,
 				774C89841AE440A000BBE7F9 /* <=~.pd in Resources */,
+				7778B15F1AEDD7FF000D33BA /* SFPatchFX.pd in Resources */,
 				774C8A2A1AE440A000BBE7F9 /* gate17-help.pd in Resources */,
 				774C898C1AE440A000BBE7F9 /* abstractions-standalone.pd in Resources */,
 				774C8E871AE4459300BBE7F9 /* mtr-help.pd in Resources */,

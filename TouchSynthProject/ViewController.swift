@@ -105,7 +105,7 @@ class ViewController: UIViewController {
         PdExternals.setup()
         
       //  patch = PdBase.openFile("final_patch.pd", path: NSBundle.mainBundle().resourcePath)
-        patch = PdBase.openFile("SFPatch.pd", path: NSBundle.mainBundle().resourcePath)
+        patch = PdBase.openFile("SFPatchFX.pd", path: NSBundle.mainBundle().resourcePath)
         
         super.init(coder: aDecoder)
         
@@ -506,7 +506,7 @@ class ViewController: UIViewController {
         let filterQ  = userInfo["filterQ"] as! Int!
         PdBase.sendList(["filter_q", filterQ], toReceiver: "filter_q")
         let reverb  = userInfo["reverb"] as! Float!
-        PdBase.sendList(["reverb_amount", reverb], toReceiver: "reverb")
+        PdBase.sendList([reverb], toReceiver: "reverb_feedback")
         
     }
     

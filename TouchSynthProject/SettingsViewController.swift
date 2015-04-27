@@ -99,8 +99,8 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         info.sound = "piano_1"
         
         
-        reverbSlider.minimumValue = 0
-        reverbSlider.maximumValue = 127
+        reverbSlider.minimumValue = 50
+        reverbSlider.maximumValue = 100
         tremoloSlider.minimumValue = 0
         tremoloSlider.maximumValue = 127
         echoSlider.minimumValue = 0
