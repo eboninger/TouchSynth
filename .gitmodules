@@ -1,0 +1,3 @@
+[submodule "Pd-for-LibPd"]
+	path = TouchSynthProject/Pd-for-LibPd
+	url = https://github.com/cpenny42/Pd-for-LibPd.git
