@@ -48,6 +48,7 @@ class ZFRippleButton: UIButton {
     let rippleBackgroundView = UIView()
     private var tempShadowRadius: CGFloat = 0
     private var tempShadowOpacity: Float = 0
+    private var is_active: Bool = false
     
     private var rippleMask: CAShapeLayer? {
         get {
@@ -100,6 +101,7 @@ class ZFRippleButton: UIButton {
     }
     
     func beginTrackingWithTouch(touch: UITouch) {
+            is_active = true
             if trackTouchLocation {
                 rippleView.center = touch.locationInView(self)
             }
@@ -136,6 +138,7 @@ class ZFRippleButton: UIButton {
     }
     
     func endTrackingWithTouch(touch: UITouch) {
+            is_active = false
             //super.endTrackingWithTouch(touch, withEvent: event)
             
             UIView.animateWithDuration(0.1, animations: {
@@ -175,6 +178,10 @@ class ZFRippleButton: UIButton {
         
         rippleBackgroundView.layer.frame = bounds
         rippleBackgroundView.layer.mask = rippleMask    
+    }
+    
+    func isActive() -> Bool {
+        return is_active
     }
     
 }

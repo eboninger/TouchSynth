@@ -166,7 +166,7 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
         self.is_recording = false
         self.beatCount = 0
         
-        if (temp_recording!.count != 1) {
+        if (temp_recording?.count > 1) {
             recording = temp_recording
             self.contains_recording = true
             recording_speed = Double(self.pickerData[1][self.seqPicker!.selectedRowInComponent(1)].toInt()!)
@@ -218,6 +218,13 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     func pausePlayback(){
         for timer in timers {
             timer.invalidate()
+        }
+        for sample in recording! {
+            if (sample.note.isActive()) {
+                var faketouch = UITouch()
+                sample.note.endTrackingWithTouch(faketouch)
+                parentViewController?.stoppedNote(sample.note, touch: faketouch)
+            }
         }
         timers = []
         is_playing = false
@@ -305,7 +312,8 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     func pressedBack()
     {
-        stopTimer()
+        pausePlayback()
+        endOfPlayback(NSTimer())
     }
     
     

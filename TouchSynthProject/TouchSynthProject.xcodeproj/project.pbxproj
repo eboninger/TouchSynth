@@ -1433,6 +1433,11 @@
 		7766B5CD1AEF0193006071AE /* volume~-help.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "volume~-help.pd"; sourceTree = "<group>"; };
 		7766B5CE1AEF0193006071AE /* volume~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "volume~.pd"; sourceTree = "<group>"; };
 		776D8AB11A9EAFC8001F6500 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = SOURCE_ROOT; };
+		777696461AEFF691007A07A1 /* FluidR3 GM.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FluidR3 GM.sf2"; path = "../../../../../Downloads/FluidR3 GM.sf2"; sourceTree = "<group>"; };
+		777696471AEFF7A7007A07A1 /* Giga_Piano.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Giga_Piano.sf2; path = "../../../../../Downloads/25 Piano Soundfonts/Giga_Piano.sf2"; sourceTree = "<group>"; };
+		777696481AEFFB50007A07A1 /* Leonhart.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Leonhart.sf2; sourceTree = "<group>"; };
+		777696491AEFFFFC007A07A1 /* Johansson_BeautifulPad.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Johansson_BeautifulPad.sf2; sourceTree = "<group>"; };
+		7776964A1AF00081007A07A1 /* rtanpad1.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = rtanpad1.sf2; sourceTree = "<group>"; };
 		7778B15E1AEDD7FF000D33BA /* SFPatchFX.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SFPatchFX.pd; path = TouchSynthProject/SFPatchFX.pd; sourceTree = "<group>"; };
 		7778B1621AEDF568000D33BA /* SavedRecordingsPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedRecordingsPicker.swift; sourceTree = "<group>"; };
 		779216391A9ABFDA0056465C /* adsr_obj.pd */ = {isa = PBXFileReference; lastKnownFileType = text; name = adsr_obj.pd; path = TouchSynthProject/adsr_obj.pd; sourceTree = "<group>"; };
@@ -2236,6 +2241,9 @@
 		7766AE041AEEFF4B006071AE /* soundfonts */ = {
 			isa = PBXGroup;
 			children = (
+				777696481AEFFB50007A07A1 /* Leonhart.sf2 */,
+				777696471AEFF7A7007A07A1 /* Giga_Piano.sf2 */,
+				777696461AEFF691007A07A1 /* FluidR3 GM.sf2 */,
 				7766AE051AEEFF4B006071AE /* analog_age.sf2 */,
 				7766AE061AEEFF4B006071AE /* banjo_1.sf2 */,
 				7766AE071AEEFF4B006071AE /* beautiful_pad.sf2 */,
@@ -2257,8 +2265,10 @@
 				7766AE171AEEFF4B006071AE /* jonnypad8.sf2 */,
 				7766AE181AEEFF4B006071AE /* LesPaul.SF2 */,
 				7766AE191AEEFF4B006071AE /* muted_trombone.sf2 */,
+				777696491AEFFFFC007A07A1 /* Johansson_BeautifulPad.sf2 */,
 				7766AE1A1AEEFF4B006071AE /* piano_1.sf2 */,
 				7766AE1B1AEEFF4B006071AE /* README.txt */,
+				7776964A1AF00081007A07A1 /* rtanpad1.sf2 */,
 				7766AE1C1AEEFF4B006071AE /* saz.sf2 */,
 				7766AE1D1AEEFF4B006071AE /* SC88Drumset.sf2 */,
 				7766AE1E1AEEFF4B006071AE /* soundfonts-help.pd */,
