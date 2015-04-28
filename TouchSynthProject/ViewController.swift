@@ -44,6 +44,7 @@ class ViewController: UIViewController {
     
     var info = soundInfo()
 
+    
     @IBOutlet weak var hide_seq: UIButton!
     @IBOutlet weak var show_seq: UIButton!
     @IBOutlet weak var hide_menu: UIButton!
@@ -705,8 +706,13 @@ class ViewController: UIViewController {
     }
 
     @IBAction func showInfoPage(sender: AnyObject) {
-        let alertController: UIAlertController = UIAlertController(title: "About Touch Synth", message: "Created by the one and only Brett Fischler, Eli Boninger, and Steph Cleland abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz", preferredStyle: .Alert)
+        let font:UIFont? = UIFont.boldSystemFontOfSize(12.0)
         
+        var message = "Play Mode: \n Simply press the notes to make them play! \n Sequencer:\n If you want to record your music, press the record button to begin recording, and press it again once you're done recording. Your new recording will automatically be added to the list of recordings, which you can load or delete by pressing the recordings button. The recording you currently have selected will be listed on the left.\n Edit Mode:\n To add new notes, move current notes around, or delete notes from the screen, enter edit mode! Here you will have the option of adding a scale or a note, choose the key and octave, sharps or flats, and the type of scale. Then simply drag and drop it to add it to the screen. \n Save:\n If you want to save a current note layout, or load a previously saved note layout, just press the floppy disk at the top of the screen. Each note layout is listed by the date and time it was saved. \n Settings:\n To change the sound of your notes, enter the settings page. From here you can choose a preset sound, or play around with the settings until you get a sound you like!"
+        
+        let alertController: UIAlertController = UIAlertController(title: "About touchSYNTH", message: message, preferredStyle: .Alert)
+        
+       // alertController.
         alertController.view.tintColor = UIColor.magentaColor()
 
  
@@ -719,6 +725,7 @@ class ViewController: UIViewController {
         
         //Present the AlertController
         self.presentViewController(alertController, animated: true, completion: nil)
+
     }
     
     /***********************/
