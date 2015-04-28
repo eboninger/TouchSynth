@@ -180,12 +180,23 @@ class ViewController: UIViewController {
         savedDataPicker.hidden = true
         saveLayoutButton.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 16)
         closeSaveDataWindow.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 16)
-    saveDataButton.setBackgroundImage(UIImage(named:"save.png")!, forState: .Normal)
+        saveDataButton.setBackgroundImage(UIImage(named:"save.png")!, forState: .Normal)
         saveDataButton.setTitle("", forState: .Normal)
+        
+        savedRecordingsPicker.layer.shadowColor = UIColor.blackColor().CGColor
+        savedRecordingsPicker.layer.shadowOffset = CGSize(width: -1, height: 6)
+        savedRecordingsPicker.layer.shadowOpacity = 0.4
+        savedRecordingsPicker.layer.shadowRadius = 5
+        
+        savedDataPicker.layer.shadowColor = UIColor.blackColor().CGColor
+        savedDataPicker.layer.shadowOffset = CGSize(width: -1, height: 6)
+        savedDataPicker.layer.shadowOpacity = 0.4
+        savedDataPicker.layer.shadowRadius = 5
+        
         
         savedRecordingsPicker.hidden = true
         curRecordingLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
-        recordingsButton.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
+        recordingsButton.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 16)
         
         // sequencer bar setup
         playButton.setBackgroundImage(UIImage(named:"play.png")!, forState: .Normal)
@@ -568,7 +579,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func playedNote(sender: Note, touch: UITouch) {
-        if (playmode) {
+        //if (playmode) {
             let noteToPlay = sender.value + (12 * self.octave) + self.semitone
             PdBase.sendList([noteToPlay, 127], toReceiver: "note")
             sender.beginTrackingWithTouch(touch)
@@ -576,7 +587,7 @@ class ViewController: UIViewController {
                 sequencer!.recordNoteOn(sender)
             }
             
-        }
+       // }
     }
     
     func bringControlsToFront()
@@ -586,14 +597,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func stoppedNote(sender: Note, touch: UITouch) {
-        if (playmode) {
+        //if (playmode) {
             let noteToStop = sender.value + (12 * self.octave) + self.semitone
             PdBase.sendList([noteToStop, 0], toReceiver: "note")
             sender.endTrackingWithTouch(touch)
             if (sequencer!.isRecording()) {
                 sequencer!.recordNoteOff(sender)
             }
-        }
+        //}
     }
     
     @IBAction func volumeChanged(sender: UISlider) {

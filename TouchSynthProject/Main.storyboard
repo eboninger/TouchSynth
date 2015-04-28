@@ -265,7 +265,7 @@
                                         <rect key="frame" x="143" y="8" width="245" height="93"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bpm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohu-NC-Gfm">
-                                                <rect key="frame" x="199" y="36" width="71" height="21"/>
+                                                <rect key="frame" x="192" y="36" width="71" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.88808001893939392" green="0.88808001893939392" blue="0.88808001893939392" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -388,12 +388,17 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edH-Rq-77H">
-                                                <rect key="frame" x="15" y="21" width="92" height="30"/>
+                                                <rect key="frame" x="8" y="8" width="106" height="43"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="Recordings">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="recordingsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dcd-ih-aeA"/>
                                                 </connections>
@@ -405,6 +410,14 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cpW-5e-3ZD">
+                                        <rect key="frame" x="143" y="2" width="247" height="7"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1ab-A6-zhK">
+                                        <rect key="frame" x="131" y="7" width="12" height="95"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -419,7 +432,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LB8-Wf-hwo">
-                                <rect key="frame" x="902" y="740" width="116" height="28"/>
+                                <rect key="frame" x="861" y="740" width="202" height="28"/>
                                 <state key="normal" title="Show">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -428,7 +441,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGf-Jl-I6l">
-                                <rect key="frame" x="904" y="746" width="116" height="28"/>
+                                <rect key="frame" x="873" y="741" width="176" height="28"/>
                                 <state key="normal" title="Show">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -436,8 +449,28 @@
                                     <action selector="hideMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MSR-wW-IAG"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qxy-1b-exh" customClass="SavedRecordingsPicker" customModule="TouchSynthProject" customModuleProvider="target">
+                                <rect key="frame" x="19" y="492" width="275" height="158"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="txS-X3-Lp3">
+                                        <rect key="frame" x="6" y="6" width="263" height="144"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rdN-aS-FWX">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="769"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NlX-mc-Hwt">
                                         <rect key="frame" x="24" y="38" width="235" height="29"/>
@@ -464,7 +497,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHp-PK-fgc">
-                                        <rect key="frame" x="902" y="31" width="42" height="42"/>
+                                        <rect key="frame" x="965" y="31" width="42" height="42"/>
                                         <state key="normal" title="S">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -473,7 +506,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07V-Ts-ukN">
-                                        <rect key="frame" x="964" y="31" width="42" height="42"/>
+                                        <rect key="frame" x="904" y="31" width="42" height="42"/>
                                         <state key="normal" title="M">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -515,7 +548,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcA-It-Tuh">
-                                        <rect key="frame" x="893" y="602" width="131" height="33"/>
+                                        <rect key="frame" x="858" y="602" width="208" height="33"/>
                                         <state key="normal" title="Hide">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -529,6 +562,11 @@
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8aN-hJ-v0B">
                                                 <rect key="frame" x="6" y="5" width="263" height="144"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKq-Im-ug2">
                                                 <rect key="frame" x="14" y="162" width="118" height="30"/>
@@ -550,18 +588,13 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qxy-1b-exh" customClass="SavedRecordingsPicker" customModule="TouchSynthProject" customModuleProvider="target">
-                                <rect key="frame" x="19" y="495" width="275" height="158"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="txS-X3-Lp3">
-                                        <rect key="frame" x="6" y="6" width="263" height="144"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -666,32 +699,32 @@
                                 <rect key="frame" x="33" y="526" width="507" height="211"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FILTER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4G-Px-PMZ">
-                                        <rect key="frame" x="28" y="16" width="152" height="33"/>
+                                        <rect key="frame" x="25" y="12" width="152" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fdk-ea-H8J">
-                                        <rect key="frame" x="39" y="62" width="51" height="31"/>
+                                        <rect key="frame" x="39" y="55" width="51" height="31"/>
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="filterSwitchActivated:" destination="4Pk-Kk-5Ua" eventType="valueChanged" id="Z2r-Kp-7ZQ"/>
                                         </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HIGH PASS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpE-ev-wuP">
-                                        <rect key="frame" x="106" y="62" width="121" height="33"/>
+                                        <rect key="frame" x="106" y="54" width="121" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LO PASS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmW-6Y-F7U">
-                                        <rect key="frame" x="106" y="117" width="121" height="33"/>
+                                        <rect key="frame" x="106" y="104" width="121" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-q8-YCX">
-                                        <rect key="frame" x="39" y="117" width="51" height="31"/>
+                                        <rect key="frame" x="39" y="105" width="51" height="31"/>
                                         <connections>
                                             <action selector="filterSwitchActivated:" destination="4Pk-Kk-5Ua" eventType="valueChanged" id="4DV-dG-nY1"/>
                                         </connections>
@@ -715,13 +748,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LPz-y1-LnR">
-                                        <rect key="frame" x="39" y="171" width="51" height="31"/>
+                                        <rect key="frame" x="39" y="157" width="51" height="31"/>
                                         <connections>
                                             <action selector="filterSwitchActivated:" destination="4Pk-Kk-5Ua" eventType="valueChanged" id="3jl-2s-Uqs"/>
                                         </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BAND PASS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKf-Mb-CJI">
-                                        <rect key="frame" x="106" y="169" width="121" height="33"/>
+                                        <rect key="frame" x="106" y="156" width="121" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -753,13 +786,13 @@
                                 <rect key="frame" x="33" y="336" width="507" height="167"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OCTAVE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78K-6w-xa4">
-                                        <rect key="frame" x="102" y="129" width="72" height="30"/>
+                                        <rect key="frame" x="82" y="129" width="72" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SEMITONE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5K-tg-g0e">
-                                        <rect key="frame" x="210" y="129" width="87" height="30"/>
+                                        <rect key="frame" x="212" y="129" width="87" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -771,7 +804,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FINE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44x-zG-OHX">
-                                        <rect key="frame" x="343" y="129" width="75" height="30"/>
+                                        <rect key="frame" x="367" y="129" width="75" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -807,6 +840,11 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xkx-ck-R4s">
                                 <rect key="frame" x="245" y="66" width="295" height="242"/>
@@ -821,50 +859,79 @@
                                         <rect key="frame" x="32" y="52" width="106" height="74"/>
                                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Default">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="presetButton1_Pressed:" destination="4Pk-Kk-5Ua" eventType="touchUpInside" id="Wf0-ir-Y3X"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZJ-Ys-1T3">
-                                        <rect key="frame" x="156" y="52" width="106" height="74"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Eli">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="presetButton2_Pressed:" destination="4Pk-Kk-5Ua" eventType="touchUpInside" id="5Cc-wv-Yl4"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeN-ii-qmX">
                                         <rect key="frame" x="32" y="139" width="106" height="74"/>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Brett">
+                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Ethereal">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="presetButton3_Pressed:" destination="4Pk-Kk-5Ua" eventType="touchUpInside" id="qqe-h1-AOj"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PC3-2g-n0z">
                                         <rect key="frame" x="156" y="139" width="106" height="74"/>
-                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Steph">
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Radar">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="presetButton4_Pressed:" destination="4Pk-Kk-5Ua" eventType="touchUpInside" id="QMA-rw-UfA"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZJ-Ys-1T3">
+                                        <rect key="frame" x="156" y="52" width="106" height="74"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Womp">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="presetButton2_Pressed:" destination="4Pk-Kk-5Ua" eventType="touchUpInside" id="5Cc-wv-Yl4"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ge6-ID-aEe">
                                 <rect key="frame" x="564" y="398" width="412" height="339"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FX" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwM-Dk-p63">
-                                        <rect key="frame" x="29" y="19" width="121" height="33"/>
+                                        <rect key="frame" x="20" y="15" width="121" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -964,6 +1031,7 @@
                         <outlet property="reverbSlider" destination="HhA-5g-DHJ" id="HNX-1Y-Sfd"/>
                         <outlet property="semitoneLabel" destination="a5K-tg-g0e" id="14W-dH-BK1"/>
                         <outlet property="testNote" destination="oSX-a5-cLS" id="0dX-J6-WhU"/>
+                        <outlet property="testNoteLabel" destination="3Kd-8P-RYY" id="j2N-SL-Pmg"/>
                         <outlet property="tremoloLabel" destination="4uI-ZN-pzh" id="bdl-hY-aZx"/>
                         <outlet property="tremoloSlider" destination="kPW-4w-OhR" id="tdM-pb-vzC"/>
                         <outlet property="voicePicker" destination="fa8-iT-X82" id="roI-QX-4bl"/>

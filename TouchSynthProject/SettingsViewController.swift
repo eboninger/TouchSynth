@@ -14,13 +14,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     @IBOutlet weak var goBackButton: UIButton!
     @IBOutlet weak var externalLabel: UILabel!
     @IBOutlet weak var voicePicker: UIPickerView!
-    //@IBOutlet weak var externalSwitch: UISegmentedControl!
-    
-   /* /* overlays for settings page */
-    @IBOutlet weak var adsrOverlay: UIView!
-    @IBOutlet weak var voiceOverlay: UIView!
-    @IBOutlet weak var fxOverlay: UIView!
-    @IBOutlet weak var filterOverlay: UIView! */
+    @IBOutlet weak var testNoteLabel: UILabel!
     
     /* Test note stuff */
     @IBOutlet weak var testNote: Note!
@@ -92,6 +86,13 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         goBackButton.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
         goBackButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
         
+        
+        presetButton1.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 16)
+         presetButton2.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 16)
+         presetButton3.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 16)
+         presetButton4.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 16)
+        
+        testNoteLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
         pitchLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
         filterLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
         externalLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
@@ -140,18 +141,9 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         
         slider_cutoff!.moveHandleTo(360)
         slider_resonance!.moveHandleTo(360)
-        
-        /*
-        adsrOverlay.alpha = 0.5
-        filterOverlay.alpha = 0.5
-        voiceOverlay.alpha = 0.5
-        fxOverlay.alpha = 0.5
+        slider_cutoff!.updateTextField("")
+        slider_resonance!.updateTextField("")
 
-        adsrOverlay.hidden = true
-        filterOverlay.hidden = true
-        fxOverlay.hidden = true
-        voiceOverlay.hidden = true
-        */
         
         initialize(voicePicker)
 
@@ -168,28 +160,6 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         self.voicePicker!.selectRow(2, inComponent: 0, animated: true)
         
     }
-    
-  /*  @IBAction func onPressed(sender: AnyObject) {
-        externalOn = !externalOn
-        if (externalOn) {
-            /*
-            adsrOverlay.hidden = true
-            filterOverlay.hidden = true
-            fxOverlay.hidden = true
-            voiceOverlay.hidden = true
-*/
-
-        } else {
-            /*
-            adsrOverlay.hidden = false
-            filterOverlay.hidden = false
-            fxOverlay.hidden = false
-            voiceOverlay.hidden = false
-*/
-
-        }
-
-    }*/
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return pickerData.count
@@ -226,7 +196,6 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
             case 6 : info.sound = "flugelhorn"
         default : info.sound = "piano_1"
         }
-        //sendSoundInfo()
     }
     
     @IBAction func sendSoundInfo(sender:AnyObject)  {
@@ -277,8 +246,8 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         
         // Build the sliders
         self.slider_octave = BWCircularSlider(startColor:UIColor.magentaColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 100.0, y: 370.0, width: 100.0, height: 100.0))
-        self.slider_semitone = BWCircularSlider(startColor:UIColor.cyanColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 220.0, y: 370.0, width: 100.0, height: 100.0))
-        self.slider_fine = BWCircularSlider(startColor:UIColor.redColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 335.0, y: 370.0, width: 100.0, height: 100.0))
+        self.slider_semitone = BWCircularSlider(startColor:UIColor.cyanColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 235.0, y: 370.0, width: 100.0, height: 100.0))
+        self.slider_fine = BWCircularSlider(startColor:UIColor.redColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 370.0, y: 370.0, width: 100.0, height: 100.0))
         
         self.slider_cutoff = BWCircularSlider(startColor:UIColor.greenColor(), endColor:UIColor.cyanColor(), frame: CGRect(x: 283.0, y: 570.0, width: 100.0, height: 100.0))
         self.slider_resonance = BWCircularSlider(startColor:UIColor.magentaColor(), endColor:UIColor.redColor(), frame: CGRect(x: 415.0, y: 570.0, width: 100.0, height: 100.0))
@@ -306,9 +275,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         self.view.addSubview(slider_fine!)
         self.view.addSubview(slider_cutoff!)
         self.view.addSubview(slider_resonance!)
-        
-        //self.view.bringSubviewToFront(adsrOverlay)
-        //self.view.bringSubviewToFront(filterOverlay)
+
         
     }
     #endif
@@ -340,10 +307,12 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     }
 
     func cutoffChanged(slider:BWCircularSlider){
+        slider_cutoff!.updateTextField("")
         info.filterFreq = scaleSlider(slider.angle, min: 0, max: 5000)
     }
     
     func resonanceChanged(slider:BWCircularSlider){
+        slider_resonance!.updateTextField("")
         info.filterQ = scaleSlider(slider.angle, min: 0, max: 20)
     }
     
@@ -388,6 +357,17 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         info.filterOn = 0
         self.voicePicker!.selectRow(2, inComponent: 0, animated: true)
         info.sound = "piano_1"
+        info.semitone = 0
+        info.octave = 0
+        info.fine = 0
+        slider_semitone!.moveHandleTo(180)
+        slider_octave!.moveHandleTo(180)
+        slider_fine!.moveHandleTo(180)
+        slider_semitone!.updateTextField("0")
+        slider_octave!.updateTextField("0")
+        slider_fine!.updateTextField("0")
+        slider_cutoff!.updateTextField("")
+        slider_resonance!.updateTextField("")
         sendSoundInfo(testNote)
     }
     
@@ -411,6 +391,17 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         info.filterOn = 1
         self.voicePicker!.selectRow(5, inComponent: 0, animated: true)
         info.sound = "muted_trombone"
+        info.semitone = 0
+        info.octave = 0
+        info.fine = 0
+        slider_semitone!.moveHandleTo(180)
+        slider_octave!.moveHandleTo(180)
+        slider_fine!.moveHandleTo(180)
+        slider_semitone!.updateTextField("0")
+        slider_octave!.updateTextField("0")
+        slider_fine!.updateTextField("0")
+        slider_cutoff!.updateTextField("")
+        slider_resonance!.updateTextField("")
         sendSoundInfo(testNote)
     }
     
@@ -434,6 +425,17 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         info.filterOn = 1
         self.voicePicker!.selectRow(4, inComponent: 0, animated: true)
         info.sound = "enigma_flute"
+        info.semitone = 0
+        info.octave = 0
+        info.fine = 0
+        slider_semitone!.moveHandleTo(180)
+        slider_octave!.moveHandleTo(180)
+        slider_fine!.moveHandleTo(180)
+        slider_semitone!.updateTextField("0")
+        slider_octave!.updateTextField("0")
+        slider_fine!.updateTextField("0")
+        slider_cutoff!.updateTextField("")
+        slider_resonance!.updateTextField("")
         sendSoundInfo(testNote)
     }
     
@@ -457,6 +459,17 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         info.filterOn = 1
         self.voicePicker!.selectRow(6, inComponent: 0, animated: true)
         info.sound = "flugelhorn"
+        info.semitone = 0
+        info.octave = 0
+        info.fine = 0
+        slider_semitone!.moveHandleTo(180)
+        slider_octave!.moveHandleTo(180)
+        slider_fine!.moveHandleTo(180)
+        slider_semitone!.updateTextField("0")
+        slider_octave!.updateTextField("0")
+        slider_fine!.updateTextField("0")
+        slider_cutoff!.updateTextField("")
+        slider_resonance!.updateTextField("")
         sendSoundInfo(testNote)
     }
     
