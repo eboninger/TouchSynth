@@ -67,7 +67,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     var externalOn = true
 
     var pickerData = [
-        ["Banjo", "Organ", "Grand Piano", "Electric Piano", "Flute", "Muted Trombone", "Flugelhorn", "Harpsichord", "Beautiful Pad", "Analog Synth"]
+        ["Banjo", "Organ", "Grand Piano", "Electric Piano", "Flute", "Muted Trombone", "Flugelhorn", "Mellotron", "Orchestral", "Synth Lead", "Analog Synth"]
     ]
     
     required init(coder aDecoder: NSCoder) {
@@ -194,8 +194,10 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
             case 4 : info.sound = "enigma_flute"
             case 5 : info.sound = "muted_trombone"
             case 6 : info.sound = "flugelhorn"
-            case 7 : info.sound = "Johansson_BeautifulPad"
-            case 8 : info.sound = "rtanpad1"
+            case 7 : info.sound = "DCs_Mellotron_Flute"
+            case 8 : info.sound = "Campbells_strings"
+            case 9 : info.sound = "janos_lead"
+            case 10 : info.sound = "analog_age"
         default : info.sound = "piano_1"
         }
     }
@@ -473,6 +475,8 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         slider_cutoff!.updateTextField("")
         slider_resonance!.updateTextField("")
         sendSoundInfo(testNote)
+        
+        
     }
     
     

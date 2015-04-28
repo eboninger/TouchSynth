@@ -60,7 +60,7 @@
 #X connect 3 0 7 0;
 #X connect 8 0 5 0;
 #X restore 209 528 pd init_filter;
-#N canvas 1369 96 450 300 init_reverb 1;
+#N canvas 1369 96 450 300 init_reverb 0;
 #X obj 35 108 loadfloat 100;
 #X obj 39 190 outlet;
 #X obj 126 192 outlet;
@@ -141,10 +141,10 @@
 #X obj 775 540 print FIlTER_FREQ;
 #X obj 18 12 r fine_tune;
 #X obj 193 93 list trim;
-#X msg 450 32 set /Users/comp150/Documents/TeamTouchSynth/comp150isw-spring2015-team7/TouchSynthProject/soundfonts/jonnypad1.sf2
-;
 #X msg 455 109 47 0;
 #X msg 529 89 set /Users/comp150/Documents/TeamTouchSynth/comp150isw-spring2015-team7/TouchSynthProject/soundfonts/banjo_1.sf2
+;
+#X msg 451 12 set /Users/comp150/Documents/TeamTouchSynth/comp150isw-spring2015-team7/TouchSynthProject/soundfonts/rtanpad1.sf2
 ;
 #X connect 0 0 10 0;
 #X connect 0 1 10 1;
