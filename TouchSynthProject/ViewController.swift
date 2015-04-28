@@ -103,6 +103,9 @@ class ViewController: UIViewController {
     var notificationKey = "soundInfo"
     let nc = NSNotificationCenter.defaultCenter()
     
+    var octave = 0
+    var semitone = 0
+    var fine = 0
 
     required init(coder aDecoder: NSCoder) {
         
@@ -165,7 +168,9 @@ class ViewController: UIViewController {
         origY = previewView.frame.minY
         stationaryPreviewView.bringSubviewToFront(previewView)
         volumeController.minimumValue = 0
-        volumeController.maximumValue = 1
+        volumeController.maximumValue = 8
+        volumeController.value = 4
+        NSLog("Value: \(volumeController.value)")
         
         // TOP MENU BAR STUFF
         settingsButton.setBackgroundImage(UIImage(named:"settings.png")!, forState: .Normal)
@@ -235,8 +240,7 @@ class ViewController: UIViewController {
     func initializePd()
     {
         PdBase.sendList(["set", "\(path + info.sound).sf2"], toReceiver: "soundfont")
-        volumeController.value = 0.5
-        PdBase.sendFloat(0.5, toReceiver: "volume")
+        PdBase.sendFloat(4, toReceiver: "volume")
         
     }
     
@@ -523,20 +527,36 @@ class ViewController: UIViewController {
         let soundFont  = userInfo["sound"] as! String!
         PdBase.sendList(["set", "\(path + soundFont).sf2"], toReceiver: "soundfont")
         let filterFreq  = userInfo["filterFreq"] as! Int!
-        PdBase.sendList(["filter_frequency", filterFreq], toReceiver: "filter_freq")
+        PdBase.sendList([filterFreq], toReceiver: "filter_freq")
         let filterQ  = userInfo["filterQ"] as! Int!
-        PdBase.sendList(["filter_q", filterQ], toReceiver: "filter_q")
+        PdBase.sendList([filterQ], toReceiver: "filter_q")
         let reverb  = userInfo["reverb"] as! Float!
         PdBase.sendList([reverb], toReceiver: "reverb_feedback")
         
         let delay = userInfo["delay"] as! Float!
         PdBase.sendList(["time", delay], toReceiver: "delay_time")
         
-        //let tremolo  = userInfo["tremolo"] as! Float!
-        //PdBase.sendList(["rate", tremolo], toReceiver: "tremolo_rate")
-        //let filtertype = userInfo("filter") as! String!
-        //PdBase.sendList([filtertype], toReceiver: "filter_type"))
+        let tremolo  = userInfo["tremolo"] as! Float!
+        PdBase.sendList(["rate", tremolo], toReceiver: "tremolo_rate")
         
+        let chorus  = userInfo["chorus"] as! Float!
+        PdBase.sendList(["chorus_amount", chorus], toReceiver: "chorus")
+        
+        let filterType = userInfo["filterType"] as! String!
+        NSLog("ABOUT TO SEND FILTER TYPE \(filterType)")
+        PdBase.sendList([filterType], toReceiver: "filter_type")
+        
+        let filterOn = userInfo["filterOn"] as! Int!
+        PdBase.sendList([filterOn], toReceiver: "filter_on")
+        
+        self.octave = userInfo["octave"] as! Int!
+        self.semitone = userInfo["semitone"] as! Int!
+        
+        var fine = userInfo["fine"] as! Float!
+        fine = (fine / 100) + 63
+        NSLog("fine: \(fine)")
+        PdBase.sendList(["fine_tune", fine], toReceiver: "fine_tune")
+
         let note = userInfo["note"] as! Note!
         let playNote = userInfo["playNote"] as! Bool!
         if (playNote!) {
@@ -549,7 +569,8 @@ class ViewController: UIViewController {
     
     @IBAction func playedNote(sender: Note, touch: UITouch) {
         if (playmode) {
-            PdBase.sendList([Float(sender.value), 127], toReceiver: "note")
+            let noteToPlay = sender.value + (12 * self.octave) + self.semitone
+            PdBase.sendList([noteToPlay, 127], toReceiver: "note")
             sender.beginTrackingWithTouch(touch)
             if (sequencer!.isRecording()) {
                 sequencer!.recordNoteOn(sender)
@@ -566,9 +587,8 @@ class ViewController: UIViewController {
     
     @IBAction func stoppedNote(sender: Note, touch: UITouch) {
         if (playmode) {
-            var patch_name : String?
-            patch_name = "banjo_1"
-            PdBase.sendList([Float(sender.value), 0], toReceiver: "note")
+            let noteToStop = sender.value + (12 * self.octave) + self.semitone
+            PdBase.sendList([noteToStop, 0], toReceiver: "note")
             sender.endTrackingWithTouch(touch)
             if (sequencer!.isRecording()) {
                 sequencer!.recordNoteOff(sender)

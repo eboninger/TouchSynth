@@ -48,12 +48,17 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     @IBOutlet weak var delaySlider: UISlider!
     @IBOutlet weak var delayLabel: UILabel!
     
-    /* objects in adsr overlay */
-    @IBOutlet weak var adsrLabel: UILabel!
-    @IBOutlet weak var attackLabel: UILabel!
-    @IBOutlet weak var decayLabel: UILabel!
-    @IBOutlet weak var sustainLabel: UILabel!
-    @IBOutlet weak var releaseLabel: UILabel!
+    /* objects in pitch overlay */
+    @IBOutlet weak var pitchLabel: UILabel!
+    @IBOutlet weak var octaveLabel: UILabel!
+    @IBOutlet weak var semitoneLabel: UILabel!
+    @IBOutlet weak var fineLabel: UILabel!
+    
+    var slider_octave:BWCircularSlider?
+    var slider_semitone:BWCircularSlider?
+    var slider_fine:BWCircularSlider?
+    
+    
     
     var info = soundInfo()
     
@@ -81,7 +86,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         goBackButton.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
         goBackButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
         
-        adsrLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
+        pitchLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
         filterLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
         externalLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
         fxLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
@@ -100,28 +105,27 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         delayLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
 
         tremoloLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
-        attackLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
-        sustainLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
-        decayLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
-        releaseLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
+        octaveLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
+        semitoneLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
+        fineLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
         cutoffLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
         cutoffLabel2.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
         resonanceLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 15)
     
         info.sound = "piano_1"
         
-        testNote.initialize("C4", value: 72, tColor: UIColor.blackColor(), bColor: UIColor.cyanColor())
+        testNote.initialize("C4", value: 60, tColor: UIColor.blackColor(), bColor: UIColor.cyanColor())
         testNote.layer.borderColor = (UIColor.blackColor()).CGColor
         
         
-        reverbSlider.minimumValue = 50
+        reverbSlider.minimumValue = 60
         reverbSlider.maximumValue = 100
         tremoloSlider.minimumValue = 0
         tremoloSlider.maximumValue = 127
         echoSlider.minimumValue = 0
         echoSlider.maximumValue = 127
         delaySlider.minimumValue = 0
-        delaySlider.maximumValue = 127
+        delaySlider.maximumValue = 80
         
         /*
         adsrOverlay.alpha = 0.5
@@ -213,23 +217,32 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     }
     
     @IBAction func sendSoundInfo(sender:AnyObject)  {
-        NSNotificationCenter.defaultCenter().postNotificationName(soundKey, object: nil, userInfo: ["sound":info.sound, "tremolo":info.tremolo, "reverb":info.reverb, "chorus":info.chorus, "delay":info.delay, "filterFreq": info.filterFreq, "filterQ": info.filterQ, "playNote": false, "note": testNote])
+        NSNotificationCenter.defaultCenter().postNotificationName(soundKey, object: nil, userInfo: ["sound":info.sound, "tremolo":info.tremolo, "reverb":info.reverb, "chorus":info.chorus, "delay":info.delay, "filterFreq": info.filterFreq, "filterQ": info.filterQ, "filterType": info.filterType, "filterOn": info.filterOn, "octave": info.octave, "semitone": info.semitone, "fine": info.fine, "playNote": false, "note": testNote])
     }
     
     @IBAction func playTestNote(sender: Note) {
-        NSNotificationCenter.defaultCenter().postNotificationName(soundKey, object: nil, userInfo: ["sound":info.sound, "tremolo":info.tremolo, "reverb":info.reverb, "chorus":info.chorus, "delay":info.delay, "filterFreq": info.filterFreq, "filterQ": info.filterQ, "playNote": true, "note": testNote])
+        NSLog("Reverb value: \(info.reverb)")
+        NSNotificationCenter.defaultCenter().postNotificationName(soundKey, object: nil, userInfo: ["sound":info.sound, "tremolo":info.tremolo, "reverb":info.reverb, "chorus":info.chorus, "delay":info.delay, "filterFreq": info.filterFreq, "filterQ": info.filterQ, "filterType": info.filterType, "filterOn": info.filterOn, "octave": info.octave, "semitone": info.semitone, "fine": info.fine, "playNote": true, "note": testNote])
     }
     
     @IBAction func filterSwitchActivated(sender: UISwitch) {
         if (sender == lpSwitch && lpSwitch.on) {
             hpSwitch.setOn(false, animated: true)
             bpSwitch.setOn(false, animated: true)
+            info.filterType = "lowpass"
+            info.filterOn = 1
         } else if (sender == hpSwitch && hpSwitch.on) {
             lpSwitch.setOn(false, animated: true)
             bpSwitch.setOn(false, animated: true)
+            info.filterType = "highpass"
+            info.filterOn = 1
         } else if (sender == bpSwitch && bpSwitch.on) {
             lpSwitch.setOn(false, animated: true)
             hpSwitch.setOn(false, animated: true)
+            info.filterType = "bandpass"
+            info.filterOn = 1
+        } else {
+            info.filterOn = 0
         }
     }
     
@@ -250,30 +263,34 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         super.awakeFromNib()
         
         // Build the sliders
-        let slider_attack:BWCircularSlider = BWCircularSlider(startColor:UIColor.magentaColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 60.0, y: 370.0, width: 100.0, height: 100.0))
-        let slider_decay:BWCircularSlider = BWCircularSlider(startColor:UIColor.cyanColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 180.0, y: 370.0, width: 100.0, height: 100.0))
-        let slider_sustain:BWCircularSlider = BWCircularSlider(startColor:UIColor.redColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 295.0, y: 370.0, width: 100.0, height: 100.0))
-        let slider_release:BWCircularSlider = BWCircularSlider(startColor:UIColor.purpleColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 415.0, y: 370.0, width: 100.0, height: 100.0))
+        self.slider_octave = BWCircularSlider(startColor:UIColor.magentaColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 100.0, y: 370.0, width: 100.0, height: 100.0))
+        self.slider_semitone = BWCircularSlider(startColor:UIColor.cyanColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 220.0, y: 370.0, width: 100.0, height: 100.0))
+        self.slider_fine = BWCircularSlider(startColor:UIColor.redColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 335.0, y: 370.0, width: 100.0, height: 100.0))
         
         let slider_cutoff:BWCircularSlider = BWCircularSlider(startColor:UIColor.greenColor(), endColor:UIColor.cyanColor(), frame: CGRect(x: 283.0, y: 570.0, width: 100.0, height: 100.0))
         let slider_resonance:BWCircularSlider = BWCircularSlider(startColor:UIColor.magentaColor(), endColor:UIColor.redColor(), frame: CGRect(x: 415.0, y: 570.0, width: 100.0, height: 100.0))
 
 
         // Attach an Action and a Target to the slider
-        slider_attack.addTarget(self, action: "attackChanged:", forControlEvents: UIControlEvents.ValueChanged)
-        slider_decay.addTarget(self, action: "decayChanged:", forControlEvents: UIControlEvents.ValueChanged)
-        slider_sustain.addTarget(self, action: "sustainChanged:", forControlEvents: UIControlEvents.ValueChanged)
-        slider_release.addTarget(self, action: "releaseChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        slider_octave!.addTarget(self, action: "octaveChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        slider_semitone!.addTarget(self, action: "semitoneChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        slider_fine!.addTarget(self, action: "fineChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        slider_octave!.moveHandleTo(180)
+        slider_octave!.updateTextField("0")
+        slider_semitone!.moveHandleTo(180)
+        slider_semitone!.updateTextField("0")
+        slider_fine!.moveHandleTo(180)
+        slider_fine!.updateTextField("0")
         
         slider_cutoff.addTarget(self, action: "cutoffChanged:", forControlEvents: UIControlEvents.ValueChanged)
         slider_resonance.addTarget(self, action: "resonanceChanged:", forControlEvents: UIControlEvents.ValueChanged)
 
         
         // Add the slider as subview of this view
-        self.view.addSubview(slider_attack)
-        self.view.addSubview(slider_decay)
-        self.view.addSubview(slider_sustain)
-        self.view.addSubview(slider_release)
+        self.view.addSubview(slider_octave!)
+        self.view.addSubview(slider_semitone!)
+        self.view.addSubview(slider_fine!)
         self.view.addSubview(slider_cutoff)
         self.view.addSubview(slider_resonance)
         
@@ -283,29 +300,43 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     }
     #endif
     
-    func attackChanged(slider:BWCircularSlider){
-        println("Attack value changed to \(slider.angle)")
+    func octaveChanged(slider:BWCircularSlider){
+        slider.moveHandleTo((slider.angle / 72) * 72 + 36)
+        let options = ["-2", "-1", "0", "1", "2"]
+        slider.updateTextField(options[slider.angle / 72])
+        info.octave = slider.angle / 72 - 2
     }
-    func decayChanged(slider:BWCircularSlider){
-        println("Decay value changed to \(slider.angle)")
+    func semitoneChanged(slider:BWCircularSlider){
+        var newAngle = (slider.angle / 14) * 14 + 12
+        if newAngle > 348 {
+            newAngle = 348
+        }
+        slider.moveHandleTo(Int(newAngle))
+        let options = ["-12", "-11", "-10", "-9", "-8", "-7", "-6", "-5", "-4", "-3", "-2", "-1", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+        slider.updateTextField(options[slider.angle / 14])
+        info.semitone = slider.angle / 14 - 12
     }
-    func sustainChanged(slider:BWCircularSlider){
-        println("Sustain value changed to \(slider.angle)")
-    }
-    func releaseChanged(slider:BWCircularSlider){
-        println("Sustain value changed to \(slider.angle)")
+    func fineChanged(slider:BWCircularSlider){
+        
+        info.fine = scaleSlider(slider.angle, min: 0, max: 200)
+        var textField = "\(info.fine - 100)"
+        //if (info.fine > 100) {
+        //    textField = "+" + textField
+        //}
+        slider.updateTextField(textField)
     }
 
     func cutoffChanged(slider:BWCircularSlider){
-        info.filterFreq = scaleSlider(slider.angle)
+        info.filterFreq = scaleSlider(slider.angle, min: 0, max: 10000)
     }
     
     func resonanceChanged(slider:BWCircularSlider){
-        info.filterQ = scaleSlider(slider.angle)
+        info.filterQ = scaleSlider(slider.angle, min: 0, max: 20)
     }
     
-    func scaleSlider (value : Int!) -> Int!  {
-        return ((value*127)/360)
+    func scaleSlider (value : Int!, min: Int!, max: Int!) -> Int!  {
+        
+        return ((value*max)/360 + min)
     }
 
     // END: Circluar Slider //

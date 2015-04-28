@@ -18,16 +18,27 @@ struct soundInfo {
     var filterQ : Int!
     var delay: Float!
     var noteCommand: Bool!
+    var filterOn: Int!
+    var filterType: String!
+    var octave: Int!
+    var semitone: Int!
+    var fine: Int!
     
     init() {
         sound = "piano_1"
-        tremolo = 0
-        reverb = 0
-        chorus = 0
-        filterFreq = 0
-        filterQ = 0
+        tremolo = 0.0
+        reverb = 60
+        chorus = 0.0
+        delay = 0
+        filterFreq = 1000
+        filterQ = 1
         delay = 0
         noteCommand = false
+        filterOn = 0
+        filterType = "lowpass"
+        octave = 0
+        semitone = 0
+        fine = 100
     }
     
 }

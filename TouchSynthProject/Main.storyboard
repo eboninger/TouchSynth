@@ -752,32 +752,26 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VBR-k0-fJN">
                                 <rect key="frame" x="33" y="336" width="507" height="167"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ATTACK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78K-6w-xa4">
-                                        <rect key="frame" x="47" y="133" width="72" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OCTAVE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78K-6w-xa4">
+                                        <rect key="frame" x="102" y="129" width="72" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DECAY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5K-tg-g0e">
-                                        <rect key="frame" x="167" y="133" width="72" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SEMITONE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5K-tg-g0e">
+                                        <rect key="frame" x="210" y="129" width="87" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RELEASE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ema-ZY-vn0">
-                                        <rect key="frame" x="392" y="133" width="75" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SUSTAIN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44x-zG-OHX">
-                                        <rect key="frame" x="274" y="133" width="75" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AMPLITUDE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSC-w5-5n7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PITCH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSC-w5-5n7">
                                         <rect key="frame" x="23" y="7" width="302" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FINE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44x-zG-OHX">
+                                        <rect key="frame" x="343" y="129" width="75" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -817,7 +811,7 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xkx-ck-R4s">
                                 <rect key="frame" x="245" y="66" width="295" height="242"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SETTINGS STUFF" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0l-CZ-34T">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PRESETS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0l-CZ-34T">
                                         <rect key="frame" x="20" y="8" width="351" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -903,30 +897,29 @@
                     <navigationItem key="navigationItem" id="DA9-pF-13f"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="adsrLabel" destination="hSC-w5-5n7" id="vkl-7n-ixT"/>
-                        <outlet property="attackLabel" destination="78K-6w-xa4" id="dTK-QK-499"/>
                         <outlet property="bpLabel" destination="GKf-Mb-CJI" id="cwm-Fq-PLg"/>
                         <outlet property="bpSwitch" destination="LPz-y1-LnR" id="Lh5-lD-Qcj"/>
                         <outlet property="cutoffLabel" destination="D4D-XB-kxl" id="phR-Dt-Sou"/>
                         <outlet property="cutoffLabel2" destination="Kbb-cJ-KOz" id="5fd-OH-Y5a"/>
-                        <outlet property="decayLabel" destination="a5K-tg-g0e" id="S6P-R6-JAk"/>
                         <outlet property="delayLabel" destination="r1O-Qd-Y5A" id="BZT-ii-cUb"/>
                         <outlet property="delaySlider" destination="B5Z-Of-qCE" id="nww-yo-91j"/>
                         <outlet property="echoLabel" destination="0gc-sm-O30" id="Hzq-ra-6Bf"/>
                         <outlet property="echoSlider" destination="8PQ-SF-aXc" id="Ipx-eT-dsW"/>
                         <outlet property="externalLabel" destination="D0l-CZ-34T" id="HZ6-Or-KAb"/>
                         <outlet property="filterLabel" destination="p4G-Px-PMZ" id="G6a-YE-pfF"/>
+                        <outlet property="fineLabel" destination="44x-zG-OHX" id="eiR-lX-jtm"/>
                         <outlet property="fxLabel" destination="SwM-Dk-p63" id="hlv-7x-frM"/>
                         <outlet property="goBackButton" destination="UcS-5U-EXG" id="JV8-Fm-P5L"/>
                         <outlet property="hpLabel" destination="dpE-ev-wuP" id="4R2-lg-Hds"/>
                         <outlet property="hpSwitch" destination="Fdk-ea-H8J" id="kx2-Be-wsA"/>
                         <outlet property="lpLabel" destination="gmW-6Y-F7U" id="sfe-d5-pHx"/>
                         <outlet property="lpSwitch" destination="tbE-q8-YCX" id="ktX-O2-hRK"/>
-                        <outlet property="releaseLabel" destination="Ema-ZY-vn0" id="UdD-r8-XWQ"/>
+                        <outlet property="octaveLabel" destination="78K-6w-xa4" id="hoX-sC-2qF"/>
+                        <outlet property="pitchLabel" destination="hSC-w5-5n7" id="cDj-tR-Ly8"/>
                         <outlet property="resonanceLabel" destination="K2K-K7-GF2" id="xdk-O6-VyY"/>
                         <outlet property="reverbLabel" destination="Lpg-3z-fnV" id="b4r-Zo-vHq"/>
                         <outlet property="reverbSlider" destination="HhA-5g-DHJ" id="HNX-1Y-Sfd"/>
-                        <outlet property="sustainLabel" destination="44x-zG-OHX" id="SRk-Rs-Rqo"/>
+                        <outlet property="semitoneLabel" destination="a5K-tg-g0e" id="14W-dH-BK1"/>
                         <outlet property="testNote" destination="oSX-a5-cLS" id="0dX-J6-WhU"/>
                         <outlet property="tremoloLabel" destination="4uI-ZN-pzh" id="bdl-hY-aZx"/>
                         <outlet property="tremoloSlider" destination="kPW-4w-OhR" id="tdM-pb-vzC"/>

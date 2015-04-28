@@ -14,7 +14,7 @@ struct Config {
     static let TB_SLIDER_SIZE:CGFloat = UIScreen.mainScreen().bounds.size.width
     static let TB_SAFEAREA_PADDING:CGFloat = 0.0
     static let TB_LINE_WIDTH:CGFloat = 15.0
-    static let TB_FONTSIZE:CGFloat = 0.0
+    static let TB_FONTSIZE:CGFloat = 20.0
     
 }
 
@@ -74,7 +74,6 @@ class BWCircularSlider: UIControl {
             (frame.size.width  - fontSize.width) / 2.0,
             (frame.size.height - fontSize.height) / 2.0,
             fontSize.width, fontSize.height);
-        
         textField = UITextField(frame: textFieldRect)
         textField?.backgroundColor = UIColor.clearColor()
         textField?.textColor = UIColor(white: 1.0, alpha: 0.8)
@@ -210,6 +209,12 @@ class BWCircularSlider: UIControl {
     }
     
     
+    func moveHandleTo(newAngle:Int) {
+        angle = newAngle
+        textField!.text = "\(angle)"
+        setNeedsDisplay()
+    }
+    
     
     /** Move the Handle **/
 
@@ -261,6 +266,10 @@ class BWCircularSlider: UIControl {
         let radians = Double(atan2(v.y,v.x))
         result = RadiansToDegrees(radians)
         return (result >= 0  ? result : result + 360.0);
+    }
+    
+    func updateTextField(value: String!) {
+        textField!.text = value
     }
 
 }
