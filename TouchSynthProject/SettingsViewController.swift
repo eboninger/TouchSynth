@@ -57,6 +57,8 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     var slider_octave:BWCircularSlider?
     var slider_semitone:BWCircularSlider?
     var slider_fine:BWCircularSlider?
+    var slider_cutoff:BWCircularSlider?
+    var slider_resonance:BWCircularSlider?
     
     @IBOutlet weak var presetButton1: UIButton!
     @IBOutlet weak var presetButton2: UIButton!
@@ -71,7 +73,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     var externalOn = true
 
     var pickerData = [
-        ["Banjo", "Organ", "Grand Piano", "Electric Piano", "Flute", "Muted Trombone", "Les Paul", "Flugelhorn"]
+        ["Banjo", "Organ", "Grand Piano", "Electric Piano", "Flute", "Muted Trombone", "Flugelhorn"]
     ]
     
     required init(coder aDecoder: NSCoder) {
@@ -130,6 +132,14 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         echoSlider.maximumValue = 127
         delaySlider.minimumValue = 0
         delaySlider.maximumValue = 80
+        
+        reverbSlider.value = 60
+        tremoloSlider.value = 0
+        echoSlider.value = 0
+        delaySlider.value = 0
+        
+        slider_cutoff!.moveHandleTo(360)
+        slider_resonance!.moveHandleTo(360)
         
         /*
         adsrOverlay.alpha = 0.5
@@ -213,8 +223,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
             case 3 : info.sound = "ElPiano1"
             case 4 : info.sound = "enigma_flute"
             case 5 : info.sound = "muted_trombone"
-            case 6 : info.sound = "LesPaul"
-            case 7 : info.sound = "flugelhorn"
+            case 6 : info.sound = "flugelhorn"
         default : info.sound = "piano_1"
         }
         //sendSoundInfo()
@@ -271,8 +280,8 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         self.slider_semitone = BWCircularSlider(startColor:UIColor.cyanColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 220.0, y: 370.0, width: 100.0, height: 100.0))
         self.slider_fine = BWCircularSlider(startColor:UIColor.redColor(), endColor:UIColor.yellowColor(), frame: CGRect(x: 335.0, y: 370.0, width: 100.0, height: 100.0))
         
-        let slider_cutoff:BWCircularSlider = BWCircularSlider(startColor:UIColor.greenColor(), endColor:UIColor.cyanColor(), frame: CGRect(x: 283.0, y: 570.0, width: 100.0, height: 100.0))
-        let slider_resonance:BWCircularSlider = BWCircularSlider(startColor:UIColor.magentaColor(), endColor:UIColor.redColor(), frame: CGRect(x: 415.0, y: 570.0, width: 100.0, height: 100.0))
+        self.slider_cutoff = BWCircularSlider(startColor:UIColor.greenColor(), endColor:UIColor.cyanColor(), frame: CGRect(x: 283.0, y: 570.0, width: 100.0, height: 100.0))
+        self.slider_resonance = BWCircularSlider(startColor:UIColor.magentaColor(), endColor:UIColor.redColor(), frame: CGRect(x: 415.0, y: 570.0, width: 100.0, height: 100.0))
 
 
         // Attach an Action and a Target to the slider
@@ -287,16 +296,16 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         slider_fine!.moveHandleTo(180)
         slider_fine!.updateTextField("0")
         
-        slider_cutoff.addTarget(self, action: "cutoffChanged:", forControlEvents: UIControlEvents.ValueChanged)
-        slider_resonance.addTarget(self, action: "resonanceChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        slider_cutoff!.addTarget(self, action: "cutoffChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        slider_resonance!.addTarget(self, action: "resonanceChanged:", forControlEvents: UIControlEvents.ValueChanged)
 
         
         // Add the slider as subview of this view
         self.view.addSubview(slider_octave!)
         self.view.addSubview(slider_semitone!)
         self.view.addSubview(slider_fine!)
-        self.view.addSubview(slider_cutoff)
-        self.view.addSubview(slider_resonance)
+        self.view.addSubview(slider_cutoff!)
+        self.view.addSubview(slider_resonance!)
         
         //self.view.bringSubviewToFront(adsrOverlay)
         //self.view.bringSubviewToFront(filterOverlay)
@@ -331,7 +340,7 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     }
 
     func cutoffChanged(slider:BWCircularSlider){
-        info.filterFreq = scaleSlider(slider.angle, min: 0, max: 10000)
+        info.filterFreq = scaleSlider(slider.angle, min: 0, max: 5000)
     }
     
     func resonanceChanged(slider:BWCircularSlider){
@@ -360,6 +369,96 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     }
     
     @IBAction func presetButton1_Pressed(sender: UIButton) {
-        
+        reverbSlider.value = 60
+        info.reverb = 60
+        delaySlider.value = 0
+        info.delay = 0
+        tremoloSlider.value = 0
+        info.tremolo = 0
+        echoSlider.value = 0
+        info.chorus = 0
+        slider_cutoff!.moveHandleTo(360)
+        info.filterFreq = scaleSlider(slider_cutoff!.angle, min: 0, max: 5000)
+        slider_resonance!.moveHandleTo(360)
+        info.filterQ = scaleSlider(slider_resonance!.angle, min: 0, max: 20)
+        lpSwitch.setOn(false, animated: true)
+        hpSwitch.setOn(false, animated: true)
+        bpSwitch.setOn(false, animated: true)
+        info.filterType = "lowpass"
+        info.filterOn = 0
+        self.voicePicker!.selectRow(2, inComponent: 0, animated: true)
+        info.sound = "piano_1"
+        sendSoundInfo(testNote)
     }
+    
+    @IBAction func presetButton2_Pressed(sender: UIButton) {
+        reverbSlider.value = 80
+        info.reverb = 80
+        delaySlider.value = 20
+        info.delay = 20
+        tremoloSlider.value = 40
+        info.tremolo = 40
+        echoSlider.value = 100
+        info.chorus = 100
+        slider_cutoff!.moveHandleTo(200)
+        info.filterFreq = scaleSlider(slider_cutoff!.angle, min: 0, max: 5000)
+        slider_resonance!.moveHandleTo(200)
+        info.filterQ = scaleSlider(slider_resonance!.angle, min: 0, max: 20)
+        lpSwitch.setOn(true, animated: true)
+        hpSwitch.setOn(false, animated: true)
+        bpSwitch.setOn(false, animated: true)
+        info.filterType = "lowpass"
+        info.filterOn = 1
+        self.voicePicker!.selectRow(5, inComponent: 0, animated: true)
+        info.sound = "muted_trombone"
+        sendSoundInfo(testNote)
+    }
+    
+    @IBAction func presetButton3_Pressed(sender: UIButton) {
+        reverbSlider.value = 90
+        info.reverb = 90
+        delaySlider.value = 50
+        info.delay = 50
+        tremoloSlider.value = 0
+        info.tremolo = 0
+        echoSlider.value = 120
+        info.chorus = 120
+        slider_cutoff!.moveHandleTo(75)
+        info.filterFreq = scaleSlider(slider_cutoff!.angle, min: 0, max: 5000)
+        slider_resonance!.moveHandleTo(100)
+        info.filterQ = scaleSlider(slider_resonance!.angle, min: 0, max: 20)
+        lpSwitch.setOn(false, animated: true)
+        hpSwitch.setOn(true, animated: true)
+        bpSwitch.setOn(false, animated: true)
+        info.filterType = "highpass"
+        info.filterOn = 1
+        self.voicePicker!.selectRow(4, inComponent: 0, animated: true)
+        info.sound = "enigma_flute"
+        sendSoundInfo(testNote)
+    }
+    
+    @IBAction func presetButton4_Pressed(sender: UIButton) {
+        reverbSlider.value = 65
+        info.reverb = 65
+        delaySlider.value = 25
+        info.delay = 25
+        tremoloSlider.value = 60
+        info.tremolo = 60
+        echoSlider.value = 60
+        info.chorus = 60
+        slider_cutoff!.moveHandleTo(30)
+        info.filterFreq = scaleSlider(slider_cutoff!.angle, min: 0, max: 5000)
+        slider_resonance!.moveHandleTo(320)
+        info.filterQ = scaleSlider(slider_resonance!.angle, min: 0, max: 20)
+        lpSwitch.setOn(true, animated: true)
+        hpSwitch.setOn(false, animated: true)
+        bpSwitch.setOn(false, animated: true)
+        info.filterType = "lowpass"
+        info.filterOn = 1
+        self.voicePicker!.selectRow(6, inComponent: 0, animated: true)
+        info.sound = "flugelhorn"
+        sendSoundInfo(testNote)
+    }
+    
+    
 }

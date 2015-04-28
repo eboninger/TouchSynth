@@ -17,6 +17,8 @@ class SavedRecordingsPicker: UIView, UITableViewDataSource, UITableViewDelegate 
     var tableView: UITableView?
     
     var recordings: [[recData.sample]]?
+    var data: [String] = []
+    var recordingsCount = 1
     
     var textCellIdentifier = "TextCell"
     
@@ -43,14 +45,14 @@ class SavedRecordingsPicker: UIView, UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recordings!.count
+        return data.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as? UITableViewCell
         let row = indexPath.row
-        cell!.textLabel?.text = "Recording \(row + 1)"
+        cell!.textLabel?.text = data[indexPath.row]
         cell!.textLabel?.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         return cell!
     }
@@ -65,18 +67,18 @@ class SavedRecordingsPicker: UIView, UITableViewDataSource, UITableViewDelegate 
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            self.recordings!.removeAtIndex(indexPath.row)
+            self.data.removeAtIndex(indexPath.row)
             parentViewController!.recordings!.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
     
     
-    func updateData(recordings: [[recData.sample]]) {
-        self.recordings = recordings
-        NSLog("Recordings length:\(recordings.count)")
+    func appendRecording() {
+        var newRecordingLabel = "Recording \(recordingsCount++)"
+        self.data.append(newRecordingLabel)
         self.tableView!.reloadData()
-        parentViewController!.parentViewController!.curRecordingLabel.text = "Recording \(recordings.count)"
+        parentViewController!.parentViewController!.curRecordingLabel.text = newRecordingLabel
     }
     
     

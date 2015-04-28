@@ -200,13 +200,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SettingsViewController.swift"
-            timestampString = "450301637.574471"
+            timestampString = "451891885.278364"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "5">
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "SettingsViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

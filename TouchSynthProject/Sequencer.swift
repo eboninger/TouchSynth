@@ -157,19 +157,22 @@ class Sequencer: UIView,UIPickerViewDataSource,UIPickerViewDelegate {
     
     func stop()
     {
-        self.contains_recording = true
-        self.seqPicker!.userInteractionEnabled = true
         recorder?.recordStop()
-        recording = recorder?.doneRecording()
-        recDataIndex = 0
+        var temp_recording = recorder?.doneRecording()
+        self.seqPicker!.userInteractionEnabled = true
         recorder = nil
+        recDataIndex = 0
         stopTimer()
         self.is_recording = false
-        recording_speed = Double(self.pickerData[1][self.seqPicker!.selectedRowInComponent(1)].toInt()!)
         self.beatCount = 0
         
-        recordings!.append(recording!)
-        savedRecordingsPicker!.updateData(self.recordings!)
+        if (temp_recording!.count != 1) {
+            recording = temp_recording
+            self.contains_recording = true
+            recording_speed = Double(self.pickerData[1][self.seqPicker!.selectedRowInComponent(1)].toInt()!)
+            recordings!.append(recording!)
+            savedRecordingsPicker!.appendRecording()
+        }
     }
     
     func containsRecording() -> Bool {
