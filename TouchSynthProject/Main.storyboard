@@ -394,6 +394,9 @@
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="recordingsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dcd-ih-aeA"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -434,7 +437,7 @@
                                 </connections>
                             </button>
                             <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rdN-aS-FWX">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="627"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NlX-mc-Hwt">
                                         <rect key="frame" x="24" y="38" width="235" height="29"/>
@@ -551,24 +554,12 @@
                                 </subviews>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qxy-1b-exh" customClass="SavedRecordingsPicker" customModule="TouchSynthProject" customModuleProvider="target">
-                                <rect key="frame" x="19" y="451" width="275" height="202"/>
+                                <rect key="frame" x="19" y="495" width="275" height="158"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="txS-X3-Lp3">
-                                        <rect key="frame" x="6" y="5" width="263" height="144"/>
+                                        <rect key="frame" x="6" y="6" width="263" height="144"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gx1-bb-8xr">
-                                        <rect key="frame" x="14" y="162" width="118" height="30"/>
-                                        <state key="normal" title="Save Layout">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2G9-sM-HXa">
-                                        <rect key="frame" x="182" y="162" width="59" height="30"/>
-                                        <state key="normal" title="Close">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -587,6 +578,7 @@
                         <outlet property="beatLabel" destination="bIM-uG-NlV" id="Ama-eh-pkA"/>
                         <outlet property="bpm" destination="Ohu-NC-Gfm" id="mDw-rp-UlK"/>
                         <outlet property="closeSaveDataWindow" destination="wl2-u9-c5j" id="4a7-re-CJ4"/>
+                        <outlet property="curRecordingLabel" destination="H8b-qM-AIG" id="bgI-dT-HwS"/>
                         <outlet property="deleteAllButton" destination="RZZ-ot-eiD" id="s91-xw-43u"/>
                         <outlet property="dragLabel" destination="XdT-Cd-qPZ" id="QCQ-0Z-vZ9"/>
                         <outlet property="hide_menu" destination="qcA-It-Tuh" id="BE4-df-fdw"/>
@@ -601,6 +593,7 @@
                         <outlet property="playView" destination="rdN-aS-FWX" id="4FI-jn-456"/>
                         <outlet property="previewView" destination="j99-BH-TWB" id="NH1-7a-aF4"/>
                         <outlet property="recordButton" destination="3Xs-ed-CM1" id="C2V-pf-2E3"/>
+                        <outlet property="recordingsButton" destination="edH-Rq-77H" id="YiN-XG-Y8M"/>
                         <outlet property="saveDataButton" destination="07V-Ts-ukN" id="cUw-oT-zpO"/>
                         <outlet property="saveLayoutButton" destination="VKq-Im-ug2" id="xaC-cl-RHj"/>
                         <outlet property="savedDataPicker" destination="cOd-L2-KZ3" id="iAL-jB-GCt"/>

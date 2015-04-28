@@ -89,8 +89,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var barLabel: UILabel!
     @IBOutlet weak var beat: UILabel!
     @IBOutlet weak var beatLabel: UILabel!
+    
+    
     @IBOutlet var savedRecordingsPicker: SavedRecordingsPicker!
     @IBOutlet var savedRecordingsTableView: UITableView!
+    @IBOutlet weak var recordingsButton: UIButton!
+    @IBOutlet weak var curRecordingLabel: UILabel!
     
     
     @IBOutlet weak var trash_open: UIImageView!
@@ -171,10 +175,12 @@ class ViewController: UIViewController {
         savedDataPicker.hidden = true
         saveLayoutButton.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 16)
         closeSaveDataWindow.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 16)
-        saveDataButton.setBackgroundImage(UIImage(named:"save.png")!, forState: .Normal)
+    saveDataButton.setBackgroundImage(UIImage(named:"save.png")!, forState: .Normal)
         saveDataButton.setTitle("", forState: .Normal)
-
-
+        
+        savedRecordingsPicker.hidden = true
+        curRecordingLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
+        recordingsButton.titleLabel!.font = UIFont(name: "Helvetica-BoldOblique", size: 14)
         
         // sequencer bar setup
         playButton.setBackgroundImage(UIImage(named:"play.png")!, forState: .Normal)
@@ -189,6 +195,7 @@ class ViewController: UIViewController {
         barLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         beat.font = UIFont(name: "Helvetica-BoldOblique", size: 28)
         beatLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
+        curRecordingLabel.textAlignment = NSTextAlignment.Center
         
         show_seq.hidden = true
         show_menu.hidden = true
@@ -315,7 +322,14 @@ class ViewController: UIViewController {
     @IBAction func settingsButtonPressed(sender: UIButton) {
         settingsmode = true
         savedDataPicker.hidden = true
+        savedRecordingsPicker.hidden = true
         self.presentViewController(settingsPage, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func recordingsButtonPressed(sender: UIButton) {
+        savedRecordingsPicker.hidden = !savedRecordingsPicker.hidden
+        self.view.bringSubviewToFront(savedRecordingsPicker)
         
     }
     
@@ -426,8 +440,10 @@ class ViewController: UIViewController {
             playView.bringSubviewToFront(note!)
             bringControlsToFront()
             playView.bringSubviewToFront(savedDataPicker) // AHHH
-            trash_open.hidden = false
-            trash_closed.hidden = true
+            if (!self.menu.hidden) {
+                trash_open.hidden = false
+                trash_closed.hidden = true
+            }
             
         case .Changed:
             let translation = recognizer.translationInView(self.view)
@@ -439,8 +455,10 @@ class ViewController: UIViewController {
             if (inTrash(note!.frame)) {
                 note!.removeFromSuperview()
             }
-            trash_open.hidden = true
-            trash_closed.hidden = false
+            if (!self.menu.hidden) {
+                trash_open.hidden = true
+                trash_closed.hidden = false
+            }
             
         default:
             break
@@ -454,6 +472,7 @@ class ViewController: UIViewController {
     @IBAction func editPressed(sender: AnyObject) {
         playmode = !playmode;
         savedDataPicker.hidden = true
+        savedRecordingsPicker.hidden = true
 
         if (playmode) {
             for note in collectionOfNotes {
@@ -580,7 +599,7 @@ class ViewController: UIViewController {
             hide_menu.hidden = false
             show_menu.hidden = true
             trash_closed.hidden = false
-            trash_open.hidden = false
+            trash_open.hidden = true
             deleteAllButton.hidden = false
             
         } else {
@@ -676,6 +695,8 @@ class ViewController: UIViewController {
     /***********************/
 
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        savedDataPicker.hidden = true
+        savedRecordingsPicker.hidden = true
         if (!playmode || settingsmode) {
             return
         }

@@ -50,7 +50,7 @@ class SavedRecordingsPicker: UIView, UITableViewDataSource, UITableViewDelegate 
         
         var cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as? UITableViewCell
         let row = indexPath.row
-        cell!.textLabel?.text = "Recording \(row)"
+        cell!.textLabel?.text = "Recording \(row + 1)"
         cell!.textLabel?.font = UIFont(name: "Helvetica-BoldOblique", size: 18)
         return cell!
     }
@@ -59,12 +59,14 @@ class SavedRecordingsPicker: UIView, UITableViewDataSource, UITableViewDelegate 
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let row = indexPath.row
         parentViewController!.recording = parentViewController!.recordings![row]
-        
+        parentViewController!.parentViewController!.curRecordingLabel.text = self.tableView?.cellForRowAtIndexPath(indexPath)!.textLabel!.text
+        parentViewController!.savedRecordingsPicker!.hidden = true
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            recordings!.removeAtIndex(indexPath.row)
+            self.recordings!.removeAtIndex(indexPath.row)
+            parentViewController!.recordings!.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
@@ -74,6 +76,7 @@ class SavedRecordingsPicker: UIView, UITableViewDataSource, UITableViewDelegate 
         self.recordings = recordings
         NSLog("Recordings length:\(recordings.count)")
         self.tableView!.reloadData()
+        parentViewController!.parentViewController!.curRecordingLabel.text = "Recording \(recordings.count)"
     }
     
     
