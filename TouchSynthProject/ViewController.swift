@@ -469,6 +469,12 @@ class ViewController: UIViewController {
             
         case .Ended:
             if (inTrash(note!.frame)) {
+                for i in 0...collectionOfNotes.count {
+                    if (collectionOfNotes[i] == note) {
+                        collectionOfNotes.removeAtIndex(i)
+                        break
+                    }
+                }
                 note!.removeFromSuperview()
             }
             if (!self.menu.hidden) {
