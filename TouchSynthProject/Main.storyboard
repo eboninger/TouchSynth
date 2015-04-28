@@ -817,6 +817,34 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ktq-kW-bug">
+                                        <rect key="frame" x="32" y="52" width="106" height="74"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Default">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZJ-Ys-1T3">
+                                        <rect key="frame" x="156" y="52" width="106" height="74"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Eli">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MeN-ii-qmX">
+                                        <rect key="frame" x="32" y="139" width="106" height="74"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Brett">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PC3-2g-n0z">
+                                        <rect key="frame" x="156" y="139" width="106" height="74"/>
+                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Steph">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -916,6 +944,10 @@
                         <outlet property="lpSwitch" destination="tbE-q8-YCX" id="ktX-O2-hRK"/>
                         <outlet property="octaveLabel" destination="78K-6w-xa4" id="hoX-sC-2qF"/>
                         <outlet property="pitchLabel" destination="hSC-w5-5n7" id="cDj-tR-Ly8"/>
+                        <outlet property="presetButton1" destination="Ktq-kW-bug" id="TQR-Ud-ACA"/>
+                        <outlet property="presetButton2" destination="SZJ-Ys-1T3" id="n1E-LS-kOT"/>
+                        <outlet property="presetButton3" destination="MeN-ii-qmX" id="B5G-Nb-AKr"/>
+                        <outlet property="presetButton4" destination="PC3-2g-n0z" id="nf5-tg-4zC"/>
                         <outlet property="resonanceLabel" destination="K2K-K7-GF2" id="xdk-O6-VyY"/>
                         <outlet property="reverbLabel" destination="Lpg-3z-fnV" id="b4r-Zo-vHq"/>
                         <outlet property="reverbSlider" destination="HhA-5g-DHJ" id="HNX-1Y-Sfd"/>

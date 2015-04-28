@@ -58,6 +58,10 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     var slider_semitone:BWCircularSlider?
     var slider_fine:BWCircularSlider?
     
+    @IBOutlet weak var presetButton1: UIButton!
+    @IBOutlet weak var presetButton2: UIButton!
+    @IBOutlet weak var presetButton3: UIButton!
+    @IBOutlet weak var presetButton4: UIButton!
     
     
     var info = soundInfo()
@@ -353,5 +357,9 @@ class SettingsViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     }
     @IBAction func delayChanged(sender: UISlider) {
         info.delay = sender.value
+    }
+    
+    @IBAction func presetButton1_Pressed(sender: UIButton) {
+        
     }
 }
