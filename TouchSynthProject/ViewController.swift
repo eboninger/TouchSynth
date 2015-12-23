@@ -578,6 +578,9 @@ class ViewController: UIViewController {
         let note = userInfo["note"] as! Note!
         let playNote = userInfo["playNote"] as! Bool!
         if (playNote!) {
+            for note in collectionOfNotes {
+
+            }
             playedNote(note, touch: UITouch())
         } else {
             stoppedNote(note, touch: UITouch())
